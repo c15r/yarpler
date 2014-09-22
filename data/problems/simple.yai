@@ -1,0 +1,9 @@
+domain {
+    class Mitarbeiter {
+    }
+}
+
+initial {
+    object Mitarbeiter ma1 = new Mitarbeiter();
+    object Mitarbeiter ma2 = new Mitarbeiter();
+}
