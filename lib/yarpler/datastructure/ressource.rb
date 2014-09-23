@@ -2,28 +2,15 @@ module Yarpler
   module Datastructure
     class Ressource
 
-      def initialize(new_name)
-        set_name(new_name)
-      end
-
-      def set_name(new_name)
-        @name = new_name
-      end
-
-      def name
-        @name
-      end
-
-      def add_entity
-
-      end
-
-      def remove_entity
-
-      end
-
       def print
-        puts @name
+        puts "####################"
+        puts "Ressource:"
+        puts self.class
+        puts ""
+        puts "Methods:"
+        puts self.methods - Object.methods - [:print]
+        puts "####################"
+        puts ""
       end
 
     end

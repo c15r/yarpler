@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 #
-# Yarpl.g
+# /home/nino/github/yarpler/lib/yarpl/Yarpl.g
 # --
 # Generated using ANTLR version: 3.5
 # Ruby runtime library version: 1.10.0
-# Input grammar file: Yarpl.g
-# Generated at: 2014-09-22 22:16:07
+# Input grammar file: /home/nino/github/yarpler/lib/yarpl/Yarpl.g
+# Generated at: 2014-09-23 13:39:04
 #
 
 # ~~~> start load path setup
@@ -69,24 +69,25 @@ module Yarpl
                    :T__68 => 68, :T__69 => 69, :T__70 => 70, :T__71 => 71, 
                    :T__72 => 72, :T__73 => 73, :T__74 => 74, :T__75 => 75, 
                    :T__76 => 76, :T__77 => 77, :T__78 => 78, :T__79 => 79, 
-                   :T__80 => 80, :T__81 => 81, :T__82 => 82, :ALPHABET => 4, 
-                   :ALPHANUMERIC => 5, :AND => 6, :ASSIGN => 7, :BANG => 8, 
-                   :CLASS_BODY => 9, :CLASS_BODY_DECLARATION => 10, :CLASS_DECLARATION => 11, 
-                   :COLON => 12, :COMMA => 13, :COMMENT => 14, :DEC => 15, 
-                   :DECIMALNUMBER => 16, :DIGIT => 17, :DIGITORUNDERSCORE => 18, 
-                   :DIGITS => 19, :DIV => 20, :DOMAIN_BODY => 21, :DOMAIN_BODY_DECLARATION => 22, 
-                   :DOMAIN_DECLARATION => 23, :DOT => 24, :EQUALS => 25, 
-                   :FIELD_DECLARATION => 26, :GT => 27, :GTE => 28, :IDENTIFIER => 29, 
-                   :INC => 30, :INITIAL_BODY => 31, :INITIAL_DECLARATION => 32, 
-                   :INTEGER => 33, :LBRACE => 34, :LBRACK => 35, :LINE_COMMENT => 36, 
-                   :LOWERCASE => 37, :LPAREN => 38, :LT => 39, :LTE => 40, 
-                   :MEMBER_DECLARATION => 41, :MINUS => 42, :MOD => 43, 
-                   :NONZERODIGIT => 44, :NOT_EQUALS => 45, :OR => 46, :PLUS => 47, 
-                   :PROGRAM => 48, :QUESTION => 49, :RANGEINTEGERLITERAL => 50, 
-                   :RBRACE => 51, :RBRACK => 52, :RPAREN => 53, :SEMI => 54, 
-                   :SIGN => 55, :START => 56, :TIMES => 57, :TYPE_DECLARATION => 58, 
-                   :UPPERCASE => 59, :VARIABLE_DECLARATOR => 60, :VARIABLE_TYPE => 61, 
-                   :WS => 62, :YARPL_LETTER => 63, :YARPL_LETTERORDIGIT => 64 )
+                   :T__80 => 80, :T__81 => 81, :T__82 => 82, :T__83 => 83, 
+                   :ALPHABET => 4, :ALPHANUMERIC => 5, :AND => 6, :ASSIGN => 7, 
+                   :BANG => 8, :CLASS_BODY => 9, :CLASS_BODY_DECLARATION => 10, 
+                   :CLASS_DECLARATION => 11, :COLON => 12, :COMMA => 13, 
+                   :COMMENT => 14, :DEC => 15, :DECIMALNUMBER => 16, :DIGIT => 17, 
+                   :DIGITORUNDERSCORE => 18, :DIGITS => 19, :DIV => 20, 
+                   :DOMAIN_BODY => 21, :DOMAIN_BODY_DECLARATION => 22, :DOMAIN_DECLARATION => 23, 
+                   :DOT => 24, :EQUALS => 25, :FIELD_DECLARATION => 26, 
+                   :GT => 27, :GTE => 28, :IDENTIFIER => 29, :INC => 30, 
+                   :INITIAL_BODY => 31, :INITIAL_DECLARATION => 32, :INTEGER => 33, 
+                   :LBRACE => 34, :LBRACK => 35, :LINE_COMMENT => 36, :LOWERCASE => 37, 
+                   :LPAREN => 38, :LT => 39, :LTE => 40, :MEMBER_DECLARATION => 41, 
+                   :MINUS => 42, :MOD => 43, :NONZERODIGIT => 44, :NOT_EQUALS => 45, 
+                   :OR => 46, :PLUS => 47, :PROGRAM => 48, :QUESTION => 49, 
+                   :RANGEINTEGERLITERAL => 50, :RBRACE => 51, :RBRACK => 52, 
+                   :RPAREN => 53, :SEMI => 54, :SIGN => 55, :START => 56, 
+                   :TIMES => 57, :TYPE_DECLARATION => 58, :UPPERCASE => 59, 
+                   :VARIABLE_DECLARATOR => 60, :VARIABLE_TYPE => 61, :WS => 62, 
+                   :YARPL_LETTER => 63, :YARPL_LETTERORDIGIT => 64 )
 
 
     # register the proper human-readable name or literal value
@@ -108,10 +109,10 @@ module Yarpl
                     "RBRACE", "RBRACK", "RPAREN", "SEMI", "SIGN", "START", 
                     "TIMES", "TYPE_DECLARATION", "UPPERCASE", "VARIABLE_DECLARATOR", 
                     "VARIABLE_TYPE", "WS", "YARPL_LETTER", "YARPL_LETTERORDIGIT", 
-                    "'and'", "'boolean'", "'class'", "'datetime'", "'decimal'", 
-                    "'domain'", "'float'", "'initial'", "'integer'", "'mod'", 
-                    "'new'", "'nullableboolean'", "'object'", "'or'", "'set'", 
-                    "'string'", "'time'", "'var'" )
+                    "'and'", "'boolean'", "'class'", "'const'", "'datetime'", 
+                    "'decimal'", "'domain'", "'float'", "'initial'", "'integer'", 
+                    "'mod'", "'new'", "'nullableboolean'", "'object'", "'or'", 
+                    "'set'", "'string'", "'time'", "'var'" )
 
 
   end
@@ -136,7 +137,7 @@ module Yarpl
     include TokenData
 
     begin
-      generated_using( "Yarpl.g", "3.5", "1.10.0" )
+      generated_using( "/home/nino/github/yarpler/lib/yarpl/Yarpl.g", "3.5", "1.10.0" )
     rescue NoMethodError => error
       # ignore
     end
@@ -150,7 +151,7 @@ module Yarpl
     #
     # parser rule start
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 27:1: start : ( program )* -> ^( START ( program )* ) ;
     #
     def start
@@ -177,7 +178,7 @@ module Yarpl
         alt_1 = 2
         look_1_0 = @input.peek( 1 )
 
-        if ( look_1_0 == T__70 || look_1_0 == T__72 )
+        if ( look_1_0 == T__71 || look_1_0 == T__73 )
           alt_1 = 1
 
         end
@@ -257,8 +258,8 @@ module Yarpl
     #
     # parser rule program
     #
-    # (in Yarpl.g)
-    # 31:1: program : ( domainDeclaration -> ^( PROGRAM domainDeclaration ) | initialDeclaration -> ^( PROGRAM initialDeclaration ) );
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # 31:1: program : ( domainDeclaration -> domainDeclaration | initialDeclaration -> initialDeclaration );
     #
     def program
       # -> uncomment the next line to manually enable rule tracing
@@ -280,13 +281,13 @@ module Yarpl
       stream_domainDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule domainDeclaration" )
       stream_initialDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule initialDeclaration" )
       begin
-      # at line 32:5: ( domainDeclaration -> ^( PROGRAM domainDeclaration ) | initialDeclaration -> ^( PROGRAM initialDeclaration ) )
+      # at line 32:5: ( domainDeclaration -> domainDeclaration | initialDeclaration -> initialDeclaration )
       alt_2 = 2
       look_2_0 = @input.peek( 1 )
 
-      if ( look_2_0 == T__70 )
+      if ( look_2_0 == T__71 )
         alt_2 = 1
-      elsif ( look_2_0 == T__72 )
+      elsif ( look_2_0 == T__73 )
         alt_2 = 2
       else
         raise NoViableAlternative( "", 2, 0 )
@@ -311,14 +312,8 @@ module Yarpl
         stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
         root_0 = @adaptor.create_flat_list
-        # 32:25: -> ^( PROGRAM domainDeclaration )
-        # at line 32:28: ^( PROGRAM domainDeclaration )
-        root_1 = @adaptor.create_flat_list
-        root_1 = @adaptor.become_root( @adaptor.create_from_type( PROGRAM, "PROGRAM" ), root_1 )
-
-        @adaptor.add_child( root_1, stream_domainDeclaration.next_tree )
-
-        @adaptor.add_child( root_0, root_1 )
+        # 32:25: -> domainDeclaration
+        @adaptor.add_child( root_0, stream_domainDeclaration.next_tree )
 
 
 
@@ -329,7 +324,7 @@ module Yarpl
 
       when 2
         # at line 33:7: initialDeclaration
-        @state.following.push( TOKENS_FOLLOWING_initialDeclaration_IN_program_181 )
+        @state.following.push( TOKENS_FOLLOWING_initialDeclaration_IN_program_177 )
         initialDeclaration3 = initialDeclaration
         @state.following.pop
         stream_initialDeclaration.add( initialDeclaration3.tree )
@@ -345,14 +340,8 @@ module Yarpl
         stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
         root_0 = @adaptor.create_flat_list
-        # 33:26: -> ^( PROGRAM initialDeclaration )
-        # at line 33:29: ^( PROGRAM initialDeclaration )
-        root_1 = @adaptor.create_flat_list
-        root_1 = @adaptor.become_root( @adaptor.create_from_type( PROGRAM, "PROGRAM" ), root_1 )
-
-        @adaptor.add_child( root_1, stream_initialDeclaration.next_tree )
-
-        @adaptor.add_child( root_0, root_1 )
+        # 33:26: -> initialDeclaration
+        @adaptor.add_child( root_0, stream_initialDeclaration.next_tree )
 
 
 
@@ -391,7 +380,7 @@ module Yarpl
     #
     # parser rule domainDeclaration
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 36:1: domainDeclaration : 'domain' domainBody -> ^( DOMAIN_DECLARATION domainBody ) ;
     #
     def domainDeclaration
@@ -412,14 +401,14 @@ module Yarpl
 
 
       tree_for_string_literal4 = nil
-      stream_T__70 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__70" )
+      stream_T__71 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__71" )
       stream_domainBody = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule domainBody" )
       begin
       # at line 37:7: 'domain' domainBody
-      string_literal4 = match( T__70, TOKENS_FOLLOWING_T__70_IN_domainDeclaration_203 )
-      stream_T__70.add( string_literal4 )
+      string_literal4 = match( T__71, TOKENS_FOLLOWING_T__71_IN_domainDeclaration_195 )
+      stream_T__71.add( string_literal4 )
 
-      @state.following.push( TOKENS_FOLLOWING_domainBody_IN_domainDeclaration_205 )
+      @state.following.push( TOKENS_FOLLOWING_domainBody_IN_domainDeclaration_197 )
       domainBody5 = domainBody
       @state.following.pop
       stream_domainBody.add( domainBody5.tree )
@@ -480,8 +469,8 @@ module Yarpl
     #
     # parser rule domainBody
     #
-    # (in Yarpl.g)
-    # 40:1: domainBody : '{' ( domainBodyDeclaration )* '}' -> ^( DOMAIN_BODY ( domainBodyDeclaration )* ) ;
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # 40:1: domainBody : '{' ( domainBodyDeclaration )* '}' -> ( domainBodyDeclaration )* ;
     #
     def domainBody
       # -> uncomment the next line to manually enable rule tracing
@@ -508,7 +497,7 @@ module Yarpl
       stream_domainBodyDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule domainBodyDeclaration" )
       begin
       # at line 41:7: '{' ( domainBodyDeclaration )* '}'
-      char_literal6 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_domainBody_230 )
+      char_literal6 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_domainBody_222 )
       stream_LBRACE.add( char_literal6 )
 
       # at line 41:11: ( domainBodyDeclaration )*
@@ -523,7 +512,7 @@ module Yarpl
         case alt_3
         when 1
           # at line 41:11: domainBodyDeclaration
-          @state.following.push( TOKENS_FOLLOWING_domainBodyDeclaration_IN_domainBody_232 )
+          @state.following.push( TOKENS_FOLLOWING_domainBodyDeclaration_IN_domainBody_224 )
           domainBodyDeclaration7 = domainBodyDeclaration
           @state.following.pop
           stream_domainBodyDeclaration.add( domainBodyDeclaration7.tree )
@@ -534,7 +523,7 @@ module Yarpl
         end
       end # loop for decision 3
 
-      char_literal8 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_domainBody_235 )
+      char_literal8 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_domainBody_227 )
       stream_RBRACE.add( char_literal8 )
 
       # AST Rewrite
@@ -548,20 +537,14 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 41:38: -> ^( DOMAIN_BODY ( domainBodyDeclaration )* )
-      # at line 41:41: ^( DOMAIN_BODY ( domainBodyDeclaration )* )
-      root_1 = @adaptor.create_flat_list
-      root_1 = @adaptor.become_root( @adaptor.create_from_type( DOMAIN_BODY, "DOMAIN_BODY" ), root_1 )
-
-      # at line 41:55: ( domainBodyDeclaration )*
+      # 41:38: -> ( domainBodyDeclaration )*
+      # at line 41:41: ( domainBodyDeclaration )*
       while stream_domainBodyDeclaration.has_next?
-        @adaptor.add_child( root_1, stream_domainBodyDeclaration.next_tree )
+        @adaptor.add_child( root_0, stream_domainBodyDeclaration.next_tree )
 
       end
 
       stream_domainBodyDeclaration.reset();
-
-      @adaptor.add_child( root_0, root_1 )
 
 
 
@@ -599,8 +582,8 @@ module Yarpl
     #
     # parser rule domainBodyDeclaration
     #
-    # (in Yarpl.g)
-    # 44:1: domainBodyDeclaration : typeDeclaration -> ^( TYPE_DECLARATION typeDeclaration ) ;
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # 44:1: domainBodyDeclaration : typeDeclaration -> typeDeclaration ;
     #
     def domainBodyDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -621,7 +604,7 @@ module Yarpl
       stream_typeDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule typeDeclaration" )
       begin
       # at line 45:7: typeDeclaration
-      @state.following.push( TOKENS_FOLLOWING_typeDeclaration_IN_domainBodyDeclaration_261 )
+      @state.following.push( TOKENS_FOLLOWING_typeDeclaration_IN_domainBodyDeclaration_249 )
       typeDeclaration9 = typeDeclaration
       @state.following.pop
       stream_typeDeclaration.add( typeDeclaration9.tree )
@@ -637,14 +620,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 45:23: -> ^( TYPE_DECLARATION typeDeclaration )
-      # at line 45:26: ^( TYPE_DECLARATION typeDeclaration )
-      root_1 = @adaptor.create_flat_list
-      root_1 = @adaptor.become_root( @adaptor.create_from_type( TYPE_DECLARATION, "TYPE_DECLARATION" ), root_1 )
-
-      @adaptor.add_child( root_1, stream_typeDeclaration.next_tree )
-
-      @adaptor.add_child( root_0, root_1 )
+      # 45:23: -> typeDeclaration
+      @adaptor.add_child( root_0, stream_typeDeclaration.next_tree )
 
 
 
@@ -682,7 +659,7 @@ module Yarpl
     #
     # parser rule initialDeclaration
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 48:1: initialDeclaration : 'initial' initialBody -> ^( INITIAL_DECLARATION initialBody ) ;
     #
     def initialDeclaration
@@ -703,14 +680,14 @@ module Yarpl
 
 
       tree_for_string_literal10 = nil
-      stream_T__72 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__72" )
+      stream_T__73 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__73" )
       stream_initialBody = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule initialBody" )
       begin
       # at line 49:7: 'initial' initialBody
-      string_literal10 = match( T__72, TOKENS_FOLLOWING_T__72_IN_initialDeclaration_283 )
-      stream_T__72.add( string_literal10 )
+      string_literal10 = match( T__73, TOKENS_FOLLOWING_T__73_IN_initialDeclaration_267 )
+      stream_T__73.add( string_literal10 )
 
-      @state.following.push( TOKENS_FOLLOWING_initialBody_IN_initialDeclaration_285 )
+      @state.following.push( TOKENS_FOLLOWING_initialBody_IN_initialDeclaration_269 )
       initialBody11 = initialBody
       @state.following.pop
       stream_initialBody.add( initialBody11.tree )
@@ -771,7 +748,7 @@ module Yarpl
     #
     # parser rule initialBody
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 52:1: initialBody : '{' ( initialBodyDeclaration )* '}' -> ^( INITIAL_BODY ( initialBodyDeclaration )* ) ;
     #
     def initialBody
@@ -799,7 +776,7 @@ module Yarpl
       stream_initialBodyDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule initialBodyDeclaration" )
       begin
       # at line 53:7: '{' ( initialBodyDeclaration )* '}'
-      char_literal12 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_initialBody_311 )
+      char_literal12 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_initialBody_295 )
       stream_LBRACE.add( char_literal12 )
 
       # at line 53:11: ( initialBodyDeclaration )*
@@ -807,14 +784,14 @@ module Yarpl
         alt_4 = 2
         look_4_0 = @input.peek( 1 )
 
-        if ( look_4_0 == SEMI || look_4_0 == T__77 || look_4_0 == T__79 || look_4_0 == T__82 )
+        if ( look_4_0 == SEMI || look_4_0 == T__68 || look_4_0 == T__78 || look_4_0 == T__80 || look_4_0 == T__83 )
           alt_4 = 1
 
         end
         case alt_4
         when 1
           # at line 53:11: initialBodyDeclaration
-          @state.following.push( TOKENS_FOLLOWING_initialBodyDeclaration_IN_initialBody_313 )
+          @state.following.push( TOKENS_FOLLOWING_initialBodyDeclaration_IN_initialBody_297 )
           initialBodyDeclaration13 = initialBodyDeclaration
           @state.following.pop
           stream_initialBodyDeclaration.add( initialBodyDeclaration13.tree )
@@ -825,7 +802,7 @@ module Yarpl
         end
       end # loop for decision 4
 
-      char_literal14 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_initialBody_316 )
+      char_literal14 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_initialBody_300 )
       stream_RBRACE.add( char_literal14 )
 
       # AST Rewrite
@@ -890,7 +867,7 @@ module Yarpl
     #
     # parser rule initialBodyDeclaration
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 56:1: initialBodyDeclaration : statement ;
     #
     def initialBodyDeclaration
@@ -915,7 +892,7 @@ module Yarpl
 
 
       # at line 57:7: statement
-      @state.following.push( TOKENS_FOLLOWING_statement_IN_initialBodyDeclaration_342 )
+      @state.following.push( TOKENS_FOLLOWING_statement_IN_initialBodyDeclaration_326 )
       statement15 = statement
       @state.following.pop
       @adaptor.add_child( root_0, statement15.tree )
@@ -950,7 +927,7 @@ module Yarpl
     #
     # parser rule typeDeclaration
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 60:1: typeDeclaration : classDeclaration -> ^( CLASS_DECLARATION classDeclaration ) ;
     #
     def typeDeclaration
@@ -972,7 +949,7 @@ module Yarpl
       stream_classDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule classDeclaration" )
       begin
       # at line 61:7: classDeclaration
-      @state.following.push( TOKENS_FOLLOWING_classDeclaration_IN_typeDeclaration_359 )
+      @state.following.push( TOKENS_FOLLOWING_classDeclaration_IN_typeDeclaration_343 )
       classDeclaration16 = classDeclaration
       @state.following.pop
       stream_classDeclaration.add( classDeclaration16.tree )
@@ -1033,7 +1010,7 @@ module Yarpl
     #
     # parser rule classDeclaration
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 64:1: classDeclaration : 'class' IDENTIFIER classBody -> ^( IDENTIFIER classBody ) ;
     #
     def classDeclaration
@@ -1061,19 +1038,19 @@ module Yarpl
       stream_classBody = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule classBody" )
       begin
       # at line 65:7: 'class' IDENTIFIER classBody
-      string_literal17 = match( T__67, TOKENS_FOLLOWING_T__67_IN_classDeclaration_384 )
+      string_literal17 = match( T__67, TOKENS_FOLLOWING_T__67_IN_classDeclaration_368 )
       stream_T__67.add( string_literal17 )
 
-      __IDENTIFIER18__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_classDeclaration_386 )
+      __IDENTIFIER18__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_classDeclaration_370 )
       stream_IDENTIFIER.add( __IDENTIFIER18__ )
 
-      @state.following.push( TOKENS_FOLLOWING_classBody_IN_classDeclaration_388 )
+      @state.following.push( TOKENS_FOLLOWING_classBody_IN_classDeclaration_372 )
       classBody19 = classBody
       @state.following.pop
       stream_classBody.add( classBody19.tree )
 
       # AST Rewrite
-      # elements: IDENTIFIER, classBody
+      # elements: classBody, IDENTIFIER
       # token labels: 
       # rule labels: return_value
       # token list labels: 
@@ -1128,8 +1105,8 @@ module Yarpl
     #
     # parser rule classBody
     #
-    # (in Yarpl.g)
-    # 68:1: classBody : '{' ( classBodyDeclaration )* '}' -> ^( CLASS_BODY ( classBodyDeclaration )* ) ;
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # 68:1: classBody : '{' ( classBodyDeclaration )* '}' -> ( classBodyDeclaration )* ;
     #
     def classBody
       # -> uncomment the next line to manually enable rule tracing
@@ -1156,7 +1133,7 @@ module Yarpl
       stream_classBodyDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule classBodyDeclaration" )
       begin
       # at line 69:7: '{' ( classBodyDeclaration )* '}'
-      char_literal20 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_classBody_410 )
+      char_literal20 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_classBody_394 )
       stream_LBRACE.add( char_literal20 )
 
       # at line 69:11: ( classBodyDeclaration )*
@@ -1164,14 +1141,14 @@ module Yarpl
         alt_5 = 2
         look_5_0 = @input.peek( 1 )
 
-        if ( look_5_0 == T__77 || look_5_0 == T__79 || look_5_0 == T__82 )
+        if ( look_5_0 == T__68 || look_5_0 == T__78 || look_5_0 == T__80 || look_5_0 == T__83 )
           alt_5 = 1
 
         end
         case alt_5
         when 1
           # at line 69:11: classBodyDeclaration
-          @state.following.push( TOKENS_FOLLOWING_classBodyDeclaration_IN_classBody_412 )
+          @state.following.push( TOKENS_FOLLOWING_classBodyDeclaration_IN_classBody_396 )
           classBodyDeclaration21 = classBodyDeclaration
           @state.following.pop
           stream_classBodyDeclaration.add( classBodyDeclaration21.tree )
@@ -1182,7 +1159,7 @@ module Yarpl
         end
       end # loop for decision 5
 
-      char_literal22 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_classBody_415 )
+      char_literal22 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_classBody_399 )
       stream_RBRACE.add( char_literal22 )
 
       # AST Rewrite
@@ -1196,20 +1173,14 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 69:37: -> ^( CLASS_BODY ( classBodyDeclaration )* )
-      # at line 69:40: ^( CLASS_BODY ( classBodyDeclaration )* )
-      root_1 = @adaptor.create_flat_list
-      root_1 = @adaptor.become_root( @adaptor.create_from_type( CLASS_BODY, "CLASS_BODY" ), root_1 )
-
-      # at line 69:53: ( classBodyDeclaration )*
+      # 69:37: -> ( classBodyDeclaration )*
+      # at line 69:40: ( classBodyDeclaration )*
       while stream_classBodyDeclaration.has_next?
-        @adaptor.add_child( root_1, stream_classBodyDeclaration.next_tree )
+        @adaptor.add_child( root_0, stream_classBodyDeclaration.next_tree )
 
       end
 
       stream_classBodyDeclaration.reset();
-
-      @adaptor.add_child( root_0, root_1 )
 
 
 
@@ -1247,8 +1218,8 @@ module Yarpl
     #
     # parser rule classBodyDeclaration
     #
-    # (in Yarpl.g)
-    # 72:1: classBodyDeclaration : memberDeclaration -> ^( CLASS_BODY_DECLARATION memberDeclaration ) ;
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # 72:1: classBodyDeclaration : memberDeclaration -> ^( memberDeclaration ) ;
     #
     def classBodyDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -1269,7 +1240,7 @@ module Yarpl
       stream_memberDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule memberDeclaration" )
       begin
       # at line 73:7: memberDeclaration
-      @state.following.push( TOKENS_FOLLOWING_memberDeclaration_IN_classBodyDeclaration_438 )
+      @state.following.push( TOKENS_FOLLOWING_memberDeclaration_IN_classBodyDeclaration_418 )
       memberDeclaration23 = memberDeclaration
       @state.following.pop
       stream_memberDeclaration.add( memberDeclaration23.tree )
@@ -1285,12 +1256,10 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 73:25: -> ^( CLASS_BODY_DECLARATION memberDeclaration )
-      # at line 73:28: ^( CLASS_BODY_DECLARATION memberDeclaration )
+      # 73:25: -> ^( memberDeclaration )
+      # at line 73:28: ^( memberDeclaration )
       root_1 = @adaptor.create_flat_list
-      root_1 = @adaptor.become_root( @adaptor.create_from_type( CLASS_BODY_DECLARATION, "CLASS_BODY_DECLARATION" ), root_1 )
-
-      @adaptor.add_child( root_1, stream_memberDeclaration.next_tree )
+      root_1 = @adaptor.become_root( stream_memberDeclaration.next_node, root_1 )
 
       @adaptor.add_child( root_0, root_1 )
 
@@ -1330,8 +1299,8 @@ module Yarpl
     #
     # parser rule memberDeclaration
     #
-    # (in Yarpl.g)
-    # 76:1: memberDeclaration : fieldDeclaration -> ^( MEMBER_DECLARATION fieldDeclaration ) ;
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # 76:1: memberDeclaration : fieldDeclaration -> fieldDeclaration ;
     #
     def memberDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -1352,7 +1321,7 @@ module Yarpl
       stream_fieldDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule fieldDeclaration" )
       begin
       # at line 77:7: fieldDeclaration
-      @state.following.push( TOKENS_FOLLOWING_fieldDeclaration_IN_memberDeclaration_460 )
+      @state.following.push( TOKENS_FOLLOWING_fieldDeclaration_IN_memberDeclaration_438 )
       fieldDeclaration24 = fieldDeclaration
       @state.following.pop
       stream_fieldDeclaration.add( fieldDeclaration24.tree )
@@ -1368,14 +1337,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 77:24: -> ^( MEMBER_DECLARATION fieldDeclaration )
-      # at line 77:27: ^( MEMBER_DECLARATION fieldDeclaration )
-      root_1 = @adaptor.create_flat_list
-      root_1 = @adaptor.become_root( @adaptor.create_from_type( MEMBER_DECLARATION, "MEMBER_DECLARATION" ), root_1 )
-
-      @adaptor.add_child( root_1, stream_fieldDeclaration.next_tree )
-
-      @adaptor.add_child( root_0, root_1 )
+      # 77:24: -> fieldDeclaration
+      @adaptor.add_child( root_0, stream_fieldDeclaration.next_tree )
 
 
 
@@ -1413,8 +1376,8 @@ module Yarpl
     #
     # parser rule fieldDeclaration
     #
-    # (in Yarpl.g)
-    # 80:1: fieldDeclaration : variableType type variableDeclarators ';' -> ^( FIELD_DECLARATION type variableDeclarators ) ;
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # 80:1: fieldDeclaration : variableType type variableDeclaratorId ';' -> ^( FIELD_DECLARATION type variableDeclaratorId ) ;
     #
     def fieldDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -1432,36 +1395,36 @@ module Yarpl
       char_literal28 = nil
       variableType25 = nil
       type26 = nil
-      variableDeclarators27 = nil
+      variableDeclaratorId27 = nil
 
 
       tree_for_char_literal28 = nil
       stream_SEMI = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token SEMI" )
       stream_variableType = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule variableType" )
-      stream_variableDeclarators = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule variableDeclarators" )
+      stream_variableDeclaratorId = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule variableDeclaratorId" )
       stream_type = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule type" )
       begin
-      # at line 81:7: variableType type variableDeclarators ';'
-      @state.following.push( TOKENS_FOLLOWING_variableType_IN_fieldDeclaration_485 )
+      # at line 81:7: variableType type variableDeclaratorId ';'
+      @state.following.push( TOKENS_FOLLOWING_variableType_IN_fieldDeclaration_460 )
       variableType25 = variableType
       @state.following.pop
       stream_variableType.add( variableType25.tree )
 
-      @state.following.push( TOKENS_FOLLOWING_type_IN_fieldDeclaration_487 )
+      @state.following.push( TOKENS_FOLLOWING_type_IN_fieldDeclaration_462 )
       type26 = type
       @state.following.pop
       stream_type.add( type26.tree )
 
-      @state.following.push( TOKENS_FOLLOWING_variableDeclarators_IN_fieldDeclaration_489 )
-      variableDeclarators27 = variableDeclarators
+      @state.following.push( TOKENS_FOLLOWING_variableDeclaratorId_IN_fieldDeclaration_464 )
+      variableDeclaratorId27 = variableDeclaratorId
       @state.following.pop
-      stream_variableDeclarators.add( variableDeclarators27.tree )
+      stream_variableDeclaratorId.add( variableDeclaratorId27.tree )
 
-      char_literal28 = match( SEMI, TOKENS_FOLLOWING_SEMI_IN_fieldDeclaration_491 )
+      char_literal28 = match( SEMI, TOKENS_FOLLOWING_SEMI_IN_fieldDeclaration_466 )
       stream_SEMI.add( char_literal28 )
 
       # AST Rewrite
-      # elements: variableDeclarators, type
+      # elements: type, variableDeclaratorId
       # token labels: 
       # rule labels: return_value
       # token list labels: 
@@ -1471,14 +1434,14 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 81:49: -> ^( FIELD_DECLARATION type variableDeclarators )
-      # at line 81:52: ^( FIELD_DECLARATION type variableDeclarators )
+      # 81:50: -> ^( FIELD_DECLARATION type variableDeclaratorId )
+      # at line 81:53: ^( FIELD_DECLARATION type variableDeclaratorId )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( @adaptor.create_from_type( FIELD_DECLARATION, "FIELD_DECLARATION" ), root_1 )
 
       @adaptor.add_child( root_1, stream_type.next_tree )
 
-      @adaptor.add_child( root_1, stream_variableDeclarators.next_tree )
+      @adaptor.add_child( root_1, stream_variableDeclaratorId.next_tree )
 
       @adaptor.add_child( root_0, root_1 )
 
@@ -1518,7 +1481,7 @@ module Yarpl
     #
     # parser rule variableDeclarators
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 84:1: variableDeclarators : variableDeclarator ( ',' variableDeclarator )* ;
     #
     def variableDeclarators
@@ -1546,7 +1509,7 @@ module Yarpl
 
 
       # at line 85:7: variableDeclarator ( ',' variableDeclarator )*
-      @state.following.push( TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_518 )
+      @state.following.push( TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_493 )
       variableDeclarator29 = variableDeclarator
       @state.following.pop
       @adaptor.add_child( root_0, variableDeclarator29.tree )
@@ -1563,12 +1526,12 @@ module Yarpl
         case alt_6
         when 1
           # at line 85:27: ',' variableDeclarator
-          char_literal30 = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_variableDeclarators_521 )
+          char_literal30 = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_variableDeclarators_496 )
           tree_for_char_literal30 = @adaptor.create_with_payload( char_literal30 )
           @adaptor.add_child( root_0, tree_for_char_literal30 )
 
 
-          @state.following.push( TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_523 )
+          @state.following.push( TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_498 )
           variableDeclarator31 = variableDeclarator
           @state.following.pop
           @adaptor.add_child( root_0, variableDeclarator31.tree )
@@ -1609,7 +1572,7 @@ module Yarpl
     #
     # parser rule variableDeclarator
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 88:1: variableDeclarator : variableDeclaratorId '=' variableInitializer -> ^( VARIABLE_DECLARATOR variableDeclaratorId variableInitializer ) ;
     #
     def variableDeclarator
@@ -1636,21 +1599,21 @@ module Yarpl
       stream_variableInitializer = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule variableInitializer" )
       begin
       # at line 89:7: variableDeclaratorId '=' variableInitializer
-      @state.following.push( TOKENS_FOLLOWING_variableDeclaratorId_IN_variableDeclarator_542 )
+      @state.following.push( TOKENS_FOLLOWING_variableDeclaratorId_IN_variableDeclarator_517 )
       variableDeclaratorId32 = variableDeclaratorId
       @state.following.pop
       stream_variableDeclaratorId.add( variableDeclaratorId32.tree )
 
-      char_literal33 = match( ASSIGN, TOKENS_FOLLOWING_ASSIGN_IN_variableDeclarator_544 )
+      char_literal33 = match( ASSIGN, TOKENS_FOLLOWING_ASSIGN_IN_variableDeclarator_519 )
       stream_ASSIGN.add( char_literal33 )
 
-      @state.following.push( TOKENS_FOLLOWING_variableInitializer_IN_variableDeclarator_546 )
+      @state.following.push( TOKENS_FOLLOWING_variableInitializer_IN_variableDeclarator_521 )
       variableInitializer34 = variableInitializer
       @state.following.pop
       stream_variableInitializer.add( variableInitializer34.tree )
 
       # AST Rewrite
-      # elements: variableInitializer, variableDeclaratorId
+      # elements: variableDeclaratorId, variableInitializer
       # token labels: 
       # rule labels: return_value
       # token list labels: 
@@ -1707,7 +1670,7 @@ module Yarpl
     #
     # parser rule variableDeclaratorId
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 92:1: variableDeclaratorId : IDENTIFIER ;
     #
     def variableDeclaratorId
@@ -1733,7 +1696,7 @@ module Yarpl
 
 
       # at line 93:7: IDENTIFIER
-      __IDENTIFIER35__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_variableDeclaratorId_573 )
+      __IDENTIFIER35__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_variableDeclaratorId_548 )
       tree_for_IDENTIFIER35 = @adaptor.create_with_payload( __IDENTIFIER35__ )
       @adaptor.add_child( root_0, tree_for_IDENTIFIER35 )
 
@@ -1768,7 +1731,7 @@ module Yarpl
     #
     # parser rule variableInitializer
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 96:1: variableInitializer : expression ;
     #
     def variableInitializer
@@ -1793,7 +1756,7 @@ module Yarpl
 
 
       # at line 97:7: expression
-      @state.following.push( TOKENS_FOLLOWING_expression_IN_variableInitializer_590 )
+      @state.following.push( TOKENS_FOLLOWING_expression_IN_variableInitializer_565 )
       expression36 = expression
       @state.following.pop
       @adaptor.add_child( root_0, expression36.tree )
@@ -1828,7 +1791,7 @@ module Yarpl
     #
     # parser rule localVariableDeclaration
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 100:1: localVariableDeclaration : variableType type variableDeclarators ';' ;
     #
     def localVariableDeclaration
@@ -1857,22 +1820,22 @@ module Yarpl
 
 
       # at line 101:7: variableType type variableDeclarators ';'
-      @state.following.push( TOKENS_FOLLOWING_variableType_IN_localVariableDeclaration_607 )
+      @state.following.push( TOKENS_FOLLOWING_variableType_IN_localVariableDeclaration_582 )
       variableType37 = variableType
       @state.following.pop
       @adaptor.add_child( root_0, variableType37.tree )
 
-      @state.following.push( TOKENS_FOLLOWING_type_IN_localVariableDeclaration_609 )
+      @state.following.push( TOKENS_FOLLOWING_type_IN_localVariableDeclaration_584 )
       type38 = type
       @state.following.pop
       @adaptor.add_child( root_0, type38.tree )
 
-      @state.following.push( TOKENS_FOLLOWING_variableDeclarators_IN_localVariableDeclaration_611 )
+      @state.following.push( TOKENS_FOLLOWING_variableDeclarators_IN_localVariableDeclaration_586 )
       variableDeclarators39 = variableDeclarators
       @state.following.pop
       @adaptor.add_child( root_0, variableDeclarators39.tree )
 
-      char_literal40 = match( SEMI, TOKENS_FOLLOWING_SEMI_IN_localVariableDeclaration_613 )
+      char_literal40 = match( SEMI, TOKENS_FOLLOWING_SEMI_IN_localVariableDeclaration_588 )
       tree_for_char_literal40 = @adaptor.create_with_payload( char_literal40 )
       @adaptor.add_child( root_0, tree_for_char_literal40 )
 
@@ -1907,7 +1870,7 @@ module Yarpl
     #
     # parser rule statement
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 105:1: statement : ( localVariableDeclaration | ';' );
     #
     def statement
@@ -1934,7 +1897,7 @@ module Yarpl
       alt_7 = 2
       look_7_0 = @input.peek( 1 )
 
-      if ( look_7_0 == T__77 || look_7_0 == T__79 || look_7_0 == T__82 )
+      if ( look_7_0 == T__68 || look_7_0 == T__78 || look_7_0 == T__80 || look_7_0 == T__83 )
         alt_7 = 1
       elsif ( look_7_0 == SEMI )
         alt_7 = 2
@@ -1948,7 +1911,7 @@ module Yarpl
 
 
         # at line 106:7: localVariableDeclaration
-        @state.following.push( TOKENS_FOLLOWING_localVariableDeclaration_IN_statement_631 )
+        @state.following.push( TOKENS_FOLLOWING_localVariableDeclaration_IN_statement_606 )
         localVariableDeclaration41 = localVariableDeclaration
         @state.following.pop
         @adaptor.add_child( root_0, localVariableDeclaration41.tree )
@@ -1959,7 +1922,7 @@ module Yarpl
 
 
         # at line 107:7: ';'
-        char_literal42 = match( SEMI, TOKENS_FOLLOWING_SEMI_IN_statement_639 )
+        char_literal42 = match( SEMI, TOKENS_FOLLOWING_SEMI_IN_statement_614 )
         tree_for_char_literal42 = @adaptor.create_with_payload( char_literal42 )
         @adaptor.add_child( root_0, tree_for_char_literal42 )
 
@@ -1995,7 +1958,7 @@ module Yarpl
     #
     # parser rule expression
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 111:1: expression : relationalExpression ( ( 'and' | 'or' ) relationalExpression )* ;
     #
     def expression
@@ -2023,7 +1986,7 @@ module Yarpl
 
 
       # at line 112:5: relationalExpression ( ( 'and' | 'or' ) relationalExpression )*
-      @state.following.push( TOKENS_FOLLOWING_relationalExpression_IN_expression_657 )
+      @state.following.push( TOKENS_FOLLOWING_relationalExpression_IN_expression_632 )
       relationalExpression43 = relationalExpression
       @state.following.pop
       @adaptor.add_child( root_0, relationalExpression43.tree )
@@ -2033,7 +1996,7 @@ module Yarpl
         alt_8 = 2
         look_8_0 = @input.peek( 1 )
 
-        if ( look_8_0 == T__65 || look_8_0 == T__78 )
+        if ( look_8_0 == T__65 || look_8_0 == T__79 )
           alt_8 = 1
 
         end
@@ -2042,7 +2005,7 @@ module Yarpl
           # at line 112:27: ( 'and' | 'or' ) relationalExpression
           set44 = @input.look
 
-          if @input.peek(1) == T__65 || @input.peek(1) == T__78
+          if @input.peek(1) == T__65 || @input.peek(1) == T__79
             @input.consume
             @adaptor.add_child( root_0, @adaptor.create_with_payload( set44 ) )
 
@@ -2055,7 +2018,7 @@ module Yarpl
           end
 
 
-          @state.following.push( TOKENS_FOLLOWING_relationalExpression_IN_expression_666 )
+          @state.following.push( TOKENS_FOLLOWING_relationalExpression_IN_expression_641 )
           relationalExpression45 = relationalExpression
           @state.following.pop
           @adaptor.add_child( root_0, relationalExpression45.tree )
@@ -2096,7 +2059,7 @@ module Yarpl
     #
     # parser rule relationalExpression
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 115:1: relationalExpression : addingExpression ( ( EQUALS | NOT_EQUALS | GT | GTE | LT | LTE ) addingExpression )* ;
     #
     def relationalExpression
@@ -2124,7 +2087,7 @@ module Yarpl
 
 
       # at line 116:7: addingExpression ( ( EQUALS | NOT_EQUALS | GT | GTE | LT | LTE ) addingExpression )*
-      @state.following.push( TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_685 )
+      @state.following.push( TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_660 )
       addingExpression46 = addingExpression
       @state.following.pop
       @adaptor.add_child( root_0, addingExpression46.tree )
@@ -2156,7 +2119,7 @@ module Yarpl
           end
 
 
-          @state.following.push( TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_702 )
+          @state.following.push( TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_677 )
           addingExpression48 = addingExpression
           @state.following.pop
           @adaptor.add_child( root_0, addingExpression48.tree )
@@ -2197,7 +2160,7 @@ module Yarpl
     #
     # parser rule addingExpression
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 119:1: addingExpression : multiplyingExpression ( ( PLUS | MINUS ) multiplyingExpression )* ;
     #
     def addingExpression
@@ -2225,7 +2188,7 @@ module Yarpl
 
 
       # at line 120:7: multiplyingExpression ( ( PLUS | MINUS ) multiplyingExpression )*
-      @state.following.push( TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_721 )
+      @state.following.push( TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_696 )
       multiplyingExpression49 = multiplyingExpression
       @state.following.pop
       @adaptor.add_child( root_0, multiplyingExpression49.tree )
@@ -2257,7 +2220,7 @@ module Yarpl
           end
 
 
-          @state.following.push( TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_730 )
+          @state.following.push( TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_705 )
           multiplyingExpression51 = multiplyingExpression
           @state.following.pop
           @adaptor.add_child( root_0, multiplyingExpression51.tree )
@@ -2298,7 +2261,7 @@ module Yarpl
     #
     # parser rule multiplyingExpression
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 123:1: multiplyingExpression : signExpression ( ( TIMES | DIV | 'mod' ) signExpression )* ;
     #
     def multiplyingExpression
@@ -2326,7 +2289,7 @@ module Yarpl
 
 
       # at line 124:7: signExpression ( ( TIMES | DIV | 'mod' ) signExpression )*
-      @state.following.push( TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_749 )
+      @state.following.push( TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_724 )
       signExpression52 = signExpression
       @state.following.pop
       @adaptor.add_child( root_0, signExpression52.tree )
@@ -2336,7 +2299,7 @@ module Yarpl
         alt_11 = 2
         look_11_0 = @input.peek( 1 )
 
-        if ( look_11_0 == DIV || look_11_0 == TIMES || look_11_0 == T__74 )
+        if ( look_11_0 == DIV || look_11_0 == TIMES || look_11_0 == T__75 )
           alt_11 = 1
 
         end
@@ -2345,7 +2308,7 @@ module Yarpl
           # at line 124:23: ( TIMES | DIV | 'mod' ) signExpression
           set53 = @input.look
 
-          if @input.peek(1) == DIV || @input.peek(1) == TIMES || @input.peek(1) == T__74
+          if @input.peek(1) == DIV || @input.peek(1) == TIMES || @input.peek(1) == T__75
             @input.consume
             @adaptor.add_child( root_0, @adaptor.create_with_payload( set53 ) )
 
@@ -2358,7 +2321,7 @@ module Yarpl
           end
 
 
-          @state.following.push( TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_760 )
+          @state.following.push( TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_735 )
           signExpression54 = signExpression
           @state.following.pop
           @adaptor.add_child( root_0, signExpression54.tree )
@@ -2399,7 +2362,7 @@ module Yarpl
     #
     # parser rule signExpression
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 127:1: signExpression : ( PLUS | MINUS )* primeExpression ;
     #
     def signExpression
@@ -2459,7 +2422,7 @@ module Yarpl
         end
       end # loop for decision 12
 
-      @state.following.push( TOKENS_FOLLOWING_primeExpression_IN_signExpression_786 )
+      @state.following.push( TOKENS_FOLLOWING_primeExpression_IN_signExpression_761 )
       primeExpression56 = primeExpression
       @state.following.pop
       @adaptor.add_child( root_0, primeExpression56.tree )
@@ -2494,7 +2457,7 @@ module Yarpl
     #
     # parser rule primeExpression
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 131:1: primeExpression : ( primary | LPAREN expression RPAREN );
     #
     def primeExpression
@@ -2524,7 +2487,7 @@ module Yarpl
       alt_13 = 2
       look_13_0 = @input.peek( 1 )
 
-      if ( look_13_0 == RANGEINTEGERLITERAL || look_13_0 == T__75 )
+      if ( look_13_0 == RANGEINTEGERLITERAL || look_13_0 == T__76 )
         alt_13 = 1
       elsif ( look_13_0 == LPAREN )
         alt_13 = 2
@@ -2538,7 +2501,7 @@ module Yarpl
 
 
         # at line 132:7: primary
-        @state.following.push( TOKENS_FOLLOWING_primary_IN_primeExpression_803 )
+        @state.following.push( TOKENS_FOLLOWING_primary_IN_primeExpression_778 )
         primary57 = primary
         @state.following.pop
         @adaptor.add_child( root_0, primary57.tree )
@@ -2549,17 +2512,17 @@ module Yarpl
 
 
         # at line 133:7: LPAREN expression RPAREN
-        __LPAREN58__ = match( LPAREN, TOKENS_FOLLOWING_LPAREN_IN_primeExpression_811 )
+        __LPAREN58__ = match( LPAREN, TOKENS_FOLLOWING_LPAREN_IN_primeExpression_786 )
         tree_for_LPAREN58 = @adaptor.create_with_payload( __LPAREN58__ )
         @adaptor.add_child( root_0, tree_for_LPAREN58 )
 
 
-        @state.following.push( TOKENS_FOLLOWING_expression_IN_primeExpression_813 )
+        @state.following.push( TOKENS_FOLLOWING_expression_IN_primeExpression_788 )
         expression59 = expression
         @state.following.pop
         @adaptor.add_child( root_0, expression59.tree )
 
-        __RPAREN60__ = match( RPAREN, TOKENS_FOLLOWING_RPAREN_IN_primeExpression_817 )
+        __RPAREN60__ = match( RPAREN, TOKENS_FOLLOWING_RPAREN_IN_primeExpression_792 )
         tree_for_RPAREN60 = @adaptor.create_with_payload( __RPAREN60__ )
         @adaptor.add_child( root_0, tree_for_RPAREN60 )
 
@@ -2595,7 +2558,7 @@ module Yarpl
     #
     # parser rule expressionList
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 136:1: expressionList : expression ( ',' expression )* ;
     #
     def expressionList
@@ -2623,7 +2586,7 @@ module Yarpl
 
 
       # at line 137:9: expression ( ',' expression )*
-      @state.following.push( TOKENS_FOLLOWING_expression_IN_expressionList_836 )
+      @state.following.push( TOKENS_FOLLOWING_expression_IN_expressionList_811 )
       expression61 = expression
       @state.following.pop
       @adaptor.add_child( root_0, expression61.tree )
@@ -2640,12 +2603,12 @@ module Yarpl
         case alt_14
         when 1
           # at line 137:21: ',' expression
-          char_literal62 = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_expressionList_839 )
+          char_literal62 = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_expressionList_814 )
           tree_for_char_literal62 = @adaptor.create_with_payload( char_literal62 )
           @adaptor.add_child( root_0, tree_for_char_literal62 )
 
 
-          @state.following.push( TOKENS_FOLLOWING_expression_IN_expressionList_841 )
+          @state.following.push( TOKENS_FOLLOWING_expression_IN_expressionList_816 )
           expression63 = expression
           @state.following.pop
           @adaptor.add_child( root_0, expression63.tree )
@@ -2686,7 +2649,7 @@ module Yarpl
     #
     # parser rule primary
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 140:1: primary : ( 'new' creator | literal );
     #
     def primary
@@ -2714,7 +2677,7 @@ module Yarpl
       alt_15 = 2
       look_15_0 = @input.peek( 1 )
 
-      if ( look_15_0 == T__75 )
+      if ( look_15_0 == T__76 )
         alt_15 = 1
       elsif ( look_15_0 == RANGEINTEGERLITERAL )
         alt_15 = 2
@@ -2728,12 +2691,12 @@ module Yarpl
 
 
         # at line 141:4: 'new' creator
-        string_literal64 = match( T__75, TOKENS_FOLLOWING_T__75_IN_primary_857 )
+        string_literal64 = match( T__76, TOKENS_FOLLOWING_T__76_IN_primary_832 )
         tree_for_string_literal64 = @adaptor.create_with_payload( string_literal64 )
         @adaptor.add_child( root_0, tree_for_string_literal64 )
 
 
-        @state.following.push( TOKENS_FOLLOWING_creator_IN_primary_859 )
+        @state.following.push( TOKENS_FOLLOWING_creator_IN_primary_834 )
         creator65 = creator
         @state.following.pop
         @adaptor.add_child( root_0, creator65.tree )
@@ -2744,7 +2707,7 @@ module Yarpl
 
 
         # at line 142:7: literal
-        @state.following.push( TOKENS_FOLLOWING_literal_IN_primary_867 )
+        @state.following.push( TOKENS_FOLLOWING_literal_IN_primary_842 )
         literal66 = literal
         @state.following.pop
         @adaptor.add_child( root_0, literal66.tree )
@@ -2780,7 +2743,7 @@ module Yarpl
     #
     # parser rule creator
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 145:1: creator : createdName classCreatorRest ;
     #
     def creator
@@ -2806,12 +2769,12 @@ module Yarpl
 
 
       # at line 146:7: createdName classCreatorRest
-      @state.following.push( TOKENS_FOLLOWING_createdName_IN_creator_881 )
+      @state.following.push( TOKENS_FOLLOWING_createdName_IN_creator_856 )
       createdName67 = createdName
       @state.following.pop
       @adaptor.add_child( root_0, createdName67.tree )
 
-      @state.following.push( TOKENS_FOLLOWING_classCreatorRest_IN_creator_883 )
+      @state.following.push( TOKENS_FOLLOWING_classCreatorRest_IN_creator_858 )
       classCreatorRest68 = classCreatorRest
       @state.following.pop
       @adaptor.add_child( root_0, classCreatorRest68.tree )
@@ -2846,7 +2809,7 @@ module Yarpl
     #
     # parser rule createdName
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 149:1: createdName : ( structType | primitiveType );
     #
     def createdName
@@ -2874,7 +2837,7 @@ module Yarpl
 
       if ( look_16_0 == IDENTIFIER )
         alt_16 = 1
-      elsif ( look_16_0 == T__66 || look_16_0.between?( T__68, T__69 ) || look_16_0 == T__71 || look_16_0 == T__73 || look_16_0 == T__76 || look_16_0.between?( T__80, T__81 ) )
+      elsif ( look_16_0 == T__66 || look_16_0.between?( T__69, T__70 ) || look_16_0 == T__72 || look_16_0 == T__74 || look_16_0 == T__77 || look_16_0.between?( T__81, T__82 ) )
         alt_16 = 2
       else
         raise NoViableAlternative( "", 16, 0 )
@@ -2886,7 +2849,7 @@ module Yarpl
 
 
         # at line 150:7: structType
-        @state.following.push( TOKENS_FOLLOWING_structType_IN_createdName_900 )
+        @state.following.push( TOKENS_FOLLOWING_structType_IN_createdName_875 )
         structType69 = structType
         @state.following.pop
         @adaptor.add_child( root_0, structType69.tree )
@@ -2897,7 +2860,7 @@ module Yarpl
 
 
         # at line 151:7: primitiveType
-        @state.following.push( TOKENS_FOLLOWING_primitiveType_IN_createdName_908 )
+        @state.following.push( TOKENS_FOLLOWING_primitiveType_IN_createdName_883 )
         primitiveType70 = primitiveType
         @state.following.pop
         @adaptor.add_child( root_0, primitiveType70.tree )
@@ -2933,7 +2896,7 @@ module Yarpl
     #
     # parser rule classCreatorRest
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 154:1: classCreatorRest : arguments ( classBody )? ;
     #
     def classCreatorRest
@@ -2959,7 +2922,7 @@ module Yarpl
 
 
       # at line 155:7: arguments ( classBody )?
-      @state.following.push( TOKENS_FOLLOWING_arguments_IN_classCreatorRest_925 )
+      @state.following.push( TOKENS_FOLLOWING_arguments_IN_classCreatorRest_900 )
       arguments71 = arguments
       @state.following.pop
       @adaptor.add_child( root_0, arguments71.tree )
@@ -2974,7 +2937,7 @@ module Yarpl
       case alt_17
       when 1
         # at line 155:17: classBody
-        @state.following.push( TOKENS_FOLLOWING_classBody_IN_classCreatorRest_927 )
+        @state.following.push( TOKENS_FOLLOWING_classBody_IN_classCreatorRest_902 )
         classBody72 = classBody
         @state.following.pop
         @adaptor.add_child( root_0, classBody72.tree )
@@ -3011,7 +2974,7 @@ module Yarpl
     #
     # parser rule arguments
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 158:1: arguments : '(' ( expressionList )? ')' ;
     #
     def arguments
@@ -3040,7 +3003,7 @@ module Yarpl
 
 
       # at line 159:7: '(' ( expressionList )? ')'
-      char_literal73 = match( LPAREN, TOKENS_FOLLOWING_LPAREN_IN_arguments_945 )
+      char_literal73 = match( LPAREN, TOKENS_FOLLOWING_LPAREN_IN_arguments_920 )
       tree_for_char_literal73 = @adaptor.create_with_payload( char_literal73 )
       @adaptor.add_child( root_0, tree_for_char_literal73 )
 
@@ -3049,20 +3012,20 @@ module Yarpl
       alt_18 = 2
       look_18_0 = @input.peek( 1 )
 
-      if ( look_18_0 == LPAREN || look_18_0 == MINUS || look_18_0 == PLUS || look_18_0 == RANGEINTEGERLITERAL || look_18_0 == T__75 )
+      if ( look_18_0 == LPAREN || look_18_0 == MINUS || look_18_0 == PLUS || look_18_0 == RANGEINTEGERLITERAL || look_18_0 == T__76 )
         alt_18 = 1
       end
       case alt_18
       when 1
         # at line 159:11: expressionList
-        @state.following.push( TOKENS_FOLLOWING_expressionList_IN_arguments_947 )
+        @state.following.push( TOKENS_FOLLOWING_expressionList_IN_arguments_922 )
         expressionList74 = expressionList
         @state.following.pop
         @adaptor.add_child( root_0, expressionList74.tree )
 
 
       end
-      char_literal75 = match( RPAREN, TOKENS_FOLLOWING_RPAREN_IN_arguments_950 )
+      char_literal75 = match( RPAREN, TOKENS_FOLLOWING_RPAREN_IN_arguments_925 )
       tree_for_char_literal75 = @adaptor.create_with_payload( char_literal75 )
       @adaptor.add_child( root_0, tree_for_char_literal75 )
 
@@ -3097,7 +3060,7 @@ module Yarpl
     #
     # parser rule literal
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 162:1: literal : RANGEINTEGERLITERAL ;
     #
     def literal
@@ -3123,7 +3086,7 @@ module Yarpl
 
 
       # at line 163:4: RANGEINTEGERLITERAL
-      __RANGEINTEGERLITERAL76__ = match( RANGEINTEGERLITERAL, TOKENS_FOLLOWING_RANGEINTEGERLITERAL_IN_literal_964 )
+      __RANGEINTEGERLITERAL76__ = match( RANGEINTEGERLITERAL, TOKENS_FOLLOWING_RANGEINTEGERLITERAL_IN_literal_939 )
       tree_for_RANGEINTEGERLITERAL76 = @adaptor.create_with_payload( __RANGEINTEGERLITERAL76__ )
       @adaptor.add_child( root_0, tree_for_RANGEINTEGERLITERAL76 )
 
@@ -3158,7 +3121,7 @@ module Yarpl
     #
     # parser rule type
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 166:1: type : ( structType -> ^( VARIABLE_TYPE structType ) | primitiveType -> ^( VARIABLE_TYPE primitiveType ) );
     #
     def type
@@ -3187,7 +3150,7 @@ module Yarpl
 
       if ( look_19_0 == IDENTIFIER )
         alt_19 = 1
-      elsif ( look_19_0 == T__66 || look_19_0.between?( T__68, T__69 ) || look_19_0 == T__71 || look_19_0 == T__73 || look_19_0 == T__76 || look_19_0.between?( T__80, T__81 ) )
+      elsif ( look_19_0 == T__66 || look_19_0.between?( T__69, T__70 ) || look_19_0 == T__72 || look_19_0 == T__74 || look_19_0 == T__77 || look_19_0.between?( T__81, T__82 ) )
         alt_19 = 2
       else
         raise NoViableAlternative( "", 19, 0 )
@@ -3196,7 +3159,7 @@ module Yarpl
       case alt_19
       when 1
         # at line 167:7: structType
-        @state.following.push( TOKENS_FOLLOWING_structType_IN_type_978 )
+        @state.following.push( TOKENS_FOLLOWING_structType_IN_type_953 )
         structType77 = structType
         @state.following.pop
         stream_structType.add( structType77.tree )
@@ -3230,7 +3193,7 @@ module Yarpl
 
       when 2
         # at line 168:7: primitiveType
-        @state.following.push( TOKENS_FOLLOWING_primitiveType_IN_type_994 )
+        @state.following.push( TOKENS_FOLLOWING_primitiveType_IN_type_969 )
         primitiveType78 = primitiveType
         @state.following.pop
         stream_primitiveType.add( primitiveType78.tree )
@@ -3292,7 +3255,7 @@ module Yarpl
     #
     # parser rule structType
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 171:1: structType : IDENTIFIER ;
     #
     def structType
@@ -3318,7 +3281,7 @@ module Yarpl
 
 
       # at line 172:7: IDENTIFIER
-      __IDENTIFIER79__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_structType_1019 )
+      __IDENTIFIER79__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_structType_994 )
       tree_for_IDENTIFIER79 = @adaptor.create_with_payload( __IDENTIFIER79__ )
       @adaptor.add_child( root_0, tree_for_IDENTIFIER79 )
 
@@ -3353,7 +3316,7 @@ module Yarpl
     #
     # parser rule primitiveType
     #
-    # (in Yarpl.g)
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
     # 175:1: primitiveType : ( 'boolean' | 'nullableboolean' | 'float' | 'integer' -> ^( INTEGER ) | 'string' | 'decimal' | 'datetime' | 'time' );
     #
     def primitiveType
@@ -3387,20 +3350,20 @@ module Yarpl
       tree_for_string_literal85 = nil
       tree_for_string_literal86 = nil
       tree_for_string_literal87 = nil
-      stream_T__73 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__73" )
+      stream_T__74 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__74" )
 
       begin
       # at line 176:5: ( 'boolean' | 'nullableboolean' | 'float' | 'integer' -> ^( INTEGER ) | 'string' | 'decimal' | 'datetime' | 'time' )
       alt_20 = 8
       case look_20 = @input.peek( 1 )
       when T__66 then alt_20 = 1
-      when T__76 then alt_20 = 2
-      when T__71 then alt_20 = 3
-      when T__73 then alt_20 = 4
-      when T__80 then alt_20 = 5
-      when T__69 then alt_20 = 6
-      when T__68 then alt_20 = 7
-      when T__81 then alt_20 = 8
+      when T__77 then alt_20 = 2
+      when T__72 then alt_20 = 3
+      when T__74 then alt_20 = 4
+      when T__81 then alt_20 = 5
+      when T__70 then alt_20 = 6
+      when T__69 then alt_20 = 7
+      when T__82 then alt_20 = 8
       else
         raise NoViableAlternative( "", 20, 0 )
 
@@ -3411,7 +3374,7 @@ module Yarpl
 
 
         # at line 176:7: 'boolean'
-        string_literal80 = match( T__66, TOKENS_FOLLOWING_T__66_IN_primitiveType_1036 )
+        string_literal80 = match( T__66, TOKENS_FOLLOWING_T__66_IN_primitiveType_1011 )
         tree_for_string_literal80 = @adaptor.create_with_payload( string_literal80 )
         @adaptor.add_child( root_0, tree_for_string_literal80 )
 
@@ -3422,7 +3385,7 @@ module Yarpl
 
 
         # at line 177:7: 'nullableboolean'
-        string_literal81 = match( T__76, TOKENS_FOLLOWING_T__76_IN_primitiveType_1044 )
+        string_literal81 = match( T__77, TOKENS_FOLLOWING_T__77_IN_primitiveType_1019 )
         tree_for_string_literal81 = @adaptor.create_with_payload( string_literal81 )
         @adaptor.add_child( root_0, tree_for_string_literal81 )
 
@@ -3433,7 +3396,7 @@ module Yarpl
 
 
         # at line 178:7: 'float'
-        string_literal82 = match( T__71, TOKENS_FOLLOWING_T__71_IN_primitiveType_1052 )
+        string_literal82 = match( T__72, TOKENS_FOLLOWING_T__72_IN_primitiveType_1027 )
         tree_for_string_literal82 = @adaptor.create_with_payload( string_literal82 )
         @adaptor.add_child( root_0, tree_for_string_literal82 )
 
@@ -3441,8 +3404,8 @@ module Yarpl
 
       when 4
         # at line 179:7: 'integer'
-        string_literal83 = match( T__73, TOKENS_FOLLOWING_T__73_IN_primitiveType_1060 )
-        stream_T__73.add( string_literal83 )
+        string_literal83 = match( T__74, TOKENS_FOLLOWING_T__74_IN_primitiveType_1035 )
+        stream_T__74.add( string_literal83 )
 
         # AST Rewrite
         # elements: 
@@ -3474,7 +3437,7 @@ module Yarpl
 
 
         # at line 180:7: 'string'
-        string_literal84 = match( T__80, TOKENS_FOLLOWING_T__80_IN_primitiveType_1074 )
+        string_literal84 = match( T__81, TOKENS_FOLLOWING_T__81_IN_primitiveType_1049 )
         tree_for_string_literal84 = @adaptor.create_with_payload( string_literal84 )
         @adaptor.add_child( root_0, tree_for_string_literal84 )
 
@@ -3485,7 +3448,7 @@ module Yarpl
 
 
         # at line 181:7: 'decimal'
-        string_literal85 = match( T__69, TOKENS_FOLLOWING_T__69_IN_primitiveType_1082 )
+        string_literal85 = match( T__70, TOKENS_FOLLOWING_T__70_IN_primitiveType_1057 )
         tree_for_string_literal85 = @adaptor.create_with_payload( string_literal85 )
         @adaptor.add_child( root_0, tree_for_string_literal85 )
 
@@ -3496,7 +3459,7 @@ module Yarpl
 
 
         # at line 182:7: 'datetime'
-        string_literal86 = match( T__68, TOKENS_FOLLOWING_T__68_IN_primitiveType_1090 )
+        string_literal86 = match( T__69, TOKENS_FOLLOWING_T__69_IN_primitiveType_1065 )
         tree_for_string_literal86 = @adaptor.create_with_payload( string_literal86 )
         @adaptor.add_child( root_0, tree_for_string_literal86 )
 
@@ -3507,7 +3470,7 @@ module Yarpl
 
 
         # at line 183:7: 'time'
-        string_literal87 = match( T__81, TOKENS_FOLLOWING_T__81_IN_primitiveType_1098 )
+        string_literal87 = match( T__82, TOKENS_FOLLOWING_T__82_IN_primitiveType_1073 )
         tree_for_string_literal87 = @adaptor.create_with_payload( string_literal87 )
         @adaptor.add_child( root_0, tree_for_string_literal87 )
 
@@ -3543,8 +3506,8 @@ module Yarpl
     #
     # parser rule variableType
     #
-    # (in Yarpl.g)
-    # 186:1: variableType : ( 'object' | 'var' | 'set' );
+    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # 186:1: variableType : ( 'object' | 'var' | 'const' | 'set' );
     #
     def variableType
       # -> uncomment the next line to manually enable rule tracing
@@ -3571,7 +3534,7 @@ module Yarpl
       # at line 
       set88 = @input.look
 
-      if @input.peek(1) == T__77 || @input.peek(1) == T__79 || @input.peek(1) == T__82
+      if @input.peek(1) == T__68 || @input.peek(1) == T__78 || @input.peek(1) == T__80 || @input.peek(1) == T__83
         @input.consume
         @adaptor.add_child( root_0, @adaptor.create_with_payload( set88 ) )
 
@@ -3611,92 +3574,92 @@ module Yarpl
 
 
 
-    TOKENS_FOLLOWING_program_IN_start_118 = Set[ 1, 70, 72 ]
+    TOKENS_FOLLOWING_program_IN_start_118 = Set[ 1, 71, 73 ]
     TOKENS_FOLLOWING_domainDeclaration_IN_program_165 = Set[ 1 ]
-    TOKENS_FOLLOWING_initialDeclaration_IN_program_181 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__70_IN_domainDeclaration_203 = Set[ 34 ]
-    TOKENS_FOLLOWING_domainBody_IN_domainDeclaration_205 = Set[ 1 ]
-    TOKENS_FOLLOWING_LBRACE_IN_domainBody_230 = Set[ 51, 67 ]
-    TOKENS_FOLLOWING_domainBodyDeclaration_IN_domainBody_232 = Set[ 51, 67 ]
-    TOKENS_FOLLOWING_RBRACE_IN_domainBody_235 = Set[ 1 ]
-    TOKENS_FOLLOWING_typeDeclaration_IN_domainBodyDeclaration_261 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__72_IN_initialDeclaration_283 = Set[ 34 ]
-    TOKENS_FOLLOWING_initialBody_IN_initialDeclaration_285 = Set[ 1 ]
-    TOKENS_FOLLOWING_LBRACE_IN_initialBody_311 = Set[ 51, 54, 77, 79, 82 ]
-    TOKENS_FOLLOWING_initialBodyDeclaration_IN_initialBody_313 = Set[ 51, 54, 77, 79, 82 ]
-    TOKENS_FOLLOWING_RBRACE_IN_initialBody_316 = Set[ 1 ]
-    TOKENS_FOLLOWING_statement_IN_initialBodyDeclaration_342 = Set[ 1 ]
-    TOKENS_FOLLOWING_classDeclaration_IN_typeDeclaration_359 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__67_IN_classDeclaration_384 = Set[ 29 ]
-    TOKENS_FOLLOWING_IDENTIFIER_IN_classDeclaration_386 = Set[ 34 ]
-    TOKENS_FOLLOWING_classBody_IN_classDeclaration_388 = Set[ 1 ]
-    TOKENS_FOLLOWING_LBRACE_IN_classBody_410 = Set[ 51, 77, 79, 82 ]
-    TOKENS_FOLLOWING_classBodyDeclaration_IN_classBody_412 = Set[ 51, 77, 79, 82 ]
-    TOKENS_FOLLOWING_RBRACE_IN_classBody_415 = Set[ 1 ]
-    TOKENS_FOLLOWING_memberDeclaration_IN_classBodyDeclaration_438 = Set[ 1 ]
-    TOKENS_FOLLOWING_fieldDeclaration_IN_memberDeclaration_460 = Set[ 1 ]
-    TOKENS_FOLLOWING_variableType_IN_fieldDeclaration_485 = Set[ 29, 66, 68, 69, 71, 73, 76, 80, 81 ]
-    TOKENS_FOLLOWING_type_IN_fieldDeclaration_487 = Set[ 29 ]
-    TOKENS_FOLLOWING_variableDeclarators_IN_fieldDeclaration_489 = Set[ 54 ]
-    TOKENS_FOLLOWING_SEMI_IN_fieldDeclaration_491 = Set[ 1 ]
-    TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_518 = Set[ 1, 13 ]
-    TOKENS_FOLLOWING_COMMA_IN_variableDeclarators_521 = Set[ 29 ]
-    TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_523 = Set[ 1, 13 ]
-    TOKENS_FOLLOWING_variableDeclaratorId_IN_variableDeclarator_542 = Set[ 7 ]
-    TOKENS_FOLLOWING_ASSIGN_IN_variableDeclarator_544 = Set[ 38, 42, 47, 50, 75 ]
-    TOKENS_FOLLOWING_variableInitializer_IN_variableDeclarator_546 = Set[ 1 ]
-    TOKENS_FOLLOWING_IDENTIFIER_IN_variableDeclaratorId_573 = Set[ 1 ]
-    TOKENS_FOLLOWING_expression_IN_variableInitializer_590 = Set[ 1 ]
-    TOKENS_FOLLOWING_variableType_IN_localVariableDeclaration_607 = Set[ 29, 66, 68, 69, 71, 73, 76, 80, 81 ]
-    TOKENS_FOLLOWING_type_IN_localVariableDeclaration_609 = Set[ 29 ]
-    TOKENS_FOLLOWING_variableDeclarators_IN_localVariableDeclaration_611 = Set[ 54 ]
-    TOKENS_FOLLOWING_SEMI_IN_localVariableDeclaration_613 = Set[ 1 ]
-    TOKENS_FOLLOWING_localVariableDeclaration_IN_statement_631 = Set[ 1 ]
-    TOKENS_FOLLOWING_SEMI_IN_statement_639 = Set[ 1 ]
-    TOKENS_FOLLOWING_relationalExpression_IN_expression_657 = Set[ 1, 65, 78 ]
-    TOKENS_FOLLOWING_set_IN_expression_660 = Set[ 38, 42, 47, 50, 75 ]
-    TOKENS_FOLLOWING_relationalExpression_IN_expression_666 = Set[ 1, 65, 78 ]
-    TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_685 = Set[ 1, 25, 27, 28, 39, 40, 45 ]
-    TOKENS_FOLLOWING_set_IN_relationalExpression_688 = Set[ 38, 42, 47, 50, 75 ]
-    TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_702 = Set[ 1, 25, 27, 28, 39, 40, 45 ]
-    TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_721 = Set[ 1, 42, 47 ]
-    TOKENS_FOLLOWING_set_IN_addingExpression_724 = Set[ 38, 42, 47, 50, 75 ]
-    TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_730 = Set[ 1, 42, 47 ]
-    TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_749 = Set[ 1, 20, 57, 74 ]
-    TOKENS_FOLLOWING_set_IN_multiplyingExpression_752 = Set[ 38, 42, 47, 50, 75 ]
-    TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_760 = Set[ 1, 20, 57, 74 ]
-    TOKENS_FOLLOWING_primeExpression_IN_signExpression_786 = Set[ 1 ]
-    TOKENS_FOLLOWING_primary_IN_primeExpression_803 = Set[ 1 ]
-    TOKENS_FOLLOWING_LPAREN_IN_primeExpression_811 = Set[ 38, 42, 47, 50, 75 ]
-    TOKENS_FOLLOWING_expression_IN_primeExpression_813 = Set[ 53 ]
-    TOKENS_FOLLOWING_RPAREN_IN_primeExpression_817 = Set[ 1 ]
-    TOKENS_FOLLOWING_expression_IN_expressionList_836 = Set[ 1, 13 ]
-    TOKENS_FOLLOWING_COMMA_IN_expressionList_839 = Set[ 38, 42, 47, 50, 75 ]
-    TOKENS_FOLLOWING_expression_IN_expressionList_841 = Set[ 1, 13 ]
-    TOKENS_FOLLOWING_T__75_IN_primary_857 = Set[ 29, 66, 68, 69, 71, 73, 76, 80, 81 ]
-    TOKENS_FOLLOWING_creator_IN_primary_859 = Set[ 1 ]
-    TOKENS_FOLLOWING_literal_IN_primary_867 = Set[ 1 ]
-    TOKENS_FOLLOWING_createdName_IN_creator_881 = Set[ 38 ]
-    TOKENS_FOLLOWING_classCreatorRest_IN_creator_883 = Set[ 1 ]
-    TOKENS_FOLLOWING_structType_IN_createdName_900 = Set[ 1 ]
-    TOKENS_FOLLOWING_primitiveType_IN_createdName_908 = Set[ 1 ]
-    TOKENS_FOLLOWING_arguments_IN_classCreatorRest_925 = Set[ 1, 34 ]
-    TOKENS_FOLLOWING_classBody_IN_classCreatorRest_927 = Set[ 1 ]
-    TOKENS_FOLLOWING_LPAREN_IN_arguments_945 = Set[ 38, 42, 47, 50, 53, 75 ]
-    TOKENS_FOLLOWING_expressionList_IN_arguments_947 = Set[ 53 ]
-    TOKENS_FOLLOWING_RPAREN_IN_arguments_950 = Set[ 1 ]
-    TOKENS_FOLLOWING_RANGEINTEGERLITERAL_IN_literal_964 = Set[ 1 ]
-    TOKENS_FOLLOWING_structType_IN_type_978 = Set[ 1 ]
-    TOKENS_FOLLOWING_primitiveType_IN_type_994 = Set[ 1 ]
-    TOKENS_FOLLOWING_IDENTIFIER_IN_structType_1019 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__66_IN_primitiveType_1036 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__76_IN_primitiveType_1044 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__71_IN_primitiveType_1052 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__73_IN_primitiveType_1060 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__80_IN_primitiveType_1074 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__69_IN_primitiveType_1082 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__68_IN_primitiveType_1090 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__81_IN_primitiveType_1098 = Set[ 1 ]
+    TOKENS_FOLLOWING_initialDeclaration_IN_program_177 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__71_IN_domainDeclaration_195 = Set[ 34 ]
+    TOKENS_FOLLOWING_domainBody_IN_domainDeclaration_197 = Set[ 1 ]
+    TOKENS_FOLLOWING_LBRACE_IN_domainBody_222 = Set[ 51, 67 ]
+    TOKENS_FOLLOWING_domainBodyDeclaration_IN_domainBody_224 = Set[ 51, 67 ]
+    TOKENS_FOLLOWING_RBRACE_IN_domainBody_227 = Set[ 1 ]
+    TOKENS_FOLLOWING_typeDeclaration_IN_domainBodyDeclaration_249 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__73_IN_initialDeclaration_267 = Set[ 34 ]
+    TOKENS_FOLLOWING_initialBody_IN_initialDeclaration_269 = Set[ 1 ]
+    TOKENS_FOLLOWING_LBRACE_IN_initialBody_295 = Set[ 51, 54, 68, 78, 80, 83 ]
+    TOKENS_FOLLOWING_initialBodyDeclaration_IN_initialBody_297 = Set[ 51, 54, 68, 78, 80, 83 ]
+    TOKENS_FOLLOWING_RBRACE_IN_initialBody_300 = Set[ 1 ]
+    TOKENS_FOLLOWING_statement_IN_initialBodyDeclaration_326 = Set[ 1 ]
+    TOKENS_FOLLOWING_classDeclaration_IN_typeDeclaration_343 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__67_IN_classDeclaration_368 = Set[ 29 ]
+    TOKENS_FOLLOWING_IDENTIFIER_IN_classDeclaration_370 = Set[ 34 ]
+    TOKENS_FOLLOWING_classBody_IN_classDeclaration_372 = Set[ 1 ]
+    TOKENS_FOLLOWING_LBRACE_IN_classBody_394 = Set[ 51, 68, 78, 80, 83 ]
+    TOKENS_FOLLOWING_classBodyDeclaration_IN_classBody_396 = Set[ 51, 68, 78, 80, 83 ]
+    TOKENS_FOLLOWING_RBRACE_IN_classBody_399 = Set[ 1 ]
+    TOKENS_FOLLOWING_memberDeclaration_IN_classBodyDeclaration_418 = Set[ 1 ]
+    TOKENS_FOLLOWING_fieldDeclaration_IN_memberDeclaration_438 = Set[ 1 ]
+    TOKENS_FOLLOWING_variableType_IN_fieldDeclaration_460 = Set[ 29, 66, 69, 70, 72, 74, 77, 81, 82 ]
+    TOKENS_FOLLOWING_type_IN_fieldDeclaration_462 = Set[ 29 ]
+    TOKENS_FOLLOWING_variableDeclaratorId_IN_fieldDeclaration_464 = Set[ 54 ]
+    TOKENS_FOLLOWING_SEMI_IN_fieldDeclaration_466 = Set[ 1 ]
+    TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_493 = Set[ 1, 13 ]
+    TOKENS_FOLLOWING_COMMA_IN_variableDeclarators_496 = Set[ 29 ]
+    TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_498 = Set[ 1, 13 ]
+    TOKENS_FOLLOWING_variableDeclaratorId_IN_variableDeclarator_517 = Set[ 7 ]
+    TOKENS_FOLLOWING_ASSIGN_IN_variableDeclarator_519 = Set[ 38, 42, 47, 50, 76 ]
+    TOKENS_FOLLOWING_variableInitializer_IN_variableDeclarator_521 = Set[ 1 ]
+    TOKENS_FOLLOWING_IDENTIFIER_IN_variableDeclaratorId_548 = Set[ 1 ]
+    TOKENS_FOLLOWING_expression_IN_variableInitializer_565 = Set[ 1 ]
+    TOKENS_FOLLOWING_variableType_IN_localVariableDeclaration_582 = Set[ 29, 66, 69, 70, 72, 74, 77, 81, 82 ]
+    TOKENS_FOLLOWING_type_IN_localVariableDeclaration_584 = Set[ 29 ]
+    TOKENS_FOLLOWING_variableDeclarators_IN_localVariableDeclaration_586 = Set[ 54 ]
+    TOKENS_FOLLOWING_SEMI_IN_localVariableDeclaration_588 = Set[ 1 ]
+    TOKENS_FOLLOWING_localVariableDeclaration_IN_statement_606 = Set[ 1 ]
+    TOKENS_FOLLOWING_SEMI_IN_statement_614 = Set[ 1 ]
+    TOKENS_FOLLOWING_relationalExpression_IN_expression_632 = Set[ 1, 65, 79 ]
+    TOKENS_FOLLOWING_set_IN_expression_635 = Set[ 38, 42, 47, 50, 76 ]
+    TOKENS_FOLLOWING_relationalExpression_IN_expression_641 = Set[ 1, 65, 79 ]
+    TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_660 = Set[ 1, 25, 27, 28, 39, 40, 45 ]
+    TOKENS_FOLLOWING_set_IN_relationalExpression_663 = Set[ 38, 42, 47, 50, 76 ]
+    TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_677 = Set[ 1, 25, 27, 28, 39, 40, 45 ]
+    TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_696 = Set[ 1, 42, 47 ]
+    TOKENS_FOLLOWING_set_IN_addingExpression_699 = Set[ 38, 42, 47, 50, 76 ]
+    TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_705 = Set[ 1, 42, 47 ]
+    TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_724 = Set[ 1, 20, 57, 75 ]
+    TOKENS_FOLLOWING_set_IN_multiplyingExpression_727 = Set[ 38, 42, 47, 50, 76 ]
+    TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_735 = Set[ 1, 20, 57, 75 ]
+    TOKENS_FOLLOWING_primeExpression_IN_signExpression_761 = Set[ 1 ]
+    TOKENS_FOLLOWING_primary_IN_primeExpression_778 = Set[ 1 ]
+    TOKENS_FOLLOWING_LPAREN_IN_primeExpression_786 = Set[ 38, 42, 47, 50, 76 ]
+    TOKENS_FOLLOWING_expression_IN_primeExpression_788 = Set[ 53 ]
+    TOKENS_FOLLOWING_RPAREN_IN_primeExpression_792 = Set[ 1 ]
+    TOKENS_FOLLOWING_expression_IN_expressionList_811 = Set[ 1, 13 ]
+    TOKENS_FOLLOWING_COMMA_IN_expressionList_814 = Set[ 38, 42, 47, 50, 76 ]
+    TOKENS_FOLLOWING_expression_IN_expressionList_816 = Set[ 1, 13 ]
+    TOKENS_FOLLOWING_T__76_IN_primary_832 = Set[ 29, 66, 69, 70, 72, 74, 77, 81, 82 ]
+    TOKENS_FOLLOWING_creator_IN_primary_834 = Set[ 1 ]
+    TOKENS_FOLLOWING_literal_IN_primary_842 = Set[ 1 ]
+    TOKENS_FOLLOWING_createdName_IN_creator_856 = Set[ 38 ]
+    TOKENS_FOLLOWING_classCreatorRest_IN_creator_858 = Set[ 1 ]
+    TOKENS_FOLLOWING_structType_IN_createdName_875 = Set[ 1 ]
+    TOKENS_FOLLOWING_primitiveType_IN_createdName_883 = Set[ 1 ]
+    TOKENS_FOLLOWING_arguments_IN_classCreatorRest_900 = Set[ 1, 34 ]
+    TOKENS_FOLLOWING_classBody_IN_classCreatorRest_902 = Set[ 1 ]
+    TOKENS_FOLLOWING_LPAREN_IN_arguments_920 = Set[ 38, 42, 47, 50, 53, 76 ]
+    TOKENS_FOLLOWING_expressionList_IN_arguments_922 = Set[ 53 ]
+    TOKENS_FOLLOWING_RPAREN_IN_arguments_925 = Set[ 1 ]
+    TOKENS_FOLLOWING_RANGEINTEGERLITERAL_IN_literal_939 = Set[ 1 ]
+    TOKENS_FOLLOWING_structType_IN_type_953 = Set[ 1 ]
+    TOKENS_FOLLOWING_primitiveType_IN_type_969 = Set[ 1 ]
+    TOKENS_FOLLOWING_IDENTIFIER_IN_structType_994 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__66_IN_primitiveType_1011 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__77_IN_primitiveType_1019 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__72_IN_primitiveType_1027 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__74_IN_primitiveType_1035 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__81_IN_primitiveType_1049 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__70_IN_primitiveType_1057 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__69_IN_primitiveType_1065 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__82_IN_primitiveType_1073 = Set[ 1 ]
 
   end # class Parser < ANTLR3::Parser
 

@@ -29,8 +29,8 @@ start
                         ;
 
 program
-    : domainDeclaration -> ^(PROGRAM domainDeclaration)
-    | initialDeclaration -> ^(PROGRAM initialDeclaration)
+    : domainDeclaration -> domainDeclaration
+    | initialDeclaration -> initialDeclaration
 	;
 
 domainDeclaration
@@ -38,11 +38,11 @@ domainDeclaration
     ;
 
 domainBody
-    : '{' domainBodyDeclaration* '}' -> ^(DOMAIN_BODY domainBodyDeclaration*)
+    : '{' domainBodyDeclaration* '}' -> domainBodyDeclaration*
     ;
 
 domainBodyDeclaration
-    : typeDeclaration -> ^(TYPE_DECLARATION typeDeclaration)
+    : typeDeclaration -> typeDeclaration
 	;
 
 initialDeclaration
@@ -66,19 +66,19 @@ classDeclaration
 	;
 
 classBody
-    : '{' classBodyDeclaration* '}' -> ^(CLASS_BODY classBodyDeclaration*)
+    : '{' classBodyDeclaration* '}' -> classBodyDeclaration*
 	;
 
 classBodyDeclaration
-    : memberDeclaration -> ^(CLASS_BODY_DECLARATION memberDeclaration)
+    : memberDeclaration -> ^(memberDeclaration)
 	;
 
 memberDeclaration
-    : fieldDeclaration -> ^(MEMBER_DECLARATION fieldDeclaration)
+    : fieldDeclaration ->  fieldDeclaration
     ;
 
 fieldDeclaration
-    : variableType type variableDeclarators ';' -> ^(FIELD_DECLARATION type variableDeclarators)
+    : variableType type variableDeclaratorId ';' -> ^(FIELD_DECLARATION type variableDeclaratorId)
     ;
 
 variableDeclarators
@@ -186,6 +186,7 @@ primitiveType
 variableType
     : 'object'
     | 'var'
+    | 'const'
     | 'set'
     ;
 
