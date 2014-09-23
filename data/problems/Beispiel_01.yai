@@ -1,0 +1,48 @@
+domain {
+  // Idee "relation(Type)" steht für Einzelobjekt, "relations(Type)" für ein Set
+  class Mitarbeiter {
+    const relations(Tag) tage;
+  }
+
+  class Dienst {
+    const integer anzahl;
+  }
+
+  class Tag {
+	const integer index;
+    var relations(Dienst) dienst;
+  }
+}
+
+initial {
+
+  d1 = new Dienst(anzahl = 3);
+  d2 = new Dienst(anzahl = 7);
+  f = new Dienst(anzahl = 0);
+  t0 = new Tag(index=1, dienst=[d1,d2,f]);
+  t1 = new Tag(index=2, dienst=[d1,d2,f]);
+  t2 = new Tag(index=3, dienst=[d1,d2,f]);
+  t3 = new Tag(index=4, dienst=[d1,d2,f]);
+  t4 = new Tag(index=5, dienst=[d1,d2,f]);
+
+  // Wichtig für mich, die Objekte werden in diesem Falle automatisch geklont, damit jeder auf dem Objekt schreiben kann, denke wir brauchen nie was anderes.
+  m0, m1 = new Mitarbeiter(tage=[t0,t1,t2,t3,t4]); 
+
+  // Vorschlag: wenn man beim Allquantor auf ein Element zugreift wird immer das aktuelle genommen. mit 1<< oder >>1 wird das nächste genommen, falls möglich.
+  constraint {
+    forAll m in Mitarbeiter {
+	 forAll s in m.tage order by s.index  {
+	   s.dienst != d1 OR s>>1.dienst != d2
+	 }
+    }
+  }
+  // Idee ist, man kann alle Variablen automatisch zu einem Set machen / Sets zusammenfügen, wenn man Klasse.variable wählt.
+  constraint {
+    global_cardinality([Mitarbeiter.tage],[d1, d2],[d1.anzahl, d2.anzahl]);
+    // MZN: constraint global_cardinality([m0t0, m0t1, m0t2, m0t3, m0t4, m1t0, m1t1, m1t2, m1t3, m1t4],[id_dienst_1, id_dienst_2],[anzahl_dienst_1,anzahl_dienst_2]);
+  }
+}
+
+solve {
+  satisfy;
+}
