@@ -3,6 +3,7 @@
 
 module Yarpler
   class Parser
+
     def initialize(yarpl)
       @yarpl = yarpl
       parse

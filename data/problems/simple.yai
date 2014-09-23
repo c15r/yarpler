@@ -1,8 +1,18 @@
 domain {
-    class Mitarbeiter {
-        var integer anzahl;
-    }
+      class Mitarbeiter {
+        const Tag tage;
+      }
+
+      class Dienst {
+        const integer anzahl;
+      }
+
+      class Tag {
+    	const integer index;
+        var Dienst dienst;
+      }
 }
 
 initial {
+    d1 = new Dienst(anzahl=7);
 }

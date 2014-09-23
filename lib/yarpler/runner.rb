@@ -32,18 +32,32 @@ module Yarpler
     # Converts a file to MiniZinc
     #
     def run(filename)
+
       file = Yarpler::Utils::FileLoader.new(filename)
       parser = Yarpler::Parser.new(file.get_content)
       parser.print
-
-      blu = Yarpler::Interpreter::YARPLInterpreter.new(parser.tree)
-
-      test = Object.const_get("Mitarbeiter").new
-      test.print
+      # puts " "
 
 
-      test.anzahl = 12
-      puts test.anzahl
+      interpreter = Yarpler::Interpreter::YARPLInterpreter.new(parser.tree)
+      handler = Yarpler::RessourceHandler.new
+
+      puts interpreter.problem["d1"].class
+
+      # Dynamic Classes handling
+      # mitarbeiter = handler.new_object("Mitarbeiter")
+      # mitarbeiter.print
+      #
+      # dienst = handler.new_object("Dienst")
+      # dienst.print
+      #
+      # tag = handler.new_object("Tag")
+      # tag.print
+
+
+      #test.set_value("anzahl", 123)
+      #puts test.get_value("anzahl")
+      #puts test.anzahl
     end
   end
 end

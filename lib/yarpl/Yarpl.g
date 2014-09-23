@@ -6,6 +6,7 @@ options {
 }
 
 tokens {
+  ATTRIBUTE;
   CLASS_DECLARATION;
   CLASS_BODY;
   CLASS_BODY_DECLARATION;
@@ -21,6 +22,7 @@ tokens {
   START;
   TYPE_DECLARATION;
   VARIABLE_DECLARATOR;
+  VARIABLE_DECLARATION;
   VARIABLE_TYPE;
 }
 
@@ -50,7 +52,7 @@ initialDeclaration
     ;
 
 initialBody
-    : '{' initialBodyDeclaration* '}' -> ^(INITIAL_BODY initialBodyDeclaration*)
+    : '{' initialBodyDeclaration* '}' -> initialBodyDeclaration*
     ;
 
 initialBodyDeclaration
@@ -94,11 +96,11 @@ variableDeclaratorId
     ;
 
 variableInitializer
-    : expression
+    : 'new' creator -> creator
     ;
 
 localVariableDeclaration
-    : variableType type variableDeclarators ';'
+    : variableDeclarators ';' -> variableDeclarators
     ;
 
 
@@ -138,12 +140,11 @@ expressionList
     ;
 
 primary
-	: 'new' creator
-    | literal
+    : literal
 	;
 
 creator
-    : createdName classCreatorRest
+    : createdName classCreatorRest -> ^(VARIABLE_DECLARATION createdName classCreatorRest )
     ;
 
 createdName
@@ -156,11 +157,23 @@ classCreatorRest
     ;
 
 arguments
-    : '(' expressionList? ')'
+    : '(' argumentList* ')' -> argumentList*
     ;
+
+argumentList
+    : argument (',' argument)*
+    ;
+
+
+argument
+     : IDENTIFIER '=' primary -> ^(ATTRIBUTE IDENTIFIER primary)
+     ;
+
 
 literal
 	: RANGEINTEGERLITERAL
+	| INTEGERLITERAL
+	| IDENTIFIER
 	;
 
 type
@@ -262,12 +275,11 @@ ALPHANUMERIC		: ALPHABET
 			| DIGIT
     			;
 
-fragment
-DECIMALNUMBER		: '0'
-			| SIGN? NONZERODIGIT (DIGITS?)
-			;
 
 RANGEINTEGERLITERAL	: DIGITS '..' DIGITS
+                    ;
+
+INTEGERLITERAL     : DIGITS
     			;
 
 fragment
