@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
-require 'yarpler/cli'
+#require '../lib/yarpler/cli'
+require 'require_all'
+require_all 'lib'
 
 Yarpler::CLI.start(ARGV, :debug => true)

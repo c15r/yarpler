@@ -1,5 +1,5 @@
-require 'yarpl/YarplLexer'
-require 'yarpl/YarplParser'
+#require 'yarpl/YarplLexer'
+#require 'yarpl/YarplParser'
 
 module Yarpler
   class Parser

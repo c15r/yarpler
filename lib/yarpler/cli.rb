@@ -1,5 +1,5 @@
 require 'thor'
-require 'yarpler/runner'
+#require 'yarpler/runner'
 
 module Yarpler
   class CLI < Thor

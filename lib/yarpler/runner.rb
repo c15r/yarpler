@@ -1,5 +1,5 @@
-require 'yarpler/utils/file_loader'
-require 'yarpler/parser'
+#require 'yarpler/utils/file_loader'
+#require 'yarpler/parser'
 
 module Yarpler
   class Runner
