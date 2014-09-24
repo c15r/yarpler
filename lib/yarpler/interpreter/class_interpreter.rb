@@ -38,7 +38,7 @@ module Yarpler
         }
 
         create_method( "#{name}_datatype".to_sym ) {
-          instance_variable_get( "INTEGER" )
+          instance_variable_get( "@int" )
         }
       end
 

@@ -29,7 +29,7 @@ module Yarpler
         # MZ: int: id_dienst_frei = 0;
         code=""
         ressource.get_list_of_attributes.each do |a|
-          code<< ressource.get_datatype(a) + ": " + name + "_" + a + "=" + ressource.get_value(a) + " \n"
+          code<<ressource.get_datatype(a).to_s + ": " + name + "_" + a + "=" + ressource.get_value(a) + " \n"
         end
         code
       end
