@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 #
-# /home/nino/github/yarpler/lib/yarpl/Yarpl.g
+# Yarpl.g
 # --
 # Generated using ANTLR version: 3.5
 # Ruby runtime library version: 1.10.0
-# Input grammar file: /home/nino/github/yarpler/lib/yarpl/Yarpl.g
-# Generated at: 2014-09-23 15:05:31
+# Input grammar file: Yarpl.g
+# Generated at: 2014-09-24 21:03:16
 #
 
 # ~~~> start load path setup
@@ -65,30 +65,28 @@ module Yarpl
   module TokenData
 
     # define the token constants
-    define_tokens( :EOF => -1, :T__67 => 67, :T__68 => 68, :T__69 => 69, 
-                   :T__70 => 70, :T__71 => 71, :T__72 => 72, :T__73 => 73, 
-                   :T__74 => 74, :T__75 => 75, :T__76 => 76, :T__77 => 77, 
-                   :T__78 => 78, :T__79 => 79, :T__80 => 80, :T__81 => 81, 
-                   :T__82 => 82, :T__83 => 83, :T__84 => 84, :T__85 => 85, 
-                   :ALPHABET => 4, :ALPHANUMERIC => 5, :AND => 6, :ASSIGN => 7, 
-                   :ATTRIBUTE => 8, :BANG => 9, :CLASS_BODY => 10, :CLASS_BODY_DECLARATION => 11, 
+    define_tokens( :EOF => -1, :T__69 => 69, :T__70 => 70, :T__71 => 71, 
+                   :T__72 => 72, :T__73 => 73, :T__74 => 74, :T__75 => 75, 
+                   :T__76 => 76, :T__77 => 77, :T__78 => 78, :ALPHABET => 4, 
+                   :ALPHANUMERIC => 5, :AND => 6, :ASSIGN => 7, :ATTRIBUTE => 8, 
+                   :BANG => 9, :CLASS_BODY => 10, :CLASS_BODY_DECLARATION => 11, 
                    :CLASS_DECLARATION => 12, :COLON => 13, :COMMA => 14, 
-                   :COMMENT => 15, :DEC => 16, :DIGIT => 17, :DIGITORUNDERSCORE => 18, 
-                   :DIGITS => 19, :DIV => 20, :DOMAIN_BODY => 21, :DOMAIN_BODY_DECLARATION => 22, 
-                   :DOMAIN_DECLARATION => 23, :DOT => 24, :EQUALS => 25, 
-                   :FIELD_DECLARATION => 26, :GT => 27, :GTE => 28, :IDENTIFIER => 29, 
-                   :INC => 30, :INITIAL_BODY => 31, :INITIAL_DECLARATION => 32, 
-                   :INTEGER => 33, :INTEGERLITERAL => 34, :LBRACE => 35, 
-                   :LBRACK => 36, :LINE_COMMENT => 37, :LOWERCASE => 38, 
-                   :LPAREN => 39, :LT => 40, :LTE => 41, :MEMBER_DECLARATION => 42, 
-                   :MINUS => 43, :MOD => 44, :NONZERODIGIT => 45, :NOT_EQUALS => 46, 
-                   :OR => 47, :PLUS => 48, :PROGRAM => 49, :QUESTION => 50, 
-                   :RANGEINTEGERLITERAL => 51, :RBRACE => 52, :RBRACK => 53, 
-                   :RPAREN => 54, :SEMI => 55, :SIGN => 56, :START => 57, 
-                   :TIMES => 58, :TYPE_DECLARATION => 59, :UPPERCASE => 60, 
-                   :VARIABLE_DECLARATION => 61, :VARIABLE_DECLARATOR => 62, 
-                   :VARIABLE_TYPE => 63, :WS => 64, :YARPL_LETTER => 65, 
-                   :YARPL_LETTERORDIGIT => 66 )
+                   :COMMENT => 15, :CONSTANT => 16, :DEC => 17, :DIGIT => 18, 
+                   :DIGITORUNDERSCORE => 19, :DIGITS => 20, :DIV => 21, 
+                   :DOMAIN_BODY => 22, :DOMAIN_BODY_DECLARATION => 23, :DOMAIN_DECLARATION => 24, 
+                   :DOT => 25, :EQUALS => 26, :FIELD_DECLARATION => 27, 
+                   :GT => 28, :GTE => 29, :IDENTIFIER => 30, :INC => 31, 
+                   :INITIAL_BODY => 32, :INITIAL_DECLARATION => 33, :INTEGER => 34, 
+                   :INTEGERLITERAL => 35, :LBRACE => 36, :LBRACK => 37, 
+                   :LINE_COMMENT => 38, :LOWERCASE => 39, :LPAREN => 40, 
+                   :LT => 41, :LTE => 42, :MEMBER_DECLARATION => 43, :MINUS => 44, 
+                   :MOD => 45, :NONZERODIGIT => 46, :NOT_EQUALS => 47, :OR => 48, 
+                   :PLUS => 49, :PROGRAM => 50, :QUESTION => 51, :RANGEINTEGERLITERAL => 52, 
+                   :RBRACE => 53, :RBRACK => 54, :RPAREN => 55, :SEMI => 56, 
+                   :SIGN => 57, :START => 58, :TIMES => 59, :TYPE_DECLARATION => 60, 
+                   :UPPERCASE => 61, :VARIABLE => 62, :VARIABLE_DECLARATION => 63, 
+                   :VARIABLE_DECLARATOR => 64, :VARIABLE_TYPE => 65, :WS => 66, 
+                   :YARPL_LETTER => 67, :YARPL_LETTERORDIGIT => 68 )
 
   end
 
@@ -98,35 +96,33 @@ module Yarpl
     include TokenData
 
     begin
-      generated_using( "/home/nino/github/yarpler/lib/yarpl/Yarpl.g", "3.5", "1.10.0" )
+      generated_using( "Yarpl.g", "3.5", "1.10.0" )
     rescue NoMethodError => error
       # ignore
     end
 
-    RULE_NAMES   = [ "T__67", "T__68", "T__69", "T__70", "T__71", "T__72", 
-                     "T__73", "T__74", "T__75", "T__76", "T__77", "T__78", 
-                     "T__79", "T__80", "T__81", "T__82", "T__83", "T__84", 
-                     "T__85", "WS", "COMMENT", "LINE_COMMENT", "IDENTIFIER", 
-                     "YARPL_LETTER", "YARPL_LETTERORDIGIT", "DIGIT", "DIGITS", 
-                     "NONZERODIGIT", "DIGITORUNDERSCORE", "LOWERCASE", "UPPERCASE", 
-                     "ALPHABET", "ALPHANUMERIC", "RANGEINTEGERLITERAL", 
-                     "INTEGERLITERAL", "SIGN", "LPAREN", "RPAREN", "LBRACE", 
-                     "RBRACE", "LBRACK", "RBRACK", "SEMI", "COMMA", "DOT", 
-                     "ASSIGN", "GT", "LT", "BANG", "QUESTION", "COLON", 
-                     "EQUALS", "LTE", "GTE", "NOT_EQUALS", "AND", "OR", 
-                     "INC", "DEC", "PLUS", "MINUS", "TIMES", "DIV", "MOD" ].freeze
-    RULE_METHODS = [ :t__67!, :t__68!, :t__69!, :t__70!, :t__71!, :t__72!, 
-                     :t__73!, :t__74!, :t__75!, :t__76!, :t__77!, :t__78!, 
-                     :t__79!, :t__80!, :t__81!, :t__82!, :t__83!, :t__84!, 
-                     :t__85!, :ws!, :comment!, :line_comment!, :identifier!, 
-                     :yarpl_letter!, :yarpl_letterordigit!, :digit!, :digits!, 
-                     :nonzerodigit!, :digitorunderscore!, :lowercase!, :uppercase!, 
-                     :alphabet!, :alphanumeric!, :rangeintegerliteral!, 
-                     :integerliteral!, :sign!, :lparen!, :rparen!, :lbrace!, 
-                     :rbrace!, :lbrack!, :rbrack!, :semi!, :comma!, :dot!, 
-                     :assign!, :gt!, :lt!, :bang!, :question!, :colon!, 
-                     :equals!, :lte!, :gte!, :not_equals!, :and!, :or!, 
-                     :inc!, :dec!, :plus!, :minus!, :times!, :div!, :mod! ].freeze
+    RULE_NAMES   = [ "T__69", "T__70", "T__71", "T__72", "T__73", "T__74", 
+                     "T__75", "T__76", "T__77", "T__78", "WS", "COMMENT", 
+                     "LINE_COMMENT", "IDENTIFIER", "YARPL_LETTER", "YARPL_LETTERORDIGIT", 
+                     "DIGIT", "DIGITS", "NONZERODIGIT", "DIGITORUNDERSCORE", 
+                     "LOWERCASE", "UPPERCASE", "ALPHABET", "ALPHANUMERIC", 
+                     "RANGEINTEGERLITERAL", "INTEGERLITERAL", "SIGN", "LPAREN", 
+                     "RPAREN", "LBRACE", "RBRACE", "LBRACK", "RBRACK", "SEMI", 
+                     "COMMA", "DOT", "ASSIGN", "GT", "LT", "BANG", "QUESTION", 
+                     "COLON", "EQUALS", "LTE", "GTE", "NOT_EQUALS", "AND", 
+                     "OR", "INC", "DEC", "PLUS", "MINUS", "TIMES", "DIV", 
+                     "MOD" ].freeze
+    RULE_METHODS = [ :t__69!, :t__70!, :t__71!, :t__72!, :t__73!, :t__74!, 
+                     :t__75!, :t__76!, :t__77!, :t__78!, :ws!, :comment!, 
+                     :line_comment!, :identifier!, :yarpl_letter!, :yarpl_letterordigit!, 
+                     :digit!, :digits!, :nonzerodigit!, :digitorunderscore!, 
+                     :lowercase!, :uppercase!, :alphabet!, :alphanumeric!, 
+                     :rangeintegerliteral!, :integerliteral!, :sign!, :lparen!, 
+                     :rparen!, :lbrace!, :rbrace!, :lbrack!, :rbrack!, :semi!, 
+                     :comma!, :dot!, :assign!, :gt!, :lt!, :bang!, :question!, 
+                     :colon!, :equals!, :lte!, :gte!, :not_equals!, :and!, 
+                     :or!, :inc!, :dec!, :plus!, :minus!, :times!, :div!, 
+                     :mod! ].freeze
 
     def initialize( input=nil, options = {} )
       super( input, options )
@@ -134,15 +130,15 @@ module Yarpl
 
 
     # - - - - - - - - - - - lexer rules - - - - - - - - - - - -
-    # lexer rule t__67! (T__67)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__67!
+    # lexer rule t__69! (T__69)
+    # (in Yarpl.g)
+    def t__69!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 1 )
 
 
 
-      type = T__67
+      type = T__69
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -162,22 +158,22 @@ module Yarpl
 
     end
 
-    # lexer rule t__68! (T__68)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__68!
+    # lexer rule t__70! (T__70)
+    # (in Yarpl.g)
+    def t__70!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 2 )
 
 
 
-      type = T__68
+      type = T__70
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 8:9: 'boolean'
-      match( "boolean" )
+      # at line 8:9: 'class'
+      match( "class" )
 
 
 
@@ -190,22 +186,22 @@ module Yarpl
 
     end
 
-    # lexer rule t__69! (T__69)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__69!
+    # lexer rule t__71! (T__71)
+    # (in Yarpl.g)
+    def t__71!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 3 )
 
 
 
-      type = T__69
+      type = T__71
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 9:9: 'class'
-      match( "class" )
+      # at line 9:9: 'const'
+      match( "const" )
 
 
 
@@ -218,22 +214,22 @@ module Yarpl
 
     end
 
-    # lexer rule t__70! (T__70)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__70!
+    # lexer rule t__72! (T__72)
+    # (in Yarpl.g)
+    def t__72!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 4 )
 
 
 
-      type = T__70
+      type = T__72
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 10:9: 'const'
-      match( "const" )
+      # at line 10:9: 'domain'
+      match( "domain" )
 
 
 
@@ -246,22 +242,22 @@ module Yarpl
 
     end
 
-    # lexer rule t__71! (T__71)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__71!
+    # lexer rule t__73! (T__73)
+    # (in Yarpl.g)
+    def t__73!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 5 )
 
 
 
-      type = T__71
+      type = T__73
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 11:9: 'datetime'
-      match( "datetime" )
+      # at line 11:9: 'initial'
+      match( "initial" )
 
 
 
@@ -274,22 +270,22 @@ module Yarpl
 
     end
 
-    # lexer rule t__72! (T__72)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__72!
+    # lexer rule t__74! (T__74)
+    # (in Yarpl.g)
+    def t__74!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 6 )
 
 
 
-      type = T__72
+      type = T__74
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 12:9: 'decimal'
-      match( "decimal" )
+      # at line 12:9: 'integer'
+      match( "integer" )
 
 
 
@@ -302,22 +298,22 @@ module Yarpl
 
     end
 
-    # lexer rule t__73! (T__73)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__73!
+    # lexer rule t__75! (T__75)
+    # (in Yarpl.g)
+    def t__75!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 7 )
 
 
 
-      type = T__73
+      type = T__75
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 13:9: 'domain'
-      match( "domain" )
+      # at line 13:9: 'mod'
+      match( "mod" )
 
 
 
@@ -330,22 +326,22 @@ module Yarpl
 
     end
 
-    # lexer rule t__74! (T__74)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__74!
+    # lexer rule t__76! (T__76)
+    # (in Yarpl.g)
+    def t__76!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 8 )
 
 
 
-      type = T__74
+      type = T__76
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 14:9: 'float'
-      match( "float" )
+      # at line 14:9: 'new'
+      match( "new" )
 
 
 
@@ -358,22 +354,22 @@ module Yarpl
 
     end
 
-    # lexer rule t__75! (T__75)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__75!
+    # lexer rule t__77! (T__77)
+    # (in Yarpl.g)
+    def t__77!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 9 )
 
 
 
-      type = T__75
+      type = T__77
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 15:9: 'initial'
-      match( "initial" )
+      # at line 15:9: 'or'
+      match( "or" )
 
 
 
@@ -386,22 +382,22 @@ module Yarpl
 
     end
 
-    # lexer rule t__76! (T__76)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__76!
+    # lexer rule t__78! (T__78)
+    # (in Yarpl.g)
+    def t__78!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 10 )
 
 
 
-      type = T__76
+      type = T__78
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 16:9: 'integer'
-      match( "integer" )
+      # at line 16:9: 'var'
+      match( "var" )
 
 
 
@@ -414,263 +410,11 @@ module Yarpl
 
     end
 
-    # lexer rule t__77! (T__77)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__77!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 11 )
-
-
-
-      type = T__77
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 17:9: 'mod'
-      match( "mod" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 11 )
-
-
-    end
-
-    # lexer rule t__78! (T__78)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__78!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 12 )
-
-
-
-      type = T__78
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 18:9: 'new'
-      match( "new" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 12 )
-
-
-    end
-
-    # lexer rule t__79! (T__79)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__79!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 13 )
-
-
-
-      type = T__79
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 19:9: 'nullableboolean'
-      match( "nullableboolean" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 13 )
-
-
-    end
-
-    # lexer rule t__80! (T__80)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__80!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 14 )
-
-
-
-      type = T__80
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 20:9: 'object'
-      match( "object" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 14 )
-
-
-    end
-
-    # lexer rule t__81! (T__81)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__81!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 15 )
-
-
-
-      type = T__81
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 21:9: 'or'
-      match( "or" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 15 )
-
-
-    end
-
-    # lexer rule t__82! (T__82)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__82!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 16 )
-
-
-
-      type = T__82
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 22:9: 'set'
-      match( "set" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 16 )
-
-
-    end
-
-    # lexer rule t__83! (T__83)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__83!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 17 )
-
-
-
-      type = T__83
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 23:9: 'string'
-      match( "string" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 17 )
-
-
-    end
-
-    # lexer rule t__84! (T__84)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__84!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 18 )
-
-
-
-      type = T__84
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 24:9: 'time'
-      match( "time" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 18 )
-
-
-    end
-
-    # lexer rule t__85! (T__85)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def t__85!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 19 )
-
-
-
-      type = T__85
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 25:9: 'var'
-      match( "var" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 19 )
-
-
-    end
-
     # lexer rule ws! (WS)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def ws!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 20 )
+      # trace_in( __method__, 11 )
 
 
 
@@ -680,7 +424,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 217:6: ( ' ' | '\\t' | '\\r' | '\\n' )
+      # at line 210:6: ( ' ' | '\\t' | '\\r' | '\\n' )
       if @input.peek( 1 ).between?( 0x9, 0xa ) || @input.peek(1) == 0xd || @input.peek(1) == 0x20
         @input.consume
       else
@@ -702,16 +446,16 @@ module Yarpl
       @state.channel = channel
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 20 )
+      # trace_out( __method__, 11 )
 
 
     end
 
     # lexer rule comment! (COMMENT)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def comment!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 21 )
+      # trace_in( __method__, 12 )
 
 
 
@@ -721,8 +465,8 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 220:11: ( '/*' | ' .*? ' | '*/' )
-      # at line 220:11: ( '/*' | ' .*? ' | '*/' )
+      # at line 213:11: ( '/*' | ' .*? ' | '*/' )
+      # at line 213:11: ( '/*' | ' .*? ' | '*/' )
       alt_1 = 3
       case look_1 = @input.peek( 1 )
       when 0x2f then alt_1 = 1
@@ -734,17 +478,17 @@ module Yarpl
       end
       case alt_1
       when 1
-        # at line 220:12: '/*'
+        # at line 213:12: '/*'
         match( "/*" )
 
 
       when 2
-        # at line 220:19: ' .*? '
+        # at line 213:19: ' .*? '
         match( " .*? " )
 
 
       when 3
-        # at line 220:29: '*/'
+        # at line 213:29: '*/'
         match( "*/" )
 
 
@@ -760,16 +504,16 @@ module Yarpl
       @state.channel = channel
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 21 )
+      # trace_out( __method__, 12 )
 
 
     end
 
     # lexer rule line_comment! (LINE_COMMENT)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def line_comment!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 22 )
+      # trace_in( __method__, 13 )
 
 
 
@@ -779,7 +523,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 223:16: '//'
+      # at line 216:16: '//'
       match( "//" )
 
 
@@ -793,16 +537,16 @@ module Yarpl
       @state.channel = channel
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 22 )
+      # trace_out( __method__, 13 )
 
 
     end
 
     # lexer rule identifier! (IDENTIFIER)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def identifier!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 23 )
+      # trace_in( __method__, 14 )
 
 
 
@@ -812,10 +556,10 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 228:14: YARPL_LETTER ( YARPL_LETTERORDIGIT )*
+      # at line 221:14: YARPL_LETTER ( YARPL_LETTERORDIGIT )*
       yarpl_letter!
 
-      # at line 228:27: ( YARPL_LETTERORDIGIT )*
+      # at line 221:27: ( YARPL_LETTERORDIGIT )*
       while true # decision 2
         alt_2 = 2
         look_2_0 = @input.peek( 1 )
@@ -849,16 +593,16 @@ module Yarpl
       @state.channel = channel
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 23 )
+      # trace_out( __method__, 14 )
 
 
     end
 
     # lexer rule yarpl_letter! (YARPL_LETTER)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def yarpl_letter!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 24 )
+      # trace_in( __method__, 15 )
 
 
     # - - - - label initialization - - - -
@@ -879,16 +623,16 @@ module Yarpl
 
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 24 )
+      # trace_out( __method__, 15 )
 
 
     end
 
     # lexer rule yarpl_letterordigit! (YARPL_LETTERORDIGIT)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def yarpl_letterordigit!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 25 )
+      # trace_in( __method__, 16 )
 
 
     # - - - - label initialization - - - -
@@ -909,16 +653,16 @@ module Yarpl
 
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 25 )
+      # trace_out( __method__, 16 )
 
 
     end
 
     # lexer rule digit! (DIGIT)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def digit!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 26 )
+      # trace_in( __method__, 17 )
 
 
     # - - - - label initialization - - - -
@@ -939,26 +683,26 @@ module Yarpl
 
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 26 )
+      # trace_out( __method__, 17 )
 
 
     end
 
     # lexer rule digits! (DIGITS)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def digits!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 27 )
+      # trace_in( __method__, 18 )
 
 
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 249:10: DIGIT ( ( DIGITORUNDERSCORE )* DIGIT )?
+      # at line 242:10: DIGIT ( ( DIGITORUNDERSCORE )* DIGIT )?
       digit!
 
-      # at line 249:16: ( ( DIGITORUNDERSCORE )* DIGIT )?
+      # at line 242:16: ( ( DIGITORUNDERSCORE )* DIGIT )?
       alt_4 = 2
       look_4_0 = @input.peek( 1 )
 
@@ -967,8 +711,8 @@ module Yarpl
       end
       case alt_4
       when 1
-        # at line 249:17: ( DIGITORUNDERSCORE )* DIGIT
-        # at line 249:17: ( DIGITORUNDERSCORE )*
+        # at line 242:17: ( DIGITORUNDERSCORE )* DIGIT
+        # at line 242:17: ( DIGITORUNDERSCORE )*
         while true # decision 3
           alt_3 = 2
           look_3_0 = @input.peek( 1 )
@@ -1011,16 +755,16 @@ module Yarpl
 
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 27 )
+      # trace_out( __method__, 18 )
 
 
     end
 
     # lexer rule nonzerodigit! (NONZERODIGIT)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def nonzerodigit!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 28 )
+      # trace_in( __method__, 19 )
 
 
     # - - - - label initialization - - - -
@@ -1041,16 +785,16 @@ module Yarpl
 
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 28 )
+      # trace_out( __method__, 19 )
 
 
     end
 
     # lexer rule digitorunderscore! (DIGITORUNDERSCORE)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def digitorunderscore!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 29 )
+      # trace_in( __method__, 20 )
 
 
     # - - - - label initialization - - - -
@@ -1071,16 +815,16 @@ module Yarpl
 
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 29 )
+      # trace_out( __method__, 20 )
 
 
     end
 
     # lexer rule lowercase! (LOWERCASE)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def lowercase!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 30 )
+      # trace_in( __method__, 21 )
 
 
     # - - - - label initialization - - - -
@@ -1101,16 +845,16 @@ module Yarpl
 
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 30 )
+      # trace_out( __method__, 21 )
 
 
     end
 
     # lexer rule uppercase! (UPPERCASE)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def uppercase!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 31 )
+      # trace_in( __method__, 22 )
 
 
     # - - - - label initialization - - - -
@@ -1131,16 +875,16 @@ module Yarpl
 
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 31 )
+      # trace_out( __method__, 22 )
 
 
     end
 
     # lexer rule alphabet! (ALPHABET)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def alphabet!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 32 )
+      # trace_in( __method__, 23 )
 
 
     # - - - - label initialization - - - -
@@ -1161,16 +905,16 @@ module Yarpl
 
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 32 )
+      # trace_out( __method__, 23 )
 
 
     end
 
     # lexer rule alphanumeric! (ALPHANUMERIC)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def alphanumeric!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 33 )
+      # trace_in( __method__, 24 )
 
 
     # - - - - label initialization - - - -
@@ -1191,16 +935,16 @@ module Yarpl
 
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 33 )
+      # trace_out( __method__, 24 )
 
 
     end
 
     # lexer rule rangeintegerliteral! (RANGEINTEGERLITERAL)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def rangeintegerliteral!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 34 )
+      # trace_in( __method__, 25 )
 
 
 
@@ -1210,7 +954,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 279:23: DIGITS '..' DIGITS
+      # at line 272:23: DIGITS '..' DIGITS
       digits!
 
 
@@ -1225,16 +969,16 @@ module Yarpl
       @state.channel = channel
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 34 )
+      # trace_out( __method__, 25 )
 
 
     end
 
     # lexer rule integerliteral! (INTEGERLITERAL)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def integerliteral!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 35 )
+      # trace_in( __method__, 26 )
 
 
 
@@ -1244,7 +988,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 282:22: DIGITS
+      # at line 275:22: DIGITS
       digits!
 
 
@@ -1253,16 +997,16 @@ module Yarpl
       @state.channel = channel
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 35 )
+      # trace_out( __method__, 26 )
 
 
     end
 
     # lexer rule sign! (SIGN)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def sign!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 36 )
+      # trace_in( __method__, 27 )
 
 
     # - - - - label initialization - - - -
@@ -1283,16 +1027,16 @@ module Yarpl
 
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 36 )
+      # trace_out( __method__, 27 )
 
 
     end
 
     # lexer rule lparen! (LPAREN)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def lparen!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 37 )
+      # trace_in( __method__, 28 )
 
 
 
@@ -1302,8 +1046,251 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 292:19: '('
+      # at line 285:19: '('
       match( 0x28 )
+
+
+      @state.type = type
+      @state.channel = channel
+    ensure
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_out( __method__, 28 )
+
+
+    end
+
+    # lexer rule rparen! (RPAREN)
+    # (in Yarpl.g)
+    def rparen!
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 29 )
+
+
+
+      type = RPAREN
+      channel = ANTLR3::DEFAULT_CHANNEL
+    # - - - - label initialization - - - -
+
+
+      # - - - - main rule block - - - -
+      # at line 286:19: ')'
+      match( 0x29 )
+
+
+      @state.type = type
+      @state.channel = channel
+    ensure
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_out( __method__, 29 )
+
+
+    end
+
+    # lexer rule lbrace! (LBRACE)
+    # (in Yarpl.g)
+    def lbrace!
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 30 )
+
+
+
+      type = LBRACE
+      channel = ANTLR3::DEFAULT_CHANNEL
+    # - - - - label initialization - - - -
+
+
+      # - - - - main rule block - - - -
+      # at line 287:19: '{'
+      match( 0x7b )
+
+
+      @state.type = type
+      @state.channel = channel
+    ensure
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_out( __method__, 30 )
+
+
+    end
+
+    # lexer rule rbrace! (RBRACE)
+    # (in Yarpl.g)
+    def rbrace!
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 31 )
+
+
+
+      type = RBRACE
+      channel = ANTLR3::DEFAULT_CHANNEL
+    # - - - - label initialization - - - -
+
+
+      # - - - - main rule block - - - -
+      # at line 288:19: '}'
+      match( 0x7d )
+
+
+      @state.type = type
+      @state.channel = channel
+    ensure
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_out( __method__, 31 )
+
+
+    end
+
+    # lexer rule lbrack! (LBRACK)
+    # (in Yarpl.g)
+    def lbrack!
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 32 )
+
+
+
+      type = LBRACK
+      channel = ANTLR3::DEFAULT_CHANNEL
+    # - - - - label initialization - - - -
+
+
+      # - - - - main rule block - - - -
+      # at line 289:19: '['
+      match( 0x5b )
+
+
+      @state.type = type
+      @state.channel = channel
+    ensure
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_out( __method__, 32 )
+
+
+    end
+
+    # lexer rule rbrack! (RBRACK)
+    # (in Yarpl.g)
+    def rbrack!
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 33 )
+
+
+
+      type = RBRACK
+      channel = ANTLR3::DEFAULT_CHANNEL
+    # - - - - label initialization - - - -
+
+
+      # - - - - main rule block - - - -
+      # at line 290:19: ']'
+      match( 0x5d )
+
+
+      @state.type = type
+      @state.channel = channel
+    ensure
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_out( __method__, 33 )
+
+
+    end
+
+    # lexer rule semi! (SEMI)
+    # (in Yarpl.g)
+    def semi!
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 34 )
+
+
+
+      type = SEMI
+      channel = ANTLR3::DEFAULT_CHANNEL
+    # - - - - label initialization - - - -
+
+
+      # - - - - main rule block - - - -
+      # at line 291:19: ';'
+      match( 0x3b )
+
+
+      @state.type = type
+      @state.channel = channel
+    ensure
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_out( __method__, 34 )
+
+
+    end
+
+    # lexer rule comma! (COMMA)
+    # (in Yarpl.g)
+    def comma!
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 35 )
+
+
+
+      type = COMMA
+      channel = ANTLR3::DEFAULT_CHANNEL
+    # - - - - label initialization - - - -
+
+
+      # - - - - main rule block - - - -
+      # at line 292:19: ','
+      match( 0x2c )
+
+
+      @state.type = type
+      @state.channel = channel
+    ensure
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_out( __method__, 35 )
+
+
+    end
+
+    # lexer rule dot! (DOT)
+    # (in Yarpl.g)
+    def dot!
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 36 )
+
+
+
+      type = DOT
+      channel = ANTLR3::DEFAULT_CHANNEL
+    # - - - - label initialization - - - -
+
+
+      # - - - - main rule block - - - -
+      # at line 293:19: '.'
+      match( 0x2e )
+
+
+      @state.type = type
+      @state.channel = channel
+    ensure
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_out( __method__, 36 )
+
+
+    end
+
+    # lexer rule assign! (ASSIGN)
+    # (in Yarpl.g)
+    def assign!
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 37 )
+
+
+
+      type = ASSIGN
+      channel = ANTLR3::DEFAULT_CHANNEL
+    # - - - - label initialization - - - -
+
+
+      # - - - - main rule block - - - -
+      # at line 297:19: '='
+      match( 0x3d )
 
 
       @state.type = type
@@ -1315,22 +1302,22 @@ module Yarpl
 
     end
 
-    # lexer rule rparen! (RPAREN)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def rparen!
+    # lexer rule gt! (GT)
+    # (in Yarpl.g)
+    def gt!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 38 )
 
 
 
-      type = RPAREN
+      type = GT
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 293:19: ')'
-      match( 0x29 )
+      # at line 298:19: '>'
+      match( 0x3e )
 
 
       @state.type = type
@@ -1342,22 +1329,22 @@ module Yarpl
 
     end
 
-    # lexer rule lbrace! (LBRACE)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def lbrace!
+    # lexer rule lt! (LT)
+    # (in Yarpl.g)
+    def lt!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 39 )
 
 
 
-      type = LBRACE
+      type = LT
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 294:19: '{'
-      match( 0x7b )
+      # at line 299:19: '<'
+      match( 0x3c )
 
 
       @state.type = type
@@ -1369,22 +1356,22 @@ module Yarpl
 
     end
 
-    # lexer rule rbrace! (RBRACE)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def rbrace!
+    # lexer rule bang! (BANG)
+    # (in Yarpl.g)
+    def bang!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 40 )
 
 
 
-      type = RBRACE
+      type = BANG
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 295:19: '}'
-      match( 0x7d )
+      # at line 300:19: '!'
+      match( 0x21 )
 
 
       @state.type = type
@@ -1396,22 +1383,22 @@ module Yarpl
 
     end
 
-    # lexer rule lbrack! (LBRACK)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def lbrack!
+    # lexer rule question! (QUESTION)
+    # (in Yarpl.g)
+    def question!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 41 )
 
 
 
-      type = LBRACK
+      type = QUESTION
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 296:19: '['
-      match( 0x5b )
+      # at line 301:19: '?'
+      match( 0x3f )
 
 
       @state.type = type
@@ -1423,22 +1410,22 @@ module Yarpl
 
     end
 
-    # lexer rule rbrack! (RBRACK)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def rbrack!
+    # lexer rule colon! (COLON)
+    # (in Yarpl.g)
+    def colon!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 42 )
 
 
 
-      type = RBRACK
+      type = COLON
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 297:19: ']'
-      match( 0x5d )
+      # at line 302:19: ':'
+      match( 0x3a )
 
 
       @state.type = type
@@ -1450,22 +1437,23 @@ module Yarpl
 
     end
 
-    # lexer rule semi! (SEMI)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def semi!
+    # lexer rule equals! (EQUALS)
+    # (in Yarpl.g)
+    def equals!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 43 )
 
 
 
-      type = SEMI
+      type = EQUALS
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 298:19: ';'
-      match( 0x3b )
+      # at line 303:20: '=='
+      match( "==" )
+
 
 
       @state.type = type
@@ -1477,22 +1465,23 @@ module Yarpl
 
     end
 
-    # lexer rule comma! (COMMA)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def comma!
+    # lexer rule lte! (LTE)
+    # (in Yarpl.g)
+    def lte!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 44 )
 
 
 
-      type = COMMA
+      type = LTE
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 299:19: ','
-      match( 0x2c )
+      # at line 304:20: '<='
+      match( "<=" )
+
 
 
       @state.type = type
@@ -1504,22 +1493,23 @@ module Yarpl
 
     end
 
-    # lexer rule dot! (DOT)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def dot!
+    # lexer rule gte! (GTE)
+    # (in Yarpl.g)
+    def gte!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 45 )
 
 
 
-      type = DOT
+      type = GTE
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 300:19: '.'
-      match( 0x2e )
+      # at line 305:20: '>='
+      match( ">=" )
+
 
 
       @state.type = type
@@ -1531,22 +1521,23 @@ module Yarpl
 
     end
 
-    # lexer rule assign! (ASSIGN)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def assign!
+    # lexer rule not_equals! (NOT_EQUALS)
+    # (in Yarpl.g)
+    def not_equals!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 46 )
 
 
 
-      type = ASSIGN
+      type = NOT_EQUALS
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 304:19: '='
-      match( 0x3d )
+      # at line 306:21: '!='
+      match( "!=" )
+
 
 
       @state.type = type
@@ -1558,22 +1549,23 @@ module Yarpl
 
     end
 
-    # lexer rule gt! (GT)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def gt!
+    # lexer rule and! (AND)
+    # (in Yarpl.g)
+    def and!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 47 )
 
 
 
-      type = GT
+      type = AND
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 305:19: '>'
-      match( 0x3e )
+      # at line 307:19: '&&'
+      match( "&&" )
+
 
 
       @state.type = type
@@ -1585,22 +1577,23 @@ module Yarpl
 
     end
 
-    # lexer rule lt! (LT)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def lt!
+    # lexer rule or! (OR)
+    # (in Yarpl.g)
+    def or!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 48 )
 
 
 
-      type = LT
+      type = OR
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 306:19: '<'
-      match( 0x3c )
+      # at line 308:19: '||'
+      match( "||" )
+
 
 
       @state.type = type
@@ -1612,22 +1605,23 @@ module Yarpl
 
     end
 
-    # lexer rule bang! (BANG)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def bang!
+    # lexer rule inc! (INC)
+    # (in Yarpl.g)
+    def inc!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 49 )
 
 
 
-      type = BANG
+      type = INC
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 307:19: '!'
-      match( 0x21 )
+      # at line 309:19: '++'
+      match( "++" )
+
 
 
       @state.type = type
@@ -1639,22 +1633,23 @@ module Yarpl
 
     end
 
-    # lexer rule question! (QUESTION)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def question!
+    # lexer rule dec! (DEC)
+    # (in Yarpl.g)
+    def dec!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 50 )
 
 
 
-      type = QUESTION
+      type = DEC
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 308:19: '?'
-      match( 0x3f )
+      # at line 310:19: '--'
+      match( "--" )
+
 
 
       @state.type = type
@@ -1666,22 +1661,22 @@ module Yarpl
 
     end
 
-    # lexer rule colon! (COLON)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def colon!
+    # lexer rule plus! (PLUS)
+    # (in Yarpl.g)
+    def plus!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 51 )
 
 
 
-      type = COLON
+      type = PLUS
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 309:19: ':'
-      match( 0x3a )
+      # at line 311:20: '+'
+      match( 0x2b )
 
 
       @state.type = type
@@ -1693,23 +1688,22 @@ module Yarpl
 
     end
 
-    # lexer rule equals! (EQUALS)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def equals!
+    # lexer rule minus! (MINUS)
+    # (in Yarpl.g)
+    def minus!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 52 )
 
 
 
-      type = EQUALS
+      type = MINUS
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 310:20: '=='
-      match( "==" )
-
+      # at line 312:21: '-'
+      match( 0x2d )
 
 
       @state.type = type
@@ -1721,23 +1715,22 @@ module Yarpl
 
     end
 
-    # lexer rule lte! (LTE)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def lte!
+    # lexer rule times! (TIMES)
+    # (in Yarpl.g)
+    def times!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 53 )
 
 
 
-      type = LTE
+      type = TIMES
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 311:20: '<='
-      match( "<=" )
-
+      # at line 313:21: '*'
+      match( 0x2a )
 
 
       @state.type = type
@@ -1749,23 +1742,22 @@ module Yarpl
 
     end
 
-    # lexer rule gte! (GTE)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def gte!
+    # lexer rule div! (DIV)
+    # (in Yarpl.g)
+    def div!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 54 )
 
 
 
-      type = GTE
+      type = DIV
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
 
       # - - - - main rule block - - - -
-      # at line 312:20: '>='
-      match( ">=" )
-
+      # at line 314:19: '/'
+      match( 0x2f )
 
 
       @state.type = type
@@ -1777,259 +1769,11 @@ module Yarpl
 
     end
 
-    # lexer rule not_equals! (NOT_EQUALS)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def not_equals!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 55 )
-
-
-
-      type = NOT_EQUALS
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 313:21: '!='
-      match( "!=" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 55 )
-
-
-    end
-
-    # lexer rule and! (AND)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def and!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 56 )
-
-
-
-      type = AND
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 314:19: '&&'
-      match( "&&" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 56 )
-
-
-    end
-
-    # lexer rule or! (OR)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def or!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 57 )
-
-
-
-      type = OR
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 315:19: '||'
-      match( "||" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 57 )
-
-
-    end
-
-    # lexer rule inc! (INC)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def inc!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 58 )
-
-
-
-      type = INC
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 316:19: '++'
-      match( "++" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 58 )
-
-
-    end
-
-    # lexer rule dec! (DEC)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def dec!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 59 )
-
-
-
-      type = DEC
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 317:19: '--'
-      match( "--" )
-
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 59 )
-
-
-    end
-
-    # lexer rule plus! (PLUS)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def plus!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 60 )
-
-
-
-      type = PLUS
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 318:20: '+'
-      match( 0x2b )
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 60 )
-
-
-    end
-
-    # lexer rule minus! (MINUS)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def minus!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 61 )
-
-
-
-      type = MINUS
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 319:21: '-'
-      match( 0x2d )
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 61 )
-
-
-    end
-
-    # lexer rule times! (TIMES)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def times!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 62 )
-
-
-
-      type = TIMES
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 320:21: '*'
-      match( 0x2a )
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 62 )
-
-
-    end
-
-    # lexer rule div! (DIV)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
-    def div!
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 63 )
-
-
-
-      type = DIV
-      channel = ANTLR3::DEFAULT_CHANNEL
-    # - - - - label initialization - - - -
-
-
-      # - - - - main rule block - - - -
-      # at line 321:19: '/'
-      match( 0x2f )
-
-
-      @state.type = type
-      @state.channel = channel
-    ensure
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 63 )
-
-
-    end
-
     # lexer rule mod! (MOD)
-    # (in /home/nino/github/yarpler/lib/yarpl/Yarpl.g)
+    # (in Yarpl.g)
     def mod!
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 64 )
+      # trace_in( __method__, 55 )
 
 
 
@@ -2039,7 +1783,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 322:19: '%'
+      # at line 315:19: '%'
       match( 0x25 )
 
 
@@ -2047,7 +1791,7 @@ module Yarpl
       @state.channel = channel
     ensure
       # -> uncomment the next line to manually enable rule tracing
-      # trace_out( __method__, 64 )
+      # trace_out( __method__, 55 )
 
 
     end
@@ -2060,272 +1804,227 @@ module Yarpl
     # but instead use the next_token method, which will
     # build and emit the actual next token
     def token!
-      # at line 1:8: ( T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD )
-      alt_5 = 53
+      # at line 1:8: ( T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD )
+      alt_5 = 44
       alt_5 = @dfa5.predict( @input )
       case alt_5
       when 1
-        # at line 1:10: T__67
-        t__67!
-
-
-      when 2
-        # at line 1:16: T__68
-        t__68!
-
-
-      when 3
-        # at line 1:22: T__69
+        # at line 1:10: T__69
         t__69!
 
 
-      when 4
-        # at line 1:28: T__70
+      when 2
+        # at line 1:16: T__70
         t__70!
 
 
-      when 5
-        # at line 1:34: T__71
+      when 3
+        # at line 1:22: T__71
         t__71!
 
 
-      when 6
-        # at line 1:40: T__72
+      when 4
+        # at line 1:28: T__72
         t__72!
 
 
-      when 7
-        # at line 1:46: T__73
+      when 5
+        # at line 1:34: T__73
         t__73!
 
 
-      when 8
-        # at line 1:52: T__74
+      when 6
+        # at line 1:40: T__74
         t__74!
 
 
-      when 9
-        # at line 1:58: T__75
+      when 7
+        # at line 1:46: T__75
         t__75!
 
 
-      when 10
-        # at line 1:64: T__76
+      when 8
+        # at line 1:52: T__76
         t__76!
 
 
-      when 11
-        # at line 1:70: T__77
+      when 9
+        # at line 1:58: T__77
         t__77!
 
 
-      when 12
-        # at line 1:76: T__78
+      when 10
+        # at line 1:64: T__78
         t__78!
 
 
-      when 13
-        # at line 1:82: T__79
-        t__79!
-
-
-      when 14
-        # at line 1:88: T__80
-        t__80!
-
-
-      when 15
-        # at line 1:94: T__81
-        t__81!
-
-
-      when 16
-        # at line 1:100: T__82
-        t__82!
-
-
-      when 17
-        # at line 1:106: T__83
-        t__83!
-
-
-      when 18
-        # at line 1:112: T__84
-        t__84!
-
-
-      when 19
-        # at line 1:118: T__85
-        t__85!
-
-
-      when 20
-        # at line 1:124: WS
+      when 11
+        # at line 1:70: WS
         ws!
 
 
-      when 21
-        # at line 1:127: COMMENT
+      when 12
+        # at line 1:73: COMMENT
         comment!
 
 
-      when 22
-        # at line 1:135: LINE_COMMENT
+      when 13
+        # at line 1:81: LINE_COMMENT
         line_comment!
 
 
-      when 23
-        # at line 1:148: IDENTIFIER
+      when 14
+        # at line 1:94: IDENTIFIER
         identifier!
 
 
-      when 24
-        # at line 1:159: RANGEINTEGERLITERAL
+      when 15
+        # at line 1:105: RANGEINTEGERLITERAL
         rangeintegerliteral!
 
 
-      when 25
-        # at line 1:179: INTEGERLITERAL
+      when 16
+        # at line 1:125: INTEGERLITERAL
         integerliteral!
 
 
-      when 26
-        # at line 1:194: LPAREN
+      when 17
+        # at line 1:140: LPAREN
         lparen!
 
 
-      when 27
-        # at line 1:201: RPAREN
+      when 18
+        # at line 1:147: RPAREN
         rparen!
 
 
-      when 28
-        # at line 1:208: LBRACE
+      when 19
+        # at line 1:154: LBRACE
         lbrace!
 
 
-      when 29
-        # at line 1:215: RBRACE
+      when 20
+        # at line 1:161: RBRACE
         rbrace!
 
 
-      when 30
-        # at line 1:222: LBRACK
+      when 21
+        # at line 1:168: LBRACK
         lbrack!
 
 
-      when 31
-        # at line 1:229: RBRACK
+      when 22
+        # at line 1:175: RBRACK
         rbrack!
 
 
-      when 32
-        # at line 1:236: SEMI
+      when 23
+        # at line 1:182: SEMI
         semi!
 
 
-      when 33
-        # at line 1:241: COMMA
+      when 24
+        # at line 1:187: COMMA
         comma!
 
 
-      when 34
-        # at line 1:247: DOT
+      when 25
+        # at line 1:193: DOT
         dot!
 
 
-      when 35
-        # at line 1:251: ASSIGN
+      when 26
+        # at line 1:197: ASSIGN
         assign!
 
 
-      when 36
-        # at line 1:258: GT
+      when 27
+        # at line 1:204: GT
         gt!
 
 
-      when 37
-        # at line 1:261: LT
+      when 28
+        # at line 1:207: LT
         lt!
 
 
-      when 38
-        # at line 1:264: BANG
+      when 29
+        # at line 1:210: BANG
         bang!
 
 
-      when 39
-        # at line 1:269: QUESTION
+      when 30
+        # at line 1:215: QUESTION
         question!
 
 
-      when 40
-        # at line 1:278: COLON
+      when 31
+        # at line 1:224: COLON
         colon!
 
 
-      when 41
-        # at line 1:284: EQUALS
+      when 32
+        # at line 1:230: EQUALS
         equals!
 
 
-      when 42
-        # at line 1:291: LTE
+      when 33
+        # at line 1:237: LTE
         lte!
 
 
-      when 43
-        # at line 1:295: GTE
+      when 34
+        # at line 1:241: GTE
         gte!
 
 
-      when 44
-        # at line 1:299: NOT_EQUALS
+      when 35
+        # at line 1:245: NOT_EQUALS
         not_equals!
 
 
-      when 45
-        # at line 1:310: AND
+      when 36
+        # at line 1:256: AND
         and!
 
 
-      when 46
-        # at line 1:314: OR
+      when 37
+        # at line 1:260: OR
         or!
 
 
-      when 47
-        # at line 1:317: INC
+      when 38
+        # at line 1:263: INC
         inc!
 
 
-      when 48
-        # at line 1:321: DEC
+      when 39
+        # at line 1:267: DEC
         dec!
 
 
-      when 49
-        # at line 1:325: PLUS
+      when 40
+        # at line 1:271: PLUS
         plus!
 
 
-      when 50
-        # at line 1:330: MINUS
+      when 41
+        # at line 1:276: MINUS
         minus!
 
 
-      when 51
-        # at line 1:336: TIMES
+      when 42
+        # at line 1:282: TIMES
         times!
 
 
-      when 52
-        # at line 1:342: DIV
+      when 43
+        # at line 1:288: DIV
         div!
 
 
-      when 53
-        # at line 1:346: MOD
+      when 44
+        # at line 1:292: MOD
         mod!
 
 
@@ -2335,251 +2034,152 @@ module Yarpl
 
     # - - - - - - - - - - DFA definitions - - - - - - - - - - -
     class DFA5 < ANTLR3::DFA
-      EOT = unpack( 1, -1, 12, 17, 1, 15, 1, 59, 1, -1, 1, 60, 1, -1, 1, 
-                    61, 9, -1, 1, 66, 1, 68, 1, 70, 1, 72, 4, -1, 1, 74, 
-                    1, 76, 1, -1, 13, 17, 1, 91, 4, 17, 5, -1, 1, 61, 14, 
-                    -1, 1, 96, 9, 17, 1, 106, 1, 107, 2, 17, 1, -1, 1, 110, 
-                    2, 17, 1, 113, 1, -1, 9, 17, 2, -1, 2, 17, 1, -1, 1, 
-                    17, 1, 126, 1, -1, 1, 17, 1, 128, 1, 129, 3, 17, 1, 
-                    133, 5, 17, 1, -1, 1, 17, 2, -1, 2, 17, 1, 142, 1, -1, 
-                    3, 17, 1, 146, 1, 147, 1, 148, 1, 17, 1, 150, 1, -1, 
-                    1, 151, 1, 152, 1, 17, 3, -1, 1, 154, 3, -1, 1, 17, 
-                    1, -1, 6, 17, 1, 162, 1, -1 )
-      EOF = unpack( 163, -1 )
-      MIN = unpack( 1, 9, 1, 110, 1, 111, 1, 108, 1, 97, 1, 108, 1, 110, 
-                    1, 111, 1, 101, 1, 98, 1, 101, 1, 105, 1, 97, 1, 46, 
-                    1, 42, 1, -1, 1, 47, 1, -1, 1, 46, 9, -1, 4, 61, 4, 
-                    -1, 1, 43, 1, 45, 1, -1, 1, 100, 1, 111, 1, 97, 1, 110, 
-                    1, 116, 1, 99, 1, 109, 1, 111, 1, 105, 1, 100, 1, 119, 
-                    1, 108, 1, 106, 1, 36, 1, 116, 1, 114, 1, 109, 1, 114, 
-                    5, -1, 1, 46, 1, 48, 13, -1, 1, 36, 1, 108, 2, 115, 
-                    1, 101, 1, 105, 2, 97, 1, 116, 1, 101, 2, 36, 1, 108, 
-                    1, 101, 1, -1, 1, 36, 1, 105, 1, 101, 1, 36, 1, -1, 
-                    1, 101, 1, 115, 2, 116, 1, 109, 1, 105, 1, 116, 1, 105, 
-                    1, 103, 2, -1, 1, 97, 1, 99, 1, -1, 1, 110, 1, 36, 1, 
-                    -1, 1, 97, 2, 36, 1, 105, 1, 97, 1, 110, 1, 36, 1, 97, 
-                    1, 101, 1, 98, 1, 116, 1, 103, 1, -1, 1, 110, 2, -1, 
-                    1, 109, 1, 108, 1, 36, 1, -1, 1, 108, 1, 114, 1, 108, 
-                    3, 36, 1, 101, 1, 36, 1, -1, 2, 36, 1, 101, 3, -1, 1, 
-                    36, 3, -1, 1, 98, 1, -1, 2, 111, 1, 108, 1, 101, 1, 
-                    97, 1, 110, 1, 36, 1, -1 )
-      MAX = unpack( 1, 125, 1, 110, 3, 111, 1, 108, 1, 110, 1, 111, 1, 117, 
-                    1, 114, 1, 116, 1, 105, 1, 97, 1, 46, 1, 47, 1, -1, 
-                    1, 47, 1, -1, 1, 95, 9, -1, 4, 61, 4, -1, 1, 43, 1, 
-                    45, 1, -1, 1, 100, 1, 111, 1, 97, 1, 110, 1, 116, 1, 
-                    99, 1, 109, 1, 111, 1, 116, 1, 100, 1, 119, 1, 108, 
-                    1, 106, 1, 122, 1, 116, 1, 114, 1, 109, 1, 114, 5, -1, 
-                    2, 95, 13, -1, 1, 122, 1, 108, 2, 115, 1, 101, 1, 105, 
-                    2, 97, 1, 116, 1, 101, 2, 122, 1, 108, 1, 101, 1, -1, 
-                    1, 122, 1, 105, 1, 101, 1, 122, 1, -1, 1, 101, 1, 115, 
-                    2, 116, 1, 109, 1, 105, 1, 116, 1, 105, 1, 103, 2, -1, 
-                    1, 97, 1, 99, 1, -1, 1, 110, 1, 122, 1, -1, 1, 97, 2, 
-                    122, 1, 105, 1, 97, 1, 110, 1, 122, 1, 97, 1, 101, 1, 
-                    98, 1, 116, 1, 103, 1, -1, 1, 110, 2, -1, 1, 109, 1, 
-                    108, 1, 122, 1, -1, 1, 108, 1, 114, 1, 108, 3, 122, 
-                    1, 101, 1, 122, 1, -1, 2, 122, 1, 101, 3, -1, 1, 122, 
-                    3, -1, 1, 98, 1, -1, 2, 111, 1, 108, 1, 101, 1, 97, 
-                    1, 110, 1, 122, 1, -1 )
-      ACCEPT = unpack( 15, -1, 1, 20, 1, -1, 1, 23, 1, -1, 1, 26, 1, 27, 
-                       1, 28, 1, 29, 1, 30, 1, 31, 1, 32, 1, 33, 1, 34, 
-                       4, -1, 1, 39, 1, 40, 1, 45, 1, 46, 2, -1, 1, 53, 
-                       18, -1, 1, 21, 1, 22, 1, 52, 1, 51, 1, 25, 2, -1, 
-                       1, 24, 1, 41, 1, 35, 1, 43, 1, 36, 1, 42, 1, 37, 
-                       1, 44, 1, 38, 1, 47, 1, 49, 1, 48, 1, 50, 14, -1, 
-                       1, 15, 4, -1, 1, 1, 9, -1, 1, 11, 1, 12, 2, -1, 1, 
-                       16, 2, -1, 1, 19, 12, -1, 1, 18, 1, -1, 1, 3, 1, 
-                       4, 3, -1, 1, 8, 8, -1, 1, 7, 3, -1, 1, 14, 1, 17, 
-                       1, 2, 1, -1, 1, 6, 1, 9, 1, 10, 1, -1, 1, 5, 7, -1, 
-                       1, 13 )
-      SPECIAL = unpack( 163, -1 )
+      EOT = unpack( 1, -1, 8, 13, 1, 11, 1, 46, 1, -1, 1, 47, 1, -1, 1, 
+                    48, 9, -1, 1, 53, 1, 55, 1, 57, 1, 59, 4, -1, 1, 61, 
+                    1, 63, 1, -1, 7, 13, 1, 72, 1, 13, 5, -1, 1, 48, 14, 
+                    -1, 1, 74, 5, 13, 1, 80, 1, 81, 1, -1, 1, 82, 1, -1, 
+                    5, 13, 3, -1, 1, 88, 1, 89, 3, 13, 2, -1, 1, 93, 2, 
+                    13, 1, -1, 1, 96, 1, 97, 2, -1 )
+      EOF = unpack( 98, -1 )
+      MIN = unpack( 1, 9, 1, 110, 1, 108, 1, 111, 1, 110, 1, 111, 1, 101, 
+                    1, 114, 1, 97, 1, 46, 1, 42, 1, -1, 1, 47, 1, -1, 1, 
+                    46, 9, -1, 4, 61, 4, -1, 1, 43, 1, 45, 1, -1, 1, 100, 
+                    1, 97, 1, 110, 1, 109, 1, 105, 1, 100, 1, 119, 1, 36, 
+                    1, 114, 5, -1, 1, 46, 1, 48, 13, -1, 1, 36, 2, 115, 
+                    1, 97, 1, 116, 1, 101, 2, 36, 1, -1, 1, 36, 1, -1, 1, 
+                    115, 1, 116, 2, 105, 1, 103, 3, -1, 2, 36, 1, 110, 1, 
+                    97, 1, 101, 2, -1, 1, 36, 1, 108, 1, 114, 1, -1, 2, 
+                    36, 2, -1 )
+      MAX = unpack( 1, 125, 1, 110, 2, 111, 1, 110, 1, 111, 1, 101, 1, 114, 
+                    1, 97, 1, 46, 1, 47, 1, -1, 1, 47, 1, -1, 1, 95, 9, 
+                    -1, 4, 61, 4, -1, 1, 43, 1, 45, 1, -1, 1, 100, 1, 97, 
+                    1, 110, 1, 109, 1, 116, 1, 100, 1, 119, 1, 122, 1, 114, 
+                    5, -1, 2, 95, 13, -1, 1, 122, 2, 115, 1, 97, 1, 116, 
+                    1, 101, 2, 122, 1, -1, 1, 122, 1, -1, 1, 115, 1, 116, 
+                    2, 105, 1, 103, 3, -1, 2, 122, 1, 110, 1, 97, 1, 101, 
+                    2, -1, 1, 122, 1, 108, 1, 114, 1, -1, 2, 122, 2, -1 )
+      ACCEPT = unpack( 11, -1, 1, 11, 1, -1, 1, 14, 1, -1, 1, 17, 1, 18, 
+                       1, 19, 1, 20, 1, 21, 1, 22, 1, 23, 1, 24, 1, 25, 
+                       4, -1, 1, 30, 1, 31, 1, 36, 1, 37, 2, -1, 1, 44, 
+                       9, -1, 1, 12, 1, 13, 1, 43, 1, 42, 1, 16, 2, -1, 
+                       1, 15, 1, 32, 1, 26, 1, 34, 1, 27, 1, 33, 1, 28, 
+                       1, 35, 1, 29, 1, 38, 1, 40, 1, 39, 1, 41, 8, -1, 
+                       1, 9, 1, -1, 1, 1, 5, -1, 1, 7, 1, 8, 1, 10, 5, -1, 
+                       1, 2, 1, 3, 3, -1, 1, 4, 2, -1, 1, 5, 1, 6 )
+      SPECIAL = unpack( 98, -1 )
       TRANSITION = [
-        unpack( 2, 15, 2, -1, 1, 15, 18, -1, 1, 13, 1, 31, 2, -1, 1, 17, 
-                1, 38, 1, 34, 1, -1, 1, 19, 1, 20, 1, 16, 1, 36, 1, 26, 
-                1, 37, 1, 27, 1, 14, 10, 18, 1, 33, 1, 25, 1, 30, 1, 28, 
-                1, 29, 1, 32, 1, -1, 26, 17, 1, 23, 1, -1, 1, 24, 1, -1, 
-                1, 17, 1, -1, 1, 1, 1, 2, 1, 3, 1, 4, 1, 17, 1, 5, 2, 17, 
-                1, 6, 3, 17, 1, 7, 1, 8, 1, 9, 3, 17, 1, 10, 1, 11, 1, 17, 
-                1, 12, 4, 17, 1, 21, 1, 35, 1, 22 ),
+        unpack( 2, 11, 2, -1, 1, 11, 18, -1, 1, 9, 1, 27, 2, -1, 1, 13, 
+                1, 34, 1, 30, 1, -1, 1, 15, 1, 16, 1, 12, 1, 32, 1, 22, 
+                1, 33, 1, 23, 1, 10, 10, 14, 1, 29, 1, 21, 1, 26, 1, 24, 
+                1, 25, 1, 28, 1, -1, 26, 13, 1, 19, 1, -1, 1, 20, 1, -1, 
+                1, 13, 1, -1, 1, 1, 1, 13, 1, 2, 1, 3, 4, 13, 1, 4, 3, 13, 
+                1, 5, 1, 6, 1, 7, 6, 13, 1, 8, 4, 13, 1, 17, 1, 31, 1, 18 ),
+        unpack( 1, 35 ),
+        unpack( 1, 36, 2, -1, 1, 37 ),
+        unpack( 1, 38 ),
         unpack( 1, 39 ),
         unpack( 1, 40 ),
-        unpack( 1, 41, 2, -1, 1, 42 ),
-        unpack( 1, 43, 3, -1, 1, 44, 9, -1, 1, 45 ),
-        unpack( 1, 46 ),
-        unpack( 1, 47 ),
-        unpack( 1, 48 ),
-        unpack( 1, 49, 15, -1, 1, 50 ),
-        unpack( 1, 51, 15, -1, 1, 52 ),
-        unpack( 1, 53, 14, -1, 1, 54 ),
-        unpack( 1, 55 ),
+        unpack( 1, 41 ),
+        unpack( 1, 42 ),
+        unpack( 1, 43 ),
+        unpack( 1, 44 ),
+        unpack( 1, 44, 4, -1, 1, 45 ),
+        unpack(  ),
+        unpack( 1, 44 ),
+        unpack(  ),
+        unpack( 1, 51, 1, -1, 10, 49, 37, -1, 1, 50 ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack( 1, 52 ),
+        unpack( 1, 54 ),
         unpack( 1, 56 ),
-        unpack( 1, 57 ),
-        unpack( 1, 57, 4, -1, 1, 58 ),
-        unpack(  ),
-        unpack( 1, 57 ),
-        unpack(  ),
-        unpack( 1, 64, 1, -1, 10, 62, 37, -1, 1, 63 ),
+        unpack( 1, 58 ),
         unpack(  ),
         unpack(  ),
         unpack(  ),
         unpack(  ),
+        unpack( 1, 60 ),
+        unpack( 1, 62 ),
         unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
+        unpack( 1, 64 ),
         unpack( 1, 65 ),
+        unpack( 1, 66 ),
         unpack( 1, 67 ),
-        unpack( 1, 69 ),
+        unpack( 1, 68, 10, -1, 1, 69 ),
+        unpack( 1, 70 ),
         unpack( 1, 71 ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
+        unpack( 1, 13, 11, -1, 10, 13, 7, -1, 26, 13, 4, -1, 1, 13, 1, 
+                 -1, 26, 13 ),
         unpack( 1, 73 ),
-        unpack( 1, 75 ),
         unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack( 1, 51, 1, -1, 10, 49, 37, -1, 1, 50 ),
+        unpack( 10, 49, 37, -1, 1, 50 ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack( 1, 13, 11, -1, 10, 13, 7, -1, 26, 13, 4, -1, 1, 13, 1, 
+                 -1, 26, 13 ),
+        unpack( 1, 75 ),
+        unpack( 1, 76 ),
         unpack( 1, 77 ),
         unpack( 1, 78 ),
         unpack( 1, 79 ),
-        unpack( 1, 80 ),
-        unpack( 1, 81 ),
-        unpack( 1, 82 ),
+        unpack( 1, 13, 11, -1, 10, 13, 7, -1, 26, 13, 4, -1, 1, 13, 1, 
+                 -1, 26, 13 ),
+        unpack( 1, 13, 11, -1, 10, 13, 7, -1, 26, 13, 4, -1, 1, 13, 1, 
+                 -1, 26, 13 ),
+        unpack(  ),
+        unpack( 1, 13, 11, -1, 10, 13, 7, -1, 26, 13, 4, -1, 1, 13, 1, 
+                 -1, 26, 13 ),
+        unpack(  ),
         unpack( 1, 83 ),
         unpack( 1, 84 ),
-        unpack( 1, 85, 10, -1, 1, 86 ),
+        unpack( 1, 85 ),
+        unpack( 1, 86 ),
         unpack( 1, 87 ),
-        unpack( 1, 88 ),
-        unpack( 1, 89 ),
+        unpack(  ),
+        unpack(  ),
+        unpack(  ),
+        unpack( 1, 13, 11, -1, 10, 13, 7, -1, 26, 13, 4, -1, 1, 13, 1, 
+                 -1, 26, 13 ),
+        unpack( 1, 13, 11, -1, 10, 13, 7, -1, 26, 13, 4, -1, 1, 13, 1, 
+                 -1, 26, 13 ),
         unpack( 1, 90 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
+        unpack( 1, 91 ),
         unpack( 1, 92 ),
-        unpack( 1, 93 ),
+        unpack(  ),
+        unpack(  ),
+        unpack( 1, 13, 11, -1, 10, 13, 7, -1, 26, 13, 4, -1, 1, 13, 1, 
+                 -1, 26, 13 ),
         unpack( 1, 94 ),
         unpack( 1, 95 ),
         unpack(  ),
+        unpack( 1, 13, 11, -1, 10, 13, 7, -1, 26, 13, 4, -1, 1, 13, 1, 
+                 -1, 26, 13 ),
+        unpack( 1, 13, 11, -1, 10, 13, 7, -1, 26, 13, 4, -1, 1, 13, 1, 
+                 -1, 26, 13 ),
         unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack( 1, 64, 1, -1, 10, 62, 37, -1, 1, 63 ),
-        unpack( 10, 62, 37, -1, 1, 63 ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 97 ),
-        unpack( 1, 98 ),
-        unpack( 1, 99 ),
-        unpack( 1, 100 ),
-        unpack( 1, 101 ),
-        unpack( 1, 102 ),
-        unpack( 1, 103 ),
-        unpack( 1, 104 ),
-        unpack( 1, 105 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 108 ),
-        unpack( 1, 109 ),
-        unpack(  ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 111 ),
-        unpack( 1, 112 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack(  ),
-        unpack( 1, 114 ),
-        unpack( 1, 115 ),
-        unpack( 1, 116 ),
-        unpack( 1, 117 ),
-        unpack( 1, 118 ),
-        unpack( 1, 119 ),
-        unpack( 1, 120 ),
-        unpack( 1, 121 ),
-        unpack( 1, 122 ),
-        unpack(  ),
-        unpack(  ),
-        unpack( 1, 123 ),
-        unpack( 1, 124 ),
-        unpack(  ),
-        unpack( 1, 125 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack(  ),
-        unpack( 1, 127 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 130 ),
-        unpack( 1, 131 ),
-        unpack( 1, 132 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 134 ),
-        unpack( 1, 135 ),
-        unpack( 1, 136 ),
-        unpack( 1, 137 ),
-        unpack( 1, 138 ),
-        unpack(  ),
-        unpack( 1, 139 ),
-        unpack(  ),
-        unpack(  ),
-        unpack( 1, 140 ),
-        unpack( 1, 141 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack(  ),
-        unpack( 1, 143 ),
-        unpack( 1, 144 ),
-        unpack( 1, 145 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 149 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack(  ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack( 1, 153 ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
-        unpack(  ),
-        unpack(  ),
-        unpack(  ),
-        unpack( 1, 155 ),
-        unpack(  ),
-        unpack( 1, 156 ),
-        unpack( 1, 157 ),
-        unpack( 1, 158 ),
-        unpack( 1, 159 ),
-        unpack( 1, 160 ),
-        unpack( 1, 161 ),
-        unpack( 1, 17, 11, -1, 10, 17, 7, -1, 26, 17, 4, -1, 1, 17, 1, 
-                 -1, 26, 17 ),
         unpack(  )
       ].freeze
 
@@ -2594,7 +2194,7 @@ module Yarpl
 
       def description
         <<-'__dfa_description__'.strip!
-          1:1: Tokens : ( T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD );
+          1:1: Tokens : ( T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD );
         __dfa_description__
       end
 

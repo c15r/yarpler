@@ -37,10 +37,21 @@ module Yarpler
 
 
       interpreter = Yarpler::Interpreter::YARPLInterpreter.new(parser.tree)
-      handler = Yarpler::RessourceHandler.new
       d=interpreter.problem
       mz = Yarpler::Utils::Minizinc.new
-      puts mz.convert(d)
+      minizinc_file = mz.convert(d)
+
+      puts "###############"
+      puts ".mzn"
+      puts "###############"
+      puts minizinc_file
+
+      mz.run(minizinc_file)
+
+      puts "###############"
+      puts "MiniZinc Output"
+      puts "###############"
+      mz.print
 
     end
   end

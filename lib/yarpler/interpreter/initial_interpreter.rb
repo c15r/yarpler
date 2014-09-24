@@ -17,14 +17,12 @@ module Yarpler
       end
 
       def tree_converter(tree, full_list)
-        handler = Yarpler::RessourceHandler.new
-
         tree.each do |thing|
           # @TODO evtl noch etwas schöner mit ENUM?
           case thing.to_s
             when "VARIABLE_DECLARATOR"
               current_name = thing[0].to_s
-              full_list[current_name] = handler.new_object(thing[1][0].to_s)
+              full_list[current_name] = Yarpler::RessourceHandler.instance.new_object(thing[1][0].to_s)
               attribute_reader(thing[1], full_list[current_name])
           end
         end

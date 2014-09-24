@@ -179,8 +179,8 @@ literal
 	;
 
 type
-    : structType -> ^(VARIABLE_TYPE structType)
-    | primitiveType -> ^(VARIABLE_TYPE primitiveType)
+    : structType -> ^(structType)
+    | primitiveType -> ^(primitiveType)
     ;
 
 structType

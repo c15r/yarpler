@@ -17,7 +17,7 @@ module Yarpler
         tree.each do |thing|
           case thing.to_s
             when "FIELD_DECLARATION"
-              create_attr(thing[1].to_s, thing[0])
+              create_attr(thing[2].to_s, thing[1], thing[0].to_s)
           end
         end
 
@@ -27,7 +27,7 @@ module Yarpler
         Object.const_get(@dynamic_name).send( :define_method, name, &block )
       end
 
-      def create_attr( name, properties )
+      def create_attr( name, data_type, variable_type )
 
         create_method( "#{name}=".to_sym ) { |val|
           instance_variable_set( "@" + name, val)
@@ -37,12 +37,19 @@ module Yarpler
           instance_variable_get( "@" + name )
         }
 
-        set_properties(name, properties)
+        set_data_type(name, data_type)
+        set_variable_type(name, variable_type)
       end
 
-      def set_properties(name, properties)
+      def set_variable_type(name, variable_type)
+        create_method( "#{name}_variabletype".to_sym ) {
+          variable_type
+        }
+      end
 
-        case properties[0].to_s
+      def set_data_type(name, data_type)
+
+        case data_type.to_s
           when "INTEGER"
             datatype="int"
           else
