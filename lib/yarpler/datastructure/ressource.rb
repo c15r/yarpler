@@ -21,6 +21,18 @@ module Yarpler
         self.send(attribute+"=",value)
       end
 
+      def get_list_of_attributes
+        list = Array.new
+        self.instance_variables.each do |i|
+          list.push(i.to_s.sub! '@', '')
+        end
+        list
+      end
+
+      def get_datatype(attribute)
+        self.send(attribute+"_datatype")
+      end
+
     end
   end
 end

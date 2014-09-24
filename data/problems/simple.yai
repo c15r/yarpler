@@ -14,5 +14,7 @@ domain {
 }
 
 initial {
-    d1 = new Dienst(anzahl=7);
+    d1 = new Dienst(anzahl=3);
+    d2 = new Dienst(anzahl=7);
+    f = new Dienst(anzahl=0);
 }

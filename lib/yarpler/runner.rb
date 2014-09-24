@@ -1,6 +1,3 @@
-#require 'yarpler/utils/file_loader'
-#require 'yarpler/parser'
-
 module Yarpler
   class Runner
 
@@ -41,23 +38,10 @@ module Yarpler
 
       interpreter = Yarpler::Interpreter::YARPLInterpreter.new(parser.tree)
       handler = Yarpler::RessourceHandler.new
+      d=interpreter.problem
+      mz = Yarpler::Utils::Minizinc.new
+      puts mz.convert(d)
 
-      puts interpreter.problem["d1"].class
-
-      # Dynamic Classes handling
-      # mitarbeiter = handler.new_object("Mitarbeiter")
-      # mitarbeiter.print
-      #
-      # dienst = handler.new_object("Dienst")
-      # dienst.print
-      #
-      # tag = handler.new_object("Tag")
-      # tag.print
-
-
-      #test.set_value("anzahl", 123)
-      #puts test.get_value("anzahl")
-      #puts test.anzahl
     end
   end
 end
