@@ -10,6 +10,7 @@ tokens {
   CLASS_DECLARATION;
   CLASS_BODY;
   CLASS_BODY_DECLARATION;
+  CONSTANT;
   DOMAIN_DECLARATION;
   DOMAIN_BODY;
   DOMAIN_BODY_DECLARATION;
@@ -21,6 +22,7 @@ tokens {
   PROGRAM;
   START;
   TYPE_DECLARATION;
+  VARIABLE;
   VARIABLE_DECLARATOR;
   VARIABLE_DECLARATION;
   VARIABLE_TYPE;
@@ -80,7 +82,7 @@ memberDeclaration
     ;
 
 fieldDeclaration
-    : variableType type variableDeclaratorId ';' -> ^(FIELD_DECLARATION type variableDeclaratorId)
+    : variableType type variableDeclaratorId ';' -> ^(FIELD_DECLARATION variableType type variableDeclaratorId)
     ;
 
 variableDeclarators
@@ -186,21 +188,12 @@ structType
     ;
 
 primitiveType
-    : 'boolean'
-    | 'nullableboolean'
-    | 'float'
-    | 'integer' -> ^(INTEGER)
-    | 'string'
-    | 'decimal'
-    | 'datetime'
-    | 'time'
+    : 'integer' -> ^(INTEGER)
     ;
 
 variableType
-    : 'object'
-    | 'var'
-    | 'const'
-    | 'set'
+    : 'var' -> ^(VARIABLE)
+    | 'const' -> ^(CONSTANT)
     ;
 
 

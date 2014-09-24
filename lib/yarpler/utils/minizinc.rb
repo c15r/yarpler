@@ -2,6 +2,8 @@ module Yarpler
   module Utils
     class Minizinc
 
+      T_VARIABLE = "%s: %s = %s;\n"
+
       def run_from_file(filename)
         file = File.new(filename, "r")
         content = file.read
@@ -29,7 +31,7 @@ module Yarpler
         # MZ: int: id_dienst_frei = 0;
         code=""
         ressource.get_list_of_attributes.each do |a|
-          code<<ressource.get_datatype(a).to_s + ": " + name + "_" + a + "=" + ressource.get_value(a) + " \n"
+          code<< T_VARIABLE % [ressource.get_datatype(a), name + "_" + a, ressource.get_value(a)]
         end
         code
       end
