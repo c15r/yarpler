@@ -26,7 +26,7 @@ module Yarpler
     end
 
     ##
-    # Converts a file to MiniZinc
+    # Converts a file to MiniZinc and solves it
     #
     def run(filename)
 
@@ -40,19 +40,24 @@ module Yarpler
       d=interpreter.problem
       mz = Yarpler::Utils::Minizinc.new
       minizinc_file = mz.convert(d)
-
-      puts "###############"
-      puts ".mzn"
-      puts "###############"
-      puts minizinc_file
-
       mz.run(minizinc_file)
-
-      puts "###############"
-      puts "MiniZinc Output"
-      puts "###############"
+      puts minizinc_file
       mz.print
+    end
 
+    ##
+    # Converts a file to MiniZinc and displays it
+    #
+    def convert(filename)
+      file = Yarpler::Utils::FileLoader.new(filename)
+      parser = Yarpler::Parser.new(file.get_content)
+      parser.print
+
+      interpreter = Yarpler::Interpreter::YARPLInterpreter.new(parser.tree)
+      d=interpreter.problem
+      mz = Yarpler::Utils::Minizinc.new
+      minizinc_file = mz.convert(d)
+      puts minizinc_file
     end
   end
 end

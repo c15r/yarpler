@@ -6,12 +6,21 @@ module Yarpler
     include Singleton
 
     def initialize
-      @id = -1;
+      @id = Hash.new
     end
 
-    def next_id
-      @id = @id.next
-      @id
+    def next_id(obj)
+      @next=-1
+      @id.each do |key, val|
+        if obj.class.name==key
+          @next = val
+          break
+        end
+      end
+
+      @next = @next.next
+      @id[obj.class.name] = @next
+      @next
     end
 
     def new_object(name)

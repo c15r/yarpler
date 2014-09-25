@@ -5,7 +5,7 @@
 # Generated using ANTLR version: 3.5
 # Ruby runtime library version: 1.10.0
 # Input grammar file: Yarpl.g
-# Generated at: 2014-09-24 21:03:16
+# Generated at: 2014-09-25 14:24:24
 #
 
 # ~~~> start load path setup
@@ -65,9 +65,9 @@ module Yarpl
   module TokenData
 
     # define the token constants
-    define_tokens( :EOF => -1, :T__69 => 69, :T__70 => 70, :T__71 => 71, 
-                   :T__72 => 72, :T__73 => 73, :T__74 => 74, :T__75 => 75, 
-                   :T__76 => 76, :T__77 => 77, :T__78 => 78, :ALPHABET => 4, 
+    define_tokens( :EOF => -1, :T__70 => 70, :T__71 => 71, :T__72 => 72, 
+                   :T__73 => 73, :T__74 => 74, :T__75 => 75, :T__76 => 76, 
+                   :T__77 => 77, :T__78 => 78, :T__79 => 79, :ALPHABET => 4, 
                    :ALPHANUMERIC => 5, :AND => 6, :ASSIGN => 7, :ATTRIBUTE => 8, 
                    :BANG => 9, :CLASS_BODY => 10, :CLASS_BODY_DECLARATION => 11, 
                    :CLASS_DECLARATION => 12, :COLON => 13, :COMMA => 14, 
@@ -83,10 +83,11 @@ module Yarpl
                    :MOD => 45, :NONZERODIGIT => 46, :NOT_EQUALS => 47, :OR => 48, 
                    :PLUS => 49, :PROGRAM => 50, :QUESTION => 51, :RANGEINTEGERLITERAL => 52, 
                    :RBRACE => 53, :RBRACK => 54, :RPAREN => 55, :SEMI => 56, 
-                   :SIGN => 57, :START => 58, :TIMES => 59, :TYPE_DECLARATION => 60, 
-                   :UPPERCASE => 61, :VARIABLE => 62, :VARIABLE_DECLARATION => 63, 
-                   :VARIABLE_DECLARATOR => 64, :VARIABLE_TYPE => 65, :WS => 66, 
-                   :YARPL_LETTER => 67, :YARPL_LETTERORDIGIT => 68 )
+                   :SET => 57, :SIGN => 58, :START => 59, :TIMES => 60, 
+                   :TYPE_DECLARATION => 61, :UPPERCASE => 62, :VARIABLE => 63, 
+                   :VARIABLE_DECLARATION => 64, :VARIABLE_DECLARATOR => 65, 
+                   :VARIABLE_TYPE => 66, :WS => 67, :YARPL_LETTER => 68, 
+                   :YARPL_LETTERORDIGIT => 69 )
 
   end
 
@@ -101,8 +102,8 @@ module Yarpl
       # ignore
     end
 
-    RULE_NAMES   = [ "T__69", "T__70", "T__71", "T__72", "T__73", "T__74", 
-                     "T__75", "T__76", "T__77", "T__78", "WS", "COMMENT", 
+    RULE_NAMES   = [ "T__70", "T__71", "T__72", "T__73", "T__74", "T__75", 
+                     "T__76", "T__77", "T__78", "T__79", "WS", "COMMENT", 
                      "LINE_COMMENT", "IDENTIFIER", "YARPL_LETTER", "YARPL_LETTERORDIGIT", 
                      "DIGIT", "DIGITS", "NONZERODIGIT", "DIGITORUNDERSCORE", 
                      "LOWERCASE", "UPPERCASE", "ALPHABET", "ALPHANUMERIC", 
@@ -112,8 +113,8 @@ module Yarpl
                      "COLON", "EQUALS", "LTE", "GTE", "NOT_EQUALS", "AND", 
                      "OR", "INC", "DEC", "PLUS", "MINUS", "TIMES", "DIV", 
                      "MOD" ].freeze
-    RULE_METHODS = [ :t__69!, :t__70!, :t__71!, :t__72!, :t__73!, :t__74!, 
-                     :t__75!, :t__76!, :t__77!, :t__78!, :ws!, :comment!, 
+    RULE_METHODS = [ :t__70!, :t__71!, :t__72!, :t__73!, :t__74!, :t__75!, 
+                     :t__76!, :t__77!, :t__78!, :t__79!, :ws!, :comment!, 
                      :line_comment!, :identifier!, :yarpl_letter!, :yarpl_letterordigit!, 
                      :digit!, :digits!, :nonzerodigit!, :digitorunderscore!, 
                      :lowercase!, :uppercase!, :alphabet!, :alphanumeric!, 
@@ -130,15 +131,15 @@ module Yarpl
 
 
     # - - - - - - - - - - - lexer rules - - - - - - - - - - - -
-    # lexer rule t__69! (T__69)
+    # lexer rule t__70! (T__70)
     # (in Yarpl.g)
-    def t__69!
+    def t__70!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 1 )
 
 
 
-      type = T__69
+      type = T__70
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -158,15 +159,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__70! (T__70)
+    # lexer rule t__71! (T__71)
     # (in Yarpl.g)
-    def t__70!
+    def t__71!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 2 )
 
 
 
-      type = T__70
+      type = T__71
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -186,15 +187,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__71! (T__71)
+    # lexer rule t__72! (T__72)
     # (in Yarpl.g)
-    def t__71!
+    def t__72!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 3 )
 
 
 
-      type = T__71
+      type = T__72
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -214,15 +215,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__72! (T__72)
+    # lexer rule t__73! (T__73)
     # (in Yarpl.g)
-    def t__72!
+    def t__73!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 4 )
 
 
 
-      type = T__72
+      type = T__73
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -242,15 +243,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__73! (T__73)
+    # lexer rule t__74! (T__74)
     # (in Yarpl.g)
-    def t__73!
+    def t__74!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 5 )
 
 
 
-      type = T__73
+      type = T__74
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -270,15 +271,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__74! (T__74)
+    # lexer rule t__75! (T__75)
     # (in Yarpl.g)
-    def t__74!
+    def t__75!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 6 )
 
 
 
-      type = T__74
+      type = T__75
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -298,15 +299,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__75! (T__75)
+    # lexer rule t__76! (T__76)
     # (in Yarpl.g)
-    def t__75!
+    def t__76!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 7 )
 
 
 
-      type = T__75
+      type = T__76
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -326,15 +327,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__76! (T__76)
+    # lexer rule t__77! (T__77)
     # (in Yarpl.g)
-    def t__76!
+    def t__77!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 8 )
 
 
 
-      type = T__76
+      type = T__77
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -354,15 +355,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__77! (T__77)
+    # lexer rule t__78! (T__78)
     # (in Yarpl.g)
-    def t__77!
+    def t__78!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 9 )
 
 
 
-      type = T__77
+      type = T__78
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -382,15 +383,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__78! (T__78)
+    # lexer rule t__79! (T__79)
     # (in Yarpl.g)
-    def t__78!
+    def t__79!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 10 )
 
 
 
-      type = T__78
+      type = T__79
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -424,7 +425,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 210:6: ( ' ' | '\\t' | '\\r' | '\\n' )
+      # at line 224:6: ( ' ' | '\\t' | '\\r' | '\\n' )
       if @input.peek( 1 ).between?( 0x9, 0xa ) || @input.peek(1) == 0xd || @input.peek(1) == 0x20
         @input.consume
       else
@@ -465,8 +466,8 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 213:11: ( '/*' | ' .*? ' | '*/' )
-      # at line 213:11: ( '/*' | ' .*? ' | '*/' )
+      # at line 227:11: ( '/*' | ' .*? ' | '*/' )
+      # at line 227:11: ( '/*' | ' .*? ' | '*/' )
       alt_1 = 3
       case look_1 = @input.peek( 1 )
       when 0x2f then alt_1 = 1
@@ -478,17 +479,17 @@ module Yarpl
       end
       case alt_1
       when 1
-        # at line 213:12: '/*'
+        # at line 227:12: '/*'
         match( "/*" )
 
 
       when 2
-        # at line 213:19: ' .*? '
+        # at line 227:19: ' .*? '
         match( " .*? " )
 
 
       when 3
-        # at line 213:29: '*/'
+        # at line 227:29: '*/'
         match( "*/" )
 
 
@@ -523,7 +524,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 216:16: '//'
+      # at line 230:16: '//'
       match( "//" )
 
 
@@ -556,10 +557,10 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 221:14: YARPL_LETTER ( YARPL_LETTERORDIGIT )*
+      # at line 235:14: YARPL_LETTER ( YARPL_LETTERORDIGIT )*
       yarpl_letter!
 
-      # at line 221:27: ( YARPL_LETTERORDIGIT )*
+      # at line 235:27: ( YARPL_LETTERORDIGIT )*
       while true # decision 2
         alt_2 = 2
         look_2_0 = @input.peek( 1 )
@@ -699,10 +700,10 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 242:10: DIGIT ( ( DIGITORUNDERSCORE )* DIGIT )?
+      # at line 256:10: DIGIT ( ( DIGITORUNDERSCORE )* DIGIT )?
       digit!
 
-      # at line 242:16: ( ( DIGITORUNDERSCORE )* DIGIT )?
+      # at line 256:16: ( ( DIGITORUNDERSCORE )* DIGIT )?
       alt_4 = 2
       look_4_0 = @input.peek( 1 )
 
@@ -711,8 +712,8 @@ module Yarpl
       end
       case alt_4
       when 1
-        # at line 242:17: ( DIGITORUNDERSCORE )* DIGIT
-        # at line 242:17: ( DIGITORUNDERSCORE )*
+        # at line 256:17: ( DIGITORUNDERSCORE )* DIGIT
+        # at line 256:17: ( DIGITORUNDERSCORE )*
         while true # decision 3
           alt_3 = 2
           look_3_0 = @input.peek( 1 )
@@ -954,7 +955,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 272:23: DIGITS '..' DIGITS
+      # at line 286:23: DIGITS '..' DIGITS
       digits!
 
 
@@ -988,7 +989,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 275:22: DIGITS
+      # at line 289:22: DIGITS
       digits!
 
 
@@ -1046,7 +1047,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 285:19: '('
+      # at line 299:19: '('
       match( 0x28 )
 
 
@@ -1073,7 +1074,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 286:19: ')'
+      # at line 300:19: ')'
       match( 0x29 )
 
 
@@ -1100,7 +1101,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 287:19: '{'
+      # at line 301:19: '{'
       match( 0x7b )
 
 
@@ -1127,7 +1128,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 288:19: '}'
+      # at line 302:19: '}'
       match( 0x7d )
 
 
@@ -1154,7 +1155,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 289:19: '['
+      # at line 303:19: '['
       match( 0x5b )
 
 
@@ -1181,7 +1182,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 290:19: ']'
+      # at line 304:19: ']'
       match( 0x5d )
 
 
@@ -1208,7 +1209,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 291:19: ';'
+      # at line 305:19: ';'
       match( 0x3b )
 
 
@@ -1235,7 +1236,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 292:19: ','
+      # at line 306:19: ','
       match( 0x2c )
 
 
@@ -1262,7 +1263,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 293:19: '.'
+      # at line 307:19: '.'
       match( 0x2e )
 
 
@@ -1289,7 +1290,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 297:19: '='
+      # at line 311:19: '='
       match( 0x3d )
 
 
@@ -1316,7 +1317,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 298:19: '>'
+      # at line 312:19: '>'
       match( 0x3e )
 
 
@@ -1343,7 +1344,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 299:19: '<'
+      # at line 313:19: '<'
       match( 0x3c )
 
 
@@ -1370,7 +1371,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 300:19: '!'
+      # at line 314:19: '!'
       match( 0x21 )
 
 
@@ -1397,7 +1398,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 301:19: '?'
+      # at line 315:19: '?'
       match( 0x3f )
 
 
@@ -1424,7 +1425,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 302:19: ':'
+      # at line 316:19: ':'
       match( 0x3a )
 
 
@@ -1451,7 +1452,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 303:20: '=='
+      # at line 317:20: '=='
       match( "==" )
 
 
@@ -1479,7 +1480,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 304:20: '<='
+      # at line 318:20: '<='
       match( "<=" )
 
 
@@ -1507,7 +1508,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 305:20: '>='
+      # at line 319:20: '>='
       match( ">=" )
 
 
@@ -1535,7 +1536,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 306:21: '!='
+      # at line 320:21: '!='
       match( "!=" )
 
 
@@ -1563,7 +1564,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 307:19: '&&'
+      # at line 321:19: '&&'
       match( "&&" )
 
 
@@ -1591,7 +1592,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 308:19: '||'
+      # at line 322:19: '||'
       match( "||" )
 
 
@@ -1619,7 +1620,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 309:19: '++'
+      # at line 323:19: '++'
       match( "++" )
 
 
@@ -1647,7 +1648,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 310:19: '--'
+      # at line 324:19: '--'
       match( "--" )
 
 
@@ -1675,7 +1676,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 311:20: '+'
+      # at line 325:20: '+'
       match( 0x2b )
 
 
@@ -1702,7 +1703,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 312:21: '-'
+      # at line 326:21: '-'
       match( 0x2d )
 
 
@@ -1729,7 +1730,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 313:21: '*'
+      # at line 327:21: '*'
       match( 0x2a )
 
 
@@ -1756,7 +1757,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 314:19: '/'
+      # at line 328:19: '/'
       match( 0x2f )
 
 
@@ -1783,7 +1784,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 315:19: '%'
+      # at line 329:19: '%'
       match( 0x25 )
 
 
@@ -1804,58 +1805,58 @@ module Yarpl
     # but instead use the next_token method, which will
     # build and emit the actual next token
     def token!
-      # at line 1:8: ( T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD )
+      # at line 1:8: ( T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD )
       alt_5 = 44
       alt_5 = @dfa5.predict( @input )
       case alt_5
       when 1
-        # at line 1:10: T__69
-        t__69!
-
-
-      when 2
-        # at line 1:16: T__70
+        # at line 1:10: T__70
         t__70!
 
 
-      when 3
-        # at line 1:22: T__71
+      when 2
+        # at line 1:16: T__71
         t__71!
 
 
-      when 4
-        # at line 1:28: T__72
+      when 3
+        # at line 1:22: T__72
         t__72!
 
 
-      when 5
-        # at line 1:34: T__73
+      when 4
+        # at line 1:28: T__73
         t__73!
 
 
-      when 6
-        # at line 1:40: T__74
+      when 5
+        # at line 1:34: T__74
         t__74!
 
 
-      when 7
-        # at line 1:46: T__75
+      when 6
+        # at line 1:40: T__75
         t__75!
 
 
-      when 8
-        # at line 1:52: T__76
+      when 7
+        # at line 1:46: T__76
         t__76!
 
 
-      when 9
-        # at line 1:58: T__77
+      when 8
+        # at line 1:52: T__77
         t__77!
 
 
-      when 10
-        # at line 1:64: T__78
+      when 9
+        # at line 1:58: T__78
         t__78!
+
+
+      when 10
+        # at line 1:64: T__79
+        t__79!
 
 
       when 11
@@ -2194,7 +2195,7 @@ module Yarpl
 
       def description
         <<-'__dfa_description__'.strip!
-          1:1: Tokens : ( T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD );
+          1:1: Tokens : ( T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD );
         __dfa_description__
       end
 

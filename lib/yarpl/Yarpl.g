@@ -20,6 +20,7 @@ tokens {
   INTEGER;
   MEMBER_DECLARATION;
   PROGRAM;
+  SET;
   START;
   TYPE_DECLARATION;
   VARIABLE;
@@ -141,6 +142,19 @@ expressionList
     :   expression (',' expression)*
     ;
 
+declaration
+    : set -> set
+    | primary -> primary
+    ;
+
+set
+    : '[' setDeclaration ']' -> ^(SET setDeclaration)
+    ;
+
+setDeclaration
+    : declaration (COMMA declaration)* -> ^(declaration)*
+    ;
+
 primary
     : literal
 	;
@@ -168,7 +182,7 @@ argumentList
 
 
 argument
-     : IDENTIFIER '=' primary -> ^(ATTRIBUTE IDENTIFIER primary)
+     : IDENTIFIER '=' declaration -> ^(ATTRIBUTE IDENTIFIER declaration)
      ;
 
 

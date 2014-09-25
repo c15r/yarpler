@@ -1,6 +1,8 @@
 domain {
       class Mitarbeiter {
-        const Tag tage;
+        relation(Tag) tage {
+         Tag.dienst;
+        }
       }
 
       class Dienst {
@@ -8,13 +10,17 @@ domain {
       }
 
       class Tag {
-    	const integer index;
         var Dienst dienst;
       }
 }
 
 initial {
-    d1 = new Dienst(anzahl=3);
-    d2 = new Dienst(anzahl=7);
-    f = new Dienst(anzahl=0);
+  d1 = new Dienst(anzahl = 3);
+  d2 = new Dienst(anzahl = 7);
+  f = new Dienst(anzahl = 0);
+  t0 = new Tag(dienst=[d1,d2,f]);
+  t1 = new Tag(dienst=[d1,d2,f]);
+  t2 = new Tag(dienst=[d1,d2,f]);
+  t3 = new Tag(dienst=[d1,d2,f]);
+  t4 = new Tag(dienst=[d1,d2,f]);
 }

@@ -3,13 +3,6 @@ require 'thor'
 
 module Yarpler
   class CLI < Thor
-    class_option :verbose, :type => :boolean
-
-    #desc "hello NAME", "say hello to NAME"
-    #def hello(name)
-    #  puts "Hello #{name}"
-    #  puts "more text" if options[:verbose]
-    #end
 
     desc "display FILE", "Display the complete input file (yai and yad)"
     def display(file)
@@ -29,7 +22,13 @@ module Yarpler
       yarpler.flat(file)
     end
 
-    desc "parse FILE", "Parse input file and convert to MiniZinc"
+    desc "convert FILE", "Parse input file and convert to MiniZinc"
+    def convert(file)
+      yarpler = Yarpler::Runner.new
+      yarpler.convert(file)
+    end
+
+    desc "parse FILE", "Parse input file and solve it"
     def parse(file)
       yarpler = Yarpler::Runner.new
       yarpler.run(file)
