@@ -11,6 +11,8 @@ tokens {
   CLASS_BODY;
   CLASS_BODY_DECLARATION;
   CONSTANT;
+  CONSTRAINT_DECLARATION;
+  CONSTRAINT_EXPRESSION;
   DOMAIN_DECLARATION;
   DOMAIN_BODY;
   DOMAIN_BODY_DECLARATION;
@@ -59,7 +61,8 @@ initialBody
     ;
 
 initialBodyDeclaration
-    : statement
+    : localVariableDeclaration
+    | constraintDeclaration
     ;
 
 typeDeclaration
@@ -106,12 +109,13 @@ localVariableDeclaration
     : variableDeclarators ';' -> variableDeclarators
     ;
 
-
-statement
-    : localVariableDeclaration
-    | ';'
+constraintDeclaration
+    : 'constraint' constraintBody -> ^(CONSTRAINT_DECLARATION constraintBody)
     ;
 
+constraintBody
+    : LBRACE expression RBRACE -> ^(CONSTRAINT_EXPRESSION expression)
+    ;
 
 expression :
     relationalExpression (('and'|'or') relationalExpression)*

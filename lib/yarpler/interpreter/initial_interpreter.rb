@@ -25,6 +25,8 @@ module Yarpler
               full_list[current_name] = Yarpler::RessourceHandler.instance.new_object(thing[1][0].to_s)
               attribute_reader(thing[1], full_list[current_name])
               self.problem=full_list
+            when "CONSTRAINT_DECLARATION"
+              ConstraintInterpreter.new(thing)
           end
         end
       end
