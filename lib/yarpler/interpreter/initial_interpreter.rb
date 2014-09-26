@@ -2,29 +2,28 @@ module Yarpler
   module Interpreter
     class InitialInterpreter
 
-      def problem
-        @problem
-      end
-
-      def problem=(new_problem)
-        @problem = new_problem
-      end
+      attr_accessor :objects
+      attr_accessor :constraints
 
       def initialize(tree)
-        full_list = Hash.new
-        tree_converter(tree, full_list)
-        self.problem=full_list
+        @objects = Hash.new
+        @constraints = Array.new
+        tree_converter(tree)
       end
 
-      def tree_converter(tree, full_list)
+      def tree_converter(tree)
         tree.each do |thing|
           # @TODO evtl noch etwas schöner mit ENUM?
           case thing.to_s
             when "VARIABLE_DECLARATOR"
               current_name = thing[0].to_s
-              full_list[current_name] = Yarpler::RessourceHandler.instance.new_object(current_name, thing[1][0].to_s)
-              attribute_reader(thing[1], full_list[current_name])
-              self.problem=full_list
+              new_object = Yarpler::RessourceHandler.instance.new_object(current_name, thing[1][0].to_s)
+
+              @objects[current_name] = new_object
+              attribute_reader(thing[1], new_object)
+            when "CONSTRAINT_DECLARATION"
+              c = ConstraintInterpreter.new(thing)
+              @constraints.push(c.constraint)
           end
         end
       end
@@ -46,7 +45,7 @@ module Yarpler
         # @TODO Error handling
         set = Array.new
         tree.each do |thing|
-          set.push(problem[thing.to_s])
+          set.push(@objects[thing.to_s])
         end
         set
       end

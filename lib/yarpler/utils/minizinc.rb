@@ -22,11 +22,11 @@ module Yarpler
         @cmd = %x( minizinc #{path} )
       end
 
-      def convert(d)
+      def convert(problem)
         @output="output [ \"\" "
         code = T_HEADER
         code << T_INCLUDES
-        d.each do |key, var|
+        problem.objects.each do |key, var|
           var.get_list_of_attributes
           code<<convert_attributes(key, var)
         end
