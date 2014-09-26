@@ -21,17 +21,6 @@ module Yarpler
         "CONSTANT"
       end
 
-      def print
-        puts "####################"
-        puts "Ressource:"
-        puts self.class
-        puts ""
-        puts "Methods:"
-        puts self.methods - Object.methods - [:print, :get_value, :set_value, :initialize]
-        puts "####################"
-        puts ""
-      end
-
       def get_value(attribute)
         self.send(attribute)
       end

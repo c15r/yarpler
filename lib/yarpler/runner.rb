@@ -58,6 +58,7 @@ module Yarpler
       mz = Yarpler::Utils::Minizinc.new
       minizinc_file = mz.convert(d)
       puts minizinc_file
+
     end
   end
 end
