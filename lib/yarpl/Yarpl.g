@@ -8,25 +8,19 @@ options {
 tokens {
   ATTRIBUTE;
   CLASS_DECLARATION;
-  CLASS_BODY;
-  CLASS_BODY_DECLARATION;
   CONSTANT;
   DOMAIN_DECLARATION;
-  DOMAIN_BODY;
-  DOMAIN_BODY_DECLARATION;
   FIELD_DECLARATION;
-  INITIAL_BODY;
   INITIAL_DECLARATION;
   INTEGER;
   MEMBER_DECLARATION;
-  PROGRAM;
+  REFERENCE;
   SET;
   START;
   TYPE_DECLARATION;
   VARIABLE;
   VARIABLE_DECLARATOR;
   VARIABLE_DECLARATION;
-  VARIABLE_TYPE;
 }
 
 start
@@ -84,6 +78,7 @@ memberDeclaration
 
 fieldDeclaration
     : variableType type variableDeclaratorId ';' -> ^(FIELD_DECLARATION variableType type variableDeclaratorId)
+    | 'reference' LPAREN IDENTIFIER RPAREN variableDeclaratorId ';' -> ^(REFERENCE IDENTIFIER variableDeclaratorId)
     ;
 
 variableDeclarators
@@ -209,7 +204,6 @@ variableType
     : 'var' -> ^(VARIABLE)
     | 'const' -> ^(CONSTANT)
     ;
-
 
 // ///////////////////////////////////////////
 //

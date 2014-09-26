@@ -18,17 +18,19 @@ module Yarpler
 
       def tree_converter(tree)
 
-        # @TODO evtl noch etwas schöner mit ENUM?
-        case tree.to_s
-          when "CLASS_DECLARATION"
-            ClassInterpreter.new(tree)
-          when "INITIAL_DECLARATION"
-            self.problem=InitialInterpreter.new(tree).problem
+        tree.each do |thing|
+          # @TODO evtl noch etwas schöner mit ENUM?
+          case thing.to_s
+            when "DOMAIN_DECLARATION"
+              DomainInterpreter.new(thing)
+            when "INITIAL_DECLARATION"
+              self.problem=InitialInterpreter.new(thing).problem
+          end
         end
 
-        tree.each do |thing|
-          tree_converter(thing)
-        end
+        #
+        #  tree_converter(thing)
+        #end
       end
 
     end

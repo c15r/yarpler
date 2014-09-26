@@ -22,7 +22,7 @@ module Yarpler
           case thing.to_s
             when "VARIABLE_DECLARATOR"
               current_name = thing[0].to_s
-              full_list[current_name] = Yarpler::RessourceHandler.instance.new_object(thing[1][0].to_s)
+              full_list[current_name] = Yarpler::RessourceHandler.instance.new_object(current_name, thing[1][0].to_s)
               attribute_reader(thing[1], full_list[current_name])
               self.problem=full_list
           end

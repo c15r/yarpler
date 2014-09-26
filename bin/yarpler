@@ -2,6 +2,7 @@
 
 #require '../lib/yarpler/cli'
 require 'require_all'
+require 'logging'
 require_all 'lib'
 
 Yarpler::CLI.start(ARGV, :debug => true)
