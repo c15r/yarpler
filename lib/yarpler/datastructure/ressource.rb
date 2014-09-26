@@ -25,6 +25,10 @@ module Yarpler
         "CONSTANT"
       end
 
+      def is_referenced
+        false
+      end
+
 
       def get_value(attribute)
         self.send(attribute)

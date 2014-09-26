@@ -23,45 +23,37 @@ module Yarpler
       end
 
       def convert(d)
-        output="output [ \"\" "
+        @output="output [ \"\" "
         code = T_HEADER
         code << T_INCLUDES
         d.each do |key, var|
           var.get_list_of_attributes
           code<<convert_attributes(key, var)
-          output<<convert_output(key, var)
         end
-        code << output + "];\n"
+        code << @output + "];\n"
         code << T_FOOTER
         code
       end
 
-      def convert_attributes(name, ressource, variables_only = false)
+      def convert_attributes(name, ressource, reference = false)
         code=""
         ressource.get_list_of_attributes.each do |a|
           case ressource.get_variabletype(a)
             when "CONSTANT"
-              if variables_only
+              if reference
                 next
               end
               code<< T_CONSTANT % [ressource.get_datatype(a), a + "_" + name, ressource.load(a)]
             when "VARIABLE"
+              if !reference && ressource.is_referenced
+                next
+              end
               code<< T_VARIABLE % [ressource.load(a), name + "_" + a]
+              @output << T_OUTPUT % [name + "_" + a,name + "_" + a]
             when "REFERENCE"
               ressource.get_value(a).each do |r|
                 code << convert_attributes(name.to_s+"_"+r.get_instance_name().to_s, r, true )
               end
-          end
-        end
-        code
-      end
-
-      def convert_output(name, ressource)
-        code=""
-        ressource.get_list_of_attributes.each do |a|
-          case ressource.get_variabletype(a)
-            when "VARIABLE"
-              code<< T_OUTPUT % [name + "_" + a,name + "_" + a]
           end
         end
         code

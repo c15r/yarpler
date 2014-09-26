@@ -35,5 +35,9 @@ module Yarpler
       Object.const_get(name).new.get_variabletype(attribute)
     end
 
+    def is_referenced(name)
+      Object.const_get(name).new.is_referenced
+    end
+
   end
 end
