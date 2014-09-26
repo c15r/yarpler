@@ -51,6 +51,7 @@ module Yarpler
     def convert(filename)
       file = Yarpler::Utils::FileLoader.new(filename)
       parser = Yarpler::Parser.new(file.get_content)
+
       parser.print
 
       interpreter = Yarpler::Interpreter::YARPLInterpreter.new(parser.tree)

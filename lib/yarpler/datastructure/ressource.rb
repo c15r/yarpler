@@ -5,11 +5,15 @@ module Yarpler
       FIXNUM_MAX = (2**(0.size * 8 -2) -1)
       FIXNUM_MIN = -(2**(0.size * 8 -2))
 
-      def initialize
-        @id=Yarpler::RessourceHandler.instance.next_id(self)
+      def initialize(name)
+        @_instance_name = name
+        @id=-1
       end
 
       def id
+        if @id == -1
+          @id = Yarpler::RessourceHandler.instance.next_id(self)
+        end
         @id
       end
 
@@ -20,6 +24,7 @@ module Yarpler
       def id_variabletype
         "CONSTANT"
       end
+
 
       def get_value(attribute)
         self.send(attribute)
@@ -58,6 +63,9 @@ module Yarpler
       def get_list_of_attributes
         list = Array.new
         self.instance_variables.each do |i|
+          if i.to_s=="@_instance_name"
+            next
+          end
           list.push(i.to_s.sub! '@', '')
         end
         list
@@ -69,6 +77,10 @@ module Yarpler
 
       def get_variabletype(attribute)
         self.send(attribute+"_variabletype")
+      end
+
+      def get_instance_name()
+        @_instance_name
       end
 
     end

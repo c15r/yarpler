@@ -4,6 +4,10 @@ require 'thor'
 module Yarpler
   class CLI < Thor
 
+    def initialize(*args)
+      super
+    end
+
     desc "display FILE", "Display the complete input file (yai and yad)"
     def display(file)
       yarpler = Yarpler::Runner.new

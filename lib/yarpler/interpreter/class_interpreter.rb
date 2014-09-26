@@ -11,13 +11,14 @@ module Yarpler
       private
 
       def load_attributes(tree)
-
-        # @TODO: Lade Zusatzinfo wie Datatype oder VAR/CONST
+        rh=Yarpler::RessourceHandler.instance
 
         tree.each do |thing|
           case thing.to_s
             when "FIELD_DECLARATION"
               create_attr(thing[2].to_s, thing[1], thing[0].to_s)
+            when "REFERENCE"
+              create_attr(thing[1].to_s, thing[0].to_s, thing.to_s)
           end
         end
 

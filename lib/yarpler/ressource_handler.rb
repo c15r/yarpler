@@ -23,8 +23,16 @@ module Yarpler
       @next
     end
 
-    def new_object(name)
-      Object.const_get(name).new
+    def new_object(definition, name)
+      Object.const_get(name).new(definition)
+    end
+
+    def get_datatype(name, attribute)
+      Object.const_get(name).new.get_datatype(attribute)
+    end
+
+    def get_variabletype(name, attribute)
+      Object.const_get(name).new.get_variabletype(attribute)
     end
 
   end

@@ -36,14 +36,21 @@ module Yarpler
         code
       end
 
-      def convert_attributes(name, ressource)
+      def convert_attributes(name, ressource, variables_only = false)
         code=""
         ressource.get_list_of_attributes.each do |a|
           case ressource.get_variabletype(a)
             when "CONSTANT"
+              if variables_only
+                next
+              end
               code<< T_CONSTANT % [ressource.get_datatype(a), a + "_" + name, ressource.load(a)]
             when "VARIABLE"
               code<< T_VARIABLE % [ressource.load(a), name + "_" + a]
+            when "REFERENCE"
+              ressource.get_value(a).each do |r|
+                code << convert_attributes(name.to_s+"_"+r.get_instance_name().to_s, r, true )
+              end
           end
         end
         code
