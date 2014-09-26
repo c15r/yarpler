@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
 
   spec.files         = ['lib/yarpler.rb']
   spec.executables   = ['bin/yarpler']
-  spec.test_files    = ['tests/test_yarpler.rb']
+  spec.test_files    = ['tests/test_utils.rb']
   spec.require_paths = ["lib"]
 
   spec.add_dependency "bundler", ">= 1.5.2", "< 1.7.0"

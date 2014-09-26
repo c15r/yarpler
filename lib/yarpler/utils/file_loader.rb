@@ -25,7 +25,6 @@ module Yarpler
             load_file_to_contents(filename_domain)
           end
           load_file_to_contents(@filename)
-
         end
       end
 
