@@ -5,7 +5,7 @@
 # Generated using ANTLR version: 3.5
 # Ruby runtime library version: 1.10.0
 # Input grammar file: Yarpl.g
-# Generated at: 2014-09-25 14:24:24
+# Generated at: 2014-09-26 10:06:16
 #
 
 # ~~~> start load path setup
@@ -1045,7 +1045,7 @@ module Yarpl
       stream_classBody.add( classBody19.tree )
 
       # AST Rewrite
-      # elements: classBody, IDENTIFIER
+      # elements: IDENTIFIER, classBody
       # token labels: 
       # rule labels: return_value
       # token list labels: 
@@ -1419,7 +1419,7 @@ module Yarpl
       stream_SEMI.add( char_literal28 )
 
       # AST Rewrite
-      # elements: variableType, variableDeclaratorId, type
+      # elements: type, variableDeclaratorId, variableType
       # token labels: 
       # rule labels: return_value
       # token list labels: 
@@ -1610,7 +1610,7 @@ module Yarpl
       stream_variableInitializer.add( variableInitializer34.tree )
 
       # AST Rewrite
-      # elements: variableDeclaratorId, variableInitializer
+      # elements: variableInitializer, variableDeclaratorId
       # token labels: 
       # rule labels: return_value
       # token list labels: 
@@ -3102,7 +3102,7 @@ module Yarpl
       stream_classCreatorRest.add( classCreatorRest73.tree )
 
       # AST Rewrite
-      # elements: createdName, classCreatorRest
+      # elements: classCreatorRest, createdName
       # token labels: 
       # rule labels: return_value
       # token list labels: 
