@@ -23,7 +23,7 @@ initial {
   t4 = new MitarbeiterTag(dienst=[d1,d2,f]);
 
   constraint {
-    test
+    1 == 1
   }
 }
 

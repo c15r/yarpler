@@ -2,15 +2,10 @@ module Yarpler
   module Interpreter
     class YARPLInterpreter
 
-      def problem
-        @problem
-      end
-
-      def problem=(new_problem)
-        @problem = new_problem
-      end
+      attr_accessor :problem
 
       def initialize(tree)
+        @problem = Yarpler::Datastructure::Problem.new
         tree_converter(tree)
       end
 
@@ -20,10 +15,12 @@ module Yarpler
 
         # @TODO evtl noch etwas schöner mit ENUM?
         case tree.to_s
-          when "CLASS_DECLARATION"
+          when 'CLASS_DECLARATION'
             ClassInterpreter.new(tree)
-          when "INITIAL_DECLARATION"
-            self.problem=InitialInterpreter.new(tree).problem
+          when 'INITIAL_DECLARATION'
+            initial = InitialInterpreter.new(tree)
+            @problem.objects = initial.objects
+            @problem.constraints = initial.constraints
         end
 
         tree.each do |thing|

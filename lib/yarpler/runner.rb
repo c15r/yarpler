@@ -54,9 +54,9 @@ module Yarpler
       parser.print
 
       interpreter = Yarpler::Interpreter::YARPLInterpreter.new(parser.tree)
-      d=interpreter.problem
+      problem = interpreter.problem
       mz = Yarpler::Utils::Minizinc.new
-      minizinc_file = mz.convert(d)
+      minizinc_file = mz.convert(problem)
       puts minizinc_file
 
     end

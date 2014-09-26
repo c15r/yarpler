@@ -16,6 +16,7 @@ tokens {
   DOMAIN_DECLARATION;
   DOMAIN_BODY;
   DOMAIN_BODY_DECLARATION;
+  FIELD_ACCESSOR;
   FIELD_DECLARATION;
   INITIAL_BODY;
   INITIAL_DECLARATION;
@@ -89,6 +90,10 @@ fieldDeclaration
     : variableType type variableDeclaratorId ';' -> ^(FIELD_DECLARATION variableType type variableDeclaratorId)
     ;
 
+fieldAccessor
+    : IDENTIFIER '.' IDENTIFIER -> ^(FIELD_ACCESSOR IDENTIFIER IDENTIFIER)
+    ;
+
 variableDeclarators
     : variableDeclarator (',' variableDeclarator)*
     ;
@@ -117,8 +122,9 @@ constraintBody
     : LBRACE expression RBRACE -> ^(CONSTRAINT_EXPRESSION expression)
     ;
 
-expression :
-    relationalExpression (('and'|'or') relationalExpression)*
+expression
+    : relationalExpression (('and'|'or') relationalExpression)*
+    | fieldAccessor EQUALS fieldAccessor -> ^(EQUALS fieldAccessor fieldAccessor)
     ;
 
 relationalExpression

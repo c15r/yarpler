@@ -5,7 +5,7 @@
 # Generated using ANTLR version: 3.5
 # Ruby runtime library version: 1.10.0
 # Input grammar file: Yarpl.g
-# Generated at: 2014-09-25 14:24:24
+# Generated at: 2014-09-26 14:36:43
 #
 
 # ~~~> start load path setup
@@ -65,29 +65,30 @@ module Yarpl
   module TokenData
 
     # define the token constants
-    define_tokens( :EOF => -1, :T__70 => 70, :T__71 => 71, :T__72 => 72, 
-                   :T__73 => 73, :T__74 => 74, :T__75 => 75, :T__76 => 76, 
-                   :T__77 => 77, :T__78 => 78, :T__79 => 79, :ALPHABET => 4, 
-                   :ALPHANUMERIC => 5, :AND => 6, :ASSIGN => 7, :ATTRIBUTE => 8, 
-                   :BANG => 9, :CLASS_BODY => 10, :CLASS_BODY_DECLARATION => 11, 
+    define_tokens( :EOF => -1, :T__73 => 73, :T__74 => 74, :T__75 => 75, 
+                   :T__76 => 76, :T__77 => 77, :T__78 => 78, :T__79 => 79, 
+                   :T__80 => 80, :T__81 => 81, :T__82 => 82, :T__83 => 83, 
+                   :ALPHABET => 4, :ALPHANUMERIC => 5, :AND => 6, :ASSIGN => 7, 
+                   :ATTRIBUTE => 8, :BANG => 9, :CLASS_BODY => 10, :CLASS_BODY_DECLARATION => 11, 
                    :CLASS_DECLARATION => 12, :COLON => 13, :COMMA => 14, 
-                   :COMMENT => 15, :CONSTANT => 16, :DEC => 17, :DIGIT => 18, 
-                   :DIGITORUNDERSCORE => 19, :DIGITS => 20, :DIV => 21, 
-                   :DOMAIN_BODY => 22, :DOMAIN_BODY_DECLARATION => 23, :DOMAIN_DECLARATION => 24, 
-                   :DOT => 25, :EQUALS => 26, :FIELD_DECLARATION => 27, 
-                   :GT => 28, :GTE => 29, :IDENTIFIER => 30, :INC => 31, 
-                   :INITIAL_BODY => 32, :INITIAL_DECLARATION => 33, :INTEGER => 34, 
-                   :INTEGERLITERAL => 35, :LBRACE => 36, :LBRACK => 37, 
-                   :LINE_COMMENT => 38, :LOWERCASE => 39, :LPAREN => 40, 
-                   :LT => 41, :LTE => 42, :MEMBER_DECLARATION => 43, :MINUS => 44, 
-                   :MOD => 45, :NONZERODIGIT => 46, :NOT_EQUALS => 47, :OR => 48, 
-                   :PLUS => 49, :PROGRAM => 50, :QUESTION => 51, :RANGEINTEGERLITERAL => 52, 
-                   :RBRACE => 53, :RBRACK => 54, :RPAREN => 55, :SEMI => 56, 
-                   :SET => 57, :SIGN => 58, :START => 59, :TIMES => 60, 
-                   :TYPE_DECLARATION => 61, :UPPERCASE => 62, :VARIABLE => 63, 
-                   :VARIABLE_DECLARATION => 64, :VARIABLE_DECLARATOR => 65, 
-                   :VARIABLE_TYPE => 66, :WS => 67, :YARPL_LETTER => 68, 
-                   :YARPL_LETTERORDIGIT => 69 )
+                   :COMMENT => 15, :CONSTANT => 16, :CONSTRAINT_DECLARATION => 17, 
+                   :CONSTRAINT_EXPRESSION => 18, :DEC => 19, :DIGIT => 20, 
+                   :DIGITORUNDERSCORE => 21, :DIGITS => 22, :DIV => 23, 
+                   :DOMAIN_BODY => 24, :DOMAIN_BODY_DECLARATION => 25, :DOMAIN_DECLARATION => 26, 
+                   :DOT => 27, :EQUALS => 28, :FIELD_ACCESSOR => 29, :FIELD_DECLARATION => 30, 
+                   :GT => 31, :GTE => 32, :IDENTIFIER => 33, :INC => 34, 
+                   :INITIAL_BODY => 35, :INITIAL_DECLARATION => 36, :INTEGER => 37, 
+                   :INTEGERLITERAL => 38, :LBRACE => 39, :LBRACK => 40, 
+                   :LINE_COMMENT => 41, :LOWERCASE => 42, :LPAREN => 43, 
+                   :LT => 44, :LTE => 45, :MEMBER_DECLARATION => 46, :MINUS => 47, 
+                   :MOD => 48, :NONZERODIGIT => 49, :NOT_EQUALS => 50, :OR => 51, 
+                   :PLUS => 52, :PROGRAM => 53, :QUESTION => 54, :RANGEINTEGERLITERAL => 55, 
+                   :RBRACE => 56, :RBRACK => 57, :RPAREN => 58, :SEMI => 59, 
+                   :SET => 60, :SIGN => 61, :START => 62, :TIMES => 63, 
+                   :TYPE_DECLARATION => 64, :UPPERCASE => 65, :VARIABLE => 66, 
+                   :VARIABLE_DECLARATION => 67, :VARIABLE_DECLARATOR => 68, 
+                   :VARIABLE_TYPE => 69, :WS => 70, :YARPL_LETTER => 71, 
+                   :YARPL_LETTERORDIGIT => 72 )
 
 
     # register the proper human-readable name or literal value
@@ -98,21 +99,21 @@ module Yarpl
     # have descriptive names
     register_names( "ALPHABET", "ALPHANUMERIC", "AND", "ASSIGN", "ATTRIBUTE", 
                     "BANG", "CLASS_BODY", "CLASS_BODY_DECLARATION", "CLASS_DECLARATION", 
-                    "COLON", "COMMA", "COMMENT", "CONSTANT", "DEC", "DIGIT", 
-                    "DIGITORUNDERSCORE", "DIGITS", "DIV", "DOMAIN_BODY", 
-                    "DOMAIN_BODY_DECLARATION", "DOMAIN_DECLARATION", "DOT", 
-                    "EQUALS", "FIELD_DECLARATION", "GT", "GTE", "IDENTIFIER", 
-                    "INC", "INITIAL_BODY", "INITIAL_DECLARATION", "INTEGER", 
-                    "INTEGERLITERAL", "LBRACE", "LBRACK", "LINE_COMMENT", 
-                    "LOWERCASE", "LPAREN", "LT", "LTE", "MEMBER_DECLARATION", 
-                    "MINUS", "MOD", "NONZERODIGIT", "NOT_EQUALS", "OR", 
-                    "PLUS", "PROGRAM", "QUESTION", "RANGEINTEGERLITERAL", 
+                    "COLON", "COMMA", "COMMENT", "CONSTANT", "CONSTRAINT_DECLARATION", 
+                    "CONSTRAINT_EXPRESSION", "DEC", "DIGIT", "DIGITORUNDERSCORE", 
+                    "DIGITS", "DIV", "DOMAIN_BODY", "DOMAIN_BODY_DECLARATION", 
+                    "DOMAIN_DECLARATION", "DOT", "EQUALS", "FIELD_ACCESSOR", 
+                    "FIELD_DECLARATION", "GT", "GTE", "IDENTIFIER", "INC", 
+                    "INITIAL_BODY", "INITIAL_DECLARATION", "INTEGER", "INTEGERLITERAL", 
+                    "LBRACE", "LBRACK", "LINE_COMMENT", "LOWERCASE", "LPAREN", 
+                    "LT", "LTE", "MEMBER_DECLARATION", "MINUS", "MOD", "NONZERODIGIT", 
+                    "NOT_EQUALS", "OR", "PLUS", "PROGRAM", "QUESTION", "RANGEINTEGERLITERAL", 
                     "RBRACE", "RBRACK", "RPAREN", "SEMI", "SET", "SIGN", 
                     "START", "TIMES", "TYPE_DECLARATION", "UPPERCASE", "VARIABLE", 
                     "VARIABLE_DECLARATION", "VARIABLE_DECLARATOR", "VARIABLE_TYPE", 
                     "WS", "YARPL_LETTER", "YARPL_LETTERORDIGIT", "'and'", 
-                    "'class'", "'const'", "'domain'", "'initial'", "'integer'", 
-                    "'mod'", "'new'", "'or'", "'var'" )
+                    "'class'", "'const'", "'constraint'", "'domain'", "'initial'", 
+                    "'integer'", "'mod'", "'new'", "'or'", "'var'" )
 
 
   end
@@ -126,14 +127,15 @@ module Yarpl
                      :domainBodyDeclaration, :initialDeclaration, :initialBody, 
                      :initialBodyDeclaration, :typeDeclaration, :classDeclaration, 
                      :classBody, :classBodyDeclaration, :memberDeclaration, 
-                     :fieldDeclaration, :variableDeclarators, :variableDeclarator, 
-                     :variableDeclaratorId, :variableInitializer, :localVariableDeclaration, 
-                     :statement, :expression, :relationalExpression, :addingExpression, 
-                     :multiplyingExpression, :signExpression, :primeExpression, 
-                     :expressionList, :declaration, :set, :setDeclaration, 
-                     :primary, :creator, :createdName, :classCreatorRest, 
-                     :arguments, :argumentList, :argument, :literal, :type, 
-                     :structType, :primitiveType, :variableType ].freeze
+                     :fieldDeclaration, :fieldAccessor, :variableDeclarators, 
+                     :variableDeclarator, :variableDeclaratorId, :variableInitializer, 
+                     :localVariableDeclaration, :constraintDeclaration, 
+                     :constraintBody, :expression, :relationalExpression, 
+                     :addingExpression, :multiplyingExpression, :signExpression, 
+                     :primeExpression, :expressionList, :declaration, :set, 
+                     :setDeclaration, :primary, :creator, :createdName, 
+                     :classCreatorRest, :arguments, :argumentList, :argument, 
+                     :literal, :type, :structType, :primitiveType, :variableType ].freeze
 
     include TokenData
 
@@ -153,7 +155,7 @@ module Yarpl
     # parser rule start
     #
     # (in Yarpl.g)
-    # 32:1: start : ( program )* -> ^( START ( program )* ) ;
+    # 35:1: start : ( program )* -> ^( START ( program )* ) ;
     #
     def start
       # -> uncomment the next line to manually enable rule tracing
@@ -173,20 +175,20 @@ module Yarpl
 
       stream_program = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule program" )
       begin
-      # at line 33:7: ( program )*
-      # at line 33:7: ( program )*
+      # at line 36:7: ( program )*
+      # at line 36:7: ( program )*
       while true # decision 1
         alt_1 = 2
         look_1_0 = @input.peek( 1 )
 
-        if ( look_1_0.between?( T__73, T__74 ) )
+        if ( look_1_0.between?( T__77, T__78 ) )
           alt_1 = 1
 
         end
         case alt_1
         when 1
-          # at line 33:7: program
-          @state.following.push( TOKENS_FOLLOWING_program_IN_start_143 )
+          # at line 36:7: program
+          @state.following.push( TOKENS_FOLLOWING_program_IN_start_158 )
           program1 = program
           @state.following.pop
           stream_program.add( program1.tree )
@@ -208,12 +210,12 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 33:16: -> ^( START ( program )* )
-      # at line 33:19: ^( START ( program )* )
+      # 36:16: -> ^( START ( program )* )
+      # at line 36:19: ^( START ( program )* )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( @adaptor.create_from_type( START, "START" ), root_1 )
 
-      # at line 33:27: ( program )*
+      # at line 36:27: ( program )*
       while stream_program.has_next?
         @adaptor.add_child( root_1, stream_program.next_tree )
 
@@ -260,7 +262,7 @@ module Yarpl
     # parser rule program
     #
     # (in Yarpl.g)
-    # 36:1: program : ( domainDeclaration -> domainDeclaration | initialDeclaration -> initialDeclaration );
+    # 39:1: program : ( domainDeclaration -> domainDeclaration | initialDeclaration -> initialDeclaration );
     #
     def program
       # -> uncomment the next line to manually enable rule tracing
@@ -282,13 +284,13 @@ module Yarpl
       stream_domainDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule domainDeclaration" )
       stream_initialDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule initialDeclaration" )
       begin
-      # at line 37:5: ( domainDeclaration -> domainDeclaration | initialDeclaration -> initialDeclaration )
+      # at line 40:5: ( domainDeclaration -> domainDeclaration | initialDeclaration -> initialDeclaration )
       alt_2 = 2
       look_2_0 = @input.peek( 1 )
 
-      if ( look_2_0 == T__73 )
+      if ( look_2_0 == T__77 )
         alt_2 = 1
-      elsif ( look_2_0 == T__74 )
+      elsif ( look_2_0 == T__78 )
         alt_2 = 2
       else
         raise NoViableAlternative( "", 2, 0 )
@@ -296,8 +298,8 @@ module Yarpl
       end
       case alt_2
       when 1
-        # at line 37:7: domainDeclaration
-        @state.following.push( TOKENS_FOLLOWING_domainDeclaration_IN_program_190 )
+        # at line 40:7: domainDeclaration
+        @state.following.push( TOKENS_FOLLOWING_domainDeclaration_IN_program_205 )
         domainDeclaration2 = domainDeclaration
         @state.following.pop
         stream_domainDeclaration.add( domainDeclaration2.tree )
@@ -313,7 +315,7 @@ module Yarpl
         stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
         root_0 = @adaptor.create_flat_list
-        # 37:25: -> domainDeclaration
+        # 40:25: -> domainDeclaration
         @adaptor.add_child( root_0, stream_domainDeclaration.next_tree )
 
 
@@ -324,8 +326,8 @@ module Yarpl
 
 
       when 2
-        # at line 38:7: initialDeclaration
-        @state.following.push( TOKENS_FOLLOWING_initialDeclaration_IN_program_202 )
+        # at line 41:7: initialDeclaration
+        @state.following.push( TOKENS_FOLLOWING_initialDeclaration_IN_program_217 )
         initialDeclaration3 = initialDeclaration
         @state.following.pop
         stream_initialDeclaration.add( initialDeclaration3.tree )
@@ -341,7 +343,7 @@ module Yarpl
         stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
         root_0 = @adaptor.create_flat_list
-        # 38:26: -> initialDeclaration
+        # 41:26: -> initialDeclaration
         @adaptor.add_child( root_0, stream_initialDeclaration.next_tree )
 
 
@@ -382,7 +384,7 @@ module Yarpl
     # parser rule domainDeclaration
     #
     # (in Yarpl.g)
-    # 41:1: domainDeclaration : 'domain' domainBody -> ^( DOMAIN_DECLARATION domainBody ) ;
+    # 44:1: domainDeclaration : 'domain' domainBody -> ^( DOMAIN_DECLARATION domainBody ) ;
     #
     def domainDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -402,14 +404,14 @@ module Yarpl
 
 
       tree_for_string_literal4 = nil
-      stream_T__73 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__73" )
+      stream_T__77 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__77" )
       stream_domainBody = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule domainBody" )
       begin
-      # at line 42:7: 'domain' domainBody
-      string_literal4 = match( T__73, TOKENS_FOLLOWING_T__73_IN_domainDeclaration_220 )
-      stream_T__73.add( string_literal4 )
+      # at line 45:7: 'domain' domainBody
+      string_literal4 = match( T__77, TOKENS_FOLLOWING_T__77_IN_domainDeclaration_235 )
+      stream_T__77.add( string_literal4 )
 
-      @state.following.push( TOKENS_FOLLOWING_domainBody_IN_domainDeclaration_222 )
+      @state.following.push( TOKENS_FOLLOWING_domainBody_IN_domainDeclaration_237 )
       domainBody5 = domainBody
       @state.following.pop
       stream_domainBody.add( domainBody5.tree )
@@ -425,8 +427,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 42:27: -> ^( DOMAIN_DECLARATION domainBody )
-      # at line 42:30: ^( DOMAIN_DECLARATION domainBody )
+      # 45:27: -> ^( DOMAIN_DECLARATION domainBody )
+      # at line 45:30: ^( DOMAIN_DECLARATION domainBody )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( @adaptor.create_from_type( DOMAIN_DECLARATION, "DOMAIN_DECLARATION" ), root_1 )
 
@@ -471,7 +473,7 @@ module Yarpl
     # parser rule domainBody
     #
     # (in Yarpl.g)
-    # 45:1: domainBody : '{' ( domainBodyDeclaration )* '}' -> ( domainBodyDeclaration )* ;
+    # 48:1: domainBody : '{' ( domainBodyDeclaration )* '}' -> ( domainBodyDeclaration )* ;
     #
     def domainBody
       # -> uncomment the next line to manually enable rule tracing
@@ -497,23 +499,23 @@ module Yarpl
       stream_LBRACE = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token LBRACE" )
       stream_domainBodyDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule domainBodyDeclaration" )
       begin
-      # at line 46:7: '{' ( domainBodyDeclaration )* '}'
-      char_literal6 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_domainBody_247 )
+      # at line 49:7: '{' ( domainBodyDeclaration )* '}'
+      char_literal6 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_domainBody_262 )
       stream_LBRACE.add( char_literal6 )
 
-      # at line 46:11: ( domainBodyDeclaration )*
+      # at line 49:11: ( domainBodyDeclaration )*
       while true # decision 3
         alt_3 = 2
         look_3_0 = @input.peek( 1 )
 
-        if ( look_3_0 == T__71 )
+        if ( look_3_0 == T__74 )
           alt_3 = 1
 
         end
         case alt_3
         when 1
-          # at line 46:11: domainBodyDeclaration
-          @state.following.push( TOKENS_FOLLOWING_domainBodyDeclaration_IN_domainBody_249 )
+          # at line 49:11: domainBodyDeclaration
+          @state.following.push( TOKENS_FOLLOWING_domainBodyDeclaration_IN_domainBody_264 )
           domainBodyDeclaration7 = domainBodyDeclaration
           @state.following.pop
           stream_domainBodyDeclaration.add( domainBodyDeclaration7.tree )
@@ -524,7 +526,7 @@ module Yarpl
         end
       end # loop for decision 3
 
-      char_literal8 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_domainBody_252 )
+      char_literal8 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_domainBody_267 )
       stream_RBRACE.add( char_literal8 )
 
       # AST Rewrite
@@ -538,8 +540,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 46:38: -> ( domainBodyDeclaration )*
-      # at line 46:41: ( domainBodyDeclaration )*
+      # 49:38: -> ( domainBodyDeclaration )*
+      # at line 49:41: ( domainBodyDeclaration )*
       while stream_domainBodyDeclaration.has_next?
         @adaptor.add_child( root_0, stream_domainBodyDeclaration.next_tree )
 
@@ -584,7 +586,7 @@ module Yarpl
     # parser rule domainBodyDeclaration
     #
     # (in Yarpl.g)
-    # 49:1: domainBodyDeclaration : typeDeclaration -> typeDeclaration ;
+    # 52:1: domainBodyDeclaration : typeDeclaration -> typeDeclaration ;
     #
     def domainBodyDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -604,8 +606,8 @@ module Yarpl
 
       stream_typeDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule typeDeclaration" )
       begin
-      # at line 50:7: typeDeclaration
-      @state.following.push( TOKENS_FOLLOWING_typeDeclaration_IN_domainBodyDeclaration_274 )
+      # at line 53:7: typeDeclaration
+      @state.following.push( TOKENS_FOLLOWING_typeDeclaration_IN_domainBodyDeclaration_289 )
       typeDeclaration9 = typeDeclaration
       @state.following.pop
       stream_typeDeclaration.add( typeDeclaration9.tree )
@@ -621,7 +623,7 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 50:23: -> typeDeclaration
+      # 53:23: -> typeDeclaration
       @adaptor.add_child( root_0, stream_typeDeclaration.next_tree )
 
 
@@ -661,7 +663,7 @@ module Yarpl
     # parser rule initialDeclaration
     #
     # (in Yarpl.g)
-    # 53:1: initialDeclaration : 'initial' initialBody -> ^( INITIAL_DECLARATION initialBody ) ;
+    # 56:1: initialDeclaration : 'initial' initialBody -> ^( INITIAL_DECLARATION initialBody ) ;
     #
     def initialDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -681,14 +683,14 @@ module Yarpl
 
 
       tree_for_string_literal10 = nil
-      stream_T__74 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__74" )
+      stream_T__78 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__78" )
       stream_initialBody = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule initialBody" )
       begin
-      # at line 54:7: 'initial' initialBody
-      string_literal10 = match( T__74, TOKENS_FOLLOWING_T__74_IN_initialDeclaration_292 )
-      stream_T__74.add( string_literal10 )
+      # at line 57:7: 'initial' initialBody
+      string_literal10 = match( T__78, TOKENS_FOLLOWING_T__78_IN_initialDeclaration_307 )
+      stream_T__78.add( string_literal10 )
 
-      @state.following.push( TOKENS_FOLLOWING_initialBody_IN_initialDeclaration_294 )
+      @state.following.push( TOKENS_FOLLOWING_initialBody_IN_initialDeclaration_309 )
       initialBody11 = initialBody
       @state.following.pop
       stream_initialBody.add( initialBody11.tree )
@@ -704,8 +706,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 54:30: -> ^( INITIAL_DECLARATION initialBody )
-      # at line 54:33: ^( INITIAL_DECLARATION initialBody )
+      # 57:30: -> ^( INITIAL_DECLARATION initialBody )
+      # at line 57:33: ^( INITIAL_DECLARATION initialBody )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( @adaptor.create_from_type( INITIAL_DECLARATION, "INITIAL_DECLARATION" ), root_1 )
 
@@ -750,7 +752,7 @@ module Yarpl
     # parser rule initialBody
     #
     # (in Yarpl.g)
-    # 57:1: initialBody : '{' ( initialBodyDeclaration )* '}' -> ( initialBodyDeclaration )* ;
+    # 60:1: initialBody : '{' ( initialBodyDeclaration )* '}' -> ( initialBodyDeclaration )* ;
     #
     def initialBody
       # -> uncomment the next line to manually enable rule tracing
@@ -776,23 +778,23 @@ module Yarpl
       stream_LBRACE = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token LBRACE" )
       stream_initialBodyDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule initialBodyDeclaration" )
       begin
-      # at line 58:7: '{' ( initialBodyDeclaration )* '}'
-      char_literal12 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_initialBody_320 )
+      # at line 61:7: '{' ( initialBodyDeclaration )* '}'
+      char_literal12 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_initialBody_335 )
       stream_LBRACE.add( char_literal12 )
 
-      # at line 58:11: ( initialBodyDeclaration )*
+      # at line 61:11: ( initialBodyDeclaration )*
       while true # decision 4
         alt_4 = 2
         look_4_0 = @input.peek( 1 )
 
-        if ( look_4_0 == IDENTIFIER || look_4_0 == SEMI )
+        if ( look_4_0 == IDENTIFIER || look_4_0 == T__76 )
           alt_4 = 1
 
         end
         case alt_4
         when 1
-          # at line 58:11: initialBodyDeclaration
-          @state.following.push( TOKENS_FOLLOWING_initialBodyDeclaration_IN_initialBody_322 )
+          # at line 61:11: initialBodyDeclaration
+          @state.following.push( TOKENS_FOLLOWING_initialBodyDeclaration_IN_initialBody_337 )
           initialBodyDeclaration13 = initialBodyDeclaration
           @state.following.pop
           stream_initialBodyDeclaration.add( initialBodyDeclaration13.tree )
@@ -803,7 +805,7 @@ module Yarpl
         end
       end # loop for decision 4
 
-      char_literal14 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_initialBody_325 )
+      char_literal14 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_initialBody_340 )
       stream_RBRACE.add( char_literal14 )
 
       # AST Rewrite
@@ -817,8 +819,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 58:39: -> ( initialBodyDeclaration )*
-      # at line 58:42: ( initialBodyDeclaration )*
+      # 61:39: -> ( initialBodyDeclaration )*
+      # at line 61:42: ( initialBodyDeclaration )*
       while stream_initialBodyDeclaration.has_next?
         @adaptor.add_child( root_0, stream_initialBodyDeclaration.next_tree )
 
@@ -863,7 +865,7 @@ module Yarpl
     # parser rule initialBodyDeclaration
     #
     # (in Yarpl.g)
-    # 61:1: initialBodyDeclaration : statement ;
+    # 64:1: initialBodyDeclaration : ( localVariableDeclaration | constraintDeclaration );
     #
     def initialBodyDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -878,21 +880,48 @@ module Yarpl
 
       root_0 = nil
 
-      statement15 = nil
+      localVariableDeclaration15 = nil
+      constraintDeclaration16 = nil
 
 
 
       begin
-      root_0 = @adaptor.create_flat_list
+      # at line 65:5: ( localVariableDeclaration | constraintDeclaration )
+      alt_5 = 2
+      look_5_0 = @input.peek( 1 )
+
+      if ( look_5_0 == IDENTIFIER )
+        alt_5 = 1
+      elsif ( look_5_0 == T__76 )
+        alt_5 = 2
+      else
+        raise NoViableAlternative( "", 5, 0 )
+
+      end
+      case alt_5
+      when 1
+        root_0 = @adaptor.create_flat_list
 
 
-      # at line 62:7: statement
-      @state.following.push( TOKENS_FOLLOWING_statement_IN_initialBodyDeclaration_347 )
-      statement15 = statement
-      @state.following.pop
-      @adaptor.add_child( root_0, statement15.tree )
+        # at line 65:7: localVariableDeclaration
+        @state.following.push( TOKENS_FOLLOWING_localVariableDeclaration_IN_initialBodyDeclaration_362 )
+        localVariableDeclaration15 = localVariableDeclaration
+        @state.following.pop
+        @adaptor.add_child( root_0, localVariableDeclaration15.tree )
 
 
+      when 2
+        root_0 = @adaptor.create_flat_list
+
+
+        # at line 66:7: constraintDeclaration
+        @state.following.push( TOKENS_FOLLOWING_constraintDeclaration_IN_initialBodyDeclaration_370 )
+        constraintDeclaration16 = constraintDeclaration
+        @state.following.pop
+        @adaptor.add_child( root_0, constraintDeclaration16.tree )
+
+
+      end
       # - - - - - - - rule clean up - - - - - - - -
       return_value.stop = @input.look( -1 )
 
@@ -923,7 +952,7 @@ module Yarpl
     # parser rule typeDeclaration
     #
     # (in Yarpl.g)
-    # 65:1: typeDeclaration : classDeclaration -> ^( CLASS_DECLARATION classDeclaration ) ;
+    # 69:1: typeDeclaration : classDeclaration -> ^( CLASS_DECLARATION classDeclaration ) ;
     #
     def typeDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -938,16 +967,16 @@ module Yarpl
 
       root_0 = nil
 
-      classDeclaration16 = nil
+      classDeclaration17 = nil
 
 
       stream_classDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule classDeclaration" )
       begin
-      # at line 66:7: classDeclaration
-      @state.following.push( TOKENS_FOLLOWING_classDeclaration_IN_typeDeclaration_364 )
-      classDeclaration16 = classDeclaration
+      # at line 70:7: classDeclaration
+      @state.following.push( TOKENS_FOLLOWING_classDeclaration_IN_typeDeclaration_387 )
+      classDeclaration17 = classDeclaration
       @state.following.pop
-      stream_classDeclaration.add( classDeclaration16.tree )
+      stream_classDeclaration.add( classDeclaration17.tree )
 
       # AST Rewrite
       # elements: classDeclaration
@@ -960,8 +989,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 66:24: -> ^( CLASS_DECLARATION classDeclaration )
-      # at line 66:27: ^( CLASS_DECLARATION classDeclaration )
+      # 70:24: -> ^( CLASS_DECLARATION classDeclaration )
+      # at line 70:27: ^( CLASS_DECLARATION classDeclaration )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( @adaptor.create_from_type( CLASS_DECLARATION, "CLASS_DECLARATION" ), root_1 )
 
@@ -1006,7 +1035,7 @@ module Yarpl
     # parser rule classDeclaration
     #
     # (in Yarpl.g)
-    # 69:1: classDeclaration : 'class' IDENTIFIER classBody -> ^( IDENTIFIER classBody ) ;
+    # 73:1: classDeclaration : 'class' IDENTIFIER classBody -> ^( IDENTIFIER classBody ) ;
     #
     def classDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -1021,28 +1050,28 @@ module Yarpl
 
       root_0 = nil
 
-      string_literal17 = nil
-      __IDENTIFIER18__ = nil
-      classBody19 = nil
+      string_literal18 = nil
+      __IDENTIFIER19__ = nil
+      classBody20 = nil
 
 
-      tree_for_string_literal17 = nil
-      tree_for_IDENTIFIER18 = nil
-      stream_T__71 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__71" )
+      tree_for_string_literal18 = nil
+      tree_for_IDENTIFIER19 = nil
+      stream_T__74 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__74" )
       stream_IDENTIFIER = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token IDENTIFIER" )
       stream_classBody = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule classBody" )
       begin
-      # at line 70:7: 'class' IDENTIFIER classBody
-      string_literal17 = match( T__71, TOKENS_FOLLOWING_T__71_IN_classDeclaration_389 )
-      stream_T__71.add( string_literal17 )
+      # at line 74:7: 'class' IDENTIFIER classBody
+      string_literal18 = match( T__74, TOKENS_FOLLOWING_T__74_IN_classDeclaration_412 )
+      stream_T__74.add( string_literal18 )
 
-      __IDENTIFIER18__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_classDeclaration_391 )
-      stream_IDENTIFIER.add( __IDENTIFIER18__ )
+      __IDENTIFIER19__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_classDeclaration_414 )
+      stream_IDENTIFIER.add( __IDENTIFIER19__ )
 
-      @state.following.push( TOKENS_FOLLOWING_classBody_IN_classDeclaration_393 )
-      classBody19 = classBody
+      @state.following.push( TOKENS_FOLLOWING_classBody_IN_classDeclaration_416 )
+      classBody20 = classBody
       @state.following.pop
-      stream_classBody.add( classBody19.tree )
+      stream_classBody.add( classBody20.tree )
 
       # AST Rewrite
       # elements: classBody, IDENTIFIER
@@ -1055,8 +1084,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 70:36: -> ^( IDENTIFIER classBody )
-      # at line 70:39: ^( IDENTIFIER classBody )
+      # 74:36: -> ^( IDENTIFIER classBody )
+      # at line 74:39: ^( IDENTIFIER classBody )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( stream_IDENTIFIER.next_node, root_1 )
 
@@ -1101,7 +1130,7 @@ module Yarpl
     # parser rule classBody
     #
     # (in Yarpl.g)
-    # 73:1: classBody : '{' ( classBodyDeclaration )* '}' -> ( classBodyDeclaration )* ;
+    # 77:1: classBody : '{' ( classBodyDeclaration )* '}' -> ( classBodyDeclaration )* ;
     #
     def classBody
       # -> uncomment the next line to manually enable rule tracing
@@ -1116,46 +1145,46 @@ module Yarpl
 
       root_0 = nil
 
-      char_literal20 = nil
-      char_literal22 = nil
-      classBodyDeclaration21 = nil
+      char_literal21 = nil
+      char_literal23 = nil
+      classBodyDeclaration22 = nil
 
 
-      tree_for_char_literal20 = nil
-      tree_for_char_literal22 = nil
+      tree_for_char_literal21 = nil
+      tree_for_char_literal23 = nil
       stream_RBRACE = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token RBRACE" )
       stream_LBRACE = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token LBRACE" )
       stream_classBodyDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule classBodyDeclaration" )
       begin
-      # at line 74:7: '{' ( classBodyDeclaration )* '}'
-      char_literal20 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_classBody_415 )
-      stream_LBRACE.add( char_literal20 )
+      # at line 78:7: '{' ( classBodyDeclaration )* '}'
+      char_literal21 = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_classBody_438 )
+      stream_LBRACE.add( char_literal21 )
 
-      # at line 74:11: ( classBodyDeclaration )*
-      while true # decision 5
-        alt_5 = 2
-        look_5_0 = @input.peek( 1 )
+      # at line 78:11: ( classBodyDeclaration )*
+      while true # decision 6
+        alt_6 = 2
+        look_6_0 = @input.peek( 1 )
 
-        if ( look_5_0 == T__72 || look_5_0 == T__79 )
-          alt_5 = 1
+        if ( look_6_0 == T__75 || look_6_0 == T__83 )
+          alt_6 = 1
 
         end
-        case alt_5
+        case alt_6
         when 1
-          # at line 74:11: classBodyDeclaration
-          @state.following.push( TOKENS_FOLLOWING_classBodyDeclaration_IN_classBody_417 )
-          classBodyDeclaration21 = classBodyDeclaration
+          # at line 78:11: classBodyDeclaration
+          @state.following.push( TOKENS_FOLLOWING_classBodyDeclaration_IN_classBody_440 )
+          classBodyDeclaration22 = classBodyDeclaration
           @state.following.pop
-          stream_classBodyDeclaration.add( classBodyDeclaration21.tree )
+          stream_classBodyDeclaration.add( classBodyDeclaration22.tree )
 
 
         else
-          break # out of loop for decision 5
+          break # out of loop for decision 6
         end
-      end # loop for decision 5
+      end # loop for decision 6
 
-      char_literal22 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_classBody_420 )
-      stream_RBRACE.add( char_literal22 )
+      char_literal23 = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_classBody_443 )
+      stream_RBRACE.add( char_literal23 )
 
       # AST Rewrite
       # elements: classBodyDeclaration
@@ -1168,8 +1197,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 74:37: -> ( classBodyDeclaration )*
-      # at line 74:40: ( classBodyDeclaration )*
+      # 78:37: -> ( classBodyDeclaration )*
+      # at line 78:40: ( classBodyDeclaration )*
       while stream_classBodyDeclaration.has_next?
         @adaptor.add_child( root_0, stream_classBodyDeclaration.next_tree )
 
@@ -1214,7 +1243,7 @@ module Yarpl
     # parser rule classBodyDeclaration
     #
     # (in Yarpl.g)
-    # 77:1: classBodyDeclaration : memberDeclaration -> ^( memberDeclaration ) ;
+    # 81:1: classBodyDeclaration : memberDeclaration -> ^( memberDeclaration ) ;
     #
     def classBodyDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -1229,16 +1258,16 @@ module Yarpl
 
       root_0 = nil
 
-      memberDeclaration23 = nil
+      memberDeclaration24 = nil
 
 
       stream_memberDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule memberDeclaration" )
       begin
-      # at line 78:7: memberDeclaration
-      @state.following.push( TOKENS_FOLLOWING_memberDeclaration_IN_classBodyDeclaration_439 )
-      memberDeclaration23 = memberDeclaration
+      # at line 82:7: memberDeclaration
+      @state.following.push( TOKENS_FOLLOWING_memberDeclaration_IN_classBodyDeclaration_462 )
+      memberDeclaration24 = memberDeclaration
       @state.following.pop
-      stream_memberDeclaration.add( memberDeclaration23.tree )
+      stream_memberDeclaration.add( memberDeclaration24.tree )
 
       # AST Rewrite
       # elements: memberDeclaration
@@ -1251,8 +1280,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 78:25: -> ^( memberDeclaration )
-      # at line 78:28: ^( memberDeclaration )
+      # 82:25: -> ^( memberDeclaration )
+      # at line 82:28: ^( memberDeclaration )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( stream_memberDeclaration.next_node, root_1 )
 
@@ -1295,7 +1324,7 @@ module Yarpl
     # parser rule memberDeclaration
     #
     # (in Yarpl.g)
-    # 81:1: memberDeclaration : fieldDeclaration -> fieldDeclaration ;
+    # 85:1: memberDeclaration : fieldDeclaration -> fieldDeclaration ;
     #
     def memberDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -1310,16 +1339,16 @@ module Yarpl
 
       root_0 = nil
 
-      fieldDeclaration24 = nil
+      fieldDeclaration25 = nil
 
 
       stream_fieldDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule fieldDeclaration" )
       begin
-      # at line 82:7: fieldDeclaration
-      @state.following.push( TOKENS_FOLLOWING_fieldDeclaration_IN_memberDeclaration_459 )
-      fieldDeclaration24 = fieldDeclaration
+      # at line 86:7: fieldDeclaration
+      @state.following.push( TOKENS_FOLLOWING_fieldDeclaration_IN_memberDeclaration_482 )
+      fieldDeclaration25 = fieldDeclaration
       @state.following.pop
-      stream_fieldDeclaration.add( fieldDeclaration24.tree )
+      stream_fieldDeclaration.add( fieldDeclaration25.tree )
 
       # AST Rewrite
       # elements: fieldDeclaration
@@ -1332,7 +1361,7 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 82:24: -> fieldDeclaration
+      # 86:24: -> fieldDeclaration
       @adaptor.add_child( root_0, stream_fieldDeclaration.next_tree )
 
 
@@ -1372,7 +1401,7 @@ module Yarpl
     # parser rule fieldDeclaration
     #
     # (in Yarpl.g)
-    # 85:1: fieldDeclaration : variableType type variableDeclaratorId ';' -> ^( FIELD_DECLARATION variableType type variableDeclaratorId ) ;
+    # 89:1: fieldDeclaration : variableType type variableDeclaratorId ';' -> ^( FIELD_DECLARATION variableType type variableDeclaratorId ) ;
     #
     def fieldDeclaration
       # -> uncomment the next line to manually enable rule tracing
@@ -1387,39 +1416,39 @@ module Yarpl
 
       root_0 = nil
 
-      char_literal28 = nil
-      variableType25 = nil
-      type26 = nil
-      variableDeclaratorId27 = nil
+      char_literal29 = nil
+      variableType26 = nil
+      type27 = nil
+      variableDeclaratorId28 = nil
 
 
-      tree_for_char_literal28 = nil
+      tree_for_char_literal29 = nil
       stream_SEMI = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token SEMI" )
       stream_variableType = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule variableType" )
       stream_variableDeclaratorId = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule variableDeclaratorId" )
       stream_type = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule type" )
       begin
-      # at line 86:7: variableType type variableDeclaratorId ';'
-      @state.following.push( TOKENS_FOLLOWING_variableType_IN_fieldDeclaration_481 )
-      variableType25 = variableType
+      # at line 90:7: variableType type variableDeclaratorId ';'
+      @state.following.push( TOKENS_FOLLOWING_variableType_IN_fieldDeclaration_504 )
+      variableType26 = variableType
       @state.following.pop
-      stream_variableType.add( variableType25.tree )
+      stream_variableType.add( variableType26.tree )
 
-      @state.following.push( TOKENS_FOLLOWING_type_IN_fieldDeclaration_483 )
-      type26 = type
+      @state.following.push( TOKENS_FOLLOWING_type_IN_fieldDeclaration_506 )
+      type27 = type
       @state.following.pop
-      stream_type.add( type26.tree )
+      stream_type.add( type27.tree )
 
-      @state.following.push( TOKENS_FOLLOWING_variableDeclaratorId_IN_fieldDeclaration_485 )
-      variableDeclaratorId27 = variableDeclaratorId
+      @state.following.push( TOKENS_FOLLOWING_variableDeclaratorId_IN_fieldDeclaration_508 )
+      variableDeclaratorId28 = variableDeclaratorId
       @state.following.pop
-      stream_variableDeclaratorId.add( variableDeclaratorId27.tree )
+      stream_variableDeclaratorId.add( variableDeclaratorId28.tree )
 
-      char_literal28 = match( SEMI, TOKENS_FOLLOWING_SEMI_IN_fieldDeclaration_487 )
-      stream_SEMI.add( char_literal28 )
+      char_literal29 = match( SEMI, TOKENS_FOLLOWING_SEMI_IN_fieldDeclaration_510 )
+      stream_SEMI.add( char_literal29 )
 
       # AST Rewrite
-      # elements: variableType, variableDeclaratorId, type
+      # elements: variableDeclaratorId, variableType, type
       # token labels: 
       # rule labels: return_value
       # token list labels: 
@@ -1429,8 +1458,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 86:50: -> ^( FIELD_DECLARATION variableType type variableDeclaratorId )
-      # at line 86:53: ^( FIELD_DECLARATION variableType type variableDeclaratorId )
+      # 90:50: -> ^( FIELD_DECLARATION variableType type variableDeclaratorId )
+      # at line 90:53: ^( FIELD_DECLARATION variableType type variableDeclaratorId )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( @adaptor.create_from_type( FIELD_DECLARATION, "FIELD_DECLARATION" ), root_1 )
 
@@ -1473,20 +1502,20 @@ module Yarpl
       return return_value
     end
 
-    VariableDeclaratorsReturnValue = define_return_scope
+    FieldAccessorReturnValue = define_return_scope
 
     #
-    # parser rule variableDeclarators
+    # parser rule fieldAccessor
     #
     # (in Yarpl.g)
-    # 89:1: variableDeclarators : variableDeclarator ( ',' variableDeclarator )* ;
+    # 93:1: fieldAccessor : IDENTIFIER '.' IDENTIFIER -> ^( FIELD_ACCESSOR IDENTIFIER IDENTIFIER ) ;
     #
-    def variableDeclarators
+    def fieldAccessor
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 15 )
 
 
-      return_value = VariableDeclaratorsReturnValue.new
+      return_value = FieldAccessorReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -1494,50 +1523,55 @@ module Yarpl
 
       root_0 = nil
 
-      char_literal30 = nil
-      variableDeclarator29 = nil
-      variableDeclarator31 = nil
+      __IDENTIFIER30__ = nil
+      char_literal31 = nil
+      __IDENTIFIER32__ = nil
 
 
-      tree_for_char_literal30 = nil
+      tree_for_IDENTIFIER30 = nil
+      tree_for_char_literal31 = nil
+      tree_for_IDENTIFIER32 = nil
+      stream_DOT = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token DOT" )
+      stream_IDENTIFIER = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token IDENTIFIER" )
 
       begin
+      # at line 94:7: IDENTIFIER '.' IDENTIFIER
+      __IDENTIFIER30__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_fieldAccessor_539 )
+      stream_IDENTIFIER.add( __IDENTIFIER30__ )
+
+      char_literal31 = match( DOT, TOKENS_FOLLOWING_DOT_IN_fieldAccessor_541 )
+      stream_DOT.add( char_literal31 )
+
+      __IDENTIFIER32__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_fieldAccessor_543 )
+      stream_IDENTIFIER.add( __IDENTIFIER32__ )
+
+      # AST Rewrite
+      # elements: IDENTIFIER, IDENTIFIER
+      # token labels: 
+      # rule labels: return_value
+      # token list labels: 
+      # rule list labels: 
+      # wildcard labels: 
+      return_value.tree = root_0
+      stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
+
       root_0 = @adaptor.create_flat_list
+      # 94:33: -> ^( FIELD_ACCESSOR IDENTIFIER IDENTIFIER )
+      # at line 94:36: ^( FIELD_ACCESSOR IDENTIFIER IDENTIFIER )
+      root_1 = @adaptor.create_flat_list
+      root_1 = @adaptor.become_root( @adaptor.create_from_type( FIELD_ACCESSOR, "FIELD_ACCESSOR" ), root_1 )
+
+      @adaptor.add_child( root_1, stream_IDENTIFIER.next_node )
+
+      @adaptor.add_child( root_1, stream_IDENTIFIER.next_node )
+
+      @adaptor.add_child( root_0, root_1 )
 
 
-      # at line 90:7: variableDeclarator ( ',' variableDeclarator )*
-      @state.following.push( TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_516 )
-      variableDeclarator29 = variableDeclarator
-      @state.following.pop
-      @adaptor.add_child( root_0, variableDeclarator29.tree )
-
-      # at line 90:26: ( ',' variableDeclarator )*
-      while true # decision 6
-        alt_6 = 2
-        look_6_0 = @input.peek( 1 )
-
-        if ( look_6_0 == COMMA )
-          alt_6 = 1
-
-        end
-        case alt_6
-        when 1
-          # at line 90:27: ',' variableDeclarator
-          char_literal30 = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_variableDeclarators_519 )
-          tree_for_char_literal30 = @adaptor.create_with_payload( char_literal30 )
-          @adaptor.add_child( root_0, tree_for_char_literal30 )
 
 
-          @state.following.push( TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_521 )
-          variableDeclarator31 = variableDeclarator
-          @state.following.pop
-          @adaptor.add_child( root_0, variableDeclarator31.tree )
+      return_value.tree = root_0
 
-
-        else
-          break # out of loop for decision 6
-        end
-      end # loop for decision 6
 
 
       # - - - - - - - rule clean up - - - - - - - -
@@ -1564,17 +1598,108 @@ module Yarpl
       return return_value
     end
 
+    VariableDeclaratorsReturnValue = define_return_scope
+
+    #
+    # parser rule variableDeclarators
+    #
+    # (in Yarpl.g)
+    # 97:1: variableDeclarators : variableDeclarator ( ',' variableDeclarator )* ;
+    #
+    def variableDeclarators
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 16 )
+
+
+      return_value = VariableDeclaratorsReturnValue.new
+
+      # $rule.start = the first token seen before matching
+      return_value.start = @input.look
+
+
+      root_0 = nil
+
+      char_literal34 = nil
+      variableDeclarator33 = nil
+      variableDeclarator35 = nil
+
+
+      tree_for_char_literal34 = nil
+
+      begin
+      root_0 = @adaptor.create_flat_list
+
+
+      # at line 98:7: variableDeclarator ( ',' variableDeclarator )*
+      @state.following.push( TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_570 )
+      variableDeclarator33 = variableDeclarator
+      @state.following.pop
+      @adaptor.add_child( root_0, variableDeclarator33.tree )
+
+      # at line 98:26: ( ',' variableDeclarator )*
+      while true # decision 7
+        alt_7 = 2
+        look_7_0 = @input.peek( 1 )
+
+        if ( look_7_0 == COMMA )
+          alt_7 = 1
+
+        end
+        case alt_7
+        when 1
+          # at line 98:27: ',' variableDeclarator
+          char_literal34 = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_variableDeclarators_573 )
+          tree_for_char_literal34 = @adaptor.create_with_payload( char_literal34 )
+          @adaptor.add_child( root_0, tree_for_char_literal34 )
+
+
+          @state.following.push( TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_575 )
+          variableDeclarator35 = variableDeclarator
+          @state.following.pop
+          @adaptor.add_child( root_0, variableDeclarator35.tree )
+
+
+        else
+          break # out of loop for decision 7
+        end
+      end # loop for decision 7
+
+
+      # - - - - - - - rule clean up - - - - - - - -
+      return_value.stop = @input.look( -1 )
+
+
+      return_value.tree = @adaptor.rule_post_processing( root_0 )
+      @adaptor.set_token_boundaries( return_value.tree, return_value.start, return_value.stop )
+
+
+      rescue ANTLR3::Error::RecognitionError => re
+        report_error(re)
+        recover(re)
+        return_value.tree = @adaptor.create_error_node( @input, return_value.start, @input.look(-1), re )
+
+
+      ensure
+        # -> uncomment the next line to manually enable rule tracing
+        # trace_out( __method__, 16 )
+
+
+      end
+
+      return return_value
+    end
+
     VariableDeclaratorReturnValue = define_return_scope
 
     #
     # parser rule variableDeclarator
     #
     # (in Yarpl.g)
-    # 93:1: variableDeclarator : variableDeclaratorId '=' variableInitializer -> ^( VARIABLE_DECLARATOR variableDeclaratorId variableInitializer ) ;
+    # 101:1: variableDeclarator : variableDeclaratorId '=' variableInitializer -> ^( VARIABLE_DECLARATOR variableDeclaratorId variableInitializer ) ;
     #
     def variableDeclarator
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 16 )
+      # trace_in( __method__, 17 )
 
 
       return_value = VariableDeclaratorReturnValue.new
@@ -1585,32 +1710,32 @@ module Yarpl
 
       root_0 = nil
 
-      char_literal33 = nil
-      variableDeclaratorId32 = nil
-      variableInitializer34 = nil
+      char_literal37 = nil
+      variableDeclaratorId36 = nil
+      variableInitializer38 = nil
 
 
-      tree_for_char_literal33 = nil
+      tree_for_char_literal37 = nil
       stream_ASSIGN = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token ASSIGN" )
       stream_variableDeclaratorId = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule variableDeclaratorId" )
       stream_variableInitializer = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule variableInitializer" )
       begin
-      # at line 94:7: variableDeclaratorId '=' variableInitializer
-      @state.following.push( TOKENS_FOLLOWING_variableDeclaratorId_IN_variableDeclarator_540 )
-      variableDeclaratorId32 = variableDeclaratorId
+      # at line 102:7: variableDeclaratorId '=' variableInitializer
+      @state.following.push( TOKENS_FOLLOWING_variableDeclaratorId_IN_variableDeclarator_594 )
+      variableDeclaratorId36 = variableDeclaratorId
       @state.following.pop
-      stream_variableDeclaratorId.add( variableDeclaratorId32.tree )
+      stream_variableDeclaratorId.add( variableDeclaratorId36.tree )
 
-      char_literal33 = match( ASSIGN, TOKENS_FOLLOWING_ASSIGN_IN_variableDeclarator_542 )
-      stream_ASSIGN.add( char_literal33 )
+      char_literal37 = match( ASSIGN, TOKENS_FOLLOWING_ASSIGN_IN_variableDeclarator_596 )
+      stream_ASSIGN.add( char_literal37 )
 
-      @state.following.push( TOKENS_FOLLOWING_variableInitializer_IN_variableDeclarator_544 )
-      variableInitializer34 = variableInitializer
+      @state.following.push( TOKENS_FOLLOWING_variableInitializer_IN_variableDeclarator_598 )
+      variableInitializer38 = variableInitializer
       @state.following.pop
-      stream_variableInitializer.add( variableInitializer34.tree )
+      stream_variableInitializer.add( variableInitializer38.tree )
 
       # AST Rewrite
-      # elements: variableDeclaratorId, variableInitializer
+      # elements: variableInitializer, variableDeclaratorId
       # token labels: 
       # rule labels: return_value
       # token list labels: 
@@ -1620,8 +1745,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 94:52: -> ^( VARIABLE_DECLARATOR variableDeclaratorId variableInitializer )
-      # at line 94:55: ^( VARIABLE_DECLARATOR variableDeclaratorId variableInitializer )
+      # 102:52: -> ^( VARIABLE_DECLARATOR variableDeclaratorId variableInitializer )
+      # at line 102:55: ^( VARIABLE_DECLARATOR variableDeclaratorId variableInitializer )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( @adaptor.create_from_type( VARIABLE_DECLARATOR, "VARIABLE_DECLARATOR" ), root_1 )
 
@@ -1654,7 +1779,7 @@ module Yarpl
 
       ensure
         # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 16 )
+        # trace_out( __method__, 17 )
 
 
       end
@@ -1668,11 +1793,11 @@ module Yarpl
     # parser rule variableDeclaratorId
     #
     # (in Yarpl.g)
-    # 97:1: variableDeclaratorId : IDENTIFIER ;
+    # 105:1: variableDeclaratorId : IDENTIFIER ;
     #
     def variableDeclaratorId
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 17 )
+      # trace_in( __method__, 18 )
 
 
       return_value = VariableDeclaratorIdReturnValue.new
@@ -1683,102 +1808,19 @@ module Yarpl
 
       root_0 = nil
 
-      __IDENTIFIER35__ = nil
+      __IDENTIFIER39__ = nil
 
 
-      tree_for_IDENTIFIER35 = nil
+      tree_for_IDENTIFIER39 = nil
 
       begin
       root_0 = @adaptor.create_flat_list
 
 
-      # at line 98:7: IDENTIFIER
-      __IDENTIFIER35__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_variableDeclaratorId_571 )
-      tree_for_IDENTIFIER35 = @adaptor.create_with_payload( __IDENTIFIER35__ )
-      @adaptor.add_child( root_0, tree_for_IDENTIFIER35 )
-
-
-
-      # - - - - - - - rule clean up - - - - - - - -
-      return_value.stop = @input.look( -1 )
-
-
-      return_value.tree = @adaptor.rule_post_processing( root_0 )
-      @adaptor.set_token_boundaries( return_value.tree, return_value.start, return_value.stop )
-
-
-      rescue ANTLR3::Error::RecognitionError => re
-        report_error(re)
-        recover(re)
-        return_value.tree = @adaptor.create_error_node( @input, return_value.start, @input.look(-1), re )
-
-
-      ensure
-        # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 17 )
-
-
-      end
-
-      return return_value
-    end
-
-    VariableInitializerReturnValue = define_return_scope
-
-    #
-    # parser rule variableInitializer
-    #
-    # (in Yarpl.g)
-    # 101:1: variableInitializer : 'new' creator -> creator ;
-    #
-    def variableInitializer
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 18 )
-
-
-      return_value = VariableInitializerReturnValue.new
-
-      # $rule.start = the first token seen before matching
-      return_value.start = @input.look
-
-
-      root_0 = nil
-
-      string_literal36 = nil
-      creator37 = nil
-
-
-      tree_for_string_literal36 = nil
-      stream_T__77 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__77" )
-      stream_creator = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule creator" )
-      begin
-      # at line 102:7: 'new' creator
-      string_literal36 = match( T__77, TOKENS_FOLLOWING_T__77_IN_variableInitializer_588 )
-      stream_T__77.add( string_literal36 )
-
-      @state.following.push( TOKENS_FOLLOWING_creator_IN_variableInitializer_590 )
-      creator37 = creator
-      @state.following.pop
-      stream_creator.add( creator37.tree )
-
-      # AST Rewrite
-      # elements: creator
-      # token labels: 
-      # rule labels: return_value
-      # token list labels: 
-      # rule list labels: 
-      # wildcard labels: 
-      return_value.tree = root_0
-      stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
-
-      root_0 = @adaptor.create_flat_list
-      # 102:21: -> creator
-      @adaptor.add_child( root_0, stream_creator.next_tree )
-
-
-
-
-      return_value.tree = root_0
+      # at line 106:7: IDENTIFIER
+      __IDENTIFIER39__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_variableDeclaratorId_625 )
+      tree_for_IDENTIFIER39 = @adaptor.create_with_payload( __IDENTIFIER39__ )
+      @adaptor.add_child( root_0, tree_for_IDENTIFIER39 )
 
 
 
@@ -1806,20 +1848,20 @@ module Yarpl
       return return_value
     end
 
-    LocalVariableDeclarationReturnValue = define_return_scope
+    VariableInitializerReturnValue = define_return_scope
 
     #
-    # parser rule localVariableDeclaration
+    # parser rule variableInitializer
     #
     # (in Yarpl.g)
-    # 105:1: localVariableDeclaration : variableDeclarators ';' -> variableDeclarators ;
+    # 109:1: variableInitializer : 'new' creator -> creator ;
     #
-    def localVariableDeclaration
+    def variableInitializer
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 19 )
 
 
-      return_value = LocalVariableDeclarationReturnValue.new
+      return_value = VariableInitializerReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -1827,25 +1869,25 @@ module Yarpl
 
       root_0 = nil
 
-      char_literal39 = nil
-      variableDeclarators38 = nil
+      string_literal40 = nil
+      creator41 = nil
 
 
-      tree_for_char_literal39 = nil
-      stream_SEMI = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token SEMI" )
-      stream_variableDeclarators = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule variableDeclarators" )
+      tree_for_string_literal40 = nil
+      stream_T__81 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__81" )
+      stream_creator = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule creator" )
       begin
-      # at line 106:7: variableDeclarators ';'
-      @state.following.push( TOKENS_FOLLOWING_variableDeclarators_IN_localVariableDeclaration_611 )
-      variableDeclarators38 = variableDeclarators
-      @state.following.pop
-      stream_variableDeclarators.add( variableDeclarators38.tree )
+      # at line 110:7: 'new' creator
+      string_literal40 = match( T__81, TOKENS_FOLLOWING_T__81_IN_variableInitializer_642 )
+      stream_T__81.add( string_literal40 )
 
-      char_literal39 = match( SEMI, TOKENS_FOLLOWING_SEMI_IN_localVariableDeclaration_613 )
-      stream_SEMI.add( char_literal39 )
+      @state.following.push( TOKENS_FOLLOWING_creator_IN_variableInitializer_644 )
+      creator41 = creator
+      @state.following.pop
+      stream_creator.add( creator41.tree )
 
       # AST Rewrite
-      # elements: variableDeclarators
+      # elements: creator
       # token labels: 
       # rule labels: return_value
       # token list labels: 
@@ -1855,8 +1897,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 106:31: -> variableDeclarators
-      @adaptor.add_child( root_0, stream_variableDeclarators.next_tree )
+      # 110:21: -> creator
+      @adaptor.add_child( root_0, stream_creator.next_tree )
 
 
 
@@ -1889,20 +1931,20 @@ module Yarpl
       return return_value
     end
 
-    StatementReturnValue = define_return_scope
+    LocalVariableDeclarationReturnValue = define_return_scope
 
     #
-    # parser rule statement
+    # parser rule localVariableDeclaration
     #
     # (in Yarpl.g)
-    # 110:1: statement : ( localVariableDeclaration | ';' );
+    # 113:1: localVariableDeclaration : variableDeclarators ';' -> variableDeclarators ;
     #
-    def statement
+    def localVariableDeclaration
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 20 )
 
 
-      return_value = StatementReturnValue.new
+      return_value = LocalVariableDeclarationReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -1910,49 +1952,44 @@ module Yarpl
 
       root_0 = nil
 
-      char_literal41 = nil
-      localVariableDeclaration40 = nil
+      char_literal43 = nil
+      variableDeclarators42 = nil
 
 
-      tree_for_char_literal41 = nil
-
+      tree_for_char_literal43 = nil
+      stream_SEMI = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token SEMI" )
+      stream_variableDeclarators = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule variableDeclarators" )
       begin
-      # at line 111:5: ( localVariableDeclaration | ';' )
-      alt_7 = 2
-      look_7_0 = @input.peek( 1 )
+      # at line 114:7: variableDeclarators ';'
+      @state.following.push( TOKENS_FOLLOWING_variableDeclarators_IN_localVariableDeclaration_665 )
+      variableDeclarators42 = variableDeclarators
+      @state.following.pop
+      stream_variableDeclarators.add( variableDeclarators42.tree )
 
-      if ( look_7_0 == IDENTIFIER )
-        alt_7 = 1
-      elsif ( look_7_0 == SEMI )
-        alt_7 = 2
-      else
-        raise NoViableAlternative( "", 7, 0 )
+      char_literal43 = match( SEMI, TOKENS_FOLLOWING_SEMI_IN_localVariableDeclaration_667 )
+      stream_SEMI.add( char_literal43 )
 
-      end
-      case alt_7
-      when 1
-        root_0 = @adaptor.create_flat_list
+      # AST Rewrite
+      # elements: variableDeclarators
+      # token labels: 
+      # rule labels: return_value
+      # token list labels: 
+      # rule list labels: 
+      # wildcard labels: 
+      return_value.tree = root_0
+      stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
-
-        # at line 111:7: localVariableDeclaration
-        @state.following.push( TOKENS_FOLLOWING_localVariableDeclaration_IN_statement_635 )
-        localVariableDeclaration40 = localVariableDeclaration
-        @state.following.pop
-        @adaptor.add_child( root_0, localVariableDeclaration40.tree )
-
-
-      when 2
-        root_0 = @adaptor.create_flat_list
-
-
-        # at line 112:7: ';'
-        char_literal41 = match( SEMI, TOKENS_FOLLOWING_SEMI_IN_statement_643 )
-        tree_for_char_literal41 = @adaptor.create_with_payload( char_literal41 )
-        @adaptor.add_child( root_0, tree_for_char_literal41 )
+      root_0 = @adaptor.create_flat_list
+      # 114:31: -> variableDeclarators
+      @adaptor.add_child( root_0, stream_variableDeclarators.next_tree )
 
 
 
-      end
+
+      return_value.tree = root_0
+
+
+
       # - - - - - - - rule clean up - - - - - - - -
       return_value.stop = @input.look( -1 )
 
@@ -1977,20 +2014,20 @@ module Yarpl
       return return_value
     end
 
-    ExpressionReturnValue = define_return_scope
+    ConstraintDeclarationReturnValue = define_return_scope
 
     #
-    # parser rule expression
+    # parser rule constraintDeclaration
     #
     # (in Yarpl.g)
-    # 116:1: expression : relationalExpression ( ( 'and' | 'or' ) relationalExpression )* ;
+    # 117:1: constraintDeclaration : 'constraint' constraintBody -> ^( CONSTRAINT_DECLARATION constraintBody ) ;
     #
-    def expression
+    def constraintDeclaration
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 21 )
 
 
-      return_value = ExpressionReturnValue.new
+      return_value = ConstraintDeclarationReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -1998,60 +2035,48 @@ module Yarpl
 
       root_0 = nil
 
-      set43 = nil
-      relationalExpression42 = nil
-      relationalExpression44 = nil
+      string_literal44 = nil
+      constraintBody45 = nil
 
 
-      tree_for_set43 = nil
-
+      tree_for_string_literal44 = nil
+      stream_T__76 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__76" )
+      stream_constraintBody = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule constraintBody" )
       begin
-      root_0 = @adaptor.create_flat_list
+      # at line 118:7: 'constraint' constraintBody
+      string_literal44 = match( T__76, TOKENS_FOLLOWING_T__76_IN_constraintDeclaration_688 )
+      stream_T__76.add( string_literal44 )
 
-
-      # at line 117:5: relationalExpression ( ( 'and' | 'or' ) relationalExpression )*
-      @state.following.push( TOKENS_FOLLOWING_relationalExpression_IN_expression_661 )
-      relationalExpression42 = relationalExpression
+      @state.following.push( TOKENS_FOLLOWING_constraintBody_IN_constraintDeclaration_690 )
+      constraintBody45 = constraintBody
       @state.following.pop
-      @adaptor.add_child( root_0, relationalExpression42.tree )
+      stream_constraintBody.add( constraintBody45.tree )
 
-      # at line 117:26: ( ( 'and' | 'or' ) relationalExpression )*
-      while true # decision 8
-        alt_8 = 2
-        look_8_0 = @input.peek( 1 )
+      # AST Rewrite
+      # elements: constraintBody
+      # token labels: 
+      # rule labels: return_value
+      # token list labels: 
+      # rule list labels: 
+      # wildcard labels: 
+      return_value.tree = root_0
+      stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
-        if ( look_8_0 == T__70 || look_8_0 == T__78 )
-          alt_8 = 1
+      root_0 = @adaptor.create_flat_list
+      # 118:35: -> ^( CONSTRAINT_DECLARATION constraintBody )
+      # at line 118:38: ^( CONSTRAINT_DECLARATION constraintBody )
+      root_1 = @adaptor.create_flat_list
+      root_1 = @adaptor.become_root( @adaptor.create_from_type( CONSTRAINT_DECLARATION, "CONSTRAINT_DECLARATION" ), root_1 )
 
-        end
-        case alt_8
-        when 1
-          # at line 117:27: ( 'and' | 'or' ) relationalExpression
-          set43 = @input.look
+      @adaptor.add_child( root_1, stream_constraintBody.next_tree )
 
-          if @input.peek(1) == T__70 || @input.peek(1) == T__78
-            @input.consume
-            @adaptor.add_child( root_0, @adaptor.create_with_payload( set43 ) )
-
-            @state.error_recovery = false
-
-          else
-            mse = MismatchedSet( nil )
-            raise mse
-
-          end
+      @adaptor.add_child( root_0, root_1 )
 
 
-          @state.following.push( TOKENS_FOLLOWING_relationalExpression_IN_expression_670 )
-          relationalExpression44 = relationalExpression
-          @state.following.pop
-          @adaptor.add_child( root_0, relationalExpression44.tree )
 
 
-        else
-          break # out of loop for decision 8
-        end
-      end # loop for decision 8
+      return_value.tree = root_0
+
 
 
       # - - - - - - - rule clean up - - - - - - - -
@@ -2078,20 +2103,20 @@ module Yarpl
       return return_value
     end
 
-    RelationalExpressionReturnValue = define_return_scope
+    ConstraintBodyReturnValue = define_return_scope
 
     #
-    # parser rule relationalExpression
+    # parser rule constraintBody
     #
     # (in Yarpl.g)
-    # 120:1: relationalExpression : addingExpression ( ( EQUALS | NOT_EQUALS | GT | GTE | LT | LTE ) addingExpression )* ;
+    # 121:1: constraintBody : LBRACE expression RBRACE -> ^( CONSTRAINT_EXPRESSION expression ) ;
     #
-    def relationalExpression
+    def constraintBody
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 22 )
 
 
-      return_value = RelationalExpressionReturnValue.new
+      return_value = ConstraintBodyReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -2099,60 +2124,54 @@ module Yarpl
 
       root_0 = nil
 
-      set46 = nil
-      addingExpression45 = nil
-      addingExpression47 = nil
+      __LBRACE46__ = nil
+      __RBRACE48__ = nil
+      expression47 = nil
 
 
-      tree_for_set46 = nil
-
+      tree_for_LBRACE46 = nil
+      tree_for_RBRACE48 = nil
+      stream_RBRACE = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token RBRACE" )
+      stream_LBRACE = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token LBRACE" )
+      stream_expression = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule expression" )
       begin
-      root_0 = @adaptor.create_flat_list
+      # at line 122:7: LBRACE expression RBRACE
+      __LBRACE46__ = match( LBRACE, TOKENS_FOLLOWING_LBRACE_IN_constraintBody_715 )
+      stream_LBRACE.add( __LBRACE46__ )
 
-
-      # at line 121:7: addingExpression ( ( EQUALS | NOT_EQUALS | GT | GTE | LT | LTE ) addingExpression )*
-      @state.following.push( TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_689 )
-      addingExpression45 = addingExpression
+      @state.following.push( TOKENS_FOLLOWING_expression_IN_constraintBody_717 )
+      expression47 = expression
       @state.following.pop
-      @adaptor.add_child( root_0, addingExpression45.tree )
+      stream_expression.add( expression47.tree )
 
-      # at line 121:24: ( ( EQUALS | NOT_EQUALS | GT | GTE | LT | LTE ) addingExpression )*
-      while true # decision 9
-        alt_9 = 2
-        look_9_0 = @input.peek( 1 )
+      __RBRACE48__ = match( RBRACE, TOKENS_FOLLOWING_RBRACE_IN_constraintBody_719 )
+      stream_RBRACE.add( __RBRACE48__ )
 
-        if ( look_9_0 == EQUALS || look_9_0.between?( GT, GTE ) || look_9_0.between?( LT, LTE ) || look_9_0 == NOT_EQUALS )
-          alt_9 = 1
+      # AST Rewrite
+      # elements: expression
+      # token labels: 
+      # rule labels: return_value
+      # token list labels: 
+      # rule list labels: 
+      # wildcard labels: 
+      return_value.tree = root_0
+      stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
-        end
-        case alt_9
-        when 1
-          # at line 121:25: ( EQUALS | NOT_EQUALS | GT | GTE | LT | LTE ) addingExpression
-          set46 = @input.look
+      root_0 = @adaptor.create_flat_list
+      # 122:32: -> ^( CONSTRAINT_EXPRESSION expression )
+      # at line 122:35: ^( CONSTRAINT_EXPRESSION expression )
+      root_1 = @adaptor.create_flat_list
+      root_1 = @adaptor.become_root( @adaptor.create_from_type( CONSTRAINT_EXPRESSION, "CONSTRAINT_EXPRESSION" ), root_1 )
 
-          if @input.peek(1) == EQUALS || @input.peek( 1 ).between?( GT, GTE ) || @input.peek( 1 ).between?( LT, LTE ) || @input.peek(1) == NOT_EQUALS
-            @input.consume
-            @adaptor.add_child( root_0, @adaptor.create_with_payload( set46 ) )
+      @adaptor.add_child( root_1, stream_expression.next_tree )
 
-            @state.error_recovery = false
-
-          else
-            mse = MismatchedSet( nil )
-            raise mse
-
-          end
+      @adaptor.add_child( root_0, root_1 )
 
 
-          @state.following.push( TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_706 )
-          addingExpression47 = addingExpression
-          @state.following.pop
-          @adaptor.add_child( root_0, addingExpression47.tree )
 
 
-        else
-          break # out of loop for decision 9
-        end
-      end # loop for decision 9
+      return_value.tree = root_0
+
 
 
       # - - - - - - - rule clean up - - - - - - - -
@@ -2179,20 +2198,20 @@ module Yarpl
       return return_value
     end
 
-    AddingExpressionReturnValue = define_return_scope
+    ExpressionReturnValue = define_return_scope
 
     #
-    # parser rule addingExpression
+    # parser rule expression
     #
     # (in Yarpl.g)
-    # 124:1: addingExpression : multiplyingExpression ( ( PLUS | MINUS ) multiplyingExpression )* ;
+    # 125:1: expression : ( relationalExpression ( ( 'and' | 'or' ) relationalExpression )* | fieldAccessor EQUALS fieldAccessor -> ^( EQUALS fieldAccessor fieldAccessor ) );
     #
-    def addingExpression
+    def expression
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 23 )
 
 
-      return_value = AddingExpressionReturnValue.new
+      return_value = ExpressionReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -2200,62 +2219,135 @@ module Yarpl
 
       root_0 = nil
 
-      set49 = nil
-      multiplyingExpression48 = nil
-      multiplyingExpression50 = nil
+      set50 = nil
+      __EQUALS53__ = nil
+      relationalExpression49 = nil
+      relationalExpression51 = nil
+      fieldAccessor52 = nil
+      fieldAccessor54 = nil
 
 
-      tree_for_set49 = nil
-
+      tree_for_set50 = nil
+      tree_for_EQUALS53 = nil
+      stream_EQUALS = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token EQUALS" )
+      stream_fieldAccessor = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule fieldAccessor" )
       begin
-      root_0 = @adaptor.create_flat_list
+      # at line 126:5: ( relationalExpression ( ( 'and' | 'or' ) relationalExpression )* | fieldAccessor EQUALS fieldAccessor -> ^( EQUALS fieldAccessor fieldAccessor ) )
+      alt_9 = 2
+      look_9_0 = @input.peek( 1 )
 
+      if ( look_9_0 == INTEGERLITERAL || look_9_0 == LPAREN || look_9_0 == MINUS || look_9_0 == PLUS || look_9_0 == RANGEINTEGERLITERAL )
+        alt_9 = 1
+      elsif ( look_9_0 == IDENTIFIER )
+        look_9_2 = @input.peek( 2 )
 
-      # at line 125:7: multiplyingExpression ( ( PLUS | MINUS ) multiplyingExpression )*
-      @state.following.push( TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_725 )
-      multiplyingExpression48 = multiplyingExpression
-      @state.following.pop
-      @adaptor.add_child( root_0, multiplyingExpression48.tree )
-
-      # at line 125:29: ( ( PLUS | MINUS ) multiplyingExpression )*
-      while true # decision 10
-        alt_10 = 2
-        look_10_0 = @input.peek( 1 )
-
-        if ( look_10_0 == MINUS || look_10_0 == PLUS )
-          alt_10 = 1
+        if ( look_9_2 == DOT )
+          alt_9 = 2
+        elsif ( look_9_2 == EOF || look_9_2 == COMMA || look_9_2 == DIV || look_9_2 == EQUALS || look_9_2.between?( GT, GTE ) || look_9_2.between?( LT, LTE ) || look_9_2 == MINUS || look_9_2 == NOT_EQUALS || look_9_2 == PLUS || look_9_2 == RBRACE || look_9_2 == RPAREN || look_9_2 == TIMES || look_9_2 == T__73 || look_9_2 == T__80 || look_9_2 == T__82 )
+          alt_9 = 1
+        else
+          raise NoViableAlternative( "", 9, 2 )
 
         end
-        case alt_10
-        when 1
-          # at line 125:30: ( PLUS | MINUS ) multiplyingExpression
-          set49 = @input.look
+      else
+        raise NoViableAlternative( "", 9, 0 )
 
-          if @input.peek(1) == MINUS || @input.peek(1) == PLUS
-            @input.consume
-            @adaptor.add_child( root_0, @adaptor.create_with_payload( set49 ) )
+      end
+      case alt_9
+      when 1
+        root_0 = @adaptor.create_flat_list
 
-            @state.error_recovery = false
 
-          else
-            mse = MismatchedSet( nil )
-            raise mse
+        # at line 126:7: relationalExpression ( ( 'and' | 'or' ) relationalExpression )*
+        @state.following.push( TOKENS_FOLLOWING_relationalExpression_IN_expression_744 )
+        relationalExpression49 = relationalExpression
+        @state.following.pop
+        @adaptor.add_child( root_0, relationalExpression49.tree )
+
+        # at line 126:28: ( ( 'and' | 'or' ) relationalExpression )*
+        while true # decision 8
+          alt_8 = 2
+          look_8_0 = @input.peek( 1 )
+
+          if ( look_8_0 == T__73 || look_8_0 == T__82 )
+            alt_8 = 1
 
           end
+          case alt_8
+          when 1
+            # at line 126:29: ( 'and' | 'or' ) relationalExpression
+            set50 = @input.look
+
+            if @input.peek(1) == T__73 || @input.peek(1) == T__82
+              @input.consume
+              @adaptor.add_child( root_0, @adaptor.create_with_payload( set50 ) )
+
+              @state.error_recovery = false
+
+            else
+              mse = MismatchedSet( nil )
+              raise mse
+
+            end
 
 
-          @state.following.push( TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_734 )
-          multiplyingExpression50 = multiplyingExpression
-          @state.following.pop
-          @adaptor.add_child( root_0, multiplyingExpression50.tree )
+            @state.following.push( TOKENS_FOLLOWING_relationalExpression_IN_expression_753 )
+            relationalExpression51 = relationalExpression
+            @state.following.pop
+            @adaptor.add_child( root_0, relationalExpression51.tree )
 
 
-        else
-          break # out of loop for decision 10
-        end
-      end # loop for decision 10
+          else
+            break # out of loop for decision 8
+          end
+        end # loop for decision 8
 
 
+      when 2
+        # at line 127:7: fieldAccessor EQUALS fieldAccessor
+        @state.following.push( TOKENS_FOLLOWING_fieldAccessor_IN_expression_763 )
+        fieldAccessor52 = fieldAccessor
+        @state.following.pop
+        stream_fieldAccessor.add( fieldAccessor52.tree )
+
+        __EQUALS53__ = match( EQUALS, TOKENS_FOLLOWING_EQUALS_IN_expression_765 )
+        stream_EQUALS.add( __EQUALS53__ )
+
+        @state.following.push( TOKENS_FOLLOWING_fieldAccessor_IN_expression_767 )
+        fieldAccessor54 = fieldAccessor
+        @state.following.pop
+        stream_fieldAccessor.add( fieldAccessor54.tree )
+
+        # AST Rewrite
+        # elements: EQUALS, fieldAccessor, fieldAccessor
+        # token labels: 
+        # rule labels: return_value
+        # token list labels: 
+        # rule list labels: 
+        # wildcard labels: 
+        return_value.tree = root_0
+        stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
+
+        root_0 = @adaptor.create_flat_list
+        # 127:42: -> ^( EQUALS fieldAccessor fieldAccessor )
+        # at line 127:45: ^( EQUALS fieldAccessor fieldAccessor )
+        root_1 = @adaptor.create_flat_list
+        root_1 = @adaptor.become_root( stream_EQUALS.next_node, root_1 )
+
+        @adaptor.add_child( root_1, stream_fieldAccessor.next_tree )
+
+        @adaptor.add_child( root_1, stream_fieldAccessor.next_tree )
+
+        @adaptor.add_child( root_0, root_1 )
+
+
+
+
+        return_value.tree = root_0
+
+
+
+      end
       # - - - - - - - rule clean up - - - - - - - -
       return_value.stop = @input.look( -1 )
 
@@ -2280,20 +2372,20 @@ module Yarpl
       return return_value
     end
 
-    MultiplyingExpressionReturnValue = define_return_scope
+    RelationalExpressionReturnValue = define_return_scope
 
     #
-    # parser rule multiplyingExpression
+    # parser rule relationalExpression
     #
     # (in Yarpl.g)
-    # 128:1: multiplyingExpression : signExpression ( ( TIMES | DIV | 'mod' ) signExpression )* ;
+    # 130:1: relationalExpression : addingExpression ( ( EQUALS | NOT_EQUALS | GT | GTE | LT | LTE ) addingExpression )* ;
     #
-    def multiplyingExpression
+    def relationalExpression
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 24 )
 
 
-      return_value = MultiplyingExpressionReturnValue.new
+      return_value = RelationalExpressionReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -2301,40 +2393,40 @@ module Yarpl
 
       root_0 = nil
 
-      set52 = nil
-      signExpression51 = nil
-      signExpression53 = nil
+      set56 = nil
+      addingExpression55 = nil
+      addingExpression57 = nil
 
 
-      tree_for_set52 = nil
+      tree_for_set56 = nil
 
       begin
       root_0 = @adaptor.create_flat_list
 
 
-      # at line 129:7: signExpression ( ( TIMES | DIV | 'mod' ) signExpression )*
-      @state.following.push( TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_753 )
-      signExpression51 = signExpression
+      # at line 131:7: addingExpression ( ( EQUALS | NOT_EQUALS | GT | GTE | LT | LTE ) addingExpression )*
+      @state.following.push( TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_794 )
+      addingExpression55 = addingExpression
       @state.following.pop
-      @adaptor.add_child( root_0, signExpression51.tree )
+      @adaptor.add_child( root_0, addingExpression55.tree )
 
-      # at line 129:22: ( ( TIMES | DIV | 'mod' ) signExpression )*
-      while true # decision 11
-        alt_11 = 2
-        look_11_0 = @input.peek( 1 )
+      # at line 131:24: ( ( EQUALS | NOT_EQUALS | GT | GTE | LT | LTE ) addingExpression )*
+      while true # decision 10
+        alt_10 = 2
+        look_10_0 = @input.peek( 1 )
 
-        if ( look_11_0 == DIV || look_11_0 == TIMES || look_11_0 == T__76 )
-          alt_11 = 1
+        if ( look_10_0 == EQUALS || look_10_0.between?( GT, GTE ) || look_10_0.between?( LT, LTE ) || look_10_0 == NOT_EQUALS )
+          alt_10 = 1
 
         end
-        case alt_11
+        case alt_10
         when 1
-          # at line 129:23: ( TIMES | DIV | 'mod' ) signExpression
-          set52 = @input.look
+          # at line 131:25: ( EQUALS | NOT_EQUALS | GT | GTE | LT | LTE ) addingExpression
+          set56 = @input.look
 
-          if @input.peek(1) == DIV || @input.peek(1) == TIMES || @input.peek(1) == T__76
+          if @input.peek(1) == EQUALS || @input.peek( 1 ).between?( GT, GTE ) || @input.peek( 1 ).between?( LT, LTE ) || @input.peek(1) == NOT_EQUALS
             @input.consume
-            @adaptor.add_child( root_0, @adaptor.create_with_payload( set52 ) )
+            @adaptor.add_child( root_0, @adaptor.create_with_payload( set56 ) )
 
             @state.error_recovery = false
 
@@ -2345,16 +2437,16 @@ module Yarpl
           end
 
 
-          @state.following.push( TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_764 )
-          signExpression53 = signExpression
+          @state.following.push( TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_811 )
+          addingExpression57 = addingExpression
           @state.following.pop
-          @adaptor.add_child( root_0, signExpression53.tree )
+          @adaptor.add_child( root_0, addingExpression57.tree )
 
 
         else
-          break # out of loop for decision 11
+          break # out of loop for decision 10
         end
-      end # loop for decision 11
+      end # loop for decision 10
 
 
       # - - - - - - - rule clean up - - - - - - - -
@@ -2381,20 +2473,20 @@ module Yarpl
       return return_value
     end
 
-    SignExpressionReturnValue = define_return_scope
+    AddingExpressionReturnValue = define_return_scope
 
     #
-    # parser rule signExpression
+    # parser rule addingExpression
     #
     # (in Yarpl.g)
-    # 132:1: signExpression : ( PLUS | MINUS )* primeExpression ;
+    # 134:1: addingExpression : multiplyingExpression ( ( PLUS | MINUS ) multiplyingExpression )* ;
     #
-    def signExpression
+    def addingExpression
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 25 )
 
 
-      return_value = SignExpressionReturnValue.new
+      return_value = AddingExpressionReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -2402,34 +2494,40 @@ module Yarpl
 
       root_0 = nil
 
-      set54 = nil
-      primeExpression55 = nil
+      set59 = nil
+      multiplyingExpression58 = nil
+      multiplyingExpression60 = nil
 
 
-      tree_for_set54 = nil
+      tree_for_set59 = nil
 
       begin
       root_0 = @adaptor.create_flat_list
 
 
-      # at line 133:7: ( PLUS | MINUS )* primeExpression
-      # at line 133:7: ( PLUS | MINUS )*
-      while true # decision 12
-        alt_12 = 2
-        look_12_0 = @input.peek( 1 )
+      # at line 135:7: multiplyingExpression ( ( PLUS | MINUS ) multiplyingExpression )*
+      @state.following.push( TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_830 )
+      multiplyingExpression58 = multiplyingExpression
+      @state.following.pop
+      @adaptor.add_child( root_0, multiplyingExpression58.tree )
 
-        if ( look_12_0 == MINUS || look_12_0 == PLUS )
-          alt_12 = 1
+      # at line 135:29: ( ( PLUS | MINUS ) multiplyingExpression )*
+      while true # decision 11
+        alt_11 = 2
+        look_11_0 = @input.peek( 1 )
+
+        if ( look_11_0 == MINUS || look_11_0 == PLUS )
+          alt_11 = 1
 
         end
-        case alt_12
+        case alt_11
         when 1
-          # at line 
-          set54 = @input.look
+          # at line 135:30: ( PLUS | MINUS ) multiplyingExpression
+          set59 = @input.look
 
           if @input.peek(1) == MINUS || @input.peek(1) == PLUS
             @input.consume
-            @adaptor.add_child( root_0, @adaptor.create_with_payload( set54 ) )
+            @adaptor.add_child( root_0, @adaptor.create_with_payload( set59 ) )
 
             @state.error_recovery = false
 
@@ -2440,16 +2538,16 @@ module Yarpl
           end
 
 
+          @state.following.push( TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_839 )
+          multiplyingExpression60 = multiplyingExpression
+          @state.following.pop
+          @adaptor.add_child( root_0, multiplyingExpression60.tree )
+
 
         else
-          break # out of loop for decision 12
+          break # out of loop for decision 11
         end
-      end # loop for decision 12
-
-      @state.following.push( TOKENS_FOLLOWING_primeExpression_IN_signExpression_790 )
-      primeExpression55 = primeExpression
-      @state.following.pop
-      @adaptor.add_child( root_0, primeExpression55.tree )
+      end # loop for decision 11
 
 
       # - - - - - - - rule clean up - - - - - - - -
@@ -2476,20 +2574,20 @@ module Yarpl
       return return_value
     end
 
-    PrimeExpressionReturnValue = define_return_scope
+    MultiplyingExpressionReturnValue = define_return_scope
 
     #
-    # parser rule primeExpression
+    # parser rule multiplyingExpression
     #
     # (in Yarpl.g)
-    # 136:1: primeExpression : ( primary | LPAREN expression RPAREN );
+    # 138:1: multiplyingExpression : signExpression ( ( TIMES | DIV | 'mod' ) signExpression )* ;
     #
-    def primeExpression
+    def multiplyingExpression
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 26 )
 
 
-      return_value = PrimeExpressionReturnValue.new
+      return_value = MultiplyingExpressionReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -2497,62 +2595,62 @@ module Yarpl
 
       root_0 = nil
 
-      __LPAREN57__ = nil
-      __RPAREN59__ = nil
-      primary56 = nil
-      expression58 = nil
+      set62 = nil
+      signExpression61 = nil
+      signExpression63 = nil
 
 
-      tree_for_LPAREN57 = nil
-      tree_for_RPAREN59 = nil
+      tree_for_set62 = nil
 
       begin
-      # at line 137:5: ( primary | LPAREN expression RPAREN )
-      alt_13 = 2
-      look_13_0 = @input.peek( 1 )
-
-      if ( look_13_0 == IDENTIFIER || look_13_0 == INTEGERLITERAL || look_13_0 == RANGEINTEGERLITERAL )
-        alt_13 = 1
-      elsif ( look_13_0 == LPAREN )
-        alt_13 = 2
-      else
-        raise NoViableAlternative( "", 13, 0 )
-
-      end
-      case alt_13
-      when 1
-        root_0 = @adaptor.create_flat_list
+      root_0 = @adaptor.create_flat_list
 
 
-        # at line 137:7: primary
-        @state.following.push( TOKENS_FOLLOWING_primary_IN_primeExpression_807 )
-        primary56 = primary
-        @state.following.pop
-        @adaptor.add_child( root_0, primary56.tree )
+      # at line 139:7: signExpression ( ( TIMES | DIV | 'mod' ) signExpression )*
+      @state.following.push( TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_858 )
+      signExpression61 = signExpression
+      @state.following.pop
+      @adaptor.add_child( root_0, signExpression61.tree )
+
+      # at line 139:22: ( ( TIMES | DIV | 'mod' ) signExpression )*
+      while true # decision 12
+        alt_12 = 2
+        look_12_0 = @input.peek( 1 )
+
+        if ( look_12_0 == DIV || look_12_0 == TIMES || look_12_0 == T__80 )
+          alt_12 = 1
+
+        end
+        case alt_12
+        when 1
+          # at line 139:23: ( TIMES | DIV | 'mod' ) signExpression
+          set62 = @input.look
+
+          if @input.peek(1) == DIV || @input.peek(1) == TIMES || @input.peek(1) == T__80
+            @input.consume
+            @adaptor.add_child( root_0, @adaptor.create_with_payload( set62 ) )
+
+            @state.error_recovery = false
+
+          else
+            mse = MismatchedSet( nil )
+            raise mse
+
+          end
 
 
-      when 2
-        root_0 = @adaptor.create_flat_list
+          @state.following.push( TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_869 )
+          signExpression63 = signExpression
+          @state.following.pop
+          @adaptor.add_child( root_0, signExpression63.tree )
 
 
-        # at line 138:7: LPAREN expression RPAREN
-        __LPAREN57__ = match( LPAREN, TOKENS_FOLLOWING_LPAREN_IN_primeExpression_815 )
-        tree_for_LPAREN57 = @adaptor.create_with_payload( __LPAREN57__ )
-        @adaptor.add_child( root_0, tree_for_LPAREN57 )
+        else
+          break # out of loop for decision 12
+        end
+      end # loop for decision 12
 
 
-        @state.following.push( TOKENS_FOLLOWING_expression_IN_primeExpression_817 )
-        expression58 = expression
-        @state.following.pop
-        @adaptor.add_child( root_0, expression58.tree )
-
-        __RPAREN59__ = match( RPAREN, TOKENS_FOLLOWING_RPAREN_IN_primeExpression_821 )
-        tree_for_RPAREN59 = @adaptor.create_with_payload( __RPAREN59__ )
-        @adaptor.add_child( root_0, tree_for_RPAREN59 )
-
-
-
-      end
       # - - - - - - - rule clean up - - - - - - - -
       return_value.stop = @input.look( -1 )
 
@@ -2577,20 +2675,20 @@ module Yarpl
       return return_value
     end
 
-    ExpressionListReturnValue = define_return_scope
+    SignExpressionReturnValue = define_return_scope
 
     #
-    # parser rule expressionList
+    # parser rule signExpression
     #
     # (in Yarpl.g)
-    # 141:1: expressionList : expression ( ',' expression )* ;
+    # 142:1: signExpression : ( PLUS | MINUS )* primeExpression ;
     #
-    def expressionList
+    def signExpression
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 27 )
 
 
-      return_value = ExpressionListReturnValue.new
+      return_value = SignExpressionReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -2598,50 +2696,54 @@ module Yarpl
 
       root_0 = nil
 
-      char_literal61 = nil
-      expression60 = nil
-      expression62 = nil
+      set64 = nil
+      primeExpression65 = nil
 
 
-      tree_for_char_literal61 = nil
+      tree_for_set64 = nil
 
       begin
       root_0 = @adaptor.create_flat_list
 
 
-      # at line 142:9: expression ( ',' expression )*
-      @state.following.push( TOKENS_FOLLOWING_expression_IN_expressionList_840 )
-      expression60 = expression
-      @state.following.pop
-      @adaptor.add_child( root_0, expression60.tree )
+      # at line 143:7: ( PLUS | MINUS )* primeExpression
+      # at line 143:7: ( PLUS | MINUS )*
+      while true # decision 13
+        alt_13 = 2
+        look_13_0 = @input.peek( 1 )
 
-      # at line 142:20: ( ',' expression )*
-      while true # decision 14
-        alt_14 = 2
-        look_14_0 = @input.peek( 1 )
-
-        if ( look_14_0 == COMMA )
-          alt_14 = 1
+        if ( look_13_0 == MINUS || look_13_0 == PLUS )
+          alt_13 = 1
 
         end
-        case alt_14
+        case alt_13
         when 1
-          # at line 142:21: ',' expression
-          char_literal61 = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_expressionList_843 )
-          tree_for_char_literal61 = @adaptor.create_with_payload( char_literal61 )
-          @adaptor.add_child( root_0, tree_for_char_literal61 )
+          # at line 
+          set64 = @input.look
 
+          if @input.peek(1) == MINUS || @input.peek(1) == PLUS
+            @input.consume
+            @adaptor.add_child( root_0, @adaptor.create_with_payload( set64 ) )
 
-          @state.following.push( TOKENS_FOLLOWING_expression_IN_expressionList_845 )
-          expression62 = expression
-          @state.following.pop
-          @adaptor.add_child( root_0, expression62.tree )
+            @state.error_recovery = false
+
+          else
+            mse = MismatchedSet( nil )
+            raise mse
+
+          end
+
 
 
         else
-          break # out of loop for decision 14
+          break # out of loop for decision 13
         end
-      end # loop for decision 14
+      end # loop for decision 13
+
+      @state.following.push( TOKENS_FOLLOWING_primeExpression_IN_signExpression_895 )
+      primeExpression65 = primeExpression
+      @state.following.pop
+      @adaptor.add_child( root_0, primeExpression65.tree )
 
 
       # - - - - - - - rule clean up - - - - - - - -
@@ -2668,20 +2770,20 @@ module Yarpl
       return return_value
     end
 
-    DeclarationReturnValue = define_return_scope
+    PrimeExpressionReturnValue = define_return_scope
 
     #
-    # parser rule declaration
+    # parser rule primeExpression
     #
     # (in Yarpl.g)
-    # 145:1: declaration : ( set -> set | primary -> primary );
+    # 146:1: primeExpression : ( primary | LPAREN expression RPAREN );
     #
-    def declaration
+    def primeExpression
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 28 )
 
 
-      return_value = DeclarationReturnValue.new
+      return_value = PrimeExpressionReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -2689,79 +2791,58 @@ module Yarpl
 
       root_0 = nil
 
-      set63 = nil
-      primary64 = nil
+      __LPAREN67__ = nil
+      __RPAREN69__ = nil
+      primary66 = nil
+      expression68 = nil
 
 
-      stream_set = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule set" )
-      stream_primary = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule primary" )
+      tree_for_LPAREN67 = nil
+      tree_for_RPAREN69 = nil
+
       begin
-      # at line 146:5: ( set -> set | primary -> primary )
-      alt_15 = 2
-      look_15_0 = @input.peek( 1 )
+      # at line 147:5: ( primary | LPAREN expression RPAREN )
+      alt_14 = 2
+      look_14_0 = @input.peek( 1 )
 
-      if ( look_15_0 == LBRACK )
-        alt_15 = 1
-      elsif ( look_15_0 == IDENTIFIER || look_15_0 == INTEGERLITERAL || look_15_0 == RANGEINTEGERLITERAL )
-        alt_15 = 2
+      if ( look_14_0 == IDENTIFIER || look_14_0 == INTEGERLITERAL || look_14_0 == RANGEINTEGERLITERAL )
+        alt_14 = 1
+      elsif ( look_14_0 == LPAREN )
+        alt_14 = 2
       else
-        raise NoViableAlternative( "", 15, 0 )
+        raise NoViableAlternative( "", 14, 0 )
 
       end
-      case alt_15
+      case alt_14
       when 1
-        # at line 146:7: set
-        @state.following.push( TOKENS_FOLLOWING_set_IN_declaration_864 )
-        set63 = set
-        @state.following.pop
-        stream_set.add( set63.tree )
-
-        # AST Rewrite
-        # elements: set
-        # token labels: 
-        # rule labels: return_value
-        # token list labels: 
-        # rule list labels: 
-        # wildcard labels: 
-        return_value.tree = root_0
-        stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
-
         root_0 = @adaptor.create_flat_list
-        # 146:11: -> set
-        @adaptor.add_child( root_0, stream_set.next_tree )
 
 
-
-
-        return_value.tree = root_0
-
+        # at line 147:7: primary
+        @state.following.push( TOKENS_FOLLOWING_primary_IN_primeExpression_912 )
+        primary66 = primary
+        @state.following.pop
+        @adaptor.add_child( root_0, primary66.tree )
 
 
       when 2
-        # at line 147:7: primary
-        @state.following.push( TOKENS_FOLLOWING_primary_IN_declaration_876 )
-        primary64 = primary
-        @state.following.pop
-        stream_primary.add( primary64.tree )
-
-        # AST Rewrite
-        # elements: primary
-        # token labels: 
-        # rule labels: return_value
-        # token list labels: 
-        # rule list labels: 
-        # wildcard labels: 
-        return_value.tree = root_0
-        stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
-
         root_0 = @adaptor.create_flat_list
-        # 147:15: -> primary
-        @adaptor.add_child( root_0, stream_primary.next_tree )
 
 
+        # at line 148:7: LPAREN expression RPAREN
+        __LPAREN67__ = match( LPAREN, TOKENS_FOLLOWING_LPAREN_IN_primeExpression_920 )
+        tree_for_LPAREN67 = @adaptor.create_with_payload( __LPAREN67__ )
+        @adaptor.add_child( root_0, tree_for_LPAREN67 )
 
 
-        return_value.tree = root_0
+        @state.following.push( TOKENS_FOLLOWING_expression_IN_primeExpression_922 )
+        expression68 = expression
+        @state.following.pop
+        @adaptor.add_child( root_0, expression68.tree )
+
+        __RPAREN69__ = match( RPAREN, TOKENS_FOLLOWING_RPAREN_IN_primeExpression_926 )
+        tree_for_RPAREN69 = @adaptor.create_with_payload( __RPAREN69__ )
+        @adaptor.add_child( root_0, tree_for_RPAREN69 )
 
 
 
@@ -2790,17 +2871,230 @@ module Yarpl
       return return_value
     end
 
+    ExpressionListReturnValue = define_return_scope
+
+    #
+    # parser rule expressionList
+    #
+    # (in Yarpl.g)
+    # 151:1: expressionList : expression ( ',' expression )* ;
+    #
+    def expressionList
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 29 )
+
+
+      return_value = ExpressionListReturnValue.new
+
+      # $rule.start = the first token seen before matching
+      return_value.start = @input.look
+
+
+      root_0 = nil
+
+      char_literal71 = nil
+      expression70 = nil
+      expression72 = nil
+
+
+      tree_for_char_literal71 = nil
+
+      begin
+      root_0 = @adaptor.create_flat_list
+
+
+      # at line 152:9: expression ( ',' expression )*
+      @state.following.push( TOKENS_FOLLOWING_expression_IN_expressionList_945 )
+      expression70 = expression
+      @state.following.pop
+      @adaptor.add_child( root_0, expression70.tree )
+
+      # at line 152:20: ( ',' expression )*
+      while true # decision 15
+        alt_15 = 2
+        look_15_0 = @input.peek( 1 )
+
+        if ( look_15_0 == COMMA )
+          alt_15 = 1
+
+        end
+        case alt_15
+        when 1
+          # at line 152:21: ',' expression
+          char_literal71 = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_expressionList_948 )
+          tree_for_char_literal71 = @adaptor.create_with_payload( char_literal71 )
+          @adaptor.add_child( root_0, tree_for_char_literal71 )
+
+
+          @state.following.push( TOKENS_FOLLOWING_expression_IN_expressionList_950 )
+          expression72 = expression
+          @state.following.pop
+          @adaptor.add_child( root_0, expression72.tree )
+
+
+        else
+          break # out of loop for decision 15
+        end
+      end # loop for decision 15
+
+
+      # - - - - - - - rule clean up - - - - - - - -
+      return_value.stop = @input.look( -1 )
+
+
+      return_value.tree = @adaptor.rule_post_processing( root_0 )
+      @adaptor.set_token_boundaries( return_value.tree, return_value.start, return_value.stop )
+
+
+      rescue ANTLR3::Error::RecognitionError => re
+        report_error(re)
+        recover(re)
+        return_value.tree = @adaptor.create_error_node( @input, return_value.start, @input.look(-1), re )
+
+
+      ensure
+        # -> uncomment the next line to manually enable rule tracing
+        # trace_out( __method__, 29 )
+
+
+      end
+
+      return return_value
+    end
+
+    DeclarationReturnValue = define_return_scope
+
+    #
+    # parser rule declaration
+    #
+    # (in Yarpl.g)
+    # 155:1: declaration : ( set -> set | primary -> primary );
+    #
+    def declaration
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 30 )
+
+
+      return_value = DeclarationReturnValue.new
+
+      # $rule.start = the first token seen before matching
+      return_value.start = @input.look
+
+
+      root_0 = nil
+
+      set73 = nil
+      primary74 = nil
+
+
+      stream_set = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule set" )
+      stream_primary = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule primary" )
+      begin
+      # at line 156:5: ( set -> set | primary -> primary )
+      alt_16 = 2
+      look_16_0 = @input.peek( 1 )
+
+      if ( look_16_0 == LBRACK )
+        alt_16 = 1
+      elsif ( look_16_0 == IDENTIFIER || look_16_0 == INTEGERLITERAL || look_16_0 == RANGEINTEGERLITERAL )
+        alt_16 = 2
+      else
+        raise NoViableAlternative( "", 16, 0 )
+
+      end
+      case alt_16
+      when 1
+        # at line 156:7: set
+        @state.following.push( TOKENS_FOLLOWING_set_IN_declaration_969 )
+        set73 = set
+        @state.following.pop
+        stream_set.add( set73.tree )
+
+        # AST Rewrite
+        # elements: set
+        # token labels: 
+        # rule labels: return_value
+        # token list labels: 
+        # rule list labels: 
+        # wildcard labels: 
+        return_value.tree = root_0
+        stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
+
+        root_0 = @adaptor.create_flat_list
+        # 156:11: -> set
+        @adaptor.add_child( root_0, stream_set.next_tree )
+
+
+
+
+        return_value.tree = root_0
+
+
+
+      when 2
+        # at line 157:7: primary
+        @state.following.push( TOKENS_FOLLOWING_primary_IN_declaration_981 )
+        primary74 = primary
+        @state.following.pop
+        stream_primary.add( primary74.tree )
+
+        # AST Rewrite
+        # elements: primary
+        # token labels: 
+        # rule labels: return_value
+        # token list labels: 
+        # rule list labels: 
+        # wildcard labels: 
+        return_value.tree = root_0
+        stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
+
+        root_0 = @adaptor.create_flat_list
+        # 157:15: -> primary
+        @adaptor.add_child( root_0, stream_primary.next_tree )
+
+
+
+
+        return_value.tree = root_0
+
+
+
+      end
+      # - - - - - - - rule clean up - - - - - - - -
+      return_value.stop = @input.look( -1 )
+
+
+      return_value.tree = @adaptor.rule_post_processing( root_0 )
+      @adaptor.set_token_boundaries( return_value.tree, return_value.start, return_value.stop )
+
+
+      rescue ANTLR3::Error::RecognitionError => re
+        report_error(re)
+        recover(re)
+        return_value.tree = @adaptor.create_error_node( @input, return_value.start, @input.look(-1), re )
+
+
+      ensure
+        # -> uncomment the next line to manually enable rule tracing
+        # trace_out( __method__, 30 )
+
+
+      end
+
+      return return_value
+    end
+
     SetReturnValue = define_return_scope
 
     #
     # parser rule set
     #
     # (in Yarpl.g)
-    # 150:1: set : '[' setDeclaration ']' -> ^( SET setDeclaration ) ;
+    # 160:1: set : '[' setDeclaration ']' -> ^( SET setDeclaration ) ;
     #
     def set
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 29 )
+      # trace_in( __method__, 31 )
 
 
       return_value = SetReturnValue.new
@@ -2811,28 +3105,28 @@ module Yarpl
 
       root_0 = nil
 
-      char_literal65 = nil
-      char_literal67 = nil
-      setDeclaration66 = nil
+      char_literal75 = nil
+      char_literal77 = nil
+      setDeclaration76 = nil
 
 
-      tree_for_char_literal65 = nil
-      tree_for_char_literal67 = nil
+      tree_for_char_literal75 = nil
+      tree_for_char_literal77 = nil
       stream_RBRACK = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token RBRACK" )
       stream_LBRACK = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token LBRACK" )
       stream_setDeclaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule setDeclaration" )
       begin
-      # at line 151:7: '[' setDeclaration ']'
-      char_literal65 = match( LBRACK, TOKENS_FOLLOWING_LBRACK_IN_set_897 )
-      stream_LBRACK.add( char_literal65 )
+      # at line 161:7: '[' setDeclaration ']'
+      char_literal75 = match( LBRACK, TOKENS_FOLLOWING_LBRACK_IN_set_1002 )
+      stream_LBRACK.add( char_literal75 )
 
-      @state.following.push( TOKENS_FOLLOWING_setDeclaration_IN_set_899 )
-      setDeclaration66 = setDeclaration
+      @state.following.push( TOKENS_FOLLOWING_setDeclaration_IN_set_1004 )
+      setDeclaration76 = setDeclaration
       @state.following.pop
-      stream_setDeclaration.add( setDeclaration66.tree )
+      stream_setDeclaration.add( setDeclaration76.tree )
 
-      char_literal67 = match( RBRACK, TOKENS_FOLLOWING_RBRACK_IN_set_901 )
-      stream_RBRACK.add( char_literal67 )
+      char_literal77 = match( RBRACK, TOKENS_FOLLOWING_RBRACK_IN_set_1006 )
+      stream_RBRACK.add( char_literal77 )
 
       # AST Rewrite
       # elements: setDeclaration
@@ -2845,8 +3139,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 151:30: -> ^( SET setDeclaration )
-      # at line 151:33: ^( SET setDeclaration )
+      # 161:30: -> ^( SET setDeclaration )
+      # at line 161:33: ^( SET setDeclaration )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( @adaptor.create_from_type( SET, "SET" ), root_1 )
 
@@ -2877,7 +3171,7 @@ module Yarpl
 
       ensure
         # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 29 )
+        # trace_out( __method__, 31 )
 
 
       end
@@ -2891,11 +3185,11 @@ module Yarpl
     # parser rule setDeclaration
     #
     # (in Yarpl.g)
-    # 154:1: setDeclaration : declaration ( COMMA declaration )* -> ( ^( declaration ) )* ;
+    # 164:1: setDeclaration : declaration ( COMMA declaration )* -> ( ^( declaration ) )* ;
     #
     def setDeclaration
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 30 )
+      # trace_in( __method__, 32 )
 
 
       return_value = SetDeclarationReturnValue.new
@@ -2906,46 +3200,46 @@ module Yarpl
 
       root_0 = nil
 
-      __COMMA69__ = nil
-      declaration68 = nil
-      declaration70 = nil
+      __COMMA79__ = nil
+      declaration78 = nil
+      declaration80 = nil
 
 
-      tree_for_COMMA69 = nil
+      tree_for_COMMA79 = nil
       stream_COMMA = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token COMMA" )
       stream_declaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule declaration" )
       begin
-      # at line 155:7: declaration ( COMMA declaration )*
-      @state.following.push( TOKENS_FOLLOWING_declaration_IN_setDeclaration_926 )
-      declaration68 = declaration
+      # at line 165:7: declaration ( COMMA declaration )*
+      @state.following.push( TOKENS_FOLLOWING_declaration_IN_setDeclaration_1031 )
+      declaration78 = declaration
       @state.following.pop
-      stream_declaration.add( declaration68.tree )
+      stream_declaration.add( declaration78.tree )
 
-      # at line 155:19: ( COMMA declaration )*
-      while true # decision 16
-        alt_16 = 2
-        look_16_0 = @input.peek( 1 )
+      # at line 165:19: ( COMMA declaration )*
+      while true # decision 17
+        alt_17 = 2
+        look_17_0 = @input.peek( 1 )
 
-        if ( look_16_0 == COMMA )
-          alt_16 = 1
+        if ( look_17_0 == COMMA )
+          alt_17 = 1
 
         end
-        case alt_16
+        case alt_17
         when 1
-          # at line 155:20: COMMA declaration
-          __COMMA69__ = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_setDeclaration_929 )
-          stream_COMMA.add( __COMMA69__ )
+          # at line 165:20: COMMA declaration
+          __COMMA79__ = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_setDeclaration_1034 )
+          stream_COMMA.add( __COMMA79__ )
 
-          @state.following.push( TOKENS_FOLLOWING_declaration_IN_setDeclaration_931 )
-          declaration70 = declaration
+          @state.following.push( TOKENS_FOLLOWING_declaration_IN_setDeclaration_1036 )
+          declaration80 = declaration
           @state.following.pop
-          stream_declaration.add( declaration70.tree )
+          stream_declaration.add( declaration80.tree )
 
 
         else
-          break # out of loop for decision 16
+          break # out of loop for decision 17
         end
-      end # loop for decision 16
+      end # loop for decision 17
 
       # AST Rewrite
       # elements: declaration
@@ -2958,10 +3252,10 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 155:40: -> ( ^( declaration ) )*
-      # at line 155:43: ( ^( declaration ) )*
+      # 165:40: -> ( ^( declaration ) )*
+      # at line 165:43: ( ^( declaration ) )*
       while stream_declaration.has_next?
-        # at line 155:43: ^( declaration )
+        # at line 165:43: ^( declaration )
         root_1 = @adaptor.create_flat_list
         root_1 = @adaptor.become_root( stream_declaration.next_node, root_1 )
 
@@ -2994,7 +3288,7 @@ module Yarpl
 
       ensure
         # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 30 )
+        # trace_out( __method__, 32 )
 
 
       end
@@ -3008,11 +3302,11 @@ module Yarpl
     # parser rule primary
     #
     # (in Yarpl.g)
-    # 158:1: primary : literal ;
+    # 168:1: primary : literal ;
     #
     def primary
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 31 )
+      # trace_in( __method__, 33 )
 
 
       return_value = PrimaryReturnValue.new
@@ -3023,7 +3317,7 @@ module Yarpl
 
       root_0 = nil
 
-      literal71 = nil
+      literal81 = nil
 
 
 
@@ -3031,11 +3325,11 @@ module Yarpl
       root_0 = @adaptor.create_flat_list
 
 
-      # at line 159:7: literal
-      @state.following.push( TOKENS_FOLLOWING_literal_IN_primary_957 )
-      literal71 = literal
+      # at line 169:7: literal
+      @state.following.push( TOKENS_FOLLOWING_literal_IN_primary_1062 )
+      literal81 = literal
       @state.following.pop
-      @adaptor.add_child( root_0, literal71.tree )
+      @adaptor.add_child( root_0, literal81.tree )
 
 
       # - - - - - - - rule clean up - - - - - - - -
@@ -3054,7 +3348,7 @@ module Yarpl
 
       ensure
         # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 31 )
+        # trace_out( __method__, 33 )
 
 
       end
@@ -3068,11 +3362,11 @@ module Yarpl
     # parser rule creator
     #
     # (in Yarpl.g)
-    # 162:1: creator : createdName classCreatorRest -> ^( VARIABLE_DECLARATION createdName classCreatorRest ) ;
+    # 172:1: creator : createdName classCreatorRest -> ^( VARIABLE_DECLARATION createdName classCreatorRest ) ;
     #
     def creator
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 32 )
+      # trace_in( __method__, 34 )
 
 
       return_value = CreatorReturnValue.new
@@ -3083,23 +3377,23 @@ module Yarpl
 
       root_0 = nil
 
-      createdName72 = nil
-      classCreatorRest73 = nil
+      createdName82 = nil
+      classCreatorRest83 = nil
 
 
       stream_createdName = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule createdName" )
       stream_classCreatorRest = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule classCreatorRest" )
       begin
-      # at line 163:7: createdName classCreatorRest
-      @state.following.push( TOKENS_FOLLOWING_createdName_IN_creator_971 )
-      createdName72 = createdName
+      # at line 173:7: createdName classCreatorRest
+      @state.following.push( TOKENS_FOLLOWING_createdName_IN_creator_1076 )
+      createdName82 = createdName
       @state.following.pop
-      stream_createdName.add( createdName72.tree )
+      stream_createdName.add( createdName82.tree )
 
-      @state.following.push( TOKENS_FOLLOWING_classCreatorRest_IN_creator_973 )
-      classCreatorRest73 = classCreatorRest
+      @state.following.push( TOKENS_FOLLOWING_classCreatorRest_IN_creator_1078 )
+      classCreatorRest83 = classCreatorRest
       @state.following.pop
-      stream_classCreatorRest.add( classCreatorRest73.tree )
+      stream_classCreatorRest.add( classCreatorRest83.tree )
 
       # AST Rewrite
       # elements: createdName, classCreatorRest
@@ -3112,8 +3406,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 163:36: -> ^( VARIABLE_DECLARATION createdName classCreatorRest )
-      # at line 163:39: ^( VARIABLE_DECLARATION createdName classCreatorRest )
+      # 173:36: -> ^( VARIABLE_DECLARATION createdName classCreatorRest )
+      # at line 173:39: ^( VARIABLE_DECLARATION createdName classCreatorRest )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( @adaptor.create_from_type( VARIABLE_DECLARATION, "VARIABLE_DECLARATION" ), root_1 )
 
@@ -3146,7 +3440,7 @@ module Yarpl
 
       ensure
         # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 32 )
+        # trace_out( __method__, 34 )
 
 
       end
@@ -3160,11 +3454,11 @@ module Yarpl
     # parser rule createdName
     #
     # (in Yarpl.g)
-    # 166:1: createdName : ( structType | primitiveType );
+    # 176:1: createdName : ( structType | primitiveType );
     #
     def createdName
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 33 )
+      # trace_in( __method__, 35 )
 
 
       return_value = CreatedNameReturnValue.new
@@ -3175,239 +3469,48 @@ module Yarpl
 
       root_0 = nil
 
-      structType74 = nil
-      primitiveType75 = nil
+      structType84 = nil
+      primitiveType85 = nil
 
 
 
       begin
-      # at line 167:5: ( structType | primitiveType )
-      alt_17 = 2
-      look_17_0 = @input.peek( 1 )
+      # at line 177:5: ( structType | primitiveType )
+      alt_18 = 2
+      look_18_0 = @input.peek( 1 )
 
-      if ( look_17_0 == IDENTIFIER )
-        alt_17 = 1
-      elsif ( look_17_0 == T__75 )
-        alt_17 = 2
+      if ( look_18_0 == IDENTIFIER )
+        alt_18 = 1
+      elsif ( look_18_0 == T__79 )
+        alt_18 = 2
       else
-        raise NoViableAlternative( "", 17, 0 )
+        raise NoViableAlternative( "", 18, 0 )
 
       end
-      case alt_17
+      case alt_18
       when 1
         root_0 = @adaptor.create_flat_list
 
 
-        # at line 167:7: structType
-        @state.following.push( TOKENS_FOLLOWING_structType_IN_createdName_1001 )
-        structType74 = structType
+        # at line 177:7: structType
+        @state.following.push( TOKENS_FOLLOWING_structType_IN_createdName_1106 )
+        structType84 = structType
         @state.following.pop
-        @adaptor.add_child( root_0, structType74.tree )
+        @adaptor.add_child( root_0, structType84.tree )
 
 
       when 2
         root_0 = @adaptor.create_flat_list
 
 
-        # at line 168:7: primitiveType
-        @state.following.push( TOKENS_FOLLOWING_primitiveType_IN_createdName_1009 )
-        primitiveType75 = primitiveType
+        # at line 178:7: primitiveType
+        @state.following.push( TOKENS_FOLLOWING_primitiveType_IN_createdName_1114 )
+        primitiveType85 = primitiveType
         @state.following.pop
-        @adaptor.add_child( root_0, primitiveType75.tree )
+        @adaptor.add_child( root_0, primitiveType85.tree )
 
 
       end
-      # - - - - - - - rule clean up - - - - - - - -
-      return_value.stop = @input.look( -1 )
-
-
-      return_value.tree = @adaptor.rule_post_processing( root_0 )
-      @adaptor.set_token_boundaries( return_value.tree, return_value.start, return_value.stop )
-
-
-      rescue ANTLR3::Error::RecognitionError => re
-        report_error(re)
-        recover(re)
-        return_value.tree = @adaptor.create_error_node( @input, return_value.start, @input.look(-1), re )
-
-
-      ensure
-        # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 33 )
-
-
-      end
-
-      return return_value
-    end
-
-    ClassCreatorRestReturnValue = define_return_scope
-
-    #
-    # parser rule classCreatorRest
-    #
-    # (in Yarpl.g)
-    # 171:1: classCreatorRest : arguments ( classBody )? ;
-    #
-    def classCreatorRest
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 34 )
-
-
-      return_value = ClassCreatorRestReturnValue.new
-
-      # $rule.start = the first token seen before matching
-      return_value.start = @input.look
-
-
-      root_0 = nil
-
-      arguments76 = nil
-      classBody77 = nil
-
-
-
-      begin
-      root_0 = @adaptor.create_flat_list
-
-
-      # at line 172:7: arguments ( classBody )?
-      @state.following.push( TOKENS_FOLLOWING_arguments_IN_classCreatorRest_1026 )
-      arguments76 = arguments
-      @state.following.pop
-      @adaptor.add_child( root_0, arguments76.tree )
-
-      # at line 172:17: ( classBody )?
-      alt_18 = 2
-      look_18_0 = @input.peek( 1 )
-
-      if ( look_18_0 == LBRACE )
-        alt_18 = 1
-      end
-      case alt_18
-      when 1
-        # at line 172:17: classBody
-        @state.following.push( TOKENS_FOLLOWING_classBody_IN_classCreatorRest_1028 )
-        classBody77 = classBody
-        @state.following.pop
-        @adaptor.add_child( root_0, classBody77.tree )
-
-
-      end
-
-      # - - - - - - - rule clean up - - - - - - - -
-      return_value.stop = @input.look( -1 )
-
-
-      return_value.tree = @adaptor.rule_post_processing( root_0 )
-      @adaptor.set_token_boundaries( return_value.tree, return_value.start, return_value.stop )
-
-
-      rescue ANTLR3::Error::RecognitionError => re
-        report_error(re)
-        recover(re)
-        return_value.tree = @adaptor.create_error_node( @input, return_value.start, @input.look(-1), re )
-
-
-      ensure
-        # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 34 )
-
-
-      end
-
-      return return_value
-    end
-
-    ArgumentsReturnValue = define_return_scope
-
-    #
-    # parser rule arguments
-    #
-    # (in Yarpl.g)
-    # 175:1: arguments : '(' ( argumentList )* ')' -> ( argumentList )* ;
-    #
-    def arguments
-      # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 35 )
-
-
-      return_value = ArgumentsReturnValue.new
-
-      # $rule.start = the first token seen before matching
-      return_value.start = @input.look
-
-
-      root_0 = nil
-
-      char_literal78 = nil
-      char_literal80 = nil
-      argumentList79 = nil
-
-
-      tree_for_char_literal78 = nil
-      tree_for_char_literal80 = nil
-      stream_RPAREN = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token RPAREN" )
-      stream_LPAREN = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token LPAREN" )
-      stream_argumentList = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule argumentList" )
-      begin
-      # at line 176:7: '(' ( argumentList )* ')'
-      char_literal78 = match( LPAREN, TOKENS_FOLLOWING_LPAREN_IN_arguments_1046 )
-      stream_LPAREN.add( char_literal78 )
-
-      # at line 176:11: ( argumentList )*
-      while true # decision 19
-        alt_19 = 2
-        look_19_0 = @input.peek( 1 )
-
-        if ( look_19_0 == IDENTIFIER )
-          alt_19 = 1
-
-        end
-        case alt_19
-        when 1
-          # at line 176:11: argumentList
-          @state.following.push( TOKENS_FOLLOWING_argumentList_IN_arguments_1048 )
-          argumentList79 = argumentList
-          @state.following.pop
-          stream_argumentList.add( argumentList79.tree )
-
-
-        else
-          break # out of loop for decision 19
-        end
-      end # loop for decision 19
-
-      char_literal80 = match( RPAREN, TOKENS_FOLLOWING_RPAREN_IN_arguments_1051 )
-      stream_RPAREN.add( char_literal80 )
-
-      # AST Rewrite
-      # elements: argumentList
-      # token labels: 
-      # rule labels: return_value
-      # token list labels: 
-      # rule list labels: 
-      # wildcard labels: 
-      return_value.tree = root_0
-      stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
-
-      root_0 = @adaptor.create_flat_list
-      # 176:29: -> ( argumentList )*
-      # at line 176:32: ( argumentList )*
-      while stream_argumentList.has_next?
-        @adaptor.add_child( root_0, stream_argumentList.next_tree )
-
-      end
-
-      stream_argumentList.reset();
-
-
-
-
-      return_value.tree = root_0
-
-
-
       # - - - - - - - rule clean up - - - - - - - -
       return_value.stop = @input.look( -1 )
 
@@ -3432,20 +3535,20 @@ module Yarpl
       return return_value
     end
 
-    ArgumentListReturnValue = define_return_scope
+    ClassCreatorRestReturnValue = define_return_scope
 
     #
-    # parser rule argumentList
+    # parser rule classCreatorRest
     #
     # (in Yarpl.g)
-    # 179:1: argumentList : argument ( ',' argument )* ;
+    # 181:1: classCreatorRest : arguments ( classBody )? ;
     #
-    def argumentList
+    def classCreatorRest
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 36 )
 
 
-      return_value = ArgumentListReturnValue.new
+      return_value = ClassCreatorRestReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -3453,51 +3556,38 @@ module Yarpl
 
       root_0 = nil
 
-      char_literal82 = nil
-      argument81 = nil
-      argument83 = nil
+      arguments86 = nil
+      classBody87 = nil
 
 
-      tree_for_char_literal82 = nil
 
       begin
       root_0 = @adaptor.create_flat_list
 
 
-      # at line 180:7: argument ( ',' argument )*
-      @state.following.push( TOKENS_FOLLOWING_argument_IN_argumentList_1073 )
-      argument81 = argument
+      # at line 182:7: arguments ( classBody )?
+      @state.following.push( TOKENS_FOLLOWING_arguments_IN_classCreatorRest_1131 )
+      arguments86 = arguments
       @state.following.pop
-      @adaptor.add_child( root_0, argument81.tree )
+      @adaptor.add_child( root_0, arguments86.tree )
 
-      # at line 180:16: ( ',' argument )*
-      while true # decision 20
-        alt_20 = 2
-        look_20_0 = @input.peek( 1 )
+      # at line 182:17: ( classBody )?
+      alt_19 = 2
+      look_19_0 = @input.peek( 1 )
 
-        if ( look_20_0 == COMMA )
-          alt_20 = 1
-
-        end
-        case alt_20
-        when 1
-          # at line 180:17: ',' argument
-          char_literal82 = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_argumentList_1076 )
-          tree_for_char_literal82 = @adaptor.create_with_payload( char_literal82 )
-          @adaptor.add_child( root_0, tree_for_char_literal82 )
-
-
-          @state.following.push( TOKENS_FOLLOWING_argument_IN_argumentList_1078 )
-          argument83 = argument
-          @state.following.pop
-          @adaptor.add_child( root_0, argument83.tree )
+      if ( look_19_0 == LBRACE )
+        alt_19 = 1
+      end
+      case alt_19
+      when 1
+        # at line 182:17: classBody
+        @state.following.push( TOKENS_FOLLOWING_classBody_IN_classCreatorRest_1133 )
+        classBody87 = classBody
+        @state.following.pop
+        @adaptor.add_child( root_0, classBody87.tree )
 
 
-        else
-          break # out of loop for decision 20
-        end
-      end # loop for decision 20
-
+      end
 
       # - - - - - - - rule clean up - - - - - - - -
       return_value.stop = @input.look( -1 )
@@ -3523,20 +3613,20 @@ module Yarpl
       return return_value
     end
 
-    ArgumentReturnValue = define_return_scope
+    ArgumentsReturnValue = define_return_scope
 
     #
-    # parser rule argument
+    # parser rule arguments
     #
     # (in Yarpl.g)
-    # 184:1: argument : IDENTIFIER '=' declaration -> ^( ATTRIBUTE IDENTIFIER declaration ) ;
+    # 185:1: arguments : '(' ( argumentList )* ')' -> ( argumentList )* ;
     #
-    def argument
+    def arguments
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 37 )
 
 
-      return_value = ArgumentReturnValue.new
+      return_value = ArgumentsReturnValue.new
 
       # $rule.start = the first token seen before matching
       return_value.start = @input.look
@@ -3544,31 +3634,49 @@ module Yarpl
 
       root_0 = nil
 
-      __IDENTIFIER84__ = nil
-      char_literal85 = nil
-      declaration86 = nil
+      char_literal88 = nil
+      char_literal90 = nil
+      argumentList89 = nil
 
 
-      tree_for_IDENTIFIER84 = nil
-      tree_for_char_literal85 = nil
-      stream_IDENTIFIER = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token IDENTIFIER" )
-      stream_ASSIGN = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token ASSIGN" )
-      stream_declaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule declaration" )
+      tree_for_char_literal88 = nil
+      tree_for_char_literal90 = nil
+      stream_RPAREN = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token RPAREN" )
+      stream_LPAREN = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token LPAREN" )
+      stream_argumentList = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule argumentList" )
       begin
-      # at line 185:8: IDENTIFIER '=' declaration
-      __IDENTIFIER84__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_argument_1099 )
-      stream_IDENTIFIER.add( __IDENTIFIER84__ )
+      # at line 186:7: '(' ( argumentList )* ')'
+      char_literal88 = match( LPAREN, TOKENS_FOLLOWING_LPAREN_IN_arguments_1151 )
+      stream_LPAREN.add( char_literal88 )
 
-      char_literal85 = match( ASSIGN, TOKENS_FOLLOWING_ASSIGN_IN_argument_1101 )
-      stream_ASSIGN.add( char_literal85 )
+      # at line 186:11: ( argumentList )*
+      while true # decision 20
+        alt_20 = 2
+        look_20_0 = @input.peek( 1 )
 
-      @state.following.push( TOKENS_FOLLOWING_declaration_IN_argument_1103 )
-      declaration86 = declaration
-      @state.following.pop
-      stream_declaration.add( declaration86.tree )
+        if ( look_20_0 == IDENTIFIER )
+          alt_20 = 1
+
+        end
+        case alt_20
+        when 1
+          # at line 186:11: argumentList
+          @state.following.push( TOKENS_FOLLOWING_argumentList_IN_arguments_1153 )
+          argumentList89 = argumentList
+          @state.following.pop
+          stream_argumentList.add( argumentList89.tree )
+
+
+        else
+          break # out of loop for decision 20
+        end
+      end # loop for decision 20
+
+      char_literal90 = match( RPAREN, TOKENS_FOLLOWING_RPAREN_IN_arguments_1156 )
+      stream_RPAREN.add( char_literal90 )
 
       # AST Rewrite
-      # elements: declaration, IDENTIFIER
+      # elements: argumentList
       # token labels: 
       # rule labels: return_value
       # token list labels: 
@@ -3578,16 +3686,14 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 185:35: -> ^( ATTRIBUTE IDENTIFIER declaration )
-      # at line 185:38: ^( ATTRIBUTE IDENTIFIER declaration )
-      root_1 = @adaptor.create_flat_list
-      root_1 = @adaptor.become_root( @adaptor.create_from_type( ATTRIBUTE, "ATTRIBUTE" ), root_1 )
+      # 186:29: -> ( argumentList )*
+      # at line 186:32: ( argumentList )*
+      while stream_argumentList.has_next?
+        @adaptor.add_child( root_0, stream_argumentList.next_tree )
 
-      @adaptor.add_child( root_1, stream_IDENTIFIER.next_node )
+      end
 
-      @adaptor.add_child( root_1, stream_declaration.next_tree )
-
-      @adaptor.add_child( root_0, root_1 )
+      stream_argumentList.reset();
 
 
 
@@ -3620,17 +3726,205 @@ module Yarpl
       return return_value
     end
 
+    ArgumentListReturnValue = define_return_scope
+
+    #
+    # parser rule argumentList
+    #
+    # (in Yarpl.g)
+    # 189:1: argumentList : argument ( ',' argument )* ;
+    #
+    def argumentList
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 38 )
+
+
+      return_value = ArgumentListReturnValue.new
+
+      # $rule.start = the first token seen before matching
+      return_value.start = @input.look
+
+
+      root_0 = nil
+
+      char_literal92 = nil
+      argument91 = nil
+      argument93 = nil
+
+
+      tree_for_char_literal92 = nil
+
+      begin
+      root_0 = @adaptor.create_flat_list
+
+
+      # at line 190:7: argument ( ',' argument )*
+      @state.following.push( TOKENS_FOLLOWING_argument_IN_argumentList_1178 )
+      argument91 = argument
+      @state.following.pop
+      @adaptor.add_child( root_0, argument91.tree )
+
+      # at line 190:16: ( ',' argument )*
+      while true # decision 21
+        alt_21 = 2
+        look_21_0 = @input.peek( 1 )
+
+        if ( look_21_0 == COMMA )
+          alt_21 = 1
+
+        end
+        case alt_21
+        when 1
+          # at line 190:17: ',' argument
+          char_literal92 = match( COMMA, TOKENS_FOLLOWING_COMMA_IN_argumentList_1181 )
+          tree_for_char_literal92 = @adaptor.create_with_payload( char_literal92 )
+          @adaptor.add_child( root_0, tree_for_char_literal92 )
+
+
+          @state.following.push( TOKENS_FOLLOWING_argument_IN_argumentList_1183 )
+          argument93 = argument
+          @state.following.pop
+          @adaptor.add_child( root_0, argument93.tree )
+
+
+        else
+          break # out of loop for decision 21
+        end
+      end # loop for decision 21
+
+
+      # - - - - - - - rule clean up - - - - - - - -
+      return_value.stop = @input.look( -1 )
+
+
+      return_value.tree = @adaptor.rule_post_processing( root_0 )
+      @adaptor.set_token_boundaries( return_value.tree, return_value.start, return_value.stop )
+
+
+      rescue ANTLR3::Error::RecognitionError => re
+        report_error(re)
+        recover(re)
+        return_value.tree = @adaptor.create_error_node( @input, return_value.start, @input.look(-1), re )
+
+
+      ensure
+        # -> uncomment the next line to manually enable rule tracing
+        # trace_out( __method__, 38 )
+
+
+      end
+
+      return return_value
+    end
+
+    ArgumentReturnValue = define_return_scope
+
+    #
+    # parser rule argument
+    #
+    # (in Yarpl.g)
+    # 194:1: argument : IDENTIFIER '=' declaration -> ^( ATTRIBUTE IDENTIFIER declaration ) ;
+    #
+    def argument
+      # -> uncomment the next line to manually enable rule tracing
+      # trace_in( __method__, 39 )
+
+
+      return_value = ArgumentReturnValue.new
+
+      # $rule.start = the first token seen before matching
+      return_value.start = @input.look
+
+
+      root_0 = nil
+
+      __IDENTIFIER94__ = nil
+      char_literal95 = nil
+      declaration96 = nil
+
+
+      tree_for_IDENTIFIER94 = nil
+      tree_for_char_literal95 = nil
+      stream_IDENTIFIER = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token IDENTIFIER" )
+      stream_ASSIGN = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token ASSIGN" )
+      stream_declaration = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule declaration" )
+      begin
+      # at line 195:8: IDENTIFIER '=' declaration
+      __IDENTIFIER94__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_argument_1204 )
+      stream_IDENTIFIER.add( __IDENTIFIER94__ )
+
+      char_literal95 = match( ASSIGN, TOKENS_FOLLOWING_ASSIGN_IN_argument_1206 )
+      stream_ASSIGN.add( char_literal95 )
+
+      @state.following.push( TOKENS_FOLLOWING_declaration_IN_argument_1208 )
+      declaration96 = declaration
+      @state.following.pop
+      stream_declaration.add( declaration96.tree )
+
+      # AST Rewrite
+      # elements: declaration, IDENTIFIER
+      # token labels: 
+      # rule labels: return_value
+      # token list labels: 
+      # rule list labels: 
+      # wildcard labels: 
+      return_value.tree = root_0
+      stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
+
+      root_0 = @adaptor.create_flat_list
+      # 195:35: -> ^( ATTRIBUTE IDENTIFIER declaration )
+      # at line 195:38: ^( ATTRIBUTE IDENTIFIER declaration )
+      root_1 = @adaptor.create_flat_list
+      root_1 = @adaptor.become_root( @adaptor.create_from_type( ATTRIBUTE, "ATTRIBUTE" ), root_1 )
+
+      @adaptor.add_child( root_1, stream_IDENTIFIER.next_node )
+
+      @adaptor.add_child( root_1, stream_declaration.next_tree )
+
+      @adaptor.add_child( root_0, root_1 )
+
+
+
+
+      return_value.tree = root_0
+
+
+
+      # - - - - - - - rule clean up - - - - - - - -
+      return_value.stop = @input.look( -1 )
+
+
+      return_value.tree = @adaptor.rule_post_processing( root_0 )
+      @adaptor.set_token_boundaries( return_value.tree, return_value.start, return_value.stop )
+
+
+      rescue ANTLR3::Error::RecognitionError => re
+        report_error(re)
+        recover(re)
+        return_value.tree = @adaptor.create_error_node( @input, return_value.start, @input.look(-1), re )
+
+
+      ensure
+        # -> uncomment the next line to manually enable rule tracing
+        # trace_out( __method__, 39 )
+
+
+      end
+
+      return return_value
+    end
+
     LiteralReturnValue = define_return_scope
 
     #
     # parser rule literal
     #
     # (in Yarpl.g)
-    # 189:1: literal : ( RANGEINTEGERLITERAL | INTEGERLITERAL | IDENTIFIER );
+    # 199:1: literal : ( RANGEINTEGERLITERAL | INTEGERLITERAL | IDENTIFIER );
     #
     def literal
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 38 )
+      # trace_in( __method__, 40 )
 
 
       return_value = LiteralReturnValue.new
@@ -3641,21 +3935,21 @@ module Yarpl
 
       root_0 = nil
 
-      set87 = nil
+      set97 = nil
 
 
-      tree_for_set87 = nil
+      tree_for_set97 = nil
 
       begin
       root_0 = @adaptor.create_flat_list
 
 
       # at line 
-      set87 = @input.look
+      set97 = @input.look
 
       if @input.peek(1) == IDENTIFIER || @input.peek(1) == INTEGERLITERAL || @input.peek(1) == RANGEINTEGERLITERAL
         @input.consume
-        @adaptor.add_child( root_0, @adaptor.create_with_payload( set87 ) )
+        @adaptor.add_child( root_0, @adaptor.create_with_payload( set97 ) )
 
         @state.error_recovery = false
 
@@ -3683,7 +3977,7 @@ module Yarpl
 
       ensure
         # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 38 )
+        # trace_out( __method__, 40 )
 
 
       end
@@ -3697,11 +3991,11 @@ module Yarpl
     # parser rule type
     #
     # (in Yarpl.g)
-    # 195:1: type : ( structType -> ^( structType ) | primitiveType -> ^( primitiveType ) );
+    # 205:1: type : ( structType -> ^( structType ) | primitiveType -> ^( primitiveType ) );
     #
     def type
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 39 )
+      # trace_in( __method__, 41 )
 
 
       return_value = TypeReturnValue.new
@@ -3712,32 +4006,32 @@ module Yarpl
 
       root_0 = nil
 
-      structType88 = nil
-      primitiveType89 = nil
+      structType98 = nil
+      primitiveType99 = nil
 
 
       stream_primitiveType = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule primitiveType" )
       stream_structType = ANTLR3::AST::RewriteRuleSubtreeStream.new( @adaptor, "rule structType" )
       begin
-      # at line 196:5: ( structType -> ^( structType ) | primitiveType -> ^( primitiveType ) )
-      alt_21 = 2
-      look_21_0 = @input.peek( 1 )
+      # at line 206:5: ( structType -> ^( structType ) | primitiveType -> ^( primitiveType ) )
+      alt_22 = 2
+      look_22_0 = @input.peek( 1 )
 
-      if ( look_21_0 == IDENTIFIER )
-        alt_21 = 1
-      elsif ( look_21_0 == T__75 )
-        alt_21 = 2
+      if ( look_22_0 == IDENTIFIER )
+        alt_22 = 1
+      elsif ( look_22_0 == T__79 )
+        alt_22 = 2
       else
-        raise NoViableAlternative( "", 21, 0 )
+        raise NoViableAlternative( "", 22, 0 )
 
       end
-      case alt_21
+      case alt_22
       when 1
-        # at line 196:7: structType
-        @state.following.push( TOKENS_FOLLOWING_structType_IN_type_1153 )
-        structType88 = structType
+        # at line 206:7: structType
+        @state.following.push( TOKENS_FOLLOWING_structType_IN_type_1258 )
+        structType98 = structType
         @state.following.pop
-        stream_structType.add( structType88.tree )
+        stream_structType.add( structType98.tree )
 
         # AST Rewrite
         # elements: structType
@@ -3750,8 +4044,8 @@ module Yarpl
         stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
         root_0 = @adaptor.create_flat_list
-        # 196:18: -> ^( structType )
-        # at line 196:21: ^( structType )
+        # 206:18: -> ^( structType )
+        # at line 206:21: ^( structType )
         root_1 = @adaptor.create_flat_list
         root_1 = @adaptor.become_root( stream_structType.next_node, root_1 )
 
@@ -3765,11 +4059,11 @@ module Yarpl
 
 
       when 2
-        # at line 197:7: primitiveType
-        @state.following.push( TOKENS_FOLLOWING_primitiveType_IN_type_1167 )
-        primitiveType89 = primitiveType
+        # at line 207:7: primitiveType
+        @state.following.push( TOKENS_FOLLOWING_primitiveType_IN_type_1272 )
+        primitiveType99 = primitiveType
         @state.following.pop
-        stream_primitiveType.add( primitiveType89.tree )
+        stream_primitiveType.add( primitiveType99.tree )
 
         # AST Rewrite
         # elements: primitiveType
@@ -3782,8 +4076,8 @@ module Yarpl
         stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
         root_0 = @adaptor.create_flat_list
-        # 197:21: -> ^( primitiveType )
-        # at line 197:24: ^( primitiveType )
+        # 207:21: -> ^( primitiveType )
+        # at line 207:24: ^( primitiveType )
         root_1 = @adaptor.create_flat_list
         root_1 = @adaptor.become_root( stream_primitiveType.next_node, root_1 )
 
@@ -3813,7 +4107,7 @@ module Yarpl
 
       ensure
         # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 39 )
+        # trace_out( __method__, 41 )
 
 
       end
@@ -3827,11 +4121,11 @@ module Yarpl
     # parser rule structType
     #
     # (in Yarpl.g)
-    # 200:1: structType : IDENTIFIER ;
+    # 210:1: structType : IDENTIFIER ;
     #
     def structType
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 40 )
+      # trace_in( __method__, 42 )
 
 
       return_value = StructTypeReturnValue.new
@@ -3842,19 +4136,19 @@ module Yarpl
 
       root_0 = nil
 
-      __IDENTIFIER90__ = nil
+      __IDENTIFIER100__ = nil
 
 
-      tree_for_IDENTIFIER90 = nil
+      tree_for_IDENTIFIER100 = nil
 
       begin
       root_0 = @adaptor.create_flat_list
 
 
-      # at line 201:7: IDENTIFIER
-      __IDENTIFIER90__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_structType_1190 )
-      tree_for_IDENTIFIER90 = @adaptor.create_with_payload( __IDENTIFIER90__ )
-      @adaptor.add_child( root_0, tree_for_IDENTIFIER90 )
+      # at line 211:7: IDENTIFIER
+      __IDENTIFIER100__ = match( IDENTIFIER, TOKENS_FOLLOWING_IDENTIFIER_IN_structType_1295 )
+      tree_for_IDENTIFIER100 = @adaptor.create_with_payload( __IDENTIFIER100__ )
+      @adaptor.add_child( root_0, tree_for_IDENTIFIER100 )
 
 
 
@@ -3874,7 +4168,7 @@ module Yarpl
 
       ensure
         # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 40 )
+        # trace_out( __method__, 42 )
 
 
       end
@@ -3888,11 +4182,11 @@ module Yarpl
     # parser rule primitiveType
     #
     # (in Yarpl.g)
-    # 204:1: primitiveType : 'integer' -> ^( INTEGER ) ;
+    # 214:1: primitiveType : 'integer' -> ^( INTEGER ) ;
     #
     def primitiveType
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 41 )
+      # trace_in( __method__, 43 )
 
 
       return_value = PrimitiveTypeReturnValue.new
@@ -3903,16 +4197,16 @@ module Yarpl
 
       root_0 = nil
 
-      string_literal91 = nil
+      string_literal101 = nil
 
 
-      tree_for_string_literal91 = nil
-      stream_T__75 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__75" )
+      tree_for_string_literal101 = nil
+      stream_T__79 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__79" )
 
       begin
-      # at line 205:7: 'integer'
-      string_literal91 = match( T__75, TOKENS_FOLLOWING_T__75_IN_primitiveType_1207 )
-      stream_T__75.add( string_literal91 )
+      # at line 215:7: 'integer'
+      string_literal101 = match( T__79, TOKENS_FOLLOWING_T__79_IN_primitiveType_1312 )
+      stream_T__79.add( string_literal101 )
 
       # AST Rewrite
       # elements: 
@@ -3925,8 +4219,8 @@ module Yarpl
       stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
       root_0 = @adaptor.create_flat_list
-      # 205:17: -> ^( INTEGER )
-      # at line 205:20: ^( INTEGER )
+      # 215:17: -> ^( INTEGER )
+      # at line 215:20: ^( INTEGER )
       root_1 = @adaptor.create_flat_list
       root_1 = @adaptor.become_root( @adaptor.create_from_type( INTEGER, "INTEGER" ), root_1 )
 
@@ -3955,7 +4249,7 @@ module Yarpl
 
       ensure
         # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 41 )
+        # trace_out( __method__, 43 )
 
 
       end
@@ -3969,11 +4263,11 @@ module Yarpl
     # parser rule variableType
     #
     # (in Yarpl.g)
-    # 208:1: variableType : ( 'var' -> ^( VARIABLE ) | 'const' -> ^( CONSTANT ) );
+    # 218:1: variableType : ( 'var' -> ^( VARIABLE ) | 'const' -> ^( CONSTANT ) );
     #
     def variableType
       # -> uncomment the next line to manually enable rule tracing
-      # trace_in( __method__, 42 )
+      # trace_in( __method__, 44 )
 
 
       return_value = VariableTypeReturnValue.new
@@ -3984,33 +4278,33 @@ module Yarpl
 
       root_0 = nil
 
-      string_literal92 = nil
-      string_literal93 = nil
+      string_literal102 = nil
+      string_literal103 = nil
 
 
-      tree_for_string_literal92 = nil
-      tree_for_string_literal93 = nil
-      stream_T__72 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__72" )
-      stream_T__79 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__79" )
+      tree_for_string_literal102 = nil
+      tree_for_string_literal103 = nil
+      stream_T__83 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__83" )
+      stream_T__75 = ANTLR3::AST::RewriteRuleTokenStream.new( @adaptor, "token T__75" )
 
       begin
-      # at line 209:5: ( 'var' -> ^( VARIABLE ) | 'const' -> ^( CONSTANT ) )
-      alt_22 = 2
-      look_22_0 = @input.peek( 1 )
+      # at line 219:5: ( 'var' -> ^( VARIABLE ) | 'const' -> ^( CONSTANT ) )
+      alt_23 = 2
+      look_23_0 = @input.peek( 1 )
 
-      if ( look_22_0 == T__79 )
-        alt_22 = 1
-      elsif ( look_22_0 == T__72 )
-        alt_22 = 2
+      if ( look_23_0 == T__83 )
+        alt_23 = 1
+      elsif ( look_23_0 == T__75 )
+        alt_23 = 2
       else
-        raise NoViableAlternative( "", 22, 0 )
+        raise NoViableAlternative( "", 23, 0 )
 
       end
-      case alt_22
+      case alt_23
       when 1
-        # at line 209:7: 'var'
-        string_literal92 = match( T__79, TOKENS_FOLLOWING_T__79_IN_variableType_1230 )
-        stream_T__79.add( string_literal92 )
+        # at line 219:7: 'var'
+        string_literal102 = match( T__83, TOKENS_FOLLOWING_T__83_IN_variableType_1335 )
+        stream_T__83.add( string_literal102 )
 
         # AST Rewrite
         # elements: 
@@ -4023,8 +4317,8 @@ module Yarpl
         stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
         root_0 = @adaptor.create_flat_list
-        # 209:13: -> ^( VARIABLE )
-        # at line 209:16: ^( VARIABLE )
+        # 219:13: -> ^( VARIABLE )
+        # at line 219:16: ^( VARIABLE )
         root_1 = @adaptor.create_flat_list
         root_1 = @adaptor.become_root( @adaptor.create_from_type( VARIABLE, "VARIABLE" ), root_1 )
 
@@ -4038,9 +4332,9 @@ module Yarpl
 
 
       when 2
-        # at line 210:7: 'const'
-        string_literal93 = match( T__72, TOKENS_FOLLOWING_T__72_IN_variableType_1244 )
-        stream_T__72.add( string_literal93 )
+        # at line 220:7: 'const'
+        string_literal103 = match( T__75, TOKENS_FOLLOWING_T__75_IN_variableType_1349 )
+        stream_T__75.add( string_literal103 )
 
         # AST Rewrite
         # elements: 
@@ -4053,8 +4347,8 @@ module Yarpl
         stream_return_value = return_value ? subtree_stream( "rule return_value", return_value.tree ) : subtree_stream( "token return_value" )
 
         root_0 = @adaptor.create_flat_list
-        # 210:15: -> ^( CONSTANT )
-        # at line 210:18: ^( CONSTANT )
+        # 220:15: -> ^( CONSTANT )
+        # at line 220:18: ^( CONSTANT )
         root_1 = @adaptor.create_flat_list
         root_1 = @adaptor.become_root( @adaptor.create_from_type( CONSTANT, "CONSTANT" ), root_1 )
 
@@ -4084,7 +4378,7 @@ module Yarpl
 
       ensure
         # -> uncomment the next line to manually enable rule tracing
-        # trace_out( __method__, 42 )
+        # trace_out( __method__, 44 )
 
 
       end
@@ -4094,97 +4388,107 @@ module Yarpl
 
 
 
-    TOKENS_FOLLOWING_program_IN_start_143 = Set[ 1, 73, 74 ]
-    TOKENS_FOLLOWING_domainDeclaration_IN_program_190 = Set[ 1 ]
-    TOKENS_FOLLOWING_initialDeclaration_IN_program_202 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__73_IN_domainDeclaration_220 = Set[ 36 ]
-    TOKENS_FOLLOWING_domainBody_IN_domainDeclaration_222 = Set[ 1 ]
-    TOKENS_FOLLOWING_LBRACE_IN_domainBody_247 = Set[ 53, 71 ]
-    TOKENS_FOLLOWING_domainBodyDeclaration_IN_domainBody_249 = Set[ 53, 71 ]
-    TOKENS_FOLLOWING_RBRACE_IN_domainBody_252 = Set[ 1 ]
-    TOKENS_FOLLOWING_typeDeclaration_IN_domainBodyDeclaration_274 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__74_IN_initialDeclaration_292 = Set[ 36 ]
-    TOKENS_FOLLOWING_initialBody_IN_initialDeclaration_294 = Set[ 1 ]
-    TOKENS_FOLLOWING_LBRACE_IN_initialBody_320 = Set[ 30, 53, 56 ]
-    TOKENS_FOLLOWING_initialBodyDeclaration_IN_initialBody_322 = Set[ 30, 53, 56 ]
-    TOKENS_FOLLOWING_RBRACE_IN_initialBody_325 = Set[ 1 ]
-    TOKENS_FOLLOWING_statement_IN_initialBodyDeclaration_347 = Set[ 1 ]
-    TOKENS_FOLLOWING_classDeclaration_IN_typeDeclaration_364 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__71_IN_classDeclaration_389 = Set[ 30 ]
-    TOKENS_FOLLOWING_IDENTIFIER_IN_classDeclaration_391 = Set[ 36 ]
-    TOKENS_FOLLOWING_classBody_IN_classDeclaration_393 = Set[ 1 ]
-    TOKENS_FOLLOWING_LBRACE_IN_classBody_415 = Set[ 53, 72, 79 ]
-    TOKENS_FOLLOWING_classBodyDeclaration_IN_classBody_417 = Set[ 53, 72, 79 ]
-    TOKENS_FOLLOWING_RBRACE_IN_classBody_420 = Set[ 1 ]
-    TOKENS_FOLLOWING_memberDeclaration_IN_classBodyDeclaration_439 = Set[ 1 ]
-    TOKENS_FOLLOWING_fieldDeclaration_IN_memberDeclaration_459 = Set[ 1 ]
-    TOKENS_FOLLOWING_variableType_IN_fieldDeclaration_481 = Set[ 30, 75 ]
-    TOKENS_FOLLOWING_type_IN_fieldDeclaration_483 = Set[ 30 ]
-    TOKENS_FOLLOWING_variableDeclaratorId_IN_fieldDeclaration_485 = Set[ 56 ]
-    TOKENS_FOLLOWING_SEMI_IN_fieldDeclaration_487 = Set[ 1 ]
-    TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_516 = Set[ 1, 14 ]
-    TOKENS_FOLLOWING_COMMA_IN_variableDeclarators_519 = Set[ 30 ]
-    TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_521 = Set[ 1, 14 ]
-    TOKENS_FOLLOWING_variableDeclaratorId_IN_variableDeclarator_540 = Set[ 7 ]
-    TOKENS_FOLLOWING_ASSIGN_IN_variableDeclarator_542 = Set[ 77 ]
-    TOKENS_FOLLOWING_variableInitializer_IN_variableDeclarator_544 = Set[ 1 ]
-    TOKENS_FOLLOWING_IDENTIFIER_IN_variableDeclaratorId_571 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__77_IN_variableInitializer_588 = Set[ 30, 75 ]
-    TOKENS_FOLLOWING_creator_IN_variableInitializer_590 = Set[ 1 ]
-    TOKENS_FOLLOWING_variableDeclarators_IN_localVariableDeclaration_611 = Set[ 56 ]
-    TOKENS_FOLLOWING_SEMI_IN_localVariableDeclaration_613 = Set[ 1 ]
-    TOKENS_FOLLOWING_localVariableDeclaration_IN_statement_635 = Set[ 1 ]
-    TOKENS_FOLLOWING_SEMI_IN_statement_643 = Set[ 1 ]
-    TOKENS_FOLLOWING_relationalExpression_IN_expression_661 = Set[ 1, 70, 78 ]
-    TOKENS_FOLLOWING_set_IN_expression_664 = Set[ 30, 35, 40, 44, 49, 52 ]
-    TOKENS_FOLLOWING_relationalExpression_IN_expression_670 = Set[ 1, 70, 78 ]
-    TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_689 = Set[ 1, 26, 28, 29, 41, 42, 47 ]
-    TOKENS_FOLLOWING_set_IN_relationalExpression_692 = Set[ 30, 35, 40, 44, 49, 52 ]
-    TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_706 = Set[ 1, 26, 28, 29, 41, 42, 47 ]
-    TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_725 = Set[ 1, 44, 49 ]
-    TOKENS_FOLLOWING_set_IN_addingExpression_728 = Set[ 30, 35, 40, 44, 49, 52 ]
-    TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_734 = Set[ 1, 44, 49 ]
-    TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_753 = Set[ 1, 21, 60, 76 ]
-    TOKENS_FOLLOWING_set_IN_multiplyingExpression_756 = Set[ 30, 35, 40, 44, 49, 52 ]
-    TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_764 = Set[ 1, 21, 60, 76 ]
-    TOKENS_FOLLOWING_primeExpression_IN_signExpression_790 = Set[ 1 ]
-    TOKENS_FOLLOWING_primary_IN_primeExpression_807 = Set[ 1 ]
-    TOKENS_FOLLOWING_LPAREN_IN_primeExpression_815 = Set[ 30, 35, 40, 44, 49, 52 ]
-    TOKENS_FOLLOWING_expression_IN_primeExpression_817 = Set[ 55 ]
-    TOKENS_FOLLOWING_RPAREN_IN_primeExpression_821 = Set[ 1 ]
-    TOKENS_FOLLOWING_expression_IN_expressionList_840 = Set[ 1, 14 ]
-    TOKENS_FOLLOWING_COMMA_IN_expressionList_843 = Set[ 30, 35, 40, 44, 49, 52 ]
-    TOKENS_FOLLOWING_expression_IN_expressionList_845 = Set[ 1, 14 ]
-    TOKENS_FOLLOWING_set_IN_declaration_864 = Set[ 1 ]
-    TOKENS_FOLLOWING_primary_IN_declaration_876 = Set[ 1 ]
-    TOKENS_FOLLOWING_LBRACK_IN_set_897 = Set[ 30, 35, 37, 52 ]
-    TOKENS_FOLLOWING_setDeclaration_IN_set_899 = Set[ 54 ]
-    TOKENS_FOLLOWING_RBRACK_IN_set_901 = Set[ 1 ]
-    TOKENS_FOLLOWING_declaration_IN_setDeclaration_926 = Set[ 1, 14 ]
-    TOKENS_FOLLOWING_COMMA_IN_setDeclaration_929 = Set[ 30, 35, 37, 52 ]
-    TOKENS_FOLLOWING_declaration_IN_setDeclaration_931 = Set[ 1, 14 ]
-    TOKENS_FOLLOWING_literal_IN_primary_957 = Set[ 1 ]
-    TOKENS_FOLLOWING_createdName_IN_creator_971 = Set[ 40 ]
-    TOKENS_FOLLOWING_classCreatorRest_IN_creator_973 = Set[ 1 ]
-    TOKENS_FOLLOWING_structType_IN_createdName_1001 = Set[ 1 ]
-    TOKENS_FOLLOWING_primitiveType_IN_createdName_1009 = Set[ 1 ]
-    TOKENS_FOLLOWING_arguments_IN_classCreatorRest_1026 = Set[ 1, 36 ]
-    TOKENS_FOLLOWING_classBody_IN_classCreatorRest_1028 = Set[ 1 ]
-    TOKENS_FOLLOWING_LPAREN_IN_arguments_1046 = Set[ 30, 55 ]
-    TOKENS_FOLLOWING_argumentList_IN_arguments_1048 = Set[ 30, 55 ]
-    TOKENS_FOLLOWING_RPAREN_IN_arguments_1051 = Set[ 1 ]
-    TOKENS_FOLLOWING_argument_IN_argumentList_1073 = Set[ 1, 14 ]
-    TOKENS_FOLLOWING_COMMA_IN_argumentList_1076 = Set[ 30 ]
-    TOKENS_FOLLOWING_argument_IN_argumentList_1078 = Set[ 1, 14 ]
-    TOKENS_FOLLOWING_IDENTIFIER_IN_argument_1099 = Set[ 7 ]
-    TOKENS_FOLLOWING_ASSIGN_IN_argument_1101 = Set[ 30, 35, 37, 52 ]
-    TOKENS_FOLLOWING_declaration_IN_argument_1103 = Set[ 1 ]
-    TOKENS_FOLLOWING_structType_IN_type_1153 = Set[ 1 ]
-    TOKENS_FOLLOWING_primitiveType_IN_type_1167 = Set[ 1 ]
-    TOKENS_FOLLOWING_IDENTIFIER_IN_structType_1190 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__75_IN_primitiveType_1207 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__79_IN_variableType_1230 = Set[ 1 ]
-    TOKENS_FOLLOWING_T__72_IN_variableType_1244 = Set[ 1 ]
+    TOKENS_FOLLOWING_program_IN_start_158 = Set[ 1, 77, 78 ]
+    TOKENS_FOLLOWING_domainDeclaration_IN_program_205 = Set[ 1 ]
+    TOKENS_FOLLOWING_initialDeclaration_IN_program_217 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__77_IN_domainDeclaration_235 = Set[ 39 ]
+    TOKENS_FOLLOWING_domainBody_IN_domainDeclaration_237 = Set[ 1 ]
+    TOKENS_FOLLOWING_LBRACE_IN_domainBody_262 = Set[ 56, 74 ]
+    TOKENS_FOLLOWING_domainBodyDeclaration_IN_domainBody_264 = Set[ 56, 74 ]
+    TOKENS_FOLLOWING_RBRACE_IN_domainBody_267 = Set[ 1 ]
+    TOKENS_FOLLOWING_typeDeclaration_IN_domainBodyDeclaration_289 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__78_IN_initialDeclaration_307 = Set[ 39 ]
+    TOKENS_FOLLOWING_initialBody_IN_initialDeclaration_309 = Set[ 1 ]
+    TOKENS_FOLLOWING_LBRACE_IN_initialBody_335 = Set[ 33, 56, 76 ]
+    TOKENS_FOLLOWING_initialBodyDeclaration_IN_initialBody_337 = Set[ 33, 56, 76 ]
+    TOKENS_FOLLOWING_RBRACE_IN_initialBody_340 = Set[ 1 ]
+    TOKENS_FOLLOWING_localVariableDeclaration_IN_initialBodyDeclaration_362 = Set[ 1 ]
+    TOKENS_FOLLOWING_constraintDeclaration_IN_initialBodyDeclaration_370 = Set[ 1 ]
+    TOKENS_FOLLOWING_classDeclaration_IN_typeDeclaration_387 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__74_IN_classDeclaration_412 = Set[ 33 ]
+    TOKENS_FOLLOWING_IDENTIFIER_IN_classDeclaration_414 = Set[ 39 ]
+    TOKENS_FOLLOWING_classBody_IN_classDeclaration_416 = Set[ 1 ]
+    TOKENS_FOLLOWING_LBRACE_IN_classBody_438 = Set[ 56, 75, 83 ]
+    TOKENS_FOLLOWING_classBodyDeclaration_IN_classBody_440 = Set[ 56, 75, 83 ]
+    TOKENS_FOLLOWING_RBRACE_IN_classBody_443 = Set[ 1 ]
+    TOKENS_FOLLOWING_memberDeclaration_IN_classBodyDeclaration_462 = Set[ 1 ]
+    TOKENS_FOLLOWING_fieldDeclaration_IN_memberDeclaration_482 = Set[ 1 ]
+    TOKENS_FOLLOWING_variableType_IN_fieldDeclaration_504 = Set[ 33, 79 ]
+    TOKENS_FOLLOWING_type_IN_fieldDeclaration_506 = Set[ 33 ]
+    TOKENS_FOLLOWING_variableDeclaratorId_IN_fieldDeclaration_508 = Set[ 59 ]
+    TOKENS_FOLLOWING_SEMI_IN_fieldDeclaration_510 = Set[ 1 ]
+    TOKENS_FOLLOWING_IDENTIFIER_IN_fieldAccessor_539 = Set[ 27 ]
+    TOKENS_FOLLOWING_DOT_IN_fieldAccessor_541 = Set[ 33 ]
+    TOKENS_FOLLOWING_IDENTIFIER_IN_fieldAccessor_543 = Set[ 1 ]
+    TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_570 = Set[ 1, 14 ]
+    TOKENS_FOLLOWING_COMMA_IN_variableDeclarators_573 = Set[ 33 ]
+    TOKENS_FOLLOWING_variableDeclarator_IN_variableDeclarators_575 = Set[ 1, 14 ]
+    TOKENS_FOLLOWING_variableDeclaratorId_IN_variableDeclarator_594 = Set[ 7 ]
+    TOKENS_FOLLOWING_ASSIGN_IN_variableDeclarator_596 = Set[ 81 ]
+    TOKENS_FOLLOWING_variableInitializer_IN_variableDeclarator_598 = Set[ 1 ]
+    TOKENS_FOLLOWING_IDENTIFIER_IN_variableDeclaratorId_625 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__81_IN_variableInitializer_642 = Set[ 33, 79 ]
+    TOKENS_FOLLOWING_creator_IN_variableInitializer_644 = Set[ 1 ]
+    TOKENS_FOLLOWING_variableDeclarators_IN_localVariableDeclaration_665 = Set[ 59 ]
+    TOKENS_FOLLOWING_SEMI_IN_localVariableDeclaration_667 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__76_IN_constraintDeclaration_688 = Set[ 39 ]
+    TOKENS_FOLLOWING_constraintBody_IN_constraintDeclaration_690 = Set[ 1 ]
+    TOKENS_FOLLOWING_LBRACE_IN_constraintBody_715 = Set[ 33, 38, 43, 47, 52, 55 ]
+    TOKENS_FOLLOWING_expression_IN_constraintBody_717 = Set[ 56 ]
+    TOKENS_FOLLOWING_RBRACE_IN_constraintBody_719 = Set[ 1 ]
+    TOKENS_FOLLOWING_relationalExpression_IN_expression_744 = Set[ 1, 73, 82 ]
+    TOKENS_FOLLOWING_set_IN_expression_747 = Set[ 33, 38, 43, 47, 52, 55 ]
+    TOKENS_FOLLOWING_relationalExpression_IN_expression_753 = Set[ 1, 73, 82 ]
+    TOKENS_FOLLOWING_fieldAccessor_IN_expression_763 = Set[ 28 ]
+    TOKENS_FOLLOWING_EQUALS_IN_expression_765 = Set[ 33 ]
+    TOKENS_FOLLOWING_fieldAccessor_IN_expression_767 = Set[ 1 ]
+    TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_794 = Set[ 1, 28, 31, 32, 44, 45, 50 ]
+    TOKENS_FOLLOWING_set_IN_relationalExpression_797 = Set[ 33, 38, 43, 47, 52, 55 ]
+    TOKENS_FOLLOWING_addingExpression_IN_relationalExpression_811 = Set[ 1, 28, 31, 32, 44, 45, 50 ]
+    TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_830 = Set[ 1, 47, 52 ]
+    TOKENS_FOLLOWING_set_IN_addingExpression_833 = Set[ 33, 38, 43, 47, 52, 55 ]
+    TOKENS_FOLLOWING_multiplyingExpression_IN_addingExpression_839 = Set[ 1, 47, 52 ]
+    TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_858 = Set[ 1, 23, 63, 80 ]
+    TOKENS_FOLLOWING_set_IN_multiplyingExpression_861 = Set[ 33, 38, 43, 47, 52, 55 ]
+    TOKENS_FOLLOWING_signExpression_IN_multiplyingExpression_869 = Set[ 1, 23, 63, 80 ]
+    TOKENS_FOLLOWING_primeExpression_IN_signExpression_895 = Set[ 1 ]
+    TOKENS_FOLLOWING_primary_IN_primeExpression_912 = Set[ 1 ]
+    TOKENS_FOLLOWING_LPAREN_IN_primeExpression_920 = Set[ 33, 38, 43, 47, 52, 55 ]
+    TOKENS_FOLLOWING_expression_IN_primeExpression_922 = Set[ 58 ]
+    TOKENS_FOLLOWING_RPAREN_IN_primeExpression_926 = Set[ 1 ]
+    TOKENS_FOLLOWING_expression_IN_expressionList_945 = Set[ 1, 14 ]
+    TOKENS_FOLLOWING_COMMA_IN_expressionList_948 = Set[ 33, 38, 43, 47, 52, 55 ]
+    TOKENS_FOLLOWING_expression_IN_expressionList_950 = Set[ 1, 14 ]
+    TOKENS_FOLLOWING_set_IN_declaration_969 = Set[ 1 ]
+    TOKENS_FOLLOWING_primary_IN_declaration_981 = Set[ 1 ]
+    TOKENS_FOLLOWING_LBRACK_IN_set_1002 = Set[ 33, 38, 40, 55 ]
+    TOKENS_FOLLOWING_setDeclaration_IN_set_1004 = Set[ 57 ]
+    TOKENS_FOLLOWING_RBRACK_IN_set_1006 = Set[ 1 ]
+    TOKENS_FOLLOWING_declaration_IN_setDeclaration_1031 = Set[ 1, 14 ]
+    TOKENS_FOLLOWING_COMMA_IN_setDeclaration_1034 = Set[ 33, 38, 40, 55 ]
+    TOKENS_FOLLOWING_declaration_IN_setDeclaration_1036 = Set[ 1, 14 ]
+    TOKENS_FOLLOWING_literal_IN_primary_1062 = Set[ 1 ]
+    TOKENS_FOLLOWING_createdName_IN_creator_1076 = Set[ 43 ]
+    TOKENS_FOLLOWING_classCreatorRest_IN_creator_1078 = Set[ 1 ]
+    TOKENS_FOLLOWING_structType_IN_createdName_1106 = Set[ 1 ]
+    TOKENS_FOLLOWING_primitiveType_IN_createdName_1114 = Set[ 1 ]
+    TOKENS_FOLLOWING_arguments_IN_classCreatorRest_1131 = Set[ 1, 39 ]
+    TOKENS_FOLLOWING_classBody_IN_classCreatorRest_1133 = Set[ 1 ]
+    TOKENS_FOLLOWING_LPAREN_IN_arguments_1151 = Set[ 33, 58 ]
+    TOKENS_FOLLOWING_argumentList_IN_arguments_1153 = Set[ 33, 58 ]
+    TOKENS_FOLLOWING_RPAREN_IN_arguments_1156 = Set[ 1 ]
+    TOKENS_FOLLOWING_argument_IN_argumentList_1178 = Set[ 1, 14 ]
+    TOKENS_FOLLOWING_COMMA_IN_argumentList_1181 = Set[ 33 ]
+    TOKENS_FOLLOWING_argument_IN_argumentList_1183 = Set[ 1, 14 ]
+    TOKENS_FOLLOWING_IDENTIFIER_IN_argument_1204 = Set[ 7 ]
+    TOKENS_FOLLOWING_ASSIGN_IN_argument_1206 = Set[ 33, 38, 40, 55 ]
+    TOKENS_FOLLOWING_declaration_IN_argument_1208 = Set[ 1 ]
+    TOKENS_FOLLOWING_structType_IN_type_1258 = Set[ 1 ]
+    TOKENS_FOLLOWING_primitiveType_IN_type_1272 = Set[ 1 ]
+    TOKENS_FOLLOWING_IDENTIFIER_IN_structType_1295 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__79_IN_primitiveType_1312 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__83_IN_variableType_1335 = Set[ 1 ]
+    TOKENS_FOLLOWING_T__75_IN_variableType_1349 = Set[ 1 ]
 
   end # class Parser < ANTLR3::Parser
 

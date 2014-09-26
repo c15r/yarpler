@@ -2,11 +2,12 @@ module Yarpler
   module Interpreter
     class ConstraintInterpreter
 
+      def constraint
+        @constraint
+      end
+
       def initialize(tree)
-        @expression = tree[0].to_s
-        puts "**************"
-        puts "CONSTRAINT " + tree[0].to_s
-        puts "**************"
+        @constraint = Yarpler::Datastructure::Constraint.new
         parse_expression(tree)
       end
 
@@ -14,7 +15,8 @@ module Yarpler
 
       def parse_expression(expressions)
         expressions.each do |expression|
-          ExpressionInterpreter.new(expression)
+          expInt = ExpressionInterpreter.new(expression)
+          @constraint.expressions << expInt.expression
         end
       end
 
