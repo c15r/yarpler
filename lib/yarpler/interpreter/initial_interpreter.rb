@@ -34,6 +34,8 @@ module Yarpler
             when "ATTRIBUTE"
               if thing[1].to_s == "SET"
                 current_obj.set_value(thing[0].to_s, build_set(thing[1]))
+              elsif thing[1].to_s == "LIST"
+                  current_obj.set_value(thing[0].to_s, build_list(thing[1]))
               else
                 current_obj.set_value(thing[0].to_s, thing[1].to_s)
               end

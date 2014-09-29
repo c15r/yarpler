@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 #
-# Yarpl.g
+# lib/yarpl/Yarpl.g
 # --
 # Generated using ANTLR version: 3.5
 # Ruby runtime library version: 1.10.0
-# Input grammar file: Yarpl.g
-# Generated at: 2014-09-26 16:54:05
+# Input grammar file: lib/yarpl/Yarpl.g
+# Generated at: 2014-09-29 15:19:11
 #
 
 # ~~~> start load path setup
@@ -65,10 +65,10 @@ module Yarpl
   module TokenData
 
     # define the token constants
-    define_tokens( :EOF => -1, :T__69 => 69, :T__70 => 70, :T__71 => 71, 
-                   :T__72 => 72, :T__73 => 73, :T__74 => 74, :T__75 => 75, 
-                   :T__76 => 76, :T__77 => 77, :T__78 => 78, :T__79 => 79, 
-                   :T__80 => 80, :ALPHABET => 4, :ALPHANUMERIC => 5, :AND => 6, 
+    define_tokens( :EOF => -1, :T__70 => 70, :T__71 => 71, :T__72 => 72, 
+                   :T__73 => 73, :T__74 => 74, :T__75 => 75, :T__76 => 76, 
+                   :T__77 => 77, :T__78 => 78, :T__79 => 79, :T__80 => 80, 
+                   :T__81 => 81, :ALPHABET => 4, :ALPHANUMERIC => 5, :AND => 6, 
                    :ASSIGN => 7, :ATTRIBUTE => 8, :BANG => 9, :CLASS_DECLARATION => 10, 
                    :COLON => 11, :COMMA => 12, :COMMENT => 13, :CONSTANT => 14, 
                    :CONSTRAINT_DECLARATION => 15, :CONSTRAINT_EXPRESSION => 16, 
@@ -78,15 +78,15 @@ module Yarpl
                    :FIELD_ACCESSOR => 27, :FIELD_DECLARATION => 28, :GT => 29, 
                    :GTE => 30, :IDENTIFIER => 31, :INC => 32, :INITIAL_DECLARATION => 33, 
                    :INTEGER => 34, :INTEGERLITERAL => 35, :LBRACE => 36, 
-                   :LBRACK => 37, :LINE_COMMENT => 38, :LOWERCASE => 39, 
-                   :LPAREN => 40, :LT => 41, :LTE => 42, :MEMBER_DECLARATION => 43, 
-                   :MINUS => 44, :MOD => 45, :NONZERODIGIT => 46, :NOT_EQUALS => 47, 
-                   :OR => 48, :PLUS => 49, :QUESTION => 50, :RANGEINTEGERLITERAL => 51, 
-                   :RBRACE => 52, :RBRACK => 53, :REFERENCE => 54, :RPAREN => 55, 
-                   :SEMI => 56, :SET => 57, :SIGN => 58, :START => 59, :TIMES => 60, 
-                   :TYPE_DECLARATION => 61, :UPPERCASE => 62, :VARIABLE => 63, 
-                   :VARIABLE_DECLARATION => 64, :VARIABLE_DECLARATOR => 65, 
-                   :WS => 66, :YARPL_LETTER => 67, :YARPL_LETTERORDIGIT => 68 )
+                   :LBRACK => 37, :LINE_COMMENT => 38, :LIST => 39, :LOWERCASE => 40, 
+                   :LPAREN => 41, :LT => 42, :LTE => 43, :MEMBER_DECLARATION => 44, 
+                   :MINUS => 45, :MOD => 46, :NONZERODIGIT => 47, :NOT_EQUALS => 48, 
+                   :OR => 49, :PLUS => 50, :QUESTION => 51, :RANGEINTEGERLITERAL => 52, 
+                   :RBRACE => 53, :RBRACK => 54, :REFERENCE => 55, :RPAREN => 56, 
+                   :SEMI => 57, :SET => 58, :SIGN => 59, :START => 60, :TIMES => 61, 
+                   :TYPE_DECLARATION => 62, :UPPERCASE => 63, :VARIABLE => 64, 
+                   :VARIABLE_DECLARATION => 65, :VARIABLE_DECLARATOR => 66, 
+                   :WS => 67, :YARPL_LETTER => 68, :YARPL_LETTERORDIGIT => 69 )
 
   end
 
@@ -96,13 +96,13 @@ module Yarpl
     include TokenData
 
     begin
-      generated_using( "Yarpl.g", "3.5", "1.10.0" )
+      generated_using( "lib/yarpl/Yarpl.g", "3.5", "1.10.0" )
     rescue NoMethodError => error
       # ignore
     end
 
-    RULE_NAMES   = [ "T__69", "T__70", "T__71", "T__72", "T__73", "T__74", 
-                     "T__75", "T__76", "T__77", "T__78", "T__79", "T__80", 
+    RULE_NAMES   = [ "T__70", "T__71", "T__72", "T__73", "T__74", "T__75", 
+                     "T__76", "T__77", "T__78", "T__79", "T__80", "T__81", 
                      "WS", "COMMENT", "LINE_COMMENT", "IDENTIFIER", "YARPL_LETTER", 
                      "YARPL_LETTERORDIGIT", "DIGIT", "DIGITS", "NONZERODIGIT", 
                      "DIGITORUNDERSCORE", "LOWERCASE", "UPPERCASE", "ALPHABET", 
@@ -112,8 +112,8 @@ module Yarpl
                      "BANG", "QUESTION", "COLON", "EQUALS", "LTE", "GTE", 
                      "NOT_EQUALS", "AND", "OR", "INC", "DEC", "PLUS", "MINUS", 
                      "TIMES", "DIV", "MOD" ].freeze
-    RULE_METHODS = [ :t__69!, :t__70!, :t__71!, :t__72!, :t__73!, :t__74!, 
-                     :t__75!, :t__76!, :t__77!, :t__78!, :t__79!, :t__80!, 
+    RULE_METHODS = [ :t__70!, :t__71!, :t__72!, :t__73!, :t__74!, :t__75!, 
+                     :t__76!, :t__77!, :t__78!, :t__79!, :t__80!, :t__81!, 
                      :ws!, :comment!, :line_comment!, :identifier!, :yarpl_letter!, 
                      :yarpl_letterordigit!, :digit!, :digits!, :nonzerodigit!, 
                      :digitorunderscore!, :lowercase!, :uppercase!, :alphabet!, 
@@ -130,15 +130,15 @@ module Yarpl
 
 
     # - - - - - - - - - - - lexer rules - - - - - - - - - - - -
-    # lexer rule t__69! (T__69)
-    # (in Yarpl.g)
-    def t__69!
+    # lexer rule t__70! (T__70)
+    # (in lib/yarpl/Yarpl.g)
+    def t__70!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 1 )
 
 
 
-      type = T__69
+      type = T__70
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -158,15 +158,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__70! (T__70)
-    # (in Yarpl.g)
-    def t__70!
+    # lexer rule t__71! (T__71)
+    # (in lib/yarpl/Yarpl.g)
+    def t__71!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 2 )
 
 
 
-      type = T__70
+      type = T__71
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -186,15 +186,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__71! (T__71)
-    # (in Yarpl.g)
-    def t__71!
+    # lexer rule t__72! (T__72)
+    # (in lib/yarpl/Yarpl.g)
+    def t__72!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 3 )
 
 
 
-      type = T__71
+      type = T__72
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -214,15 +214,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__72! (T__72)
-    # (in Yarpl.g)
-    def t__72!
+    # lexer rule t__73! (T__73)
+    # (in lib/yarpl/Yarpl.g)
+    def t__73!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 4 )
 
 
 
-      type = T__72
+      type = T__73
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -242,15 +242,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__73! (T__73)
-    # (in Yarpl.g)
-    def t__73!
+    # lexer rule t__74! (T__74)
+    # (in lib/yarpl/Yarpl.g)
+    def t__74!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 5 )
 
 
 
-      type = T__73
+      type = T__74
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -270,15 +270,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__74! (T__74)
-    # (in Yarpl.g)
-    def t__74!
+    # lexer rule t__75! (T__75)
+    # (in lib/yarpl/Yarpl.g)
+    def t__75!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 6 )
 
 
 
-      type = T__74
+      type = T__75
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -298,15 +298,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__75! (T__75)
-    # (in Yarpl.g)
-    def t__75!
+    # lexer rule t__76! (T__76)
+    # (in lib/yarpl/Yarpl.g)
+    def t__76!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 7 )
 
 
 
-      type = T__75
+      type = T__76
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -326,15 +326,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__76! (T__76)
-    # (in Yarpl.g)
-    def t__76!
+    # lexer rule t__77! (T__77)
+    # (in lib/yarpl/Yarpl.g)
+    def t__77!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 8 )
 
 
 
-      type = T__76
+      type = T__77
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -354,15 +354,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__77! (T__77)
-    # (in Yarpl.g)
-    def t__77!
+    # lexer rule t__78! (T__78)
+    # (in lib/yarpl/Yarpl.g)
+    def t__78!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 9 )
 
 
 
-      type = T__77
+      type = T__78
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -382,15 +382,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__78! (T__78)
-    # (in Yarpl.g)
-    def t__78!
+    # lexer rule t__79! (T__79)
+    # (in lib/yarpl/Yarpl.g)
+    def t__79!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 10 )
 
 
 
-      type = T__78
+      type = T__79
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -410,15 +410,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__79! (T__79)
-    # (in Yarpl.g)
-    def t__79!
+    # lexer rule t__80! (T__80)
+    # (in lib/yarpl/Yarpl.g)
+    def t__80!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 11 )
 
 
 
-      type = T__79
+      type = T__80
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -438,15 +438,15 @@ module Yarpl
 
     end
 
-    # lexer rule t__80! (T__80)
-    # (in Yarpl.g)
-    def t__80!
+    # lexer rule t__81! (T__81)
+    # (in lib/yarpl/Yarpl.g)
+    def t__81!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 12 )
 
 
 
-      type = T__80
+      type = T__81
       channel = ANTLR3::DEFAULT_CHANNEL
     # - - - - label initialization - - - -
 
@@ -467,7 +467,7 @@ module Yarpl
     end
 
     # lexer rule ws! (WS)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def ws!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 13 )
@@ -480,7 +480,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 230:6: ( ' ' | '\\t' | '\\r' | '\\n' )
+      # at line 241:6: ( ' ' | '\\t' | '\\r' | '\\n' )
       if @input.peek( 1 ).between?( 0x9, 0xa ) || @input.peek(1) == 0xd || @input.peek(1) == 0x20
         @input.consume
       else
@@ -508,7 +508,7 @@ module Yarpl
     end
 
     # lexer rule comment! (COMMENT)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def comment!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 14 )
@@ -521,8 +521,8 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 233:11: ( '/*' | ' .*? ' | '*/' )
-      # at line 233:11: ( '/*' | ' .*? ' | '*/' )
+      # at line 244:11: ( '/*' | ' .*? ' | '*/' )
+      # at line 244:11: ( '/*' | ' .*? ' | '*/' )
       alt_1 = 3
       case look_1 = @input.peek( 1 )
       when 0x2f then alt_1 = 1
@@ -534,17 +534,17 @@ module Yarpl
       end
       case alt_1
       when 1
-        # at line 233:12: '/*'
+        # at line 244:12: '/*'
         match( "/*" )
 
 
       when 2
-        # at line 233:19: ' .*? '
+        # at line 244:19: ' .*? '
         match( " .*? " )
 
 
       when 3
-        # at line 233:29: '*/'
+        # at line 244:29: '*/'
         match( "*/" )
 
 
@@ -566,7 +566,7 @@ module Yarpl
     end
 
     # lexer rule line_comment! (LINE_COMMENT)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def line_comment!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 15 )
@@ -579,12 +579,12 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 236:16: '//'
+      # at line 247:16: '//'
       match( "//" )
 
 
       # --> action
-      skip();
+       channel=HIDDEN; 
       # <-- action
 
 
@@ -599,7 +599,7 @@ module Yarpl
     end
 
     # lexer rule identifier! (IDENTIFIER)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def identifier!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 16 )
@@ -612,10 +612,10 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 241:14: YARPL_LETTER ( YARPL_LETTERORDIGIT )*
+      # at line 252:14: YARPL_LETTER ( YARPL_LETTERORDIGIT )*
       yarpl_letter!
 
-      # at line 241:27: ( YARPL_LETTERORDIGIT )*
+      # at line 252:27: ( YARPL_LETTERORDIGIT )*
       while true # decision 2
         alt_2 = 2
         look_2_0 = @input.peek( 1 )
@@ -655,7 +655,7 @@ module Yarpl
     end
 
     # lexer rule yarpl_letter! (YARPL_LETTER)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def yarpl_letter!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 17 )
@@ -685,7 +685,7 @@ module Yarpl
     end
 
     # lexer rule yarpl_letterordigit! (YARPL_LETTERORDIGIT)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def yarpl_letterordigit!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 18 )
@@ -715,7 +715,7 @@ module Yarpl
     end
 
     # lexer rule digit! (DIGIT)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def digit!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 19 )
@@ -745,7 +745,7 @@ module Yarpl
     end
 
     # lexer rule digits! (DIGITS)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def digits!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 20 )
@@ -755,10 +755,10 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 262:10: DIGIT ( ( DIGITORUNDERSCORE )* DIGIT )?
+      # at line 273:10: DIGIT ( ( DIGITORUNDERSCORE )* DIGIT )?
       digit!
 
-      # at line 262:16: ( ( DIGITORUNDERSCORE )* DIGIT )?
+      # at line 273:16: ( ( DIGITORUNDERSCORE )* DIGIT )?
       alt_4 = 2
       look_4_0 = @input.peek( 1 )
 
@@ -767,8 +767,8 @@ module Yarpl
       end
       case alt_4
       when 1
-        # at line 262:17: ( DIGITORUNDERSCORE )* DIGIT
-        # at line 262:17: ( DIGITORUNDERSCORE )*
+        # at line 273:17: ( DIGITORUNDERSCORE )* DIGIT
+        # at line 273:17: ( DIGITORUNDERSCORE )*
         while true # decision 3
           alt_3 = 2
           look_3_0 = @input.peek( 1 )
@@ -817,7 +817,7 @@ module Yarpl
     end
 
     # lexer rule nonzerodigit! (NONZERODIGIT)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def nonzerodigit!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 21 )
@@ -847,7 +847,7 @@ module Yarpl
     end
 
     # lexer rule digitorunderscore! (DIGITORUNDERSCORE)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def digitorunderscore!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 22 )
@@ -877,7 +877,7 @@ module Yarpl
     end
 
     # lexer rule lowercase! (LOWERCASE)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def lowercase!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 23 )
@@ -907,7 +907,7 @@ module Yarpl
     end
 
     # lexer rule uppercase! (UPPERCASE)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def uppercase!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 24 )
@@ -937,7 +937,7 @@ module Yarpl
     end
 
     # lexer rule alphabet! (ALPHABET)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def alphabet!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 25 )
@@ -967,7 +967,7 @@ module Yarpl
     end
 
     # lexer rule alphanumeric! (ALPHANUMERIC)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def alphanumeric!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 26 )
@@ -997,7 +997,7 @@ module Yarpl
     end
 
     # lexer rule rangeintegerliteral! (RANGEINTEGERLITERAL)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def rangeintegerliteral!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 27 )
@@ -1010,7 +1010,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 292:23: DIGITS '..' DIGITS
+      # at line 303:23: DIGITS '..' DIGITS
       digits!
 
 
@@ -1031,7 +1031,7 @@ module Yarpl
     end
 
     # lexer rule integerliteral! (INTEGERLITERAL)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def integerliteral!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 28 )
@@ -1044,7 +1044,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 295:22: DIGITS
+      # at line 306:22: DIGITS
       digits!
 
 
@@ -1059,7 +1059,7 @@ module Yarpl
     end
 
     # lexer rule sign! (SIGN)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def sign!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 29 )
@@ -1089,7 +1089,7 @@ module Yarpl
     end
 
     # lexer rule lparen! (LPAREN)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def lparen!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 30 )
@@ -1102,7 +1102,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 305:19: '('
+      # at line 316:19: '('
       match( 0x28 )
 
 
@@ -1116,7 +1116,7 @@ module Yarpl
     end
 
     # lexer rule rparen! (RPAREN)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def rparen!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 31 )
@@ -1129,7 +1129,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 306:19: ')'
+      # at line 317:19: ')'
       match( 0x29 )
 
 
@@ -1143,7 +1143,7 @@ module Yarpl
     end
 
     # lexer rule lbrace! (LBRACE)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def lbrace!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 32 )
@@ -1156,7 +1156,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 307:19: '{'
+      # at line 318:19: '{'
       match( 0x7b )
 
 
@@ -1170,7 +1170,7 @@ module Yarpl
     end
 
     # lexer rule rbrace! (RBRACE)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def rbrace!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 33 )
@@ -1183,7 +1183,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 308:19: '}'
+      # at line 319:19: '}'
       match( 0x7d )
 
 
@@ -1197,7 +1197,7 @@ module Yarpl
     end
 
     # lexer rule lbrack! (LBRACK)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def lbrack!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 34 )
@@ -1210,7 +1210,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 309:19: '['
+      # at line 320:19: '['
       match( 0x5b )
 
 
@@ -1224,7 +1224,7 @@ module Yarpl
     end
 
     # lexer rule rbrack! (RBRACK)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def rbrack!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 35 )
@@ -1237,7 +1237,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 310:19: ']'
+      # at line 321:19: ']'
       match( 0x5d )
 
 
@@ -1251,7 +1251,7 @@ module Yarpl
     end
 
     # lexer rule semi! (SEMI)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def semi!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 36 )
@@ -1264,7 +1264,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 311:19: ';'
+      # at line 322:19: ';'
       match( 0x3b )
 
 
@@ -1278,7 +1278,7 @@ module Yarpl
     end
 
     # lexer rule comma! (COMMA)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def comma!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 37 )
@@ -1291,7 +1291,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 312:19: ','
+      # at line 323:19: ','
       match( 0x2c )
 
 
@@ -1305,7 +1305,7 @@ module Yarpl
     end
 
     # lexer rule dot! (DOT)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def dot!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 38 )
@@ -1318,7 +1318,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 313:19: '.'
+      # at line 324:19: '.'
       match( 0x2e )
 
 
@@ -1332,7 +1332,7 @@ module Yarpl
     end
 
     # lexer rule assign! (ASSIGN)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def assign!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 39 )
@@ -1345,7 +1345,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 317:19: '='
+      # at line 328:19: '='
       match( 0x3d )
 
 
@@ -1359,7 +1359,7 @@ module Yarpl
     end
 
     # lexer rule gt! (GT)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def gt!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 40 )
@@ -1372,7 +1372,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 318:19: '>'
+      # at line 329:19: '>'
       match( 0x3e )
 
 
@@ -1386,7 +1386,7 @@ module Yarpl
     end
 
     # lexer rule lt! (LT)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def lt!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 41 )
@@ -1399,7 +1399,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 319:19: '<'
+      # at line 330:19: '<'
       match( 0x3c )
 
 
@@ -1413,7 +1413,7 @@ module Yarpl
     end
 
     # lexer rule bang! (BANG)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def bang!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 42 )
@@ -1426,7 +1426,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 320:19: '!'
+      # at line 331:19: '!'
       match( 0x21 )
 
 
@@ -1440,7 +1440,7 @@ module Yarpl
     end
 
     # lexer rule question! (QUESTION)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def question!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 43 )
@@ -1453,7 +1453,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 321:19: '?'
+      # at line 332:19: '?'
       match( 0x3f )
 
 
@@ -1467,7 +1467,7 @@ module Yarpl
     end
 
     # lexer rule colon! (COLON)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def colon!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 44 )
@@ -1480,7 +1480,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 322:19: ':'
+      # at line 333:19: ':'
       match( 0x3a )
 
 
@@ -1494,7 +1494,7 @@ module Yarpl
     end
 
     # lexer rule equals! (EQUALS)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def equals!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 45 )
@@ -1507,7 +1507,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 323:20: '=='
+      # at line 334:20: '=='
       match( "==" )
 
 
@@ -1522,7 +1522,7 @@ module Yarpl
     end
 
     # lexer rule lte! (LTE)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def lte!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 46 )
@@ -1535,7 +1535,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 324:20: '<='
+      # at line 335:20: '<='
       match( "<=" )
 
 
@@ -1550,7 +1550,7 @@ module Yarpl
     end
 
     # lexer rule gte! (GTE)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def gte!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 47 )
@@ -1563,7 +1563,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 325:20: '>='
+      # at line 336:20: '>='
       match( ">=" )
 
 
@@ -1578,7 +1578,7 @@ module Yarpl
     end
 
     # lexer rule not_equals! (NOT_EQUALS)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def not_equals!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 48 )
@@ -1591,7 +1591,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 326:21: '!='
+      # at line 337:21: '!='
       match( "!=" )
 
 
@@ -1606,7 +1606,7 @@ module Yarpl
     end
 
     # lexer rule and! (AND)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def and!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 49 )
@@ -1619,7 +1619,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 327:19: '&&'
+      # at line 338:19: '&&'
       match( "&&" )
 
 
@@ -1634,7 +1634,7 @@ module Yarpl
     end
 
     # lexer rule or! (OR)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def or!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 50 )
@@ -1647,7 +1647,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 328:19: '||'
+      # at line 339:19: '||'
       match( "||" )
 
 
@@ -1662,7 +1662,7 @@ module Yarpl
     end
 
     # lexer rule inc! (INC)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def inc!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 51 )
@@ -1675,7 +1675,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 329:19: '++'
+      # at line 340:19: '++'
       match( "++" )
 
 
@@ -1690,7 +1690,7 @@ module Yarpl
     end
 
     # lexer rule dec! (DEC)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def dec!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 52 )
@@ -1703,7 +1703,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 330:19: '--'
+      # at line 341:19: '--'
       match( "--" )
 
 
@@ -1718,7 +1718,7 @@ module Yarpl
     end
 
     # lexer rule plus! (PLUS)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def plus!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 53 )
@@ -1731,7 +1731,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 331:20: '+'
+      # at line 342:20: '+'
       match( 0x2b )
 
 
@@ -1745,7 +1745,7 @@ module Yarpl
     end
 
     # lexer rule minus! (MINUS)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def minus!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 54 )
@@ -1758,7 +1758,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 332:21: '-'
+      # at line 343:21: '-'
       match( 0x2d )
 
 
@@ -1772,7 +1772,7 @@ module Yarpl
     end
 
     # lexer rule times! (TIMES)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def times!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 55 )
@@ -1785,7 +1785,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 333:21: '*'
+      # at line 344:21: '*'
       match( 0x2a )
 
 
@@ -1799,7 +1799,7 @@ module Yarpl
     end
 
     # lexer rule div! (DIV)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def div!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 56 )
@@ -1812,7 +1812,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 334:19: '/'
+      # at line 345:19: '/'
       match( 0x2f )
 
 
@@ -1826,7 +1826,7 @@ module Yarpl
     end
 
     # lexer rule mod! (MOD)
-    # (in Yarpl.g)
+    # (in lib/yarpl/Yarpl.g)
     def mod!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 57 )
@@ -1839,7 +1839,7 @@ module Yarpl
 
 
       # - - - - main rule block - - - -
-      # at line 335:19: '%'
+      # at line 346:19: '%'
       match( 0x25 )
 
 
@@ -1860,68 +1860,68 @@ module Yarpl
     # but instead use the next_token method, which will
     # build and emit the actual next token
     def token!
-      # at line 1:8: ( T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD )
+      # at line 1:8: ( T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD )
       alt_5 = 46
       alt_5 = @dfa5.predict( @input )
       case alt_5
       when 1
-        # at line 1:10: T__69
-        t__69!
-
-
-      when 2
-        # at line 1:16: T__70
+        # at line 1:10: T__70
         t__70!
 
 
-      when 3
-        # at line 1:22: T__71
+      when 2
+        # at line 1:16: T__71
         t__71!
 
 
-      when 4
-        # at line 1:28: T__72
+      when 3
+        # at line 1:22: T__72
         t__72!
 
 
-      when 5
-        # at line 1:34: T__73
+      when 4
+        # at line 1:28: T__73
         t__73!
 
 
-      when 6
-        # at line 1:40: T__74
+      when 5
+        # at line 1:34: T__74
         t__74!
 
 
-      when 7
-        # at line 1:46: T__75
+      when 6
+        # at line 1:40: T__75
         t__75!
 
 
-      when 8
-        # at line 1:52: T__76
+      when 7
+        # at line 1:46: T__76
         t__76!
 
 
-      when 9
-        # at line 1:58: T__77
+      when 8
+        # at line 1:52: T__77
         t__77!
 
 
-      when 10
-        # at line 1:64: T__78
+      when 9
+        # at line 1:58: T__78
         t__78!
 
 
-      when 11
-        # at line 1:70: T__79
+      when 10
+        # at line 1:64: T__79
         t__79!
 
 
-      when 12
-        # at line 1:76: T__80
+      when 11
+        # at line 1:70: T__80
         t__80!
+
+
+      when 12
+        # at line 1:76: T__81
+        t__81!
 
 
       when 13
@@ -2286,7 +2286,7 @@ module Yarpl
 
       def description
         <<-'__dfa_description__'.strip!
-          1:1: Tokens : ( T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD );
+          1:1: Tokens : ( T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | WS | COMMENT | LINE_COMMENT | IDENTIFIER | RANGEINTEGERLITERAL | INTEGERLITERAL | LPAREN | RPAREN | LBRACE | RBRACE | LBRACK | RBRACK | SEMI | COMMA | DOT | ASSIGN | GT | LT | BANG | QUESTION | COLON | EQUALS | LTE | GTE | NOT_EQUALS | AND | OR | INC | DEC | PLUS | MINUS | TIMES | DIV | MOD );
         __dfa_description__
       end
 

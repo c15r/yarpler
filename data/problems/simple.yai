@@ -1,26 +1,17 @@
 domain {
       class Dienst {
-        const integer anzahl;
-      }
-
-      class MitarbeiterTag {
-        var Dienst dienst;
+        var integer anzahl;
       }
 
       class Mitarbeiter {
-        reference(MitarbeiterTag) tage;
+        reference(Dienst) tage;
       }
 }
 
 initial {
-  d1 = new Dienst(anzahl = 3);
-  d2 = new Dienst(anzahl = 7);
-  f = new Dienst(anzahl = 0);
-  t0 = new MitarbeiterTag(dienst=[d1,d2,f]);
-  t1 = new MitarbeiterTag(dienst=[d1,d2,f]);
-  t2 = new MitarbeiterTag(dienst=[d1,d2,f]);
-  t3 = new MitarbeiterTag(dienst=[d1,d2,f]);
-  t4 = new MitarbeiterTag(dienst=[d1,d2,f]);
-  m0 = new Mitarbeiter(tage=[t0, t1, t2, t3, t4]);
-  m1 = new Mitarbeiter(tage=[t0, t1, t2, t3, t4]);
+  d1 = new Dienst(anzahl = 1..1);
+  d2 = new Dienst(anzahl = 1..1);
+  d3 = new Dienst(anzahl = 1..1);
+  f = new Dienst(anzahl = 0..1000);
+
 }

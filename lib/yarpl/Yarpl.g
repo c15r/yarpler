@@ -18,6 +18,7 @@ tokens {
   FIELD_DECLARATION;
   INITIAL_DECLARATION;
   INTEGER;
+  LIST;
   MEMBER_DECLARATION;
   REFERENCE;
   SET;
@@ -150,17 +151,27 @@ expressionList
     ;
 
 declaration
-    : set -> set
+    : list -> list
+    | set -> set
     | primary -> primary
     ;
 
-set
-    : '[' setDeclaration ']' -> ^(SET setDeclaration)
-    ;
-
-setDeclaration
+declarationList
     : declaration (COMMA declaration)* -> ^(declaration)*
     ;
+
+primaryList
+    : primary (COMMA primary)* -> ^(primary)*
+    ;
+
+list
+    : '[' declarationList ']' -> ^(LIST declarationList)
+    ;
+
+set : '{' primaryList '}' -> ^(SET primaryList)
+    ;
+
+
 
 primary
     : literal
@@ -233,7 +244,7 @@ WS : (' ' | '\t' | '\r' | '\n') {skip();}
 COMMENT : ('/*' | ' .*? ' | '*/') {skip();}
         ;
 
-LINE_COMMENT : '//'  {skip();}
+LINE_COMMENT : '//'  { $channel=HIDDEN; }
              ;
 
 
