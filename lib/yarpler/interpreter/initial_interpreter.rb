@@ -37,7 +37,8 @@ module Yarpler
               elsif thing[1].to_s == "LIST"
                   current_obj.set_value(thing[0].to_s, build_list(thing[1]))
               else
-                current_obj.set_value(thing[0].to_s, thing[1].to_s)
+                value = prepare_value(current_obj.get_variabletype(thing[0].to_s), thing[1].to_s)
+                current_obj.set_value(thing[0].to_s, value)
               end
           end
         end
@@ -47,7 +48,12 @@ module Yarpler
         # @TODO Error handling
         set = Array.new
         tree.each do |thing|
-          set.push(@objects[thing.to_s])
+          case thing.to_s
+            when "SET"
+              set.push(build_set(thing))
+            else
+              set.push(@objects[thing.to_s])
+          end
         end
         set
       end
@@ -59,6 +65,15 @@ module Yarpler
           set.push(@objects[thing.to_s])
         end
         set
+      end
+
+      def prepare_value(type, value)
+        if type == "VARIABLE"
+          if not value.include? ".."
+            value = value.to_s + ".." + value.to_s
+          end
+        end
+        value
       end
 
     end

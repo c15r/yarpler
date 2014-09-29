@@ -10,13 +10,13 @@ domain {
       }
 
       class Mitarbeiter {
-        reference(Dienst) tage;
+        reference(Dienst) tag;
       }
 }
 
 initial {
   # Dienstschlüssel definieren
-  end = new Plan(anzahl_d1=1..1, anzahl_d2=1..1, anzahl_d3=1..1, anzahl_f=0..1000);
+  end = new Plan(anzahl_d1=2, anzahl_d2=1, anzahl_d3=1, anzahl_f=0..1000);
 
   # Definition von möglichen Diensten
   d1 = new Dienst();
@@ -25,5 +25,7 @@ initial {
   f = new Dienst();
 
   # Definition von Mitarbeitern und möglichen Diensten pro Tag
-  m0 = new Mitarbeiter(tage=[d1,d2]);
+  m1 = new Mitarbeiter(tag=[{d1,d2, f},{d2,d3,f}]);
+  m2 = new Mitarbeiter(tag=[{d2,d3, f},{d3,f}]);
+  m3 = new Mitarbeiter(tag=[{d1, f},{d2,f}]);
 }
