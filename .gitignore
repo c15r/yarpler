@@ -35,3 +35,8 @@ Gemfile.lock
 
 # intellij idea
 .idea
+
+# generated yaprl files (parser/lexer)
+/lib/yarpl/YarplLexer.rb
+/lib/yarpl/YarplParser.rb
+/lib/yarpl/Yarpl.tokens
