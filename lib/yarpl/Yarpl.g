@@ -68,11 +68,7 @@ typeDeclaration
     ;
 
 classDeclaration
-    : 'class' IDENTIFIER classBody -> ^(IDENTIFIER classBody)
-	;
-
-classBody
-    : '{' classBodyDeclaration* '}' -> classBodyDeclaration*
+    : 'class' IDENTIFIER '{' classBodyDeclaration* '}' -> ^(IDENTIFIER classBodyDeclaration*)
 	;
 
 classBodyDeclaration
@@ -172,26 +168,12 @@ set : '{' primaryList '}' -> ^(SET primaryList)
     ;
 
 
-
 primary
     : literal
 	;
 
 creator
-    : createdName classCreatorRest -> ^(VARIABLE_DECLARATION createdName classCreatorRest )
-    ;
-
-createdName
-    : structType
-    | primitiveType
-    ;
-
-classCreatorRest
-    : arguments classBody?
-    ;
-
-arguments
-    : '(' argumentList* ')' -> argumentList*
+    : structType '(' argumentList* ')' -> ^(VARIABLE_DECLARATION structType argumentList* )
     ;
 
 argumentList
@@ -241,11 +223,9 @@ variableType
 WS : (' ' | '\t' | '\r' | '\n') {skip();}
                         ;
 
-COMMENT : ('/*' | ' .*? ' | '*/') {skip();}
-        ;
-
-LINE_COMMENT : '//'  { $channel=HIDDEN; }
-             ;
+COMMENT
+    :	'#' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
+    ;
 
 
 // IDENTIFIERS

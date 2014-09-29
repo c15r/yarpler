@@ -1,6 +1,12 @@
 domain {
+      class Plan {
+        var integer anzahl_d1;
+        var integer anzahl_d2;
+        var integer anzahl_d3;
+        var integer anzahl_f;
+      }
+
       class Dienst {
-        var integer anzahl;
       }
 
       class Mitarbeiter {
@@ -9,9 +15,15 @@ domain {
 }
 
 initial {
-  d1 = new Dienst(anzahl = 1..1);
-  d2 = new Dienst(anzahl = 1..1);
-  d3 = new Dienst(anzahl = 1..1);
-  f = new Dienst(anzahl = 0..1000);
+  # Dienstschlüssel definieren
+  end = new Plan(anzahl_d1=1..1, anzahl_d2=1..1, anzahl_d3=1..1, anzahl_f=0..1000);
 
+  # Definition von möglichen Diensten
+  d1 = new Dienst();
+  d2 = new Dienst();
+  d3 = new Dienst();
+  f = new Dienst();
+
+  # Definition von Mitarbeitern und möglichen Diensten pro Tag
+  m0 = new Mitarbeiter(tage=[d1,d2]);
 }

@@ -43,6 +43,15 @@ module Yarpler
         end
       end
 
+      def build_list(tree)
+        # @TODO Error handling
+        set = Array.new
+        tree.each do |thing|
+          set.push(@objects[thing.to_s])
+        end
+        set
+      end
+
       def build_set(tree)
         # @TODO Error handling
         set = Array.new

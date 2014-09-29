@@ -45,9 +45,10 @@ module Yarpler
               end
               code<< T_CONSTANT % [ressource.get_datatype(a), a + "_" + name, ressource.load(a)]
             when "VARIABLE"
-              if !reference && ressource.is_referenced
-                next
-              end
+              # @TODO wieder einbauen
+              #if !reference && ressource.is_referenced
+              #  next
+              #end
               code<< T_VARIABLE % [ressource.load(a), name + "_" + a]
               @output << T_OUTPUT % [name + "_" + a,name + "_" + a]
             when "REFERENCE"
