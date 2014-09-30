@@ -1,9 +1,8 @@
 domain {
       class Plan {
-        var integer anzahl_d1;
-        var integer anzahl_d2;
-        var integer anzahl_d3;
-        var integer anzahl_f;
+        const integer anzahl_d1;
+        const integer anzahl_d2;
+        const integer anzahl_d3;
       }
 
       class Dienst {
@@ -16,7 +15,7 @@ domain {
 
 initial {
   # Dienstschlüssel definieren
-  end = new Plan(anzahl_d1=2, anzahl_d2=1, anzahl_d3=1, anzahl_f=0..1000);
+  end = new Plan(anzahl_d1=2, anzahl_d2=1, anzahl_d3=1);
 
   # Definition von möglichen Diensten
   d1 = new Dienst();

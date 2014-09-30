@@ -69,6 +69,7 @@ module Yarpler
                     code << T_SET % [set_name, array_to_set_range(r)]
                     code << T_VARIABLE % [set_name, name.to_s+"_"+ a +"_"+i.to_s]
                   end
+                  @output << T_OUTPUT % [name.to_s+"_"+ a +"_"+i.to_s,name.to_s+"_"+ a +"_"+i.to_s]
                   i=i.next
                 else
                   ## Einzelner Eintrag
