@@ -27,4 +27,6 @@ initial {
   m1 = new Mitarbeiter(tag=[{d1,d2, f},{d2,d3,f}]);
   m2 = new Mitarbeiter(tag=[{d2,d3, f},{d3,f}]);
   m3 = new Mitarbeiter(tag=[{d1, f},{d2,f}]);
+
+  asdf
 }

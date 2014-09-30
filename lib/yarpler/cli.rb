@@ -1,11 +1,12 @@
 require 'thor'
-#require 'yarpler/runner'
 
 module Yarpler
   class CLI < Thor
 
     def initialize(*args)
       super
+      Yarpler::Log.instance.switch_level(:debug)
+      Yarpler::Log.instance.info "Welcome to YARPLER!"
     end
 
     desc "display FILE", "Display the complete input file (yai and yad)"

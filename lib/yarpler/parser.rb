@@ -17,11 +17,29 @@ module Yarpler
     private
 
     def parse
+      Yarpler::Log.instance.info "Start parsing the input file."
+
+      out = StringIO.new
+      err = StringIO.new
+      $stdout = out
+      $stderr = err
+
       lexer = Yarpl::Lexer.new(@yarpl)
       tokens = ANTLR3::CommonTokenStream.new(lexer)  #Ein Array
       parser = Yarpl::Parser.new(tokens)
       returnValue = parser.start()
-      @tree = returnValue.tree()
+
+      $stdout = STDOUT
+      $stderr = STDERR
+
+      if not err.string.empty?
+        Yarpler::Log.instance.error "Syntax error in YARPL input file."
+        Yarpler::Log.instance.error err.string
+        abort
+      else
+        @tree = returnValue.tree()
+      end
+
     end
 
     def tree_printer(tree, depth=0)

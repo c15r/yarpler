@@ -33,7 +33,6 @@ module Yarpler
       file = Yarpler::Utils::FileLoader.new(filename)
       parser = Yarpler::Parser.new(file.get_content)
       parser.print
-      # puts " "
 
 
       interpreter = Yarpler::Interpreter::YARPLInterpreter.new(parser.tree)
