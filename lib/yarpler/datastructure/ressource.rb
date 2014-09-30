@@ -26,13 +26,16 @@ module Yarpler
         false
       end
 
-
       def get_value(attribute)
         self.send(attribute)
       end
 
       def set_value(attribute, value)
         self.send(attribute+"=",value)
+      end
+
+      def set_value_at_index(attribute, value, index)
+        self.instance_eval("@"+attribute+"["+index+"]="+value)
       end
 
       def load(attribute)

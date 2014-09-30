@@ -86,6 +86,10 @@ module Yarpler
         puts @cmd
       end
 
+      def output
+        @cmd
+      end
+
       private
 
       ## Checks if the range is constant (0,1,2) or not (0,1,3)

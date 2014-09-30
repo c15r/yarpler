@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-#require '../lib/yarpler/cli'
 require 'require_all'
 require 'logging'
 require_all 'lib'

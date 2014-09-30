@@ -32,7 +32,7 @@ module Yarpler
 
       file = Yarpler::Utils::FileLoader.new(filename)
       parser = Yarpler::Parser.new(file.get_content)
-      parser.print
+      #parser.print
 
 
       interpreter = Yarpler::Interpreter::YARPLInterpreter.new(parser.tree)
@@ -40,8 +40,8 @@ module Yarpler
       mz = Yarpler::Utils::Minizinc.new
       minizinc_file = mz.convert(d)
       mz.run(minizinc_file)
-      puts minizinc_file
-      mz.print
+
+      out = Yarpler::OutputParser.new(mz.output, d)
     end
 
     ##
