@@ -22,9 +22,9 @@ module Yarpler
       end
 
       def run(model)
-        path = 'wrk.mzn'
+        path = File.join(Dir.pwd, 'wrk.mzn')
         File.open(path, "wb") { |f| f.write(model) }
-        @cmd = %x( minizinc #{path} )
+        @cmd = %x( bash -c "minizinc #{path}" )
       end
 
       def convert(problem)

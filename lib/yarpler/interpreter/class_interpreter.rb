@@ -64,7 +64,7 @@ module Yarpler
           when "INTEGER"
             datatype="int"
           else
-            datatype="undefined"
+            datatype=data_type.to_s
         end
 
         create_method( obj_name, "#{name}_datatype".to_sym ) {

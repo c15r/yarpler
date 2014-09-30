@@ -14,6 +14,10 @@ module Yarpler
         @id
       end
 
+      def to_s
+        @_instance_name
+      end
+
       def id_datatype
         "int"
       end
@@ -35,7 +39,7 @@ module Yarpler
       end
 
       def set_value_at_index(attribute, value, index)
-        self.instance_eval("@"+attribute+"["+index+"]="+value)
+        self.instance_eval("@"+attribute+"["+index+"]='"+value+"'")
       end
 
       def load(attribute)

@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 #
-# lib/yarpler/yarpler_output/YarplerOutput.g
+# /home/nino/github/yarpler/lib/yarpler/yarpler_output/YarplerOutput.g
 # --
 # Generated using ANTLR version: 3.5
 # Ruby runtime library version: 1.10.0
-# Input grammar file: lib/yarpler/yarpler_output/YarplerOutput.g
-# Generated at: 2014-09-30 16:57:31
+# Input grammar file: /home/nino/github/yarpler/lib/yarpler/yarpler_output/YarplerOutput.g
+# Generated at: 2014-09-30 20:02:24
 #
 
 # ~~~> start load path setup
@@ -95,7 +95,7 @@ module YarplerOutput
     include TokenData
 
     begin
-      generated_using( "lib/yarpler/yarpler_output/YarplerOutput.g", "3.5", "1.10.0" )
+      generated_using( "/home/nino/github/yarpler/lib/yarpler/yarpler_output/YarplerOutput.g", "3.5", "1.10.0" )
     rescue NoMethodError => error
       # ignore
     end
@@ -109,7 +109,7 @@ module YarplerOutput
     #
     # parser rule start
     #
-    # (in lib/yarpler/yarpler_output/YarplerOutput.g)
+    # (in /home/nino/github/yarpler/lib/yarpler/yarpler_output/YarplerOutput.g)
     # 14:1: start : outputlist '----------' -> ^( START outputlist ) ;
     #
     def start
@@ -198,7 +198,7 @@ module YarplerOutput
     #
     # parser rule outputlist
     #
-    # (in lib/yarpler/yarpler_output/YarplerOutput.g)
+    # (in /home/nino/github/yarpler/lib/yarpler/yarpler_output/YarplerOutput.g)
     # 18:1: outputlist : ( output ' ' )* -> ^( OUTPUT_LIST ( output )* ) ;
     #
     def outputlist
@@ -311,7 +311,7 @@ module YarplerOutput
     #
     # parser rule output
     #
-    # (in lib/yarpler/yarpler_output/YarplerOutput.g)
+    # (in /home/nino/github/yarpler/lib/yarpler/yarpler_output/YarplerOutput.g)
     # 22:1: output : IDENTIFIER '=' DIGITS -> ^( OUTPUT IDENTIFIER DIGITS ) ;
     #
     def output
