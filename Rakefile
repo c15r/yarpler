@@ -8,7 +8,13 @@ end
 
 desc 'Generate yarpl parser and lexer from the grammar'
 task :antlr do
-  Dir.chdir "lib"
-  Dir.chdir "yarpl"
+  puts 'generating yarpl parser'
+  Dir.chdir 'lib/yarpl'
   @cmd = %x( antlr4ruby Yarpl.g )
+
+  puts 'generating yarpler output parser'
+  Dir.chdir '../yarpler/yarpler_output/'
+  @cmd = %x( antlr4ruby YarplerOutput.g )
+
+  puts 'done!'
 end
