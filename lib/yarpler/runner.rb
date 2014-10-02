@@ -2,63 +2,53 @@ module Yarpler
   class Runner
 
     ##
-    # Displays the file
-    #
-    def display(filename)
-      file = Yarpler::Utils::FileLoader.new(filename)
-      file.print
-    end
-
-    ##
     # Displays the AST
     #
     def tree(filename)
-      file = Yarpler::Utils::FileLoader.new(filename)
-      parser = Yarpler::Parser.new(file.get_content)
-      parser.print
+      parse(filename)
     end
 
     ##
-    # Converts a file to flattened YARPLER code
+    # Translate a file to MiniZinc and displays it
     #
-    def flat(filename)
-      puts "Not implemented yet."
+    def translate(filename)
+      tree = parse(filename)
+      problem = interpret(tree)
+      translate_to_minizinc(problem)
     end
 
     ##
     # Converts a file to MiniZinc and solves it
     #
-    def run(filename)
+    def solve(filename)
+      tree = parse(filename)
+      problem = interpret(tree)
 
-      file = Yarpler::Utils::FileLoader.new(filename)
-      parser = Yarpler::Parser.new(file.get_content)
-      #parser.print
+      minizinc_code = translate_to_minizinc(problem)
+      minizinc_runner = Yarpler::Utils::MinizincRunner.new
+      minizinc_runner.run(minizinc_code)
 
-
-      interpreter = Yarpler::Interpreter::YARPLInterpreter.new(parser.tree)
-      d=interpreter.problem
-      mz = Yarpler::Utils::Minizinc.new
-      minizinc_file = mz.convert(d)
-      mz.run(minizinc_file)
-
-      out = Yarpler::OutputParser.new(mz.output, d)
+      output_parser = Yarpler::OutputParser.new(minizinc_runner.output, problem)
+      output_parser.problem
     end
 
-    ##
-    # Converts a file to MiniZinc and displays it
-    #
-    def convert(filename)
+    private
+
+    def parse(filename)
       file = Yarpler::Utils::FileLoader.new(filename)
       parser = Yarpler::Parser.new(file.get_content)
+      parser.tree
+    end
 
-      parser.print
+    def interpret(tree)
+      interpreter = Yarpler::Interpreter::YARPLInterpreter.new(tree)
+      interpreter.problem
+    end
 
-      interpreter = Yarpler::Interpreter::YARPLInterpreter.new(parser.tree)
-      problem = interpreter.problem
-      mz = Yarpler::Utils::Minizinc.new
-      minizinc_file = mz.convert(problem)
-      puts minizinc_file
-
+    def translate_to_minizinc(problem)
+      minizinc_translator = Yarpler::Translators::MinizincTranslator.new
+      minizinc_translator.translate(problem)
+      minizinc_translator.output
     end
   end
 end

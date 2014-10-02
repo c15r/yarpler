@@ -9,35 +9,57 @@ module Yarpler
       Yarpler::Log.instance.info "Welcome to YARPLER!"
     end
 
-    desc "display FILE", "Display the complete input file (yai and yad)"
-    def display(file)
-      yarpler = Yarpler::Runner.new
-      yarpler.display(file)
-    end
-
     desc "tree FILE", "Display the AST of the input file"
     def tree(file)
       yarpler = Yarpler::Runner.new
-      yarpler.tree(file)
+      print_input_tree(yarpler.tree(file))
     end
 
-    desc "flat FILE", "Return a flat input file in YARPL"
-    def flat(file)
+    desc "translate FILE", "Parse input file and translate to MiniZinc"
+    def translate(file)
       yarpler = Yarpler::Runner.new
-      yarpler.flat(file)
+      puts yarpler.translate(file)
     end
 
-    desc "convert FILE", "Parse input file and convert to MiniZinc"
-    def convert(file)
+    desc "solve FILE", "Parse input file and solve it"
+    def solve(file)
       yarpler = Yarpler::Runner.new
-      yarpler.convert(file)
+      print_output_objects(yarpler.solve(file))
     end
 
-    desc "parse FILE", "Parse input file and solve it"
-    def parse(file)
-      yarpler = Yarpler::Runner.new
-      yarpler.run(file)
+    private
+
+    def print_input_tree(tree, depth=0)
+      indent = ''
+      for i in 0..depth
+        indent += "    "
+      end
+
+      puts indent+tree.to_s
+      tree.each do |thing|
+        print_input_tree(thing, 1 + depth)
+      end
     end
 
+
+    def print_output_tree(tree, depth=0)
+      indent = ''
+      for i in 0..depth
+        indent += "    "
+      end
+
+      puts indent+tree.to_s
+      tree.each do |thing|
+        print_output_tree(thing, 1 + depth)
+      end
+    end
+
+    def print_output_objects(problem)
+      puts "
+           "
+      problem.objects.each do |k,v|
+        puts v.to_yaml
+      end
+    end
   end
 end

@@ -5,26 +5,18 @@ module Yarpler
       @output = output
       parse
       fill_output(@tree, problem)
-      print_objects(problem)
-    end
-
-    def print
-      tree_printer(@tree)
+      @problem = problem
     end
 
     def tree
       @tree
     end
 
-    private
-
-    def print_objects(problem)
-      puts "
-           "
-      problem.objects.each do |k,v|
-        puts v.to_yaml
-      end
+    def problem
+      @problem
     end
+
+    private
 
     def fill_output(tree, problem)
       tree.each do |t|
@@ -43,8 +35,6 @@ module Yarpler
       instance_name = var.slice(0..(var.index('_')-1))
       field_name = var[var.index('_')+1..var.length]
       arr = field_name.split("_")
-
-
 
       if arr.length == 1
         field_name = arr[0]
@@ -82,7 +72,7 @@ module Yarpler
       lexer = YarplerOutput::Lexer.new(@output)
       tokens = ANTLR3::CommonTokenStream.new(lexer)  #Ein Array
       parser = YarplerOutput::Parser.new(tokens)
-      returnValue = parser.start()
+      return_value = parser.start()
 
       $stdout = STDOUT
       $stderr = STDERR
@@ -91,20 +81,7 @@ module Yarpler
         Yarpler::Log.instance.error err.string
         abort
       else
-        @tree = returnValue.tree()
-      end
-
-    end
-
-    def tree_printer(tree, depth=0)
-      indent = ''
-      for i in 0..depth
-        indent += "    "
-      end
-
-      puts indent+tree.to_s
-      tree.each do |thing|
-        tree_printer(thing, 1 + depth)
+        @tree = return_value.tree()
       end
 
     end
