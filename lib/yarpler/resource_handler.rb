@@ -1,7 +1,7 @@
 require 'singleton'
 
 module Yarpler
-  class RessourceHandler
+  class ResourceHandler
 
     include Singleton
 

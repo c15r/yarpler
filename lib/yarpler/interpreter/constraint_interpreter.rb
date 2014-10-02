@@ -7,7 +7,7 @@ module Yarpler
       end
 
       def initialize(tree)
-        @constraint = Yarpler::Datastructure::Constraint.new
+        @constraint = Yarpler::Models::Constraint.new
         parse_expression(tree)
       end
 

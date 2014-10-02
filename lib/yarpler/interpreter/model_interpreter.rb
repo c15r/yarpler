@@ -1,6 +1,6 @@
 module Yarpler
   module Interpreter
-    class DomainInterpreter
+    class ModelInterpreter
 
       def initialize(tree)
         tree_converter(tree)

@@ -5,7 +5,7 @@ module Yarpler
       attr_accessor :problem
 
       def initialize(tree)
-        @problem = Yarpler::Datastructure::Problem.new
+        @problem = Yarpler::Models::Problem.new
         tree_converter(tree)
       end
 
@@ -16,7 +16,7 @@ module Yarpler
         tree.each do |thing|
           case thing.to_s
             when 'DOMAIN_DECLARATION'
-              DomainInterpreter.new(thing)
+              ModelInterpreter.new(thing)
             when 'INITIAL_DECLARATION'
               initial = InitialInterpreter.new(thing)
               @problem.objects = initial.objects

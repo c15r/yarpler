@@ -7,7 +7,7 @@ module Yarpler
       end
 
       def initialize(tree)
-        @expression = Yarpler::Datastructure::Expression.new
+        @expression = Yarpler::Models::Expression.new
         process_expression(tree)
       end
 
@@ -15,8 +15,8 @@ module Yarpler
 
       def process_expression(expression)
         expression.each do |item|
-          if Yarpler::Datastructure::Operator.operator?(item.to_s)
-            @expression.operator = Yarpler::Datastructure::Operator.new(item.to_s)
+          if Yarpler::Models::Operator.operator?(item.to_s)
+            @expression.operator = Yarpler::Models::Operator.new(item.to_s)
             @expression.left = process_expression_item(item[0])
             @expression.right = process_expression_item(item[1])
           end
@@ -41,7 +41,7 @@ module Yarpler
       end
 
       def process_field(item)
-        @field = Yarpler::Datastructure::Field.new
+        @field = Yarpler::Models::Field.new
         @field.variable = item[0].to_s
         @field.attribute = item[1].to_s
       end

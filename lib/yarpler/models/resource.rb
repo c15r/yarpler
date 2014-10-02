@@ -1,6 +1,6 @@
 module Yarpler
-  module Datastructure
-    class Ressource
+  module Models
+    class Resource
 
       def initialize(name)
         @_instance_name = name
@@ -9,7 +9,7 @@ module Yarpler
 
       def id
         if @id == -1
-          @id = Yarpler::RessourceHandler.instance.next_id(self)
+          @id = Yarpler::ResourceHandler.instance.next_id(self)
         end
         @id
       end

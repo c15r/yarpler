@@ -17,7 +17,7 @@ module Yarpler
           case thing.to_s
             when "VARIABLE_DECLARATOR"
               current_name = thing[0].to_s
-              new_object = Yarpler::RessourceHandler.instance.new_object(current_name, thing[1][0].to_s)
+              new_object = Yarpler::ResourceHandler.instance.new_object(current_name, thing[1][0].to_s)
 
               @objects[current_name] = new_object
               attribute_reader(thing[1], new_object)

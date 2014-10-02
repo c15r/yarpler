@@ -1,5 +1,5 @@
 module Yarpler
-  module Datastructure
+  module Models
 
     OPERATORS = ['==']
 

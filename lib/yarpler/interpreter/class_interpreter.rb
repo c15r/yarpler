@@ -4,14 +4,14 @@ module Yarpler
 
       def initialize(tree)
         @dynamic_name = tree[0].to_s
-        Object.const_set(@dynamic_name, Class.new(Yarpler::Datastructure::Ressource) { })
+        Object.const_set(@dynamic_name, Class.new(Yarpler::Models::Resource) { })
         load_attributes(tree[0])
       end
 
       private
 
       def load_attributes(tree)
-        rh=Yarpler::RessourceHandler.instance
+        rh=Yarpler::ResourceHandler.instance
 
         tree.each do |thing|
           case thing.to_s
