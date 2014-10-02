@@ -8,10 +8,6 @@ module Yarpler
         load_files
       end
 
-      def print
-        puts @contents
-      end
-
       def get_content
         @contents
       end

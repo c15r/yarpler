@@ -1,6 +1,6 @@
 module Yarpler
-  module Utils
-    class Minizinc
+  module Translators
+    class MinizincTranslator < Translator
 
       FIXNUM_MAX = (2**(0.size * 8 -2) -1)
       FIXNUM_MIN = -(2**(0.size * 8 -2))
@@ -14,31 +14,20 @@ module Yarpler
       T_VARIABLE = "var %s: %s;\n" # var 0..2: m0t0;
       T_FOOTER = "solve satisfy;" # @TODO: Wird momentan als Hack missbraucht um den kompletten Durchstich zu ermöglichen ;)
 
-      def run_from_file(filename)
-        file = File.new(filename, "r")
-        content = file.read
-        file.close
-        run(content)
-      end
-
-      def run(model)
-        path = File.join(Dir.pwd, 'wrk.mzn')
-        File.open(path, "wb") { |f| f.write(model) }
-        @cmd = %x( bash -c "minizinc #{path}" )
-      end
-
-      def convert(problem)
-        @output="output [ \"\" "
+      def translate(problem)
+        @minizinc_output = "output [ \"\" "
         code = T_HEADER
         code << T_INCLUDES
         problem.objects.each do |key, var|
           var.get_list_of_attributes
           code<<convert_attributes(key, var)
         end
-        code << @output + "];\n"
+        code << @minizinc_output + "];\n"
         code << T_FOOTER
-        code
+        @output = code
       end
+
+      private
 
       def convert_attributes(name, ressource, reference = false)
         code=""
@@ -55,7 +44,7 @@ module Yarpler
               #  next
               #end
               code<< T_VARIABLE % [ressource.load(a), name + "_" + a]
-              @output << T_OUTPUT % [name + "_" + a,name + "_" + a]
+              @minizinc_output << T_OUTPUT % [name + "_" + a,name + "_" + a]
             when "REFERENCE"
               i = 0
               ressource.get_value(a).each do |r|
@@ -69,7 +58,7 @@ module Yarpler
                     code << T_SET % [set_name, array_to_set_range(r)]
                     code << T_VARIABLE % [set_name, name.to_s+"_"+ a +"_"+i.to_s]
                   end
-                  @output << T_OUTPUT % [name.to_s+"_"+ a +"_"+i.to_s,name.to_s+"_"+ a +"_"+i.to_s]
+                  @minizinc_output << T_OUTPUT % [name.to_s+"_"+ a +"_"+i.to_s,name.to_s+"_"+ a +"_"+i.to_s]
                   i=i.next
                 else
                   ## Einzelner Eintrag
@@ -82,16 +71,6 @@ module Yarpler
         code
       end
 
-      def print
-        puts @cmd
-      end
-
-      def output
-        @cmd
-      end
-
-      private
-
       ## Checks if the range is constant (0,1,2) or not (0,1,3)
       def constant_range?(array)
         values = Array.new
@@ -101,7 +80,7 @@ module Yarpler
         end
         values.sort
 
-       last_value = nil
+        last_value = nil
         values.each do |v|
 
           if last_value.nil?

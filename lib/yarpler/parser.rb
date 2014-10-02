@@ -6,10 +6,6 @@ module Yarpler
       parse
     end
 
-    def print
-      tree_printer(@tree)
-    end
-
     def tree
       @tree
     end
@@ -42,17 +38,5 @@ module Yarpler
 
     end
 
-    def tree_printer(tree, depth=0)
-      indent = ''
-      for i in 0..depth
-        indent += "    "
-      end
-
-      puts indent+tree.to_s
-      tree.each do |thing|
-        tree_printer(thing, 1 + depth)
-      end
-
-    end
   end
 end
