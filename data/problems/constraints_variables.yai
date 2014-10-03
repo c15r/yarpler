@@ -1,0 +1,16 @@
+domain {
+      class Dienst {
+        var integer anzahl;
+      }
+}
+
+initial {
+  d1 = new Dienst(anzahl = 1..5);
+  d2 = new Dienst(anzahl = 3..8);
+  d3 = new Dienst(anzahl = 4..18);
+  d4 = new Dienst(anzahl = 0..1);
+
+  constraint {
+    (d1.anzahl == d2.anzahl) and (d1.anzahl == d3.anzahl )
+  }
+}

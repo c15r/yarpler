@@ -14,6 +14,7 @@ tokens {
   DOMAIN_DECLARATION;
   DOMAIN_BODY;
   DOMAIN_BODY_DECLARATION;
+  EXPRESSION;
   FIELD_ACCESSOR;
   FIELD_DECLARATION;
   INITIAL_DECLARATION;
@@ -118,7 +119,6 @@ constraintBody
 
 expression
     : relationalExpression (('and'|'or') relationalExpression)*
-    | fieldAccessor EQUALS fieldAccessor -> ^(EQUALS fieldAccessor fieldAccessor)
     ;
 
 relationalExpression
@@ -139,7 +139,8 @@ signExpression
 
 primeExpression
     : primary
-    | LPAREN expression /* recursion!!! */ RPAREN
+    | fieldAccessor
+    | LPAREN expression /* recursion!!! */ RPAREN -> ^(EXPRESSION expression)
     ;
 
 expressionList

@@ -65,7 +65,7 @@ module Yarpler
                 if reference
                   next
                 end
-                code<< T_CONSTANT % [resource.get_datatype(a), a + '_' + name, resource.load(a)]
+                code<< T_CONSTANT % [resource.get_datatype(a), name +'_' + a, resource.load(a)]
               when 'VARIABLE'
                 # @TODO wieder einbauen?
                 #if !reference && resource.is_referenced
@@ -163,7 +163,7 @@ module Yarpler
         def translate(constraints)
           code = ''
           constraints.each do |constraint|
-            code = 'constraints' + NEWLINE
+            code = 'constraint' + NEWLINE
             constraint.expressions.each do |expression|
               code << translate_expression(expression) + NEWLINE
             end
@@ -188,7 +188,7 @@ module Yarpler
         end
 
         def resolve_variable_from_field(field)
-          field.attribute + '_' + field.variable
+          field.variable + '_' + field.attribute
         end
 
       end

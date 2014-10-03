@@ -15,10 +15,10 @@ module Yarpler
 
       def process_expression(expression)
         expression.each do |item|
-          if Yarpler::Models::Operator.operator?(item.to_s)
-            @expression.operator = Yarpler::Models::Operator.new(item.to_s)
+          if Yarpler::Models::Operator.operator?(item[1].to_s)
+            @expression.operator = Yarpler::Models::Operator.new(item[1].to_s)
             @expression.left = process_expression_item(item[0])
-            @expression.right = process_expression_item(item[1])
+            @expression.right = process_expression_item(item[2])
           end
         end
       end
@@ -27,6 +27,8 @@ module Yarpler
         case item.to_s
           when 'FIELD_ACCESSOR'
             FieldAccessorInterpreter.new(item).field
+          when 'EXPRESSION'
+            ExpressionInterpreter.new(item)
         end
       end
 

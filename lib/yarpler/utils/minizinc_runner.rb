@@ -21,6 +21,11 @@ module Yarpler
         path = File.join(Dir.pwd, 'wrk.mzn')
         File.open(path, "wb") { |f| f.write(model) }
         @cmd = %x( bash -c "minizinc #{path}" )
+
+        if not @cmd.include? "----------"
+          Log.instance.error "Fehler in MiniZinc!"
+          abort
+        end
       end
     end
   end

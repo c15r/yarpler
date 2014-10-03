@@ -1,7 +1,7 @@
 module Yarpler
   module Models
 
-    OPERATORS = ['==']
+    OPERATORS = ['==', '+']
 
     class Operator
 
