@@ -14,6 +14,10 @@ module Yarpler
       def self.operator?(operator)
         OPERATORS.include?(operator)
       end
+
+      def to_s
+        @operator
+      end
     end
   end
 end
