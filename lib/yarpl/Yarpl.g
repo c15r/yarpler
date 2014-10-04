@@ -7,10 +7,12 @@ options {
 
 tokens {
   ATTRIBUTE;
+  CLASS_ACCESSOR;
   CLASS_DECLARATION;
   CONSTANT;
   CONSTRAINT_DECLARATION;
   CONSTRAINT_EXPRESSION;
+  COUNT_EXPRESSION;
   DOMAIN_DECLARATION;
   DOMAIN_BODY;
   DOMAIN_BODY_DECLARATION;
@@ -21,7 +23,7 @@ tokens {
   INTEGER;
   LIST;
   MEMBER_DECLARATION;
-  REFERENCE;
+  HASONE;
   SET;
   START;
   TYPE_DECLARATION;
@@ -82,11 +84,19 @@ memberDeclaration
 
 fieldDeclaration
     : variableType type variableDeclaratorId ';' -> ^(FIELD_DECLARATION variableType type variableDeclaratorId)
-    | 'reference' LPAREN IDENTIFIER RPAREN variableDeclaratorId ';' -> ^(REFERENCE IDENTIFIER variableDeclaratorId)
+    | 'hasOne' LPAREN IDENTIFIER RPAREN variableDeclaratorId ';' -> ^(HASONE IDENTIFIER variableDeclaratorId)
+    ;
+
+instanceAccessor
+    : IDENTIFIER -> ^(FIELD_ACCESSOR IDENTIFIER)
     ;
 
 fieldAccessor
     : IDENTIFIER '.' IDENTIFIER -> ^(FIELD_ACCESSOR IDENTIFIER IDENTIFIER)
+    ;
+
+classAccessor
+    : IDENTIFIER '.' IDENTIFIER -> ^(CLASS_ACCESSOR IDENTIFIER IDENTIFIER)
     ;
 
 variableDeclarators
@@ -134,13 +144,22 @@ multiplyingExpression
     ;
 
 signExpression
-    : (PLUS|MINUS)* primeExpression
+    : (PLUS|MINUS)* functionExpression
+    ;
+
+functionExpression
+    : 'count' LPAREN countExpression RPAREN -> ^(EXPRESSION countExpression)
+    | primeExpression
     ;
 
 primeExpression
     : primary
     | fieldAccessor
     | LPAREN expression /* recursion!!! */ RPAREN -> ^(EXPRESSION expression)
+    ;
+
+countExpression
+    : instanceAccessor 'in' fieldAccessor -> instanceAccessor COUNT_IN fieldAccessor
     ;
 
 expressionList
@@ -325,3 +344,6 @@ MINUS             : '-';
 TIMES             : '*';
 DIV             : '/';
 MOD             : '%';
+
+// FUNCTIONS
+COUNT_IN    : 'count in';

@@ -14,13 +14,13 @@ module Yarpler
       private
 
       def process_expression(expression)
-        expression.each do |item|
-          if Yarpler::Models::Operator.operator?(item[1].to_s)
-            @expression.operator = Yarpler::Models::Operator.new(item[1].to_s)
-            @expression.left = process_expression_item(item[0])
-            @expression.right = process_expression_item(item[2])
+        #expression.each do |item|
+          if Yarpler::Models::Operator.operator?(expression[1].to_s)
+            @expression.operator = Yarpler::Models::Operator.new(expression[1].to_s)
+            @expression.left = process_expression_item(expression[0])
+            @expression.right = process_expression_item(expression[2])
           end
-        end
+        #end
       end
 
       def process_expression_item(item)
@@ -28,7 +28,7 @@ module Yarpler
           when 'FIELD_ACCESSOR'
             FieldAccessorInterpreter.new(item).field
           when 'EXPRESSION'
-            ExpressionInterpreter.new(item)
+            ExpressionInterpreter.new(item).expression
         end
       end
 
@@ -44,8 +44,15 @@ module Yarpler
 
       def process_field(item)
         @field = Yarpler::Models::Field.new
-        @field.variable = item[0].to_s
-        @field.attribute = item[1].to_s
+
+        if (item.size == 2)
+          @field.variable = item[0].to_s
+          @field.attribute = item[1].to_s
+        else # falls ein reiner Instanzselektor verwendet wird
+          @field.variable = item[0].to_s
+          @field.attribute = "id"
+        end
+
       end
     end
   end

@@ -8,10 +8,20 @@ module Yarpler
 
       SPACE = ' '
       NEWLINE = "\n"
+      LCBRACKET = '{'
+      RCBRACKET = '}'
       DOUBLE_NEWLINE = NEWLINE * 2
       TAB = "\t"
 
+      def get_array_index
+        @array_index = @array_index.next
+        @array_index
+      end
+
       def translate(problem)
+        # Initialize
+        @array_index = 0;
+
         # Setup HEADER and INCLUDES
         code = T_HEADER + DOUBLE_NEWLINE
         code << T_INCLUDES + DOUBLE_NEWLINE
@@ -22,7 +32,7 @@ module Yarpler
 
         # Generate constraints
         constraint_translator = MinizincConstraintTranslator.new
-        code << constraint_translator.translate(problem.constraints) + DOUBLE_NEWLINE
+        code << constraint_translator.translate(problem) + DOUBLE_NEWLINE
 
         # Output
         code << 'output [ "" ' + attribute_translator.attribute_output + '];' + DOUBLE_NEWLINE
@@ -67,32 +77,23 @@ module Yarpler
                 end
                 code<< T_CONSTANT % [resource.get_datatype(a), name +'_' + a, resource.load(a)]
               when 'VARIABLE'
-                # @TODO wieder einbauen?
-                #if !reference && resource.is_referenced
-                #  next
-                #end
                 code<< T_VARIABLE % [resource.load(a), name + "_" + a]
                 @attribute_output << T_OUTPUT % [name + "_" + a,name + "_" + a]
-              when 'REFERENCE'
-                i = 0
-                resource.get_value(a).each do |r|
-
-                  if r.kind_of?(Array)
-                    ## Set
-                    if constant_range?(r)
-                      code << T_VARIABLE % [array_to_constant_range(r), name.to_s+"_"+ a +"_"+i.to_s]
-                    else
-                      set_name = "SET_"+name.to_s+"_"+ a+"_"+i.to_s
-                      code << T_SET % [set_name, array_to_set_range(r)]
-                      code << T_VARIABLE % [set_name, name.to_s+"_"+ a +"_"+i.to_s]
-                    end
-                    @attribute_output << T_OUTPUT % [name.to_s+"_"+ a +"_"+i.to_s,name.to_s+"_"+ a +"_"+i.to_s]
-                    i=i.next
+              when 'HASONE'
+                r = resource.get_value(a)
+                if r.kind_of?(Array)
+                  ## Set
+                  if constant_range?(r)
+                    code << T_VARIABLE % [array_to_constant_range(r), name.to_s+"_"+ a]
                   else
-                    ## Einzelner Eintrag
-                    code << convert_attributes(name.to_s+"_"+r.get_instance_name.to_s, r, true )
+                    set_name = "SET_"+name.to_s+"_"+ a
+                    code << T_SET % [set_name, array_to_set_range(r)]
+                    code << T_VARIABLE % [set_name, name.to_s+"_"+ a]
                   end
-
+                  @attribute_output << T_OUTPUT % [name.to_s+"_"+ a,name.to_s+"_"+ a]
+                else
+                  ## Einzelner Eintrag
+                  code << convert_attributes(name.to_s+"_"+r.get_instance_name.to_s, r, true )
                 end
             end
           end
@@ -160,30 +161,71 @@ module Yarpler
 
         end
 
-        def translate(constraints)
+        def translate(problem)
           code = ''
-          constraints.each do |constraint|
+          problem.constraints.each do |constraint|
             code = 'constraint' + NEWLINE
             constraint.expressions.each do |expression|
-              code << translate_expression(expression) + NEWLINE
+              code << MinizincConstraintTranslator.new.translate_expression(expression, problem) + NEWLINE
             end
             code << ';' + DOUBLE_NEWLINE
           end
           code
         end
+      end
 
-        def translate_expression(expression)
-          code = TAB
-          code << resolve_expression(expression.left) + SPACE
-          code << expression.operator.to_s
-          code << SPACE + resolve_expression(expression.right)
+      class MinizincConstraintTranslator
+        def initialize
+
         end
 
-        def resolve_expression(expression)
+        def translate_expression(expression, problem)
+          code = ''
+          case expression.operator.to_s
+            when 'COUNT_IN'
+              code << translate_expression_count(expression, problem)
+            else
+              code << translate_expression_default(expression, problem)
+          end
+
+        end
+
+        def translate_expression_count(expression, problem)
+
+          # @TODO mach automatisch und besser
+          index = 0
+          first = true
+          variable_to_check = resolve_variable_from_field(expression.left)
+          objects = problem.get_objects_of_class(expression.right.variable)
+          attribute = expression.right.attribute
+
+          code = "let" + SPACE + LCBRACKET + "array[1.." + objects.size.to_s + "] of var int: array" +index.to_s + " = ["
+
+          objects.each do |obj|
+            if first
+              first = false
+            else
+              code << ","
+            end
+            code << "bool2int("+variable_to_check + "==" + resolve_variable_from_object_and_attribute_name(obj,attribute)+")"
+          end
+
+
+          code << " ]} in true /\\ sum(t0 in 1.." + objects.size.to_s + ")(array" +index.to_s + "[t0])"
+        end
+
+        def translate_expression_default(expression, problem)
+          code = ''
+          code << resolve_expression(expression.left, problem) + SPACE
+          code << expression.operator.to_s
+          code << SPACE + resolve_expression(expression.right, problem)
+        end
+
+        def resolve_expression(expression, problem)
           if expression.is_a? Yarpler::Models::Field
             resolve_variable_from_field(expression)
           elsif expression.is_a? Yarpler::Models::Expression
-            translate_expression(expression)
+            MinizincConstraintTranslator.new.translate_expression(expression, problem)
           end
         end
 
@@ -191,8 +233,10 @@ module Yarpler
           field.variable + '_' + field.attribute
         end
 
+        def resolve_variable_from_object_and_attribute_name(obj, attribute)
+          obj.get_instance_name + '_' + attribute
+        end
       end
-
     end
   end
 end
