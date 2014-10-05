@@ -21,7 +21,7 @@ class MinizincRunner
     @cmd = %x( bash -c "minizinc #{path}" )
 
     if not @cmd.include? "----------"
-      Log.instance.error "Fehler in MiniZinc!"
+      Yarpler::Log.instance.error "Fehler in MiniZinc!"
       abort
     end
   end
