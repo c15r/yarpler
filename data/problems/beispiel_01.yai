@@ -1,4 +1,4 @@
-domain {
+model {
   // Idee "relation(Type)" steht für Einzelobjekt, "relations(Type)" für ein Set
   class Mitarbeiter {
     const relations(Tag) tage;
