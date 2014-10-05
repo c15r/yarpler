@@ -19,7 +19,9 @@ tokens {
   EXPRESSION;
   FIELD_ACCESSOR;
   FIELD_DECLARATION;
+  FUNCTION_EXPRESSION;
   INITIAL_DECLARATION;
+  INSTANCE_ACCESSOR;
   INTEGER;
   LIST;
   MEMBER_DECLARATION;
@@ -88,7 +90,7 @@ fieldDeclaration
     ;
 
 instanceAccessor
-    : IDENTIFIER -> ^(FIELD_ACCESSOR IDENTIFIER)
+    : IDENTIFIER -> ^(INSTANCE_ACCESSOR IDENTIFIER)
     ;
 
 fieldAccessor
@@ -148,8 +150,8 @@ signExpression
     ;
 
 functionExpression
-    : 'count' LPAREN countExpression RPAREN -> ^(EXPRESSION countExpression)
-    | 'sum' LPAREN sumExpression RPAREN -> ^(EXPRESSION sumExpression)
+    : 'count' LPAREN countExpression RPAREN -> ^(FUNCTION_EXPRESSION countExpression)
+    | 'sum' LPAREN sumExpression RPAREN -> ^(FUNCTION_EXPRESSION sumExpression)
     | primeExpression
     ;
 
@@ -160,7 +162,7 @@ primeExpression
     ;
 
 countExpression
-    : instanceAccessor 'in' fieldAccessor -> instanceAccessor COUNT_IN fieldAccessor
+    : instanceAccessor 'in' fieldAccessor -> ^(COUNT_IN instanceAccessor fieldAccessor)
     ;
     
 sumExpression

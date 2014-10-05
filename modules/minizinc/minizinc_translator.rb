@@ -191,40 +191,11 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
     def translate(expression, problem)
       code = '('
-      case expression.operator.to_s
-        when 'COUNT_IN'
-          code << translate_expression_count(expression, problem)
-        else
-          code << translate_expression_default(expression, problem)
-      end
+      code << translate_expression(expression, problem)
       code << ')'
     end
 
-    def translate_expression_count(expression, problem)
-
-      # @TODO mach automatisch und besser
-      index = 0
-      first = true
-      variable_to_check = resolve_variable_from_field(expression.left)
-      objects = problem.get_objects_of_class(expression.right.variable)
-      attribute = expression.right.attribute
-
-      code = "let" + SPACE + LCBRACKET + "array[1.." + objects.size.to_s + "] of var int: array" +index.to_s + " = ["
-
-      objects.each do |obj|
-        if first
-          first = false
-        else
-          code << ","
-        end
-        code << "bool2int("+variable_to_check + "==" + resolve_variable_from_object_and_attribute_name(obj,attribute)+")"
-      end
-
-
-      code << " ]} in true /\\ sum(t0 in 1.." + objects.size.to_s + ")(array" +index.to_s + "[t0])"
-    end
-
-    def translate_expression_default(expression, problem)
+    def translate_expression(expression, problem)
       code = ''
       code << resolve_expression(expression.left, problem) + SPACE
       code << expression.operator.to_s
@@ -234,6 +205,8 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     def resolve_expression(expression, problem)
       if expression.is_a? Yarpler::Models::Field
         resolve_variable_from_field(expression)
+      elsif expression.is_a? Yarpler::Models::Function
+        MinizincFunctionTranslator.new.translate(expression, problem)
       elsif expression.is_a? Yarpler::Models::Expression
         MinizincExpressionTranslator.new.translate(expression, problem)
       end
@@ -241,6 +214,42 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
     def resolve_variable_from_field(field)
       field.variable + '_' + field.attribute
+    end
+  end
+
+  class MinizincFunctionTranslator
+    def initialize
+
+    end
+
+    def translate(function, problem)
+      if function.is_a? Yarpler::Models::CountFunction
+        translate_count_function(function, problem)
+      end
+    end
+
+    def translate_count_function(function, problem)
+
+      # @TODO mach automatisch und besser
+      index = 0
+      first = true
+      variable_to_check = function.element.to_s
+      objects = problem.get_objects_of_class(function.range.variable)
+      attribute = function.range.attribute
+
+      code = 'let' + SPACE + LCBRACKET + 'array[1..' + objects.size.to_s + '] of var int: array' +index.to_s + ' = ['
+
+      objects.each do |obj|
+        if first
+          first = false
+        else
+          code << ','
+        end
+        code << 'bool2int(' + variable_to_check + '==' + resolve_variable_from_object_and_attribute_name(obj, attribute) + ')'
+      end
+
+
+      code << ' ]} in true /\\ sum(t0 in 1..' + objects.size.to_s + ')(array' +index.to_s + '[t0])'
     end
 
     def resolve_variable_from_object_and_attribute_name(obj, attribute)

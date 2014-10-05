@@ -1,7 +1,7 @@
 module Yarpler
   module Models
 
-    OPERATORS = %w(== + COUNT_IN AND)
+    OPERATORS = %w(== + AND)
 
     class Operator
 

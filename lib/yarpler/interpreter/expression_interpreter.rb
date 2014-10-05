@@ -25,6 +25,8 @@ module Yarpler
         case item.to_s
           when 'FIELD_ACCESSOR'
             FieldAccessorInterpreter.new(item).field
+          when 'FUNCTION_EXPRESSION'
+            FunctionInterpreter.new(item).function
           when 'EXPRESSION'
             ExpressionInterpreter.new(item).expression
         end
@@ -36,21 +38,28 @@ module Yarpler
 
       attr_accessor :field
 
-      def initialize(tree)
-        process_field(tree)
+      def initialize(item)
+        process_field(item)
       end
 
       def process_field(item)
         @field = Yarpler::Models::Field.new
+        @field.variable = item[0].to_s
+        @field.attribute = item[1].to_s
+      end
+    end
 
-        if (item.size == 2)
-          @field.variable = item[0].to_s
-          @field.attribute = item[1].to_s
-        else # falls ein reiner Instanzselektor verwendet wird
-          @field.variable = item[0].to_s
-          @field.attribute = "id"
-        end
+    class InstanceInterpreter
 
+      attr_accessor :instance
+
+      def initialize(item)
+        process_instance(item)
+      end
+
+      def process_instance(item)
+        @instance = Yarpler::Models::Instance.new
+        @instance.variable = item[0].to_s
       end
     end
   end
