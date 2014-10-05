@@ -233,7 +233,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       # @TODO mach automatisch und besser
       index = 0
       first = true
-      variable_to_check = function.element.to_s
+      variable_to_check = function.element.variable + '_id'
       objects = problem.get_objects_of_class(function.range.variable)
       attribute = function.range.attribute
 

@@ -7,10 +7,6 @@ module Yarpler
       def initialize
         @variable = ''
       end
-
-      def to_s
-        @variable + '_id'
-      end
     end
   end
 end
