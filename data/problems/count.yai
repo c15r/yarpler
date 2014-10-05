@@ -1,4 +1,4 @@
-domain {
+model {
       class Plan {
         const integer anzahl_d1;
         const integer anzahl_d2;

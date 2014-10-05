@@ -9,7 +9,7 @@ module Yarpler
       def tree_converter(tree)
         tree.each do |thing|
           case thing.to_s
-            when "CLASS_DECLARATION"
+            when 'CLASS_DECLARATION'
               ClassInterpreter.new(thing)
           end
         end

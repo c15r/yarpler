@@ -11,6 +11,6 @@ initial {
   d4 = new Dienst(anzahl = 0..1);
 
   constraint {
-    (d1.anzahl == d2.anzahl) and (d1.anzahl == d3.anzahl )
+    (d1.anzahl == (d2.anzahl == d3.anzahl)) and (d1.anzahl == d3.anzahl )
   }
 }

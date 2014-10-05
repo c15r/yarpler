@@ -174,9 +174,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     def translate(problem)
       code = ''
       problem.constraints.each do |constraint|
-        code = 'constraint' + NEWLINE
+        code <<  'constraint' + NEWLINE
         constraint.expressions.each do |expression|
-          code << MinizincConstraintTranslator.new.translate_expression(expression, problem) + NEWLINE
+          code << TAB + MinizincExpressionTranslator.new.translate(expression, problem) + NEWLINE
         end
         code << ';' + DOUBLE_NEWLINE
       end
@@ -184,20 +184,20 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
   end
 
-  class MinizincConstraintTranslator
+  class MinizincExpressionTranslator
     def initialize
 
     end
 
-    def translate_expression(expression, problem)
-      code = ''
+    def translate(expression, problem)
+      code = '('
       case expression.operator.to_s
         when 'COUNT_IN'
           code << translate_expression_count(expression, problem)
         else
           code << translate_expression_default(expression, problem)
       end
-
+      code << ')'
     end
 
     def translate_expression_count(expression, problem)
@@ -235,7 +235,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       if expression.is_a? Yarpler::Models::Field
         resolve_variable_from_field(expression)
       elsif expression.is_a? Yarpler::Models::Expression
-        MinizincConstraintTranslator.new.translate_expression(expression, problem)
+        MinizincExpressionTranslator.new.translate(expression, problem)
       end
     end
 
