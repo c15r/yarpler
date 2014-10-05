@@ -1,7 +1,7 @@
 module Yarpler
   module Models
 
-    OPERATORS = ['==', '+', 'COUNT_IN']
+    OPERATORS = %w(== + COUNT_IN AND)
 
     class Operator
 
@@ -12,7 +12,7 @@ module Yarpler
       end
 
       def self.operator?(operator)
-        OPERATORS.include?(operator)
+        OPERATORS.include?(operator.upcase)
       end
 
       def to_s

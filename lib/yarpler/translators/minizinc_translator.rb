@@ -166,7 +166,7 @@ module Yarpler
           problem.constraints.each do |constraint|
             code = 'constraint' + NEWLINE
             constraint.expressions.each do |expression|
-              code << MinizincConstraintTranslator.new.translate_expression(expression, problem) + NEWLINE
+              code << TAB + MinizincConstraintTranslator.new.translate_expression(expression, problem) + NEWLINE
             end
             code << ';' + DOUBLE_NEWLINE
           end
@@ -180,14 +180,14 @@ module Yarpler
         end
 
         def translate_expression(expression, problem)
-          code = ''
+          code = '('
           case expression.operator.to_s
             when 'COUNT_IN'
               code << translate_expression_count(expression, problem)
             else
               code << translate_expression_default(expression, problem)
           end
-
+          code << ')'
         end
 
         def translate_expression_count(expression, problem)
