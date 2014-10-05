@@ -14,13 +14,11 @@ module Yarpler
       private
 
       def process_expression(expression)
-        #expression.each do |item|
-          if Yarpler::Models::Operator.operator?(expression[1].to_s)
-            @expression.operator = Yarpler::Models::Operator.new(expression[1].to_s)
-            @expression.left = process_expression_item(expression[0])
-            @expression.right = process_expression_item(expression[2])
-          end
-        #end
+        if Yarpler::Models::Operator.operator?(expression[1].to_s)
+          @expression.operator = Yarpler::Models::Operator.new(expression[1].to_s)
+          @expression.left = process_expression_item(expression[0])
+          @expression.right = process_expression_item(expression[2])
+        end
       end
 
       def process_expression_item(item)

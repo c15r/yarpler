@@ -15,8 +15,8 @@ module Yarpler
 
       def parse_expression(expressions)
         expressions.each do |expression|
-          expInt = ExpressionInterpreter.new(expression)
-          @constraint.expressions << expInt.expression
+          expression_interpreter = ExpressionInterpreter.new(expression)
+          @constraint.expressions << expression_interpreter.expression
         end
       end
 
