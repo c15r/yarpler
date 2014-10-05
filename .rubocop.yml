@@ -1,0 +1,9 @@
+# Rubocop Config
+
+AllCops:
+  Include:
+    - '**/Rakefile'
+  Exclude:
+    - 'modules/minizinc/yarpler_output/*'
+    - 'lib/yarpl/*'
+
