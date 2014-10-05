@@ -13,7 +13,7 @@ task :antlr do
   @cmd = %x( antlr4ruby Yarpl.g )
 
   puts 'generating yarpler output parser'
-  Dir.chdir '../yarpler/yarpler_output/'
+  Dir.chdir '../../modules/minizinc/yarpler_output/'
   @cmd = %x( antlr4ruby YarplerOutput.g )
 
   puts 'done!'
