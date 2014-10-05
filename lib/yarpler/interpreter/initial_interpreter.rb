@@ -32,7 +32,7 @@ module Yarpler
         tree.each do |thing|
           case thing.to_s
             when 'ATTRIBUTE'
-              if thing[1].to_s == "SET"
+              if thing[1].to_s == 'SET'
                 current_obj.set_value(thing[0].to_s, build_set(thing[1]))
               elsif thing[1].to_s == 'LIST'
                   current_obj.set_value(thing[0].to_s, build_list(thing[1]))
@@ -68,8 +68,8 @@ module Yarpler
       end
 
       def prepare_value(type, value)
-        if type == "VARIABLE"
-          if not value.include? '..'
+        if type == 'VARIABLE'
+          unless value.include? '..'
             value = value.to_s + '..' + value.to_s
           end
         end
