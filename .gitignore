@@ -46,3 +46,4 @@ Gemfile.lock
 
 # generated yarpler files
 wrk.mzn
+wrk.fzn
