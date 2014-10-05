@@ -21,10 +21,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   end
 
   def after_translate(problem)
-    minizinc_runner = Yarpler::Utils::MinizincRunner.new
+    minizinc_runner = MinizincRunner.new
     minizinc_runner.run(@output)
 
-    output_parser = Yarpler::OutputParser.new(minizinc_runner.output, problem)
+    OutputParser.new(minizinc_runner.output, problem)
     problem
   end
 

@@ -28,8 +28,4 @@ initial {
   m2 = new Mitarbeiter(dienst={d2,d3,f});
   m3 = new Mitarbeiter(dienst={d1,f});
 
-  constraint {
-    sum(d1==m1.tag) == end.anzahl_d1
-  }
-
 }

@@ -3,5 +3,6 @@
 require 'require_all'
 require 'logging'
 require_all 'lib'
+require_all 'modules'
 
 Yarpler::CLI.start(ARGV, :debug => true)
