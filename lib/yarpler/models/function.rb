@@ -16,5 +16,15 @@ module Yarpler
 
       end
     end
+
+    class SumFunction < Function
+
+      attr_accessor :elements
+
+      def initialize
+        @elements = Array.new
+      end
+
+    end
   end
 end

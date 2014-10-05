@@ -25,6 +25,8 @@ module Yarpler
         case item.to_s
           when 'FIELD_ACCESSOR'
             FieldAccessorInterpreter.new(item).field
+          when 'INSTANCE_ACCESSOR'
+            InstanceInterpreter.new(item).instance
           when 'FUNCTION_EXPRESSION'
             FunctionInterpreter.new(item).function
           when 'EXPRESSION'

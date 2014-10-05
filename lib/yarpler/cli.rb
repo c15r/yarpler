@@ -43,6 +43,9 @@ module Yarpler
           objects = extension.before_translate(objects)
           extension.translate(objects)
           objects = extension.after_translate(objects)
+        elsif extension.is_a?(Yarpler::Extensions::Process)
+          Yarpler::Log.instance.info "Run process " + extension.class.to_s
+          objects = extension.process(objects)
         else
           Yarpler::Log.instance.error class_name + " is not inherited by a supported superclass."
           abort

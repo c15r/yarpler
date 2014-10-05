@@ -13,6 +13,7 @@ tokens {
   CONSTRAINT_DECLARATION;
   CONSTRAINT_EXPRESSION;
   COUNT_EXPRESSION;
+  EXPRESSION_LIST;
   MODEL_DECLARATION;
   MODEL_BODY;
   MODEL_BODY_DECLARATION;
@@ -28,6 +29,7 @@ tokens {
   HASONE;
   SET;
   START;
+  SUM;
   TYPE_DECLARATION;
   VARIABLE;
   VARIABLE_DECLARATOR;
@@ -156,7 +158,8 @@ functionExpression
     ;
 
 primeExpression
-    : primary
+    : literal
+    | instanceAccessor
     | fieldAccessor
     | LPAREN expression /* recursion!!! */ RPAREN -> ^(EXPRESSION expression)
     ;
@@ -166,11 +169,11 @@ countExpression
     ;
     
 sumExpression
-    : expressionList
+    : expressionList -> ^(SUM expressionList)
     ;
 
 expressionList
-    :   expression (',' expression)*
+    :   expression (',' expression)* -> ^(EXPRESSION_LIST ^(EXPRESSION expression)*)
     ;
 
 declaration
@@ -197,6 +200,7 @@ set : '{' primaryList '}' -> ^(SET primaryList)
 
 primary
     : literal
+    | IDENTIFIER
 	;
 
 creator
@@ -216,7 +220,6 @@ argument
 literal
 	: RANGEINTEGERLITERAL
 	| INTEGERLITERAL
-	| IDENTIFIER
 	;
 
 type

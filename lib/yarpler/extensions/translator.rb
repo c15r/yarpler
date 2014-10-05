@@ -12,7 +12,7 @@ module Yarpler
 
       ##
       # Processes the model and returns it
-      def before_translate()
+      def before_translate(problem)
         raise NotImplementedError
       end
 
@@ -24,7 +24,7 @@ module Yarpler
 
       ##
       # Processes the model and returns it
-      def after_translate()
+      def after_translate(problem)
         raise NotImplementedError
       end
     end

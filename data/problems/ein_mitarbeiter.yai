@@ -1,0 +1,9 @@
+model {
+      class Mitarbeiter {
+        const integer nr;
+      }
+}
+
+initial {
+  m1 = new Mitarbeiter(nr=1);
+}

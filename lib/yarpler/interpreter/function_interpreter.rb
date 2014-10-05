@@ -17,6 +17,8 @@ module Yarpler
         case function[0].to_s
           when 'COUNT_IN'
             @function = process_count_function(function[0])
+          when 'SUM'
+            @function = process_sum_function(function[0])
         end
       end
 
@@ -30,6 +32,16 @@ module Yarpler
         count.range = Yarpler::Interpreter::FieldAccessorInterpreter.new(function[1]).field
 
         count
+      end
+
+      def process_sum_function(function)
+        sum = Yarpler::Models::SumFunction.new
+
+        function[0].each do |expression|
+          sum.elements.push(Yarpler::Interpreter::ExpressionInterpreter.new(expression).expression)
+        end
+
+        sum
       end
     end
   end
