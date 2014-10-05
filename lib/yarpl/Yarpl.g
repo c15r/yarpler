@@ -149,6 +149,7 @@ signExpression
 
 functionExpression
     : 'count' LPAREN countExpression RPAREN -> ^(EXPRESSION countExpression)
+    | 'sum' LPAREN sumExpression RPAREN -> ^(EXPRESSION sumExpression)
     | primeExpression
     ;
 
@@ -160,6 +161,10 @@ primeExpression
 
 countExpression
     : instanceAccessor 'in' fieldAccessor -> instanceAccessor COUNT_IN fieldAccessor
+    ;
+    
+sumExpression
+    : expressionList
     ;
 
 expressionList
