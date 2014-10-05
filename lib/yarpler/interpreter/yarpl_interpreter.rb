@@ -15,7 +15,7 @@ module Yarpler
         # @TODO evtl noch etwas schöner mit ENUM?
         tree.each do |thing|
           case thing.to_s
-            when 'DOMAIN_DECLARATION'
+            when 'MODEL_DECLARATION'
               ModelInterpreter.new(thing)
             when 'INITIAL_DECLARATION'
               initial = InitialInterpreter.new(thing)

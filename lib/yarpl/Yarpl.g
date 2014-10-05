@@ -13,9 +13,9 @@ tokens {
   CONSTRAINT_DECLARATION;
   CONSTRAINT_EXPRESSION;
   COUNT_EXPRESSION;
-  DOMAIN_DECLARATION;
-  DOMAIN_BODY;
-  DOMAIN_BODY_DECLARATION;
+  MODEL_DECLARATION;
+  MODEL_BODY;
+  MODEL_BODY_DECLARATION;
   EXPRESSION;
   FIELD_ACCESSOR;
   FIELD_DECLARATION;
@@ -37,19 +37,19 @@ start
                         ;
 
 program
-    : domainDeclaration -> domainDeclaration
+    : modelDeclaration -> modelDeclaration
     | initialDeclaration -> initialDeclaration
 	;
 
-domainDeclaration
-    : 'domain' domainBody -> ^(DOMAIN_DECLARATION domainBody)
+modelDeclaration
+    : 'model' modelBody -> ^(MODEL_DECLARATION modelBody)
     ;
 
-domainBody
-    : '{' domainBodyDeclaration* '}' -> domainBodyDeclaration*
+modelBody
+    : '{' modelBodyDeclaration* '}' -> modelBodyDeclaration*
     ;
 
-domainBodyDeclaration
+modelBodyDeclaration
     : typeDeclaration -> typeDeclaration
 	;
 

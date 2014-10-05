@@ -1,4 +1,4 @@
-domain {
+model {
       class Dienst {
         var integer anzahl;
       }
