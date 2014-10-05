@@ -6,28 +6,62 @@ module Yarpler
     def initialize(*args)
       super
       Yarpler::Log.instance.switch_level(:debug)
-      Yarpler::Log.instance.info "Welcome to YARPLER!"
     end
 
-    desc "tree FILE", "Display the AST of the input file"
-    def tree(file)
+    desc "solve [FILE] [TRANSLATORS]", "Parse input file and solve it"
+    option :displaytree, :aliases => :tree
+    option :displaymodel, :aliases => :model
+    option :noresult
+    def solve(file, *args)
       yarpler = Yarpler::Runner.new
-      print_input_tree(yarpler.tree(file))
-    end
 
-    desc "translate FILE", "Parse input file and translate to MiniZinc"
-    def translate(file)
-      yarpler = Yarpler::Runner.new
-      puts yarpler.translate(file)
-    end
+      # Load the abstract syntax tree from input
+      Yarpler::Log.instance.info "Load abstract syntax tree from input."
+      tree = yarpler.tree(file)
+      if options[:displaytree]
+        print_input_tree(tree)
+      end
 
-    desc "solve FILE", "Parse input file and solve it"
-    def solve(file)
-      yarpler = Yarpler::Runner.new
-      print_output_objects(yarpler.solve(file))
+      # Convert the AST to an object structure
+      Yarpler::Log.instance.info "Convert the AST to an object structure."
+      objects = yarpler.load(tree)
+      if options[:displaymodel]
+        print_output_objects(objects)
+      end
+
+      args.each do |a|
+        class_name=a.to_s
+        if not class_exists?(class_name)
+          Yarpler::Log.instance.error class_name + " is not located in the lib folder."
+          abort
+        end
+
+        extension = Object.const_get(class_name).new
+
+        if extension.is_a?(Yarpler::Extensions::Translator)
+          Yarpler::Log.instance.info "Run translator " + extension.class.to_s
+          objects = extension.before_translate(objects)
+          extension.translate(objects)
+          objects = extension.after_translate(objects)
+        else
+          Yarpler::Log.instance.error class_name + " is not inherited by a supported superclass."
+          abort
+        end
+      end
+      if not options[:noresult]
+        print_output_objects(objects)
+      end
+
     end
 
     private
+
+    def class_exists?(class_name)
+      klass = Object.const_get(class_name)
+      return klass.is_a?(Class)
+    rescue NameError
+      return false
+    end
 
     def print_input_tree(tree, depth=0)
       indent = ''

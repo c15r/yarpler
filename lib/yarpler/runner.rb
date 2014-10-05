@@ -2,35 +2,30 @@ module Yarpler
   class Runner
 
     ##
-    # Displays the AST
+    # Loads the AST
     #
     def tree(filename)
       parse(filename)
     end
 
     ##
-    # Translate a file to MiniZinc and displays it
+    # Loads the data structure from the AST
     #
-    def translate(filename)
-      tree = parse(filename)
-      problem = interpret(tree)
-      translate_to_minizinc(problem)
+    def load(tree)
+      interpret(tree)
     end
 
-    ##
-    # Converts a file to MiniZinc and solves it
-    #
-    def solve(filename)
+    def run(filename)
       tree = parse(filename)
       problem = interpret(tree)
 
-      minizinc_code = translate_to_minizinc(problem)
-      puts minizinc_code
-      minizinc_runner = Yarpler::Utils::MinizincRunner.new
-      minizinc_runner.run(minizinc_code)
+      # minizinc_code = translate_to_minizinc(problem)
+      # puts minizinc_code
+      # minizinc_runner = Yarpler::Utils::MinizincRunner.new
+      # minizinc_runner.run(minizinc_code)
 
-      output_parser = Yarpler::OutputParser.new(minizinc_runner.output, problem)
-      output_parser.problem
+      # output_parser = Yarpler::OutputParser.new(minizinc_runner.output, problem)
+      # output_parser.problem
     end
 
     private
@@ -44,12 +39,6 @@ module Yarpler
     def interpret(tree)
       interpreter = Yarpler::Interpreter::YARPLInterpreter.new(tree)
       interpreter.problem
-    end
-
-    def translate_to_minizinc(problem)
-      minizinc_translator = Yarpler::Translators::MinizincTranslator.new
-      minizinc_translator.translate(problem)
-      minizinc_translator.output
     end
   end
 end

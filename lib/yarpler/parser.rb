@@ -13,8 +13,6 @@ module Yarpler
     private
 
     def parse
-      Yarpler::Log.instance.info "Start parsing the input file."
-
       out = StringIO.new
       err = StringIO.new
       $stdout = out
