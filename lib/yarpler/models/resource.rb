@@ -1,6 +1,5 @@
 module Yarpler
   module Models
-
     ##
     # Generic Class to handle the YARPL Model
     #
@@ -12,10 +11,9 @@ module Yarpler
     #     }
     #   }
     class Resource
-
       def initialize(name)
         @_instance_name = name
-        @id=-1
+        @id = -1
       end
 
       def id
@@ -30,11 +28,11 @@ module Yarpler
       end
 
       def id_datatype
-        "int"
+        'int'
       end
 
       def id_variabletype
-        "CONSTANT"
+        'CONSTANT'
       end
 
       def is_referenced
@@ -42,29 +40,29 @@ module Yarpler
       end
 
       def get_value(attribute)
-        self.send(attribute)
+        send(attribute)
       end
 
       def set_value(attribute, value)
-        self.send(attribute+"=",value)
+        send(attribute + '=', value)
       end
 
       def set_value_at_index(attribute, value, index)
-        self.instance_eval("@"+attribute+"["+index+"]='"+value+"'")
+        instance_eval('@' + attribute + '[' + index + "]='" + value + "'")
       end
 
       def load(attribute)
         val = get_value(attribute)
-        if val.kind_of?(Array)
+        if val.is_a?(Array)
           val = array_to_range(val)
         end
         val
       end
 
       def get_list_of_attributes
-        list = Array.new
-        self.instance_variables.each do |i|
-          if i.to_s=="@_instance_name"
+        list = []
+        instance_variables.each do |i|
+          if i.to_s == '@_instance_name'
             next
           end
           list.push(i.to_s.sub! '@', '')
@@ -73,17 +71,16 @@ module Yarpler
       end
 
       def get_datatype(attribute)
-        self.send(attribute+"_datatype")
+        send(attribute + '_datatype')
       end
 
       def get_variabletype(attribute)
-        self.send(attribute+"_variabletype")
+        send(attribute + '_variabletype')
       end
 
-      def get_instance_name()
+      def get_instance_name
         @_instance_name
       end
-
     end
   end
 end

@@ -2,17 +2,16 @@ require 'singleton'
 
 module Yarpler
   class ResourceHandler
-
     include Singleton
 
     def initialize
-      @id = Hash.new
+      @id = {}
     end
 
     def next_id(obj)
-      @next=-1
+      @next = -1
       @id.each do |key, val|
-        if obj.class.name==key
+        if obj.class.name == key
           @next = val
           break
         end
@@ -38,6 +37,5 @@ module Yarpler
     def is_referenced(name)
       Object.const_get(name).new.is_referenced
     end
-
   end
 end

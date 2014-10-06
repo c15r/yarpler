@@ -1,10 +1,7 @@
 module Yarpler
   module Interpreter
     class FunctionInterpreter
-
-      def function
-        @function
-      end
+      attr_reader :function
 
       def initialize(tree)
         @function = ''

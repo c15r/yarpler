@@ -1,10 +1,7 @@
 module Yarpler
   module Interpreter
     class ConstraintInterpreter
-
-      def constraint
-        @constraint
-      end
+      attr_reader :constraint
 
       def initialize(tree)
         @constraint = Yarpler::Models::Constraint.new
@@ -19,7 +16,6 @@ module Yarpler
           @constraint.expressions << expression_interpreter.expression
         end
       end
-
     end
   end
 end

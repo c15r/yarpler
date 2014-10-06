@@ -1,10 +1,7 @@
 module Yarpler
   module Models
     class Constraint
-
-      def expressions
-        @expressions
-      end
+      attr_reader :expressions
 
       def initialize
         @expressions = []

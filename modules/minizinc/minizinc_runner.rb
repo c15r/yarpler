@@ -1,5 +1,4 @@
 class MinizincRunner
-
   def print
     puts @cmd
   end
@@ -9,7 +8,7 @@ class MinizincRunner
   end
 
   def run_from_file(filename)
-    file = File.new(filename, "r")
+    file = File.new(filename, 'r')
     content = file.read
     file.close
     run(content)
@@ -17,11 +16,11 @@ class MinizincRunner
 
   def run(model)
     path = File.join(Dir.pwd, 'wrk.mzn')
-    File.open(path, "wb") { |f| f.write(model) }
-    @cmd = %x( bash -c "minizinc #{path}" )
+    File.open(path, 'wb') { |f| f.write(model) }
+    @cmd = ` bash -c "minizinc #{path}" `
 
-    if not @cmd.include? "----------"
-      Yarpler::Log.instance.error "Fehler in MiniZinc!"
+    unless @cmd.include? '----------'
+      Yarpler::Log.instance.error 'Fehler in MiniZinc!'
       abort
     end
   end

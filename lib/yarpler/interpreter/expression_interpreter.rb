@@ -1,10 +1,7 @@
 module Yarpler
   module Interpreter
     class ExpressionInterpreter
-
-      def expression
-        @expression
-      end
+      attr_reader :expression
 
       def initialize(tree)
         @expression = Yarpler::Models::Expression.new
@@ -33,11 +30,9 @@ module Yarpler
             ExpressionInterpreter.new(item).expression
         end
       end
-
     end
 
     class FieldAccessorInterpreter
-
       attr_accessor :field
 
       def initialize(item)
@@ -52,7 +47,6 @@ module Yarpler
     end
 
     class InstanceInterpreter
-
       attr_accessor :instance
 
       def initialize(item)

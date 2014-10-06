@@ -1,6 +1,5 @@
 module Yarpler
   class Runner
-
     ##
     # Loads the AST
     #

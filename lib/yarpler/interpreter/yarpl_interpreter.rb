@@ -1,7 +1,6 @@
 module Yarpler
   module Interpreter
     class YARPLInterpreter
-
       attr_accessor :problem
 
       def initialize(tree)
@@ -24,7 +23,6 @@ module Yarpler
           end
         end
       end
-
     end
   end
 end
