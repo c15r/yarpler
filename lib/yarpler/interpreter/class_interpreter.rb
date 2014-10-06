@@ -17,9 +17,9 @@ module Yarpler
           case thing.to_s
             when "FIELD_DECLARATION"
               create_attr(@dynamic_name, thing[2].to_s, thing[1], thing[0].to_s)
-            when "HASONE"
-              create_attr(@dynamic_name, thing[1].to_s, thing[0].to_s, thing.to_s)
-              set_is_referenced(thing[0].to_s, true)
+            when "REFERENCE"
+              create_attr(@dynamic_name, thing[3].to_s, thing[2].to_s, thing[0].to_s+"_"+thing[1].to_s)
+              set_is_referenced(thing[2].to_s, true)
           end
         end
       end

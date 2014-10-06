@@ -27,6 +27,7 @@ tokens {
   LIST;
   MEMBER_DECLARATION;
   HASONE;
+  REFERENCE;
   SET;
   START;
   SUM;
@@ -88,7 +89,7 @@ memberDeclaration
 
 fieldDeclaration
     : variableType type variableDeclaratorId ';' -> ^(FIELD_DECLARATION variableType type variableDeclaratorId)
-    | 'hasOne' LPAREN IDENTIFIER RPAREN variableDeclaratorId ';' -> ^(HASONE IDENTIFIER variableDeclaratorId)
+    | variableType reference LPAREN IDENTIFIER RPAREN variableDeclaratorId ';' -> ^(REFERENCE variableType reference IDENTIFIER variableDeclaratorId)
     ;
 
 instanceAccessor
@@ -225,6 +226,10 @@ literal
 type
     : structType -> ^(structType)
     | primitiveType -> ^(primitiveType)
+    ;
+
+reference
+    : 'hasOne' -> ^(HASONE)
     ;
 
 structType

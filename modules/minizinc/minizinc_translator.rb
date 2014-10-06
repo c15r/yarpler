@@ -89,7 +89,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
           when 'VARIABLE'
             code<< T_VARIABLE % [resource.load(a), name + "_" + a]
             @attribute_output << T_OUTPUT % [name + "_" + a,name + "_" + a]
-          when 'HASONE'
+          when 'VARIABLE_HASONE'
             r = resource.get_value(a)
             if r.kind_of?(Array)
               ## Set
