@@ -1,5 +1,16 @@
 module Yarpler
   module Models
+
+    ##
+    # Generic Class to handle the YARPL Model
+    #
+    # == YARPL Example
+    #
+    #   model {
+    #     class Dienst {
+    #       const integer anzahl;
+    #     }
+    #   }
     class Resource
 
       def initialize(name)
