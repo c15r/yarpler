@@ -92,8 +92,12 @@ class MinizincTranslator < Yarpler::Extensions::Translator
           when 'VARIABLE_HASONE'
             r = resource.get_value(a)
             relation = MinizincRelationTranslator.new
-            code << relation.translate(r)
+            code << relation.translate_var(r)
             @attribute_output << relation.output
+          when 'CONSTANT_HASONE'
+            r = resource.get_value(a)
+            relation = MinizincRelationTranslator.new
+            code << relation.translate_const(r)
         end
       end
       code
@@ -112,7 +116,15 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       @output = ''
     end
 
-    def translate(relation)
+
+    def translate_const(relation)
+      code = ''
+      var_name = MinizincFieldTranslator.new.resolve_variable_from_field(relation.from)
+      code << T_CONSTANT % ['int', var_name, 1]
+      code
+    end
+
+    def translate_var(relation)
       code = ''
       var_name = MinizincFieldTranslator.new.resolve_variable_from_field(relation.from)
       if constant_range?(relation.to)

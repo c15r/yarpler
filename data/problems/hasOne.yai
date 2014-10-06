@@ -1,0 +1,48 @@
+model {
+      class Plan {
+        const integer anzahl_d1;
+        const integer anzahl_d2;
+        const integer anzahl_d3;
+      }
+
+      class Dienst {
+      }
+
+      class Mitarbeiter {
+        var hasOne(Dienst) dienst;
+      }
+}
+
+initial {
+  # Dienstschlüssel definieren
+  end = new Plan(anzahl_d1=1, anzahl_d2=1, anzahl_d3=1);
+
+  # Definition von möglichen Diensten
+  d1 = new Dienst();
+  d2 = new Dienst();
+  d3 = new Dienst();
+  f = new Dienst();
+
+  # Definition von Mitarbeitern und möglichen Diensten pro Tag
+  m1 = new Mitarbeiter();
+  m2 = new Mitarbeiter();
+  m3 = new Mitarbeiter();
+
+  relation(m1.dienst, {d1,d2,f})
+  relation(m2.dienst, {d1,d2,d3,f})
+  relation(m3.dienst, {d1,d2,d3,f})
+
+  # Dienstschlüssel einhalten
+  constraint {
+    sum(d1==m1.dienst,d1==m2.dienst,d1==m3.dienst) == end.anzahl_d1
+  }
+
+  constraint {
+    sum(d2==m1.dienst,d2==m2.dienst,d2==m3.dienst) == end.anzahl_d2
+  }
+
+  constraint {
+    sum(d3==m1.dienst,d3==m2.dienst,d3==m3.dienst) == end.anzahl_d3
+  }
+
+}

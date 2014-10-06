@@ -5,44 +5,73 @@ model {
         const integer anzahl_d3;
       }
 
-      class Dienst {
+      class Tag {
+      }
+
+      class Diensttyp {
       }
 
       class Mitarbeiter {
-        var hasOne(Dienst) dienst;
+      }
+
+      class Mitarbeitertag {
+        var hasOne(Diensttyp) dienst;
+        const hasOne(Mitarbeiter) mitarbeiter;
       }
 }
 
 initial {
   # Dienstschlüssel definieren
-  end = new Plan(anzahl_d1=1, anzahl_d2=1, anzahl_d3=1);
+  end = new Plan(anzahl_d1=3, anzahl_d2=1, anzahl_d3=1);
 
-  # Definition von möglichen Diensten
-  d1 = new Dienst();
-  d2 = new Dienst();
-  d3 = new Dienst();
-  f = new Dienst();
+  # Definition von Diensttypen
+  d1 = new Diensttyp();
+  d2 = new Diensttyp();
+  d3 = new Diensttyp();
+  f = new Diensttyp();
 
-  # Definition von Mitarbeitern und möglichen Diensten pro Tag
+  # Definition von Tagen
+  t1 = new Tag();
+  t2 = new Tag();
+
+  # Definition von Mitarbeitern
   m1 = new Mitarbeiter();
   m2 = new Mitarbeiter();
   m3 = new Mitarbeiter();
 
-  relation(m1.dienst, {d1,d2,f})
-  relation(m2.dienst, {d1,d2,d3,f})
-  relation(m3.dienst, {d1,d2,d3,f})
+  # Definition von Mitarbeitertagen
+  m1t1 = new Mitarbeitertag();
+  m1t2 = new Mitarbeitertag();
+  m2t1 = new Mitarbeitertag();
+  m2t2 = new Mitarbeitertag();
+  m3t1 = new Mitarbeitertag();
+  m3t2 = new Mitarbeitertag();
+
+  # Definition von Relationen
+  relation(m1t1.dienst, {d1,d2,f})
+  relation(m1t2.dienst, {d1,d2,f})
+  relation(m2t1.dienst, {d1,d2,d3,f})
+  relation(m2t2.dienst, {d1,d2,d3,f})
+  relation(m3t1.dienst, {d2,d3,f})
+  relation(m3t2.dienst, {d2,d3,f})
+  relation(m1t1.mitarbeiter, m1)
+  relation(m1t2.mitarbeiter, m1)
+  relation(m2t1.mitarbeiter, m2)
+  relation(m2t2.mitarbeiter, m2)
+  relation(m3t1.mitarbeiter, m3)
+  relation(m3t2.mitarbeiter, m3)
 
   # Dienstschlüssel einhalten
   constraint {
-    sum(d1==m1.dienst,d1==m2.dienst,d1==m3.dienst) == end.anzahl_d1
+    count(d1 in Mitarbeitertag.dienst) == end.anzahl_d1
   }
 
   constraint {
-    sum(d2==m1.dienst,d2==m2.dienst,d2==m3.dienst) == end.anzahl_d2
+    count(d2 in Mitarbeitertag.dienst) == end.anzahl_d2
   }
 
   constraint {
-    sum(d3==m1.dienst,d3==m2.dienst,d3==m3.dienst) == end.anzahl_d3
+    count(d3 in Mitarbeitertag.dienst) == end.anzahl_d3
   }
 
 }

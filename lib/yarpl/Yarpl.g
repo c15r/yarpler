@@ -184,7 +184,7 @@ expressionList
 
 setDeclaration
     : set -> set
-    | primary -> primary ^(SET primary)
+    | primary -> ^(SET primary)
     ;
 
 declaration

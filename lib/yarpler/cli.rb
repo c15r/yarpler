@@ -92,9 +92,10 @@ module Yarpler
     end
 
     def print_output_objects(problem)
-      puts "
-           "
+
       problem.objects.each do |k,v|
+        puts ''
+        puts ''
         puts v.to_yaml
       end
     end
