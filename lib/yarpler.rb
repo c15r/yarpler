@@ -1,4 +1,3 @@
 
 module Yarpler
-
 end

@@ -1,6 +1,5 @@
 module Yarpler
   class Log
-
     include Singleton
 
     def initialize
@@ -27,6 +26,5 @@ module Yarpler
     def debug(debug)
       @logger.info debug
     end
-
   end
 end

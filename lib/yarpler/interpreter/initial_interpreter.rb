@@ -1,13 +1,12 @@
 module Yarpler
   module Interpreter
     class InitialInterpreter
-
       attr_accessor :objects
       attr_accessor :constraints
 
       def initialize(tree)
-        @objects = Hash.new
-        @constraints = Array.new
+        @objects = {}
+        @constraints = []
         tree_converter(tree)
       end
 
@@ -56,10 +55,7 @@ module Yarpler
       end
 
       class RelationInterpreter
-
-        def relation
-          @relation
-        end
+        attr_reader :relation
 
         def initialize(tree, objects)
           @relation = Yarpler::Models::Relation.new
@@ -74,15 +70,13 @@ module Yarpler
           @relation.type = objects[@relation.from.variable.to_s].get_variabletype(@relation.from.attribute.to_s)
           @relation.to = SetInterpreter.new(relation[1], objects).set
         end
-
       end
 
       class SetInterpreter
-
         attr_accessor :set
 
         def initialize(item, objects)
-          @set = Array.new
+          @set = []
           process_set(item, objects)
         end
 
@@ -93,9 +87,7 @@ module Yarpler
           end
           set
         end
-
       end
-
     end
   end
 end

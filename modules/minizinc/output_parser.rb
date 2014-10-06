@@ -1,5 +1,4 @@
 class OutputParser
-
   def initialize(output, problem)
     @output = output
     parse
@@ -7,19 +6,15 @@ class OutputParser
     @problem = problem
   end
 
-  def tree
-    @tree
-  end
+  attr_reader :tree
 
-  def problem
-    @problem
-  end
+  attr_reader :problem
 
   private
 
   def fill_output(tree, problem)
     tree.each do |t|
-      if t.to_s == "OUTPUT"
+      if t.to_s == 'OUTPUT'
         read_variable(t[0].to_s, t[1].to_s, problem)
       else
         fill_output(t, problem)
@@ -28,16 +23,15 @@ class OutputParser
   end
 
   def read_variable(var, val, problem)
-
     # @TODO: Reingineering, etwas schöner machen
 
-    instance_name = var.slice(0..(var.index('_')-1))
-    field_name = var[var.index('_')+1..var.length]
-    arr = field_name.split("_")
+    instance_name = var.slice(0..(var.index('_') - 1))
+    field_name = var[var.index('_') + 1..var.length]
+    arr = field_name.split('_')
 
-    if problem.objects[instance_name].get_variabletype(field_name) == "VARIABLE_HASONE"
+    if problem.objects[instance_name].get_variabletype(field_name) == 'VARIABLE_HASONE'
       datatype = problem.objects[instance_name].get_datatype(field_name)
-      problem.objects.each do |k,v|
+      problem.objects.each do |_k, v|
         if v.class.to_s == datatype.to_s
           if v.id.to_s == val.to_s
             relation = problem.objects[instance_name].get_value(field_name)
@@ -60,19 +54,18 @@ class OutputParser
     $stderr = err
 
     lexer = YarplerOutput::Lexer.new(@output)
-    tokens = ANTLR3::CommonTokenStream.new(lexer)  #Ein Array
+    tokens = ANTLR3::CommonTokenStream.new(lexer)  # Ein Array
     parser = YarplerOutput::Parser.new(tokens)
-    return_value = parser.start()
+    return_value = parser.start
 
     $stdout = STDOUT
     $stderr = STDERR
 
-    if not err.string.empty?
+    if !err.string.empty?
       Yarpler::Log.instance.error err.string
       abort
     else
-      @tree = return_value.tree()
+      @tree = return_value.tree
     end
-
   end
 end

@@ -1,7 +1,6 @@
 module Yarpler
   module Utils
     class FileLoader
-
       def initialize(filename)
         @contents = ''
         @filename = filename
@@ -25,11 +24,10 @@ module Yarpler
       end
 
       def load_file_to_contents(filename)
-        file = File.new(filename, "r")
+        file = File.new(filename, 'r')
         @contents << file.read
         file.close
       end
-
     end
   end
 end

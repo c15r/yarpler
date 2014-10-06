@@ -5,4 +5,4 @@ require 'logging'
 require_all 'lib'
 require_all 'modules'
 
-Yarpler::CLI.start(ARGV, :debug => true)
+Yarpler::CLI.start(ARGV, debug: true)

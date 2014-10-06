@@ -1,10 +1,8 @@
 module Yarpler
   module Models
-
     OPERATORS = %w(== + AND)
 
     class Operator
-
       attr_reader :operator
 
       def initialize(operator)

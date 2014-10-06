@@ -1,5 +1,4 @@
 class MinizincHelper
-
   include Singleton
 
   def initialize
@@ -10,5 +9,4 @@ class MinizincHelper
     @array_id = @array_id.next
     @array_id
   end
-
 end

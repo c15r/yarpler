@@ -1,23 +1,22 @@
-require "test/unit"
+require 'test/unit'
 require 'require_all'
 require_all 'lib'
 
 def read_test_file(filename)
-  content = ""
-  file = File.new(filename, "r")
+  content = ''
+  file = File.new(filename, 'r')
   content << file.read
   file.close
   content
 end
 
-TEST_DATA_PATH = "tests/data/"
-TEST_COMBINED_FILE = TEST_DATA_PATH + "combined.yai"
-TEST_SINGLE_FILES = TEST_DATA_PATH + "single"
+TEST_DATA_PATH = 'tests/data/'
+TEST_COMBINED_FILE = TEST_DATA_PATH + 'combined.yai'
+TEST_SINGLE_FILES = TEST_DATA_PATH + 'single'
 
 class TestUtils < Test::Unit::TestCase
-
   def setup
-    @test_data_path = "tests/data/"
+    @test_data_path = 'tests/data/'
   end
 
   def test_load_yai_file
@@ -31,5 +30,4 @@ class TestUtils < Test::Unit::TestCase
     file = Yarpler::Utils::FileLoader.new(TEST_SINGLE_FILES + '.yai')
     assert_equal(file_content, file.get_content)
   end
-
 end

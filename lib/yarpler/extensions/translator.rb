@@ -1,31 +1,28 @@
 module Yarpler
   module Extensions
     class Translator
-
       def initialize
         @output = ''
       end
 
-      def output
-        @output
-      end
+      attr_reader :output
 
       ##
       # Processes the model and returns it
-      def before_translate(problem)
-        raise NotImplementedError
+      def before_translate(_problem)
+        fail NotImplementedError
       end
 
       ##
       # Translates the model to another language
-      def translate(problem)
-      raise NotImplementedError
+      def translate(_problem)
+        fail NotImplementedError
       end
 
       ##
       # Processes the model and returns it
-      def after_translate(problem)
-        raise NotImplementedError
+      def after_translate(_problem)
+        fail NotImplementedError
       end
     end
   end
