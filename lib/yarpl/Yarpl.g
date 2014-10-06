@@ -24,10 +24,10 @@ tokens {
   INITIAL_DECLARATION;
   INSTANCE_ACCESSOR;
   INTEGER;
-  LIST;
   MEMBER_DECLARATION;
   HASONE;
   REFERENCE;
+  RELATION_DECLARATION;
   SET;
   START;
   SUM;
@@ -69,6 +69,7 @@ initialBody
 initialBodyDeclaration
     : localVariableDeclaration
     | constraintDeclaration
+    | relationDeclaration
     ;
 
 typeDeclaration
@@ -124,6 +125,10 @@ localVariableDeclaration
     : variableDeclarators ';' -> variableDeclarators
     ;
 
+relationDeclaration
+    : 'relation' LPAREN fieldAccessor ',' setDeclaration RPAREN -> ^(RELATION_DECLARATION fieldAccessor setDeclaration)
+    ;
+
 constraintDeclaration
     : 'constraint' constraintBody -> ^(CONSTRAINT_DECLARATION constraintBody)
     ;
@@ -177,22 +182,18 @@ expressionList
     :   expression (',' expression)* -> ^(EXPRESSION_LIST ^(EXPRESSION expression)*)
     ;
 
-declaration
-    : list -> list
-    | set -> set
-    | primary -> primary
+setDeclaration
+    : set -> set
+    | primary -> primary ^(SET primary)
     ;
 
-declarationList
-    : declaration (COMMA declaration)* -> ^(declaration)*
+declaration
+    : set -> set
+    | primary -> primary
     ;
 
 primaryList
     : primary (COMMA primary)* -> ^(primary)*
-    ;
-
-list
-    : '[' declarationList ']' -> ^(LIST declarationList)
     ;
 
 set : '{' primaryList '}' -> ^(SET primaryList)

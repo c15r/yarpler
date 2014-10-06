@@ -4,6 +4,14 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   T_INCLUDES = "include \"globals.mzn\";"
   T_FOOTER = "solve satisfy;" # @TODO: Wird momentan als Hack missbraucht um den kompletten Durchstich zu ermöglichen ;)
 
+  T_CONSTANT = "%s: %s = %s;\n" # int: id_dienst_frei = 0;
+  T_OUTPUT = ", \"%s=\" , show(%s) , \" \"   "
+  T_SET = "set of int: %s = {%s};\n"
+  T_VARIABLE = "var %s: %s;\n" # var 0..2: m0t0;
+
+  FIXNUM_MAX = (2**(0.size * 8 -2) -1)
+  FIXNUM_MIN = -(2**(0.size * 8 -2))
+
   SPACE = ' '
   NEWLINE = "\n"
   LCBRACKET = '{'
@@ -54,14 +62,6 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
   class MinizincAttributeTranslator
 
-    T_CONSTANT = "%s: %s = %s;\n" # int: id_dienst_frei = 0;
-    T_OUTPUT = ", \"%s=\" , show(%s) , \" \"   "
-    T_SET = "set of int: %s = {%s};\n"
-    T_VARIABLE = "var %s: %s;\n" # var 0..2: m0t0;
-
-    FIXNUM_MAX = (2**(0.size * 8 -2) -1)
-    FIXNUM_MIN = -(2**(0.size * 8 -2))
-
     attr_reader :attribute_output
 
     def initialize
@@ -91,24 +91,44 @@ class MinizincTranslator < Yarpler::Extensions::Translator
             @attribute_output << T_OUTPUT % [name + "_" + a,name + "_" + a]
           when 'VARIABLE_HASONE'
             r = resource.get_value(a)
-            if r.kind_of?(Array)
-              ## Set
-              if constant_range?(r)
-                code << T_VARIABLE % [array_to_constant_range(r), name.to_s+"_"+ a]
-              else
-                set_name = "SET_"+name.to_s+"_"+ a
-                code << T_SET % [set_name, array_to_set_range(r)]
-                code << T_VARIABLE % [set_name, name.to_s+"_"+ a]
-              end
-              @attribute_output << T_OUTPUT % [name.to_s+"_"+ a,name.to_s+"_"+ a]
-            else
-              ## Einzelner Eintrag
-              code << convert_attributes(name.to_s+"_"+r.get_instance_name.to_s, r, true )
-            end
+            relation = MinizincRelationTranslator.new
+            code << relation.translate(r)
+            @attribute_output << relation.output
         end
       end
       code
     end
+
+
+
+
+  end
+
+  class MinizincRelationTranslator
+
+    attr_accessor :output
+
+    def initialize
+      @output = ''
+    end
+
+    def translate(relation)
+      code = ''
+      var_name = MinizincFieldTranslator.new.resolve_variable_from_field(relation.from)
+      if constant_range?(relation.to)
+        code << T_VARIABLE % [array_to_constant_range(relation.to), var_name]
+      else
+        set_name = "SET_"+var_name
+        code << T_SET % [set_name, array_to_set_range(relation.to)]
+        code << T_VARIABLE % [set_name, var_name]
+      end
+
+      @output << T_OUTPUT % [var_name,var_name]
+
+      code
+    end
+
+    private
 
     ## Checks if the range is constant (0,1,2) or not (0,1,3)
     def constant_range?(array)
@@ -164,6 +184,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       end
       min.to_s + '..' + max.to_s
     end
+
   end
 
   class MinizincConstraintTranslator
@@ -204,9 +225,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
     def resolve_expression(expression, problem)
       if expression.is_a? Yarpler::Models::Field
-        resolve_variable_from_field(expression)
+        MinizincFieldTranslator.new.resolve_variable_from_field(expression)
       elsif expression.is_a? Yarpler::Models::Instance
-        resolve_variable_from_instance(expression)
+        MinizincFieldTranslator.new.resolve_variable_from_instance(expression)
       elsif expression.is_a? Yarpler::Models::Function
         MinizincFunctionTranslator.new.translate(expression, problem)
       elsif expression.is_a? Yarpler::Models::Expression
@@ -214,6 +235,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       end
     end
 
+
+  end
+
+  class MinizincFieldTranslator
     def resolve_variable_from_instance(field)
       field.variable + '_id'
     end

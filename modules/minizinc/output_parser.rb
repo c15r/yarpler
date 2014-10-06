@@ -35,7 +35,7 @@ class OutputParser
     field_name = var[var.index('_')+1..var.length]
     arr = field_name.split("_")
 
-    if problem.objects[instance_name].get_variabletype(field_name) == "HASONE"
+    if problem.objects[instance_name].get_variabletype(field_name) == "VARIABLE_HASONE"
       datatype = problem.objects[instance_name].get_datatype(field_name)
       problem.objects.each do |k,v|
         if v.class.to_s == datatype.to_s

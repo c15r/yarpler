@@ -24,47 +24,26 @@ module Yarpler
             when 'CONSTRAINT_DECLARATION'
               c = ConstraintInterpreter.new(thing)
               @constraints.push(c.constraint)
+            when 'RELATION_DECLARATION'
+              r = RelationInterpreter.new(thing, @objects).relation
+              @objects[r.from.variable.to_s].set_value(r.from.attribute.to_s, r)
           end
         end
       end
 
       def attribute_reader(tree, current_obj)
+        # @TODO REINGENEER
         tree.each do |thing|
           case thing.to_s
             when 'ATTRIBUTE'
               if thing[1].to_s == 'SET'
-                current_obj.set_value(thing[0].to_s, build_set(thing[1]))
-              elsif thing[1].to_s == 'LIST'
-                  current_obj.set_value(thing[0].to_s, build_list(thing[1]))
+                current_obj.set_value(thing[0].to_s, SetInterpreter(thing[1]).set, objects)
               else
                 value = prepare_value(current_obj.get_variabletype(thing[0].to_s), thing[1].to_s)
                 current_obj.set_value(thing[0].to_s, value)
               end
           end
         end
-      end
-
-      def build_list(tree)
-        # @TODO Error handling
-        set = Array.new
-        tree.each do |thing|
-          case thing.to_s
-            when 'SET'
-              set.push(build_set(thing))
-            else
-              set.push(@objects[thing.to_s])
-          end
-        end
-        set
-      end
-
-      def build_set(tree)
-        # @TODO Error handling
-        set = Array.new
-        tree.each do |thing|
-          set.push(@objects[thing.to_s])
-        end
-        set
       end
 
       def prepare_value(type, value)
@@ -74,6 +53,47 @@ module Yarpler
           end
         end
         value
+      end
+
+      class RelationInterpreter
+
+        def relation
+          @relation
+        end
+
+        def initialize(tree, objects)
+          @relation = Yarpler::Models::Relation.new
+          parse_relation(tree, objects)
+        end
+
+        private
+
+        def parse_relation(relation, objects)
+          # @TODO Error Handling if const and SET and other wrong inputs
+          @relation.from = FieldAccessorInterpreter.new(relation[0]).field
+          @relation.type = objects[@relation.from.variable.to_s].get_variabletype(@relation.from.attribute.to_s)
+          @relation.to = SetInterpreter.new(relation[1], objects).set
+        end
+
+      end
+
+      class SetInterpreter
+
+        attr_accessor :set
+
+        def initialize(item, objects)
+          @set = Array.new
+          process_set(item, objects)
+        end
+
+        def process_set(tree, objects)
+          # @TODO Error handling
+          tree.each do |thing|
+            set.push(objects[thing.to_s])
+          end
+          set
+        end
+
       end
 
     end
