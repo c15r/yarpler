@@ -24,6 +24,7 @@ tokens {
   INITIAL_DECLARATION;
   INSTANCE_ACCESSOR;
   INTEGER;
+  LITERAL;
   MEMBER_DECLARATION;
   HASONE;
   REFERENCE;
@@ -164,7 +165,7 @@ functionExpression
     ;
 
 primeExpression
-    : literal
+    : literal -> ^(LITERAL literal)
     | instanceAccessor
     | fieldAccessor
     | LPAREN expression /* recursion!!! */ RPAREN -> ^(EXPRESSION expression)

@@ -193,6 +193,22 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
   end
 
+  class MinizincOperatorTranslator
+    def initialize
+
+    end
+
+    def translate(operator)
+      case operator
+        when 'and'
+          '/\\'
+        else
+          operator
+      end
+
+    end
+  end
+
   class MinizincConstraintTranslator
     def initialize
     end
@@ -215,15 +231,13 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     def translate(expression, problem)
-      code = '('
-      code << translate_expression(expression, problem)
-      code << ')'
+      translate_expression(expression, problem)
     end
 
     def translate_expression(expression, problem)
       code = ''
       code << resolve_expression(expression.left, problem) + SPACE
-      code << expression.operator.to_s
+      code << MinizincOperatorTranslator.new.translate(expression.operator.to_s)
       code << SPACE + resolve_expression(expression.right, problem)
     end
 
@@ -236,7 +250,16 @@ class MinizincTranslator < Yarpler::Extensions::Translator
         MinizincFunctionTranslator.new.translate(expression, problem)
       elsif expression.is_a? Yarpler::Models::Expression
         MinizincExpressionTranslator.new.translate(expression, problem)
+      elsif expression.is_a? Yarpler::Models::Literal
+        MinizincLiteralTranslator.new.translate(expression, problem)
       end
+    end
+  end
+
+  class MinizincLiteralTranslator
+    def translate(literal, problem)
+      code = literal.value
+      code
     end
   end
 
@@ -278,7 +301,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
         code << 'bool2int(' + MinizincExpressionTranslator.new.translate(obj, problem) + ')'
       end
 
-      code << ' ]} in true /\\ sum(t0 in 1..' + objects.size.to_s + ')(array' + index.to_s + '[t0])'
+      code << ' ]} in sum(t0 in 1..' + objects.size.to_s + ')(array' + index.to_s + '[t0])'
     end
 
     def translate_count_function(function, problem)
@@ -300,7 +323,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
         code << 'bool2int(' + variable_to_check + '==' + resolve_variable_from_object_and_attribute_name(obj, attribute) + ')'
       end
 
-      code << ' ]} in true /\\ sum(t0 in 1..' + objects.size.to_s + ')(array' + index.to_s + '[t0])'
+      code << ' ]} in sum(t0 in 1..' + objects.size.to_s + ')(array' + index.to_s + '[t0])'
     end
 
     def resolve_variable_from_object_and_attribute_name(obj, attribute)

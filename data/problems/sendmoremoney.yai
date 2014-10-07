@@ -1,0 +1,41 @@
+model {
+
+    class Alphabet {
+        var integer S;
+        var integer E;
+        var integer N;
+        var integer D;
+        var integer M;
+        var integer O;
+        var integer R;
+        var integer Y;
+    }
+
+}
+
+initial {
+    alpha = new Alphabet(S=0..9, E=0..9, N=0..9, D=0..9, M=0..9, O=0..9, R=0..9, Y=0..9);
+
+    constraint {
+        1000*alpha.S+100*alpha.E+10*alpha.N+alpha.D
+        + 1000*alpha.M+100*alpha.O+10*alpha.R+alpha.E
+        == 10000*alpha.M+1000*alpha.O+100*alpha.N+10*alpha.E+alpha.Y
+    }
+
+    # all different
+    constraint {
+        alpha.S != alpha.E and alpha.S != alpha.N and alpha.S != alpha.D and alpha.S != alpha.M and alpha.S != alpha.O and alpha.S != alpha.R and alpha.S != alpha.Y and
+        alpha.E != alpha.N and alpha.E != alpha.D and alpha.E != alpha.M and alpha.E != alpha.O and alpha.E != alpha.R and alpha.E != alpha.Y and
+        alpha.N != alpha.D and alpha.N != alpha.M and alpha.N != alpha.O and alpha.N != alpha.R and alpha.N != alpha.Y and
+        alpha.D != alpha.M and alpha.D != alpha.O and alpha.D != alpha.R and alpha.D != alpha.Y and
+        alpha.M != alpha.O and alpha.M != alpha.R and alpha.M != alpha.Y and
+        alpha.O != alpha.R and alpha.O != alpha.Y and
+        alpha.R != alpha.Y
+    }
+
+    # starting digits not zero
+    constraint  {
+        alpha.S != 0 and alpha.M != 0
+    }
+
+}

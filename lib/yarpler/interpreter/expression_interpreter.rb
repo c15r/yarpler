@@ -14,7 +14,14 @@ module Yarpler
         if Yarpler::Models::Operator.operator?(expression[1].to_s)
           @expression.operator = Yarpler::Models::Operator.new(expression[1].to_s)
           @expression.left = process_expression_item(expression[0])
-          @expression.right = process_expression_item(expression[2])
+
+          # allow multiple expression of the same cardinality
+          if expression.size == 3
+            @expression.right = process_expression_item(expression[2])
+          else
+            @expression.right = ExpressionInterpreter.new(expression[2..expression.size]).expression
+          end
+
         end
       end
 
@@ -28,8 +35,25 @@ module Yarpler
             FunctionInterpreter.new(item).function
           when 'EXPRESSION'
             ExpressionInterpreter.new(item).expression
+          when 'LITERAL'
+            LiteralInterpreter.new(item).literal
         end
       end
+    end
+
+    class LiteralInterpreter
+
+      attr_accessor :literal
+
+      def initialize(item)
+        process_literal(item)
+      end
+
+      def process_literal(item)
+        @literal = Yarpler::Models::Literal.new
+        @literal.value = item[0].to_s
+      end
+
     end
 
     class FieldAccessorInterpreter

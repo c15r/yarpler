@@ -1,6 +1,6 @@
 module Yarpler
   module Models
-    OPERATORS = %w(== + AND)
+    OPERATORS = %w(== != + * AND)
 
     class Operator
       attr_reader :operator
