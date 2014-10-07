@@ -15,8 +15,8 @@ model {
       }
 
       class Mitarbeitertag {
-        var hasOne(Diensttyp) dienst;
-        const hasOne(Mitarbeiter) mitarbeiter;
+        var Diensttyp dienst;
+        const Mitarbeiter mitarbeiter;
       }
 }
 
@@ -48,18 +48,18 @@ initial {
   m3t2 = new Mitarbeitertag();
 
   # Definition von Relationen
-  relation(m1t1.dienst, {d1,d2,f})
-  relation(m1t2.dienst, {d1,d2,f})
-  relation(m2t1.dienst, {d1,d2,d3,f})
-  relation(m2t2.dienst, {d1,d2,d3,f})
-  relation(m3t1.dienst, {d2,d3,f})
-  relation(m3t2.dienst, {d2,d3,f})
-  relation(m1t1.mitarbeiter, m1)
-  relation(m1t2.mitarbeiter, m1)
-  relation(m2t1.mitarbeiter, m2)
-  relation(m2t2.mitarbeiter, m2)
-  relation(m3t1.mitarbeiter, m3)
-  relation(m3t2.mitarbeiter, m3)
+  relation(m1t1.dienst, {d1,d2,f});
+  relation(m1t2.dienst, {d1,d2,f});
+  relation(m2t1.dienst, {d1,d2,d3,f});
+  relation(m2t2.dienst, {d1,d2,d3,f});
+  relation(m3t1.dienst, {d2,d3,f});
+  relation(m3t2.dienst, {d2,d3,f});
+  relation(m1t1.mitarbeiter, m1);
+  relation(m1t2.mitarbeiter, m1);
+  relation(m2t1.mitarbeiter, m2);
+  relation(m2t2.mitarbeiter, m2);
+  relation(m3t1.mitarbeiter, m3);
+  relation(m3t2.mitarbeiter, m3);
 
   # Dienstschlüssel einhalten
   constraint {

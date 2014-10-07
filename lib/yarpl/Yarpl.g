@@ -89,8 +89,8 @@ memberDeclaration
     ;
 
 fieldDeclaration
-    : variableType type variableDeclaratorId ';' -> ^(FIELD_DECLARATION variableType type variableDeclaratorId)
-    | variableType reference LPAREN IDENTIFIER RPAREN variableDeclaratorId ';' -> ^(REFERENCE variableType reference IDENTIFIER variableDeclaratorId)
+    : variableType primitiveType variableDeclaratorId ';' -> ^(FIELD_DECLARATION variableType primitiveType variableDeclaratorId)
+    | variableType structType variableDeclaratorId ';' -> ^(REFERENCE variableType HASONE structType variableDeclaratorId)
     ;
 
 instanceAccessor
@@ -126,7 +126,7 @@ localVariableDeclaration
     ;
 
 relationDeclaration
-    : 'relation' LPAREN fieldAccessor ',' setDeclaration RPAREN -> ^(RELATION_DECLARATION fieldAccessor setDeclaration)
+    : 'relation' LPAREN fieldAccessor ',' setDeclaration RPAREN ';' -> ^(RELATION_DECLARATION fieldAccessor setDeclaration)
     ;
 
 constraintDeclaration
@@ -227,10 +227,6 @@ literal
 type
     : structType -> ^(structType)
     | primitiveType -> ^(primitiveType)
-    ;
-
-reference
-    : 'hasOne' -> ^(HASONE)
     ;
 
 structType
