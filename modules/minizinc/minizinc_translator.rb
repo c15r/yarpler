@@ -83,7 +83,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
             if reference
               next
             end
-            code << T_CONSTANT % [resource.get_datatype(a), name + '_' + a, resource.load(a)]
+            value = resource.load(a)
+            if not value.nil?
+              code << T_CONSTANT % [resource.get_datatype(a), name + '_' + a, value]
+            end
           when 'VARIABLE'
             code << T_VARIABLE % [resource.load(a), name + '_' + a]
             @attribute_output << T_OUTPUT % [name + '_' + a, name + '_' + a]

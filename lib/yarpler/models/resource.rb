@@ -58,16 +58,36 @@ module Yarpler
         end
         val
       end
+      #
+      # def get_list_of_attributes
+      #   list = []
+      #   instance_variables.each do |i|
+      #     if i.to_s == '@_instance_name'
+      #       next
+      #     end
+      #     list.push(i.to_s.sub! '@', '')
+      #   end
+      #   list
+      # end
 
       def get_list_of_attributes
-        list = []
-        instance_variables.each do |i|
-          if i.to_s == '@_instance_name'
-            next
+        unwanted = ['=', '_datatype', '_variabletype']
+        attribute_methods = self.methods - Object.methods - [:get_list_of_attributes, :is_referenced, :load, :get_value, :set_value, :set_value_at_index, :get_instance_name, :get_datatype, :get_variabletype]
+        all_methods = Array.new
+        attribute_methods.each do |x|
+          set = true
+          unwanted.each do |u|
+            if x.to_s.include? u.to_s
+              set = false
+              break
+            end
           end
-          list.push(i.to_s.sub! '@', '')
+
+          if set
+            all_methods.push(x.to_s)
+          end
         end
-        list
+        all_methods
       end
 
       def get_datatype(attribute)

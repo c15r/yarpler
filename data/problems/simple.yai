@@ -1,14 +1,9 @@
 model {
-      class Plan {
-        const integer anzahl_d1;
-        const integer anzahl_d2;
-        const integer anzahl_d3;
-      }
-
       class Tag {
       }
 
       class Diensttyp {
+        const integer anzahl;
       }
 
       class Mitarbeiter {
@@ -21,13 +16,11 @@ model {
 }
 
 initial {
-  # Dienstschlüssel definieren
-  end = new Plan(anzahl_d1=3, anzahl_d2=1, anzahl_d3=1);
 
   # Definition von Diensttypen
-  d1 = new Diensttyp();
-  d2 = new Diensttyp();
-  d3 = new Diensttyp();
+  d1 = new Diensttyp(anzahl=3);
+  d2 = new Diensttyp(anzahl=1);
+  d3 = new Diensttyp(anzahl=1);
   f = new Diensttyp();
 
   # Definition von Tagen
@@ -48,12 +41,6 @@ initial {
   m3t2 = new Mitarbeitertag();
 
   # Definition von Relationen
-  relation(m1t1.dienst, {d1,d2,f});
-  relation(m1t2.dienst, {d1,d2,f});
-  relation(m2t1.dienst, {d1,d2,d3,f});
-  relation(m2t2.dienst, {d1,d2,d3,f});
-  relation(m3t1.dienst, {d2,d3,f});
-  relation(m3t2.dienst, {d2,d3,f});
   relation(m1t1.mitarbeiter, m1);
   relation(m1t2.mitarbeiter, m1);
   relation(m2t1.mitarbeiter, m2);
@@ -63,15 +50,15 @@ initial {
 
   # Dienstschlüssel einhalten
   constraint {
-    count(d1 in Mitarbeitertag.dienst) == end.anzahl_d1
+    count(d1 in Mitarbeitertag.dienst) == d1.anzahl
   }
 
   constraint {
-    count(d2 in Mitarbeitertag.dienst) == end.anzahl_d2
+    count(d2 in Mitarbeitertag.dienst) == d2.anzahl
   }
 
   constraint {
-    count(d3 in Mitarbeitertag.dienst) == end.anzahl_d3
+    count(d3 in Mitarbeitertag.dienst) == d3.anzahl
   }
 
 }
