@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "yarpler"
-  spec.version       = '0.1.1'
+  spec.version       = '0.1.2'
   spec.authors       = ["Nino Müller", "Christoph Schnyder"]
   spec.email         = ["nino.mueller@gmail.com", "christoph.schnyder@gmail.com"]
   spec.summary       = %q{Short summary of your project}
@@ -20,5 +20,5 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "bundler", ">= 1.5.2", "< 1.7.0"
+  spec.add_dependency "bundler"
 end
