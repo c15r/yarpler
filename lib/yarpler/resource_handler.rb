@@ -9,7 +9,7 @@ module Yarpler
     end
 
     def next_id(obj)
-      @next = -1
+      @next = 0
       @id.each do |key, val|
         if obj.class.name == key
           @next = val
