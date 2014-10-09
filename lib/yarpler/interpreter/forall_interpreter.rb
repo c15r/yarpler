@@ -12,7 +12,7 @@ module Yarpler
       private
 
       def process_forall(expression)
-        @forall.range=forall_selector(expression[0])
+        forall_selector(expression[0])
         @forall.expression=ExpressionInterpreter.new(expression[1]).expression
       end
 

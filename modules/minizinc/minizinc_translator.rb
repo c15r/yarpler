@@ -239,16 +239,14 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     def translate(problem)
       code = ''
       problem.constraints.each do |constraint|
-        constraint.expressions.each do |expression|
-          if expression.is_a? Yarpler::Models::Expression
-            code <<  'constraint' + NEWLINE
-            code << TAB + MinizincExpressionTranslator.new.translate(expression, problem) + NEWLINE
-            code << ';' + DOUBLE_NEWLINE
-          elsif expression.is_a? Yarpler::Models::Forall
-            # @TODO Muss das überhaupt implementiert werden, oder wird immer vorher geflattet?
-          end
+        expression = constraint.expression
+        if expression.is_a? Yarpler::Models::Expression
+          code <<  'constraint' + NEWLINE
+          code << TAB + MinizincExpressionTranslator.new.translate(expression, problem) + NEWLINE
+          code << ';' + DOUBLE_NEWLINE
+        elsif expression.is_a? Yarpler::Models::Forall
+          # @TODO Muss das überhaupt implementiert werden, oder wird immer vorher geflattet?
         end
-
       end
       code
     end

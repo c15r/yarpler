@@ -6,7 +6,7 @@ module Yarpler
       def initialize(tree, objects)
         @objects = objects
         @constraint = Yarpler::Models::Constraint.new
-        @constraint.expressions << parse_expression(tree)
+        @constraint.expression = parse_expression(tree)
       end
 
       private
