@@ -14,10 +14,10 @@ module Yarpler
         constraint = nil
         case expression[0].to_s
           when 'FORALL'
-            interpreter = ForallInterpreter.new(expression)
+            interpreter = ForallInterpreter.new(expression[0])
             constraint = interpreter.forall
           when 'CONSTRAINT_EXPRESSION'
-            interpreter = ExpressionInterpreter.new(expression)
+            interpreter = ExpressionInterpreter.new(expression[0])
             constraint = interpreter.expression
         end
         constraint
