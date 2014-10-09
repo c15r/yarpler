@@ -3,6 +3,7 @@ module Yarpler
     class Problem
       attr_accessor :objects
       attr_accessor :constraints
+      attr_accessor :solve
 
       def initialize
         @objects = {}

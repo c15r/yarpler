@@ -11,7 +11,6 @@ module Yarpler
       private
 
       def tree_converter(tree)
-        # @TODO evtl noch etwas schöner mit ENUM?
         tree.each do |thing|
           case thing.to_s
             when 'MODEL_DECLARATION'
@@ -20,6 +19,8 @@ module Yarpler
               initial = InitialInterpreter.new(thing)
               @problem.objects = initial.objects
               @problem.constraints = initial.constraints
+            when 'SOLVE_DECLARATION'
+              @problem.solve = SolveInterpreter.new(thing).solve
           end
         end
       end

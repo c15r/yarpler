@@ -18,3 +18,8 @@ initial {
       d3.anzahl == d4.anzahl
   }
 }
+
+
+solve {
+  satisfy;
+}

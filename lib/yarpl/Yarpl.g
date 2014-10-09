@@ -29,7 +29,9 @@ tokens {
   HASONE;
   REFERENCE;
   RELATION_DECLARATION;
+  SATISFY;
   SET;
+  SOLVE_DECLARATION;
   START;
   SUM;
   TYPE_DECLARATION;
@@ -45,6 +47,7 @@ start
 program
     : modelDeclaration -> modelDeclaration
     | initialDeclaration -> initialDeclaration
+    | solveDeclaration -> solveDeclaration
 	;
 
 modelDeclaration
@@ -71,6 +74,14 @@ initialBodyDeclaration
     : localVariableDeclaration
     | constraintDeclaration
     | relationDeclaration
+    ;
+
+solveDeclaration
+    : 'solve' '{' solveBodyDeclaration '}' -> ^(SOLVE_DECLARATION solveBodyDeclaration)
+    ;
+
+solveBodyDeclaration
+    : 'satisfy' ';' -> SATISFY
     ;
 
 typeDeclaration

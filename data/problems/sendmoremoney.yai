@@ -39,3 +39,7 @@ initial {
     }
 
 }
+
+solve {
+  satisfy;
+}

@@ -76,3 +76,7 @@ initial {
 
 
 }
+
+solve {
+  satisfy;
+}
