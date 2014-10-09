@@ -65,7 +65,7 @@ module Yarpler
           case thing.to_s
             when 'ATTRIBUTE'
               if thing[1].to_s == 'SET'
-                current_obj.set_value(thing[0].to_s, SetInterpreter(thing[1]).set, objects)
+                current_obj.set_value(thing[0].to_s, SetInterpreter.new(thing[1], objects))
               else
                 value = prepare_value(current_obj.get_variabletype(thing[0].to_s), thing[1].to_s)
                 current_obj.set_value(thing[0].to_s, value)

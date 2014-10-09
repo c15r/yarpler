@@ -9,7 +9,7 @@ model {
       }
 
       class Mitarbeiter {
-        hasOne(Dienst) dienst;
+        var Dienst dienst;
       }
 }
 
@@ -24,9 +24,9 @@ initial {
   f = new Dienst();
 
   # Definition von Mitarbeitern und möglichen Diensten pro Tag
-  m1 = new Mitarbeiter(dienst={d1,d2,f});
-  m2 = new Mitarbeiter(dienst={d2,d3,f});
-  m3 = new Mitarbeiter(dienst={d1,f});
+  m1 = new Mitarbeiter();
+  m2 = new Mitarbeiter();
+  m3 = new Mitarbeiter();
 
   constraint {
     count(d1 in Mitarbeiter.dienst) == end.anzahl_d1

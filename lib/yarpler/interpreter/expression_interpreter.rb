@@ -47,8 +47,6 @@ module Yarpler
         case item.to_s
           when 'FIELD_ACCESSOR'
             FieldAccessorInterpreter.new(item).field
-          when 'INSTANCE_ACCESSOR'
-            InstanceInterpreter.new(item).instance
           when 'FUNCTION_EXPRESSION'
             FunctionInterpreter.new(item).function
           when 'EXPRESSION'
@@ -78,10 +76,15 @@ module Yarpler
       attr_accessor :field
 
       def initialize(item)
-        process_field(item)
+        if item.size == 1
+          InstanceInterpreter.new(item).instance
+        else
+          process_field(item)
+        end
       end
 
       def process_field(item)
+        # @TODO solve verschachtelte Fields
         @field = Yarpler::Models::Field.new
         @field.variable = item[0].to_s
         @field.attribute = item[1].to_s

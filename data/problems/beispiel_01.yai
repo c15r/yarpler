@@ -1,46 +1,79 @@
 model {
-  // Idee "relation(Type)" steht für Einzelobjekt, "relations(Type)" für ein Set
-  class Mitarbeiter {
-    const relations(Tag) tage;
-  }
+      class Tag {
+      }
 
-  class Dienst {
-    const integer anzahl;
-  }
+      class Diensttyp {
+        const integer anzahl;
+      }
 
-  class Tag {
-	const integer index;
-    var relations(Dienst) dienst;
-  }
+      class Mitarbeiter {
+      }
+
+      class Mitarbeitertag {
+        var Diensttyp dienst;
+        const Mitarbeiter mitarbeiter;
+        const Tag tag;
+      }
 }
 
 initial {
 
-  d1 = new Dienst(anzahl = 3);
-  d2 = new Dienst(anzahl = 7);
-  f = new Dienst(anzahl = 0);
-  t0 = new Tag(index=1, dienst=[d1,d2,f]);
-  t1 = new Tag(index=2, dienst=[d1,d2,f]);
-  t2 = new Tag(index=3, dienst=[d1,d2,f]);
-  t3 = new Tag(index=4, dienst=[d1,d2,f]);
-  t4 = new Tag(index=5, dienst=[d1,d2,f]);
+  # Definition von Diensttypen
+  d1 = new Diensttyp(anzahl=3);
+  d2 = new Diensttyp(anzahl=1);
+  d3 = new Diensttyp(anzahl=1);
+  f = new Diensttyp();
 
-  // Wichtig für mich, die Objekte werden in diesem Falle automatisch geklont, damit jeder auf dem Objekt schreiben kann, denke wir brauchen nie was anderes.
-  m0, m1 = new Mitarbeiter(tage=[t0,t1,t2,t3,t4]); 
+  # Definition von Tagen
+  t1 = new Tag();
+  t2 = new Tag();
 
-  // Vorschlag: wenn man beim Allquantor auf ein Element zugreift wird immer das aktuelle genommen. mit 1<< oder >>1 wird das nächste genommen, falls möglich.
+  # Definition von Mitarbeitern
+  m1 = new Mitarbeiter();
+  m2 = new Mitarbeiter();
+  m3 = new Mitarbeiter();
+
+  # Definition von Mitarbeitertagen
+  m1t1 = new Mitarbeitertag();
+  m1t2 = new Mitarbeitertag();
+  m2t1 = new Mitarbeitertag();
+  m2t2 = new Mitarbeitertag();
+  m3t1 = new Mitarbeitertag();
+  m3t2 = new Mitarbeitertag();
+
+  # Definition von Relationen
+  relation(m1t1.dienst, {d1,d2,f});
+  relation(m1t2.dienst, {d1,d2,f});
+  relation(m2t1.dienst, {d1,d2,d3,f});
+  relation(m2t2.dienst, {d1,d2,d3,f});
+  relation(m3t1.dienst, {d2,d3,f});
+  relation(m3t2.dienst, {d2,d3,f});
+  relation(m1t1.mitarbeiter, m1);
+  relation(m1t2.mitarbeiter, m1);
+  relation(m2t1.mitarbeiter, m2);
+  relation(m2t2.mitarbeiter, m2);
+  relation(m3t1.mitarbeiter, m3);
+  relation(m3t2.mitarbeiter, m3);
+  relation(m1t1.tag, t1);
+  relation(m1t2.tag, t2);
+  relation(m2t1.tag, t1);
+  relation(m2t2.tag, t2);
+  relation(m3t1.tag, t1);
+  relation(m3t2.tag, t2);
+
+  # Dienstschlüssel einhalten
   constraint {
-    forAll m in Mitarbeiter {
-	 forAll s in m.tage order by s.index  {
-	   s.dienst != d1 OR s>>1.dienst != d2
-	 }
-    }
+    count(d1 in Mitarbeitertag.dienst) == d1.anzahl
   }
-  // Idee ist, man kann alle Variablen automatisch zu einem Set machen / Sets zusammenfügen, wenn man Klasse.variable wählt.
+
   constraint {
-    global_cardinality([Mitarbeiter.tage],[d1, d2],[d1.anzahl, d2.anzahl]);
-    // MZN: constraint global_cardinality([m0t0, m0t1, m0t2, m0t3, m0t4, m1t0, m1t1, m1t2, m1t3, m1t4],[id_dienst_1, id_dienst_2],[anzahl_dienst_1,anzahl_dienst_2]);
+    count(d2 in Mitarbeitertag.dienst) == d2.anzahl
   }
+
+  constraint {
+    count(d3 in Mitarbeitertag.dienst) == d3.anzahl
+  }
+
 }
 
 solve {

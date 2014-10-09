@@ -9,7 +9,7 @@ model {
       }
 
       class Mitarbeiter {
-        var hasOne(Dienst) dienst;
+        var Dienst dienst;
       }
 }
 

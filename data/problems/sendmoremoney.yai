@@ -41,5 +41,5 @@ initial {
 }
 
 solve {
-  maximize alpha.O;
+  maximize alpha.E;
 }

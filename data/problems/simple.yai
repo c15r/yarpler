@@ -63,17 +63,10 @@ initial {
 
   # Dienstschlüssel einhalten
   constraint {
-    count(d1 in Mitarbeitertag.dienst) == d1.anzahl
+    forAll(d in Diensttyp) {
+        count(d in Mitarbeitertag.dienst) == d.anzahl
+    }
   }
-
-  constraint {
-    count(d2 in Mitarbeitertag.dienst) == d2.anzahl
-  }
-
-  constraint {
-    count(d3 in Mitarbeitertag.dienst) == d3.anzahl
-  }
-
 
 }
 

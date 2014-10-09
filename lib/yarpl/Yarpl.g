@@ -20,8 +20,10 @@ tokens {
   EXPRESSION;
   FIELD_ACCESSOR;
   FIELD_DECLARATION;
+  FORALL;
   FUNCTION_EXPRESSION;
   HASONE;
+  IN;
   INITIAL_DECLARATION;
   INSTANCE_ACCESSOR;
   INTEGER;
@@ -109,12 +111,8 @@ fieldDeclaration
     | variableType structType variableDeclaratorId ';' -> ^(REFERENCE variableType HASONE structType variableDeclaratorId)
     ;
 
-instanceAccessor
-    : IDENTIFIER -> ^(INSTANCE_ACCESSOR IDENTIFIER)
-    ;
-
 fieldAccessor
-    : IDENTIFIER '.' IDENTIFIER -> ^(FIELD_ACCESSOR IDENTIFIER IDENTIFIER)
+    : IDENTIFIER ('.' IDENTIFIER)* -> ^(FIELD_ACCESSOR IDENTIFIER*)
     ;
 
 classAccessor
@@ -146,11 +144,16 @@ relationDeclaration
     ;
 
 constraintDeclaration
-    : 'constraint' constraintBody -> ^(CONSTRAINT_DECLARATION constraintBody)
+    : 'constraint' LBRACE constraintBody RBRACE -> ^(CONSTRAINT_DECLARATION constraintBody)
     ;
 
 constraintBody
-    : LBRACE expression RBRACE -> ^(CONSTRAINT_EXPRESSION expression)
+    : 'forAll' LPAREN forallSelector RPAREN LBRACE constraintBody RBRACE -> ^(FORALL forallSelector constraintBody)
+    | expression -> ^(CONSTRAINT_EXPRESSION expression)
+    ;
+
+forallSelector
+    : fieldAccessor 'in' fieldAccessor -> ^(IN fieldAccessor fieldAccessor)
     ;
 
 expression
@@ -181,13 +184,12 @@ functionExpression
 
 primeExpression
     : literal -> ^(LITERAL literal)
-    | instanceAccessor
     | fieldAccessor
     | LPAREN expression /* recursion!!! */ RPAREN -> ^(EXPRESSION expression)
     ;
 
 countExpression
-    : instanceAccessor 'in' fieldAccessor -> ^(COUNT_IN instanceAccessor fieldAccessor)
+    : fieldAccessor 'in' fieldAccessor -> ^(COUNT_IN fieldAccessor fieldAccessor)
     ;
     
 sumExpression
@@ -195,7 +197,7 @@ sumExpression
     ;
 
 expressionList
-    :   expression (',' expression)* -> ^(EXPRESSION_LIST ^(EXPRESSION expression)*)
+    : expression (',' expression)* -> ^(EXPRESSION_LIST ^(EXPRESSION expression)*)
     ;
 
 setDeclaration

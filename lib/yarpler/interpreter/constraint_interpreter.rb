@@ -5,16 +5,22 @@ module Yarpler
 
       def initialize(tree)
         @constraint = Yarpler::Models::Constraint.new
-        parse_expression(tree)
+        @constraint.expressions << parse_expression(tree)
       end
 
       private
 
-      def parse_expression(expressions)
-        expressions.each do |expression|
-          expression_interpreter = ExpressionInterpreter.new(expression)
-          @constraint.expressions << expression_interpreter.expression
+      def parse_expression(expression)
+        constraint = nil
+        case expression[0].to_s
+          when 'FORALL'
+            interpreter = ForallInterpreter.new(expression)
+            constraint = interpreter.forall
+          when 'CONSTRAINT_EXPRESSION'
+            interpreter = ExpressionInterpreter.new(expression)
+            constraint = interpreter.expression
         end
+        constraint
       end
     end
   end
