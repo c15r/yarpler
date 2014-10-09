@@ -12,6 +12,7 @@ model {
       class Mitarbeitertag {
         var Diensttyp dienst;
         const Mitarbeiter mitarbeiter;
+        const Tag tag;
       }
 }
 
@@ -53,6 +54,12 @@ initial {
   relation(m2t2.mitarbeiter, m2);
   relation(m3t1.mitarbeiter, m3);
   relation(m3t2.mitarbeiter, m3);
+  relation(m1t1.tag, t1);
+  relation(m1t2.tag, t2);
+  relation(m2t1.tag, t1);
+  relation(m2t2.tag, t2);
+  relation(m3t1.tag, t1);
+  relation(m3t2.tag, t2);
 
   # Dienstschlüssel einhalten
   constraint {
