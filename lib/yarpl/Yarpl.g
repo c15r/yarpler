@@ -153,7 +153,7 @@ constraintBody
     ;
 
 forallSelector
-    : fieldAccessor 'in' fieldAccessor -> ^(IN fieldAccessor fieldAccessor)
+    : variableDeclaratorId 'in' fieldAccessor -> ^(IN variableDeclaratorId fieldAccessor)
     ;
 
 expression

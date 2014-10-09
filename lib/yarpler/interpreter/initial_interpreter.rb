@@ -20,7 +20,7 @@ module Yarpler
               attribute_reader(thing[1], new_object)
               initialize_relations(new_object)
             when 'CONSTRAINT_DECLARATION'
-              c = ConstraintInterpreter.new(thing)
+              c = ConstraintInterpreter.new(thing, @objects)
               @constraints.push(c.constraint)
             when 'RELATION_DECLARATION'
               r = RelationInterpreter.new(thing, @objects).relation

@@ -2,6 +2,7 @@ module Yarpler
   module Models
     class Forall
       attr_accessor :range
+      attr_accessor :variable
       attr_accessor :expression
 
       def initialize
