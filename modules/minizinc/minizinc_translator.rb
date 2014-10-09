@@ -260,8 +260,13 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     def translate_expression(expression, problem)
       code = ''
       code << resolve_expression(expression.left, problem) + SPACE
-      code << MinizincOperatorTranslator.new.translate(expression.operator.to_s)
-      code << SPACE + resolve_expression(expression.right, problem)
+
+      # no operator and right for literal expressions
+      if expression.operator.to_s != "LITERAL"
+        code << MinizincOperatorTranslator.new.translate(expression.operator.to_s)
+        code << SPACE + resolve_expression(expression.right, problem)
+      end
+      code
     end
 
     def resolve_expression(expression, problem)

@@ -16,16 +16,29 @@ module Yarpler
         if expression[0].to_s == 'EXPRESSION' && expression.size == 1
           process_expression(expression[0])
         else
-          if Yarpler::Models::Operator.operator?(expression[1].to_s)
-            @expression.operator = Yarpler::Models::Operator.new(expression[1].to_s)
-            @expression.left = process_expression_item(expression[0])
+          if expression.size == 1
+            process_no_operator_expression(expression)
+          else
+            process_normal_expression(expression)
+          end
+        end
+      end
 
-            # allow multiple expression of the same cardinality
-            if expression.size == 3
-              @expression.right = process_expression_item(expression[2])
-            else
-              @expression.right = ExpressionInterpreter.new(expression[2..expression.size]).expression
-            end
+      def process_no_operator_expression(expression)
+          @expression.left = process_expression_item(expression[0])
+          @expression.operator = "LITERAL"
+      end
+
+      def process_normal_expression(expression)
+        if Yarpler::Models::Operator.operator?(expression[1].to_s)
+          @expression.operator = Yarpler::Models::Operator.new(expression[1].to_s)
+          @expression.left = process_expression_item(expression[0])
+
+          # allow multiple expression of the same cardinality
+          if expression.size == 3
+            @expression.right = process_expression_item(expression[2])
+          else
+            @expression.right = ExpressionInterpreter.new(expression[2..expression.size]).expression
           end
         end
       end
