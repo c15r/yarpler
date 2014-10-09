@@ -21,12 +21,14 @@ tokens {
   FIELD_ACCESSOR;
   FIELD_DECLARATION;
   FUNCTION_EXPRESSION;
+  HASONE;
   INITIAL_DECLARATION;
   INSTANCE_ACCESSOR;
   INTEGER;
   LITERAL;
+  MAXIMIZE;
   MEMBER_DECLARATION;
-  HASONE;
+  MINIMIZE;
   REFERENCE;
   RELATION_DECLARATION;
   SATISFY;
@@ -82,6 +84,8 @@ solveDeclaration
 
 solveBodyDeclaration
     : 'satisfy' ';' -> SATISFY
+    | 'minimize' expression ';' -> MINIMIZE ^(EXPRESSION expression)
+    | 'maximize' expression ';' -> MAXIMIZE ^(EXPRESSION expression)
     ;
 
 typeDeclaration

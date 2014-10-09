@@ -218,9 +218,14 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     def translate(problem)
+      code = 'solve '
       case problem.solve.statement
         when 'SATISFY'
-          code = 'solve satisfy' + NEWLINE
+          code << 'satisfy' + NEWLINE
+        when 'MINIMIZE'
+          code << 'minimize ' + MinizincExpressionTranslator.new.translate(problem.solve.expression, problem) + NEWLINE
+        when 'MAXIMIZE'
+          code << 'maximize ' + MinizincExpressionTranslator.new.translate(problem.solve.expression, problem) + NEWLINE
       end
       code << ';' + DOUBLE_NEWLINE
       code

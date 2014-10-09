@@ -11,17 +11,22 @@ module Yarpler
       private
 
       def process_expression(expression)
-        if Yarpler::Models::Operator.operator?(expression[1].to_s)
-          @expression.operator = Yarpler::Models::Operator.new(expression[1].to_s)
-          @expression.left = process_expression_item(expression[0])
 
-          # allow multiple expression of the same cardinality
-          if expression.size == 3
-            @expression.right = process_expression_item(expression[2])
-          else
-            @expression.right = ExpressionInterpreter.new(expression[2..expression.size]).expression
+        # fix unlimited stack of expression
+        if expression[0].to_s == 'EXPRESSION' && expression.size == 1
+          process_expression(expression[0])
+        else
+          if Yarpler::Models::Operator.operator?(expression[1].to_s)
+            @expression.operator = Yarpler::Models::Operator.new(expression[1].to_s)
+            @expression.left = process_expression_item(expression[0])
+
+            # allow multiple expression of the same cardinality
+            if expression.size == 3
+              @expression.right = process_expression_item(expression[2])
+            else
+              @expression.right = ExpressionInterpreter.new(expression[2..expression.size]).expression
+            end
           end
-
         end
       end
 

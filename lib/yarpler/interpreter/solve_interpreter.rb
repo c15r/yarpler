@@ -17,7 +17,10 @@ module Yarpler
             @solve.statement = tree[0].to_s
           when 'MINIMIZE'
             @solve.statement = tree[0].to_s
-            @solve.expression = ExpressionInterpreter.new(tree[0])
+            @solve.expression = ExpressionInterpreter.new(tree[1]).expression
+          when 'MAXIMIZE'
+            @solve.statement = tree[0].to_s
+            @solve.expression = ExpressionInterpreter.new(tree[1]).expression
         end
       end
     end

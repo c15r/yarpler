@@ -41,5 +41,5 @@ initial {
 }
 
 solve {
-  satisfy;
+  maximize (alpha.O + alpha.M);
 }
