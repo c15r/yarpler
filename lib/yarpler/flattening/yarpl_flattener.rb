@@ -19,7 +19,7 @@ class YarplFlattener < Yarpler::Extensions::Process
   def process_constraint(constraint)
     if constraint.expression.is_a? Yarpler::Models::Forall
       process_forall_statement(constraint.expression)
-    elsif expression.is_a? Yarpler::Models::Expression
+    elsif constraint.expression.is_a? Yarpler::Models::Expression
       @constraints << constraint
     end
   end
