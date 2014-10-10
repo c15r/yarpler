@@ -7,7 +7,6 @@ model {
       }
 
       class Mitarbeiter {
-        const collection Diensttyp moeglicheDienste;
       }
 
       class Mitarbeitertag {
@@ -106,16 +105,15 @@ initial {
   relation(m3t6.tag, t6);
   relation(m3t7.tag, t7);
 
-
-  # Dienstschlüssel einhalten
-  constraint {
-    forAll(d in Diensttyp) {
-        count(d in Mitarbeitertag.dienst) == d.anzahl
-    }
-  }
-
 }
 
 solve {
-  satisfy;
+    # Dienstschlüssel einhalten
+    constraint {
+        forAll(d in Diensttyp) {
+            count(d in Mitarbeitertag.dienst) == d.anzahl
+        }
+    }
+
+    satisfy;
 }

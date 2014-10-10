@@ -27,13 +27,12 @@ initial {
   m1 = new Mitarbeiter();
   m2 = new Mitarbeiter();
   m3 = new Mitarbeiter();
-
-  constraint {
-    count(d1 in Mitarbeiter.dienst) == end.anzahl_d1
-  }
-
 }
 
 solve {
-  satisfy;
+    constraint {
+        count(d1 in Mitarbeiter.dienst) == end.anzahl_d1
+    }
+
+    satisfy;
 }

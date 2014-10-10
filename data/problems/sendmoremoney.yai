@@ -15,7 +15,9 @@ model {
 
 initial {
     alpha = new Alphabet(S=0..9, E=0..9, N=0..9, D=0..9, M=0..9, O=0..9, R=0..9, Y=0..9);
+}
 
+solve {
     constraint {
         1000*alpha.S+100*alpha.E+10*alpha.N+alpha.D
         + 1000*alpha.M+100*alpha.O+10*alpha.R+alpha.E
@@ -38,8 +40,5 @@ initial {
         alpha.S != 0 and alpha.M != 0
     }
 
-}
-
-solve {
-  maximize alpha.E;
+    maximize alpha.E;
 }
