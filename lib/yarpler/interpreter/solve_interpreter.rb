@@ -7,8 +7,9 @@ module Yarpler
       attr_accessor :solve
       attr_accessor :constraints
 
-      def initialize(tree)
+      def initialize(tree, objects)
         @constraints = []
+        @objects = objects
         @solve = Yarpler::Models::SolveInstruction.new
         tree_converter(tree)
       end
