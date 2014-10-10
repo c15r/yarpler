@@ -8,9 +8,9 @@ module Yarpler
       end
 
       def clone
-        new=CountFunction.new
-        new.element=@element.clone
-        new.range=@range.clone
+        new = CountFunction.new
+        new.element = @element.clone
+        new.range = @range.clone
         new
       end
     end

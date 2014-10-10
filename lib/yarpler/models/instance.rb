@@ -8,8 +8,8 @@ module Yarpler
       end
 
       def clone
-        new=Instance.new
-        new.variable=@variable
+        new = Instance.new
+        new.variable = @variable
         new
       end
     end

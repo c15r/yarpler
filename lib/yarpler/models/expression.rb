@@ -10,9 +10,9 @@ module Yarpler
 
       def clone
         new = Expression.new
-        new.operator=@operator.clone
-        new.left=@left.clone
-        new.right=@right.clone
+        new.operator = @operator.clone
+        new.left = @left.clone
+        new.right = @right.clone
         new
       end
     end

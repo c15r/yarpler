@@ -18,7 +18,7 @@ module Yarpler
       end
 
       def clone
-        new=Operator.new(@operator.clone)
+        new = Operator.new(@operator.clone)
         new
       end
     end

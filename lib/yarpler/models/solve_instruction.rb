@@ -10,12 +10,11 @@ module Yarpler
       end
 
       def clone
-        new=SolveInstruction.new
-        new.statement=@statement.clone
-        new.expression=@expression.clone
+        new = SolveInstruction.new
+        new.statement = @statement.clone
+        new.expression = @expression.clone
         new
       end
     end
   end
-
 end

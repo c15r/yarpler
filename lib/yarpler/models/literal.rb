@@ -7,8 +7,8 @@ module Yarpler
       end
 
       def clone
-        new=Literal.new
-        new.value=@value.clone
+        new = Literal.new
+        new.value = @value.clone
         new
       end
     end

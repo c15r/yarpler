@@ -16,10 +16,10 @@ module Yarpler
       # Gets an object of the instance by Class and the
       # representative ID of the object.
       def get_object_by_id(class_name, id)
-        obj=nil
+        obj = nil
         get_objects_of_class(class_name).each do |o|
-          if o.id==id
-            obj=o
+          if o.id == id
+            obj = o
             break
           end
         end

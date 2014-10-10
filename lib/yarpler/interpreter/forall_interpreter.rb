@@ -13,14 +13,14 @@ module Yarpler
 
       def process_forall(expression)
         forall_selector(expression[0])
-        @forall.expression=ExpressionInterpreter.new(expression[1]).expression
+        @forall.expression = ExpressionInterpreter.new(expression[1]).expression
       end
 
       def forall_selector(expression)
         case expression.to_s
           when 'IN'
-            @forall.range=forall_range_builder(expression[1])
-            @forall.variable=expression[0].to_s
+            @forall.range = forall_range_builder(expression[1])
+            @forall.variable = expression[0].to_s
         end
       end
 
@@ -52,7 +52,6 @@ module Yarpler
         end
         var_array
       end
-
     end
   end
 end

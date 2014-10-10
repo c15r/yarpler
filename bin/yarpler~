@@ -8,7 +8,7 @@ require_all 'modules'
 Yarpler::CLI.start(ARGV, debug: true)
 
 module Yarpler
-  def self.hi(n = "Default Name")
+  def self.hi(n = 'Default Name')
     hail = Hail
     Hail.name(n)
   end

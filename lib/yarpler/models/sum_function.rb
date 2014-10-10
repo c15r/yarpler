@@ -8,8 +8,8 @@ module Yarpler
       end
 
       def clone
-        new=SumFunction.new
-        new.elements=@elements.clone
+        new = SumFunction.new
+        new.elements = @elements.clone
         new
       end
     end

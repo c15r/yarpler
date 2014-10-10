@@ -11,7 +11,6 @@ module Yarpler
       private
 
       def process_expression(expression)
-
         # fix unlimited stack of expression
         if expression[0].to_s == 'EXPRESSION' && expression.size == 1
           process_expression(expression[0])
@@ -25,8 +24,8 @@ module Yarpler
       end
 
       def process_no_operator_expression(expression)
-          @expression.left = process_expression_item(expression[0])
-          @expression.operator = "LITERAL"
+        @expression.left = process_expression_item(expression[0])
+        @expression.operator = 'LITERAL'
       end
 
       def process_normal_expression(expression)
