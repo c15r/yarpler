@@ -5,6 +5,12 @@ module Yarpler
 
       def initialize
       end
+
+      def clone
+        new=Literal.new
+        new.value=@value.clone
+        new
+      end
     end
   end
 end

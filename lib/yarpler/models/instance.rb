@@ -6,6 +6,12 @@ module Yarpler
       def initialize
         @variable = ''
       end
+
+      def clone
+        new=Instance.new
+        new.variable=@variable
+        new
+      end
     end
   end
 end

@@ -53,22 +53,15 @@ module Yarpler
 
       def load(attribute)
         val = get_value(attribute)
-        if val.is_a?(Array)
-          val = array_to_range(val)
+
+        # if variable is not set it returns the datatype
+        if val.nil?
+          val=get_datatype(attribute)
+        elsif val.is_a?(Array)
+          val=array_to_range(val)
         end
         val
       end
-      #
-      # def get_list_of_attributes
-      #   list = []
-      #   instance_variables.each do |i|
-      #     if i.to_s == '@_instance_name'
-      #       next
-      #     end
-      #     list.push(i.to_s.sub! '@', '')
-      #   end
-      #   list
-      # end
 
       def get_list_of_attributes
         unwanted = ['=', '_datatype', '_variabletype']

@@ -11,6 +11,13 @@ module Yarpler
 
       def initialize
       end
+
+      def clone
+        new=CountFunction.new
+        new.element=@element.clone
+        new.range=@range.clone
+        new
+      end
     end
 
     class SumFunction < Function
@@ -18,6 +25,12 @@ module Yarpler
 
       def initialize
         @elements = []
+      end
+
+      def clone
+        new=SumFunction.new
+        new.elements=@elements.clone
+        new
       end
     end
   end

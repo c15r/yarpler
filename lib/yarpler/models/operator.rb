@@ -16,6 +16,11 @@ module Yarpler
       def to_s
         @operator
       end
+
+      def clone
+        new=Operator.new(@operator.clone)
+        new
+      end
     end
   end
 end

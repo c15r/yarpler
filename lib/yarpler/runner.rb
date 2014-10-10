@@ -16,15 +16,7 @@ module Yarpler
 
     def run(filename)
       tree = parse(filename)
-      problem = interpret(tree)
-
-      # minizinc_code = translate_to_minizinc(problem)
-      # puts minizinc_code
-      # minizinc_runner = Yarpler::Utils::MinizincRunner.new
-      # minizinc_runner.run(minizinc_code)
-
-      # output_parser = Yarpler::OutputParser.new(minizinc_runner.output, problem)
-      # output_parser.problem
+      interpret(tree)
     end
 
     private

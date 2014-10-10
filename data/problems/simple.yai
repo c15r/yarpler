@@ -3,7 +3,7 @@ model {
       }
 
       class Diensttyp {
-        const integer anzahl;
+        var integer anzahl;
       }
 
       class Mitarbeiter {
