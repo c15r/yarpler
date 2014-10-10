@@ -56,52 +56,5 @@ module Yarpler
         end
       end
     end
-
-    class LiteralInterpreter
-
-      attr_accessor :literal
-
-      def initialize(item)
-        process_literal(item)
-      end
-
-      def process_literal(item)
-        @literal = Yarpler::Models::Literal.new
-        @literal.value = item[0].to_s
-      end
-
-    end
-
-    class FieldAccessorInterpreter
-      attr_accessor :field
-
-      def initialize(item)
-        if item.size == 1
-          InstanceInterpreter.new(item).instance
-        else
-          process_field(item)
-        end
-      end
-
-      def process_field(item)
-        # @TODO solve verschachtelte Fields
-        @field = Yarpler::Models::Field.new
-        @field.variable = item[0].to_s
-        @field.attribute = item[1].to_s
-      end
-    end
-
-    class InstanceInterpreter
-      attr_accessor :instance
-
-      def initialize(item)
-        process_instance(item)
-      end
-
-      def process_instance(item)
-        @instance = Yarpler::Models::Instance.new
-        @instance.variable = item[0].to_s
-      end
-    end
   end
 end
