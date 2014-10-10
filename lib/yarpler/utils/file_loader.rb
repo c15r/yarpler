@@ -16,21 +16,20 @@ module Yarpler
 
       def initialize(filename)
         @content = ''
-        @filename = filename
-        load_files
+        load_files(filename)
       end
 
       private
 
-      def load_files
-        filename_domain = @filename.sub('.yai', '.yad')
+      def load_files(filename)
+        filename_domain = filename.sub('.yai', '.yad')
         load_file_to_content(filename_domain)
-        load_file_to_content(@filename)
+        load_file_to_content(filename)
       end
 
       def load_file_to_content(filename)
         # @TODO Melde Fehler sobald File nicht vorhanden.
-        return false if File.file?(filename_domain)
+        return false unless File.file?(filename)
         file = File.new(filename, 'r')
         @content << file.read
         file.close
