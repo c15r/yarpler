@@ -9,11 +9,13 @@ tokens {
   START;
   OUTPUT;
   OUTPUT_LIST;
+  UNSAT;
 }
 
 start
-    : outputlist '----------' -> ^(START outputlist)
-                        ;
+    : outputlist '----------' '=========='? -> ^(START outputlist)
+    | '=====UNSATISFIABLE=====' -> ^(START UNSAT)
+    ;
 
 outputlist
     : (output ' ')* -> ^(OUTPUT_LIST output*)

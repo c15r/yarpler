@@ -1,14 +1,13 @@
 class OutputParser
+  attr_reader :tree
+  attr_reader :problem
+
   def initialize(output, problem)
     @output = output
     parse
     fill_output(@tree, problem)
     @problem = problem
   end
-
-  attr_reader :tree
-
-  attr_reader :problem
 
   private
 

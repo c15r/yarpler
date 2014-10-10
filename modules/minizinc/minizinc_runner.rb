@@ -19,8 +19,13 @@ class MinizincRunner
     File.open(path, 'wb') { |f| f.write(model) }
     @cmd = ` bash -c "minizinc #{path}" `
 
+    if @cmd.include? '=====UNSATISFIABLE====='
+      Yarpler::Log.instance.error 'Problem is unsatisfiable!'
+      abort
+    end
+
     unless @cmd.include? '----------'
-      Yarpler::Log.instance.error 'Fehler in MiniZinc!'
+      Yarpler::Log.instance.error 'Exception in MiniZinc!'
       abort
     end
   end
