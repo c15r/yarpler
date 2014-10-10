@@ -7,3 +7,5 @@ AllCops:
     - 'modules/minizinc/yarpler_output/*'
     - 'lib/yarpl/*'
 
+Metrics/LineLength:
+  Max: 120
