@@ -8,9 +8,9 @@ module Yarpler
       end
 
       def clone
-        new=Field.new
-        new.variable=@variable.clone
-        new.attribute=@attribute.clone
+        new = Field.new
+        new.variable = @variable.clone
+        new.attribute = @attribute.clone
         new
       end
     end

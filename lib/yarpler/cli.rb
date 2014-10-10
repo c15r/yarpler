@@ -132,7 +132,7 @@ module Yarpler
         val = object.get_value(a.to_s)
 
         if val.is_a?(Yarpler::Models::Relation)
-           out << threshold + ',"' + a.to_s + '": "' + print_datastructure(val, threshold + '  ') + '"' + "\n"
+          out << threshold + ',"' + a.to_s + '": "' + print_datastructure(val, threshold + '  ') + '"' + "\n"
         else
           out << threshold + ',"' + a.to_s + '": "' + val.to_s + '"' + "\n"
         end

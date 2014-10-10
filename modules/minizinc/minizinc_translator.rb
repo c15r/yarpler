@@ -88,7 +88,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
               next
             end
             value = resource.load(a)
-            if not value.nil?
+            unless value.nil?
               code << T_CONSTANT % [resource.get_datatype(a), name + '_' + a, value]
             end
           when 'VARIABLE'
@@ -199,7 +199,6 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
   class MinizincOperatorTranslator
     def initialize
-
     end
 
     def translate(operator)
@@ -209,7 +208,6 @@ class MinizincTranslator < Yarpler::Extensions::Translator
         else
           operator
       end
-
     end
   end
 
@@ -265,7 +263,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       code << resolve_expression(expression.left, problem) + SPACE
 
       # no operator and right for literal expressions
-      if expression.operator.to_s != "LITERAL"
+      if expression.operator.to_s != 'LITERAL'
         code << MinizincOperatorTranslator.new.translate(expression.operator.to_s)
         code << SPACE + resolve_expression(expression.right, problem)
       end
@@ -288,7 +286,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   end
 
   class MinizincLiteralTranslator
-    def translate(literal, problem)
+    def translate(literal, _problem)
       code = literal.value
       code
     end

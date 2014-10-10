@@ -56,17 +56,17 @@ module Yarpler
 
         # if variable is not set it returns the datatype
         if val.nil?
-          val=get_datatype(attribute)
+          val = get_datatype(attribute)
         elsif val.is_a?(Array)
-          val=array_to_range(val)
+          val = array_to_range(val)
         end
         val
       end
 
       def get_list_of_attributes
         unwanted = ['=', '_datatype', '_variabletype']
-        attribute_methods = self.methods - Object.methods - [:get_list_of_attributes, :is_referenced, :load, :get_value, :set_value, :set_value_at_index, :get_instance_name, :get_datatype, :get_variabletype]
-        all_methods = Array.new
+        attribute_methods = methods - Object.methods - [:get_list_of_attributes, :is_referenced, :load, :get_value, :set_value, :set_value_at_index, :get_instance_name, :get_datatype, :get_variabletype]
+        all_methods = []
         attribute_methods.each do |x|
           set = true
           unwanted.each do |u|

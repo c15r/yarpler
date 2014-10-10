@@ -23,7 +23,7 @@ module Yarpler
 
     def parse(filename)
       file = Yarpler::Utils::FileLoader.new(filename)
-      parser = Yarpler::Parser.new(file.get_content)
+      parser = Yarpler::Parser.new(file.content)
       parser.tree
     end
 
