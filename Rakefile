@@ -19,7 +19,7 @@ task :antlr do
   puts 'done!'
 end
 
-task :yai_gui do
+task :integration_test do
   require 'open3'
   number_of_errors=0
   Dir["data/problems/*.yai"].each do |problem|
