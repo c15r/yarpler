@@ -1,15 +1,14 @@
 module Yarpler
+  # Runner is the interface to YARPLER
   class Runner
-    ##
     # Loads the AST
-    #
     def tree(filename)
       parse(filename)
     end
 
-    ##
-    # Loads the data structure from the AST
+    # Interprets the AST and creates a YARPL data structure out of it
     #
+    # @param tree [ANTR3::AST::CommonTree] the complete AST
     def load(tree)
       interpret(tree)
     end
