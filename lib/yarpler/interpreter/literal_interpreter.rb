@@ -1,7 +1,6 @@
 module Yarpler
   module Interpreter
     class LiteralInterpreter
-
       attr_accessor :literal
 
       def initialize(item)
@@ -12,7 +11,6 @@ module Yarpler
         @literal = Yarpler::Models::Literal.new
         @literal.value = item[0].to_s
       end
-
     end
   end
 end

@@ -8,8 +8,8 @@ module Yarpler
       end
 
       def clone
-        new=Constraint.new
-        new.expression=@expression.clone
+        new = Constraint.new
+        new.expression = @expression.clone
         new
       end
     end

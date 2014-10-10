@@ -1,6 +1,6 @@
 
 module Yarpler
-  def self.hi(n = "Default Name")
+  def self.hi(n = 'Default Name')
     n
-  end	
+  end
 end
