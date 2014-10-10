@@ -34,8 +34,9 @@ class OutputParser
       problem.objects.each do |_k, v|
         if v.class.to_s == datatype.to_s
           if v.id.to_s == val.to_s
-            relation = problem.objects[instance_name].get_value(field_name)
-            relation.to = v.to_s
+            relation=problem.objects[instance_name].get_value(field_name)
+            relation.to.clear
+            relation.to<<v
             problem.objects[instance_name].set_value(field_name, relation)
             break
           end
