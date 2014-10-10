@@ -5,7 +5,7 @@ module Yarpler
 
       def initialize(item)
         if item.size == 1
-          InstanceInterpreter.new(item).instance
+          @field=InstanceInterpreter.new(item).instance
         else
           process_field(item)
         end
