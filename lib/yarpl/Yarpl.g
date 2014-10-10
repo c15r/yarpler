@@ -23,6 +23,7 @@ tokens {
   FORALL;
   FUNCTION_EXPRESSION;
   HASONE;
+  HASMANY;
   IN;
   INITIAL_DECLARATION;
   INSTANCE_ACCESSOR;
@@ -125,6 +126,7 @@ memberDeclaration
 fieldDeclaration
     : variableType primitiveType variableDeclaratorId ';' -> ^(FIELD_DECLARATION variableType primitiveType variableDeclaratorId)
     | variableType structType variableDeclaratorId ';' -> ^(REFERENCE variableType HASONE structType variableDeclaratorId)
+    | variableType 'collection' structType variableDeclaratorId ';' -> ^(REFERENCE variableType HASMANY structType variableDeclaratorId)
     ;
 
 fieldAccessor

@@ -103,6 +103,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
             r = resource.get_value(a)
             relation = MinizincRelationTranslator.new
             code << relation.translate_const(r)
+          when 'CONSTANT_HASMANY'
+            r = resource.get_value(a)
+            relation = MinizincRelationTranslator.new
+            code << relation.translate_const(r)
         end
       end
       code
