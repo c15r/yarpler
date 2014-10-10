@@ -5,22 +5,29 @@ module Yarpler
     #   solve { }
     class SolveInterpreter
       attr_accessor :solve
+      attr_accessor :constraints
 
       def initialize(tree)
+        @constraints = []
+        @solve = Yarpler::Models::SolveInstruction.new
         tree_converter(tree)
       end
 
       def tree_converter(tree)
-        @solve = Yarpler::Models::SolveInstruction.new
-        case tree[0].to_s
-          when 'SATISFY'
-            @solve.statement = tree[0].to_s
-          when 'MINIMIZE'
-            @solve.statement = tree[0].to_s
-            @solve.expression = ExpressionInterpreter.new(tree[1]).expression
-          when 'MAXIMIZE'
-            @solve.statement = tree[0].to_s
-            @solve.expression = ExpressionInterpreter.new(tree[1]).expression
+        tree.each do |item|
+          case item.to_s
+            when 'CONSTRAINT_DECLARATION'
+              constraint_interpreter = ConstraintInterpreter.new(item, @objects)
+              @constraints.push(constraint_interpreter.constraint)
+            when 'SATISFY'
+              @solve.statement = item.to_s
+            when 'MINIMIZE'
+              @solve.statement = item.to_s
+              @solve.expression = ExpressionInterpreter.new(item[0]).expression
+            when 'MAXIMIZE'
+              @solve.statement = item.to_s
+              @solve.expression = ExpressionInterpreter.new(item[0]).expression
+          end
         end
       end
     end

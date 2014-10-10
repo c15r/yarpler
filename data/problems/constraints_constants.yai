@@ -7,12 +7,12 @@ model {
 initial {
   d1 = new Dienst(anzahl = 1);
   d2 = new Dienst(anzahl = 2);
-
-  constraint {
-    d1.anzahl == d2.anzahl
-  }
 }
 
 solve {
+  constraint {
+      d1.anzahl == d2.anzahl
+  }
+
   satisfy;
 }
