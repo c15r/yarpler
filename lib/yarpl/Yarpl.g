@@ -85,9 +85,21 @@ solveDeclaration
     ;
 
 solveBodyDeclaration
+    : satisfyDeclaration
+    | minimizeDeclaration
+    | maximizeDeclaration
+    ;
+
+satisfyDeclaration
     : 'satisfy' ';' -> SATISFY
-    | 'minimize' expression ';' -> MINIMIZE ^(EXPRESSION expression)
-    | 'maximize' expression ';' -> MAXIMIZE ^(EXPRESSION expression)
+    ;
+
+minimizeDeclaration
+    : 'minimize' expression ';' -> MINIMIZE ^(EXPRESSION expression)
+    ;
+
+maximizeDeclaration
+    : 'maximize' expression ';' -> MAXIMIZE ^(EXPRESSION expression)
     ;
 
 typeDeclaration
