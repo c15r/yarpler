@@ -13,7 +13,7 @@ initial {
 
 solve {
   constraint {
-      (d1.anzahl == (d2.anzahl == d3.anzahl)) and (d1.anzahl == d3.anzahl )
+      (d1.anzahl == d2.anzahl) and (d2.anzahl == d3.anzahl) and (d1.anzahl == d3.anzahl )
     }
 
   satisfy;

@@ -66,5 +66,5 @@ fragment
 DIGIT : '0'..'9'
  	  ;
 
-DIGITS : DIGIT DIGIT*
+DIGITS : ('+'|'-')? DIGIT DIGIT*
        ;
