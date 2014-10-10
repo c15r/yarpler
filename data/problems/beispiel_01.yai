@@ -60,7 +60,9 @@ initial {
   relation(m2t2.tag, t2);
   relation(m3t1.tag, t1);
   relation(m3t2.tag, t2);
+}
 
+solve {
   # Dienstschlüssel einhalten
   constraint {
     count(d1 in Mitarbeitertag.dienst) == d1.anzahl
@@ -74,8 +76,5 @@ initial {
     count(d3 in Mitarbeitertag.dienst) == d3.anzahl
   }
 
-}
-
-solve {
   satisfy;
 }

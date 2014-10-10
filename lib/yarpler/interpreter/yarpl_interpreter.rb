@@ -18,9 +18,10 @@ module Yarpler
             when 'INITIAL_DECLARATION'
               initial = InitialInterpreter.new(thing)
               @problem.objects = initial.objects
-              @problem.constraints = initial.constraints
             when 'SOLVE_DECLARATION'
-              @problem.solve = SolveInterpreter.new(thing).solve
+              solve_interpreter = SolveInterpreter.new(thing)
+              @problem.solve = solve_interpreter.solve
+              @problem.constraints = solve_interpreter.constraints
           end
         end
       end

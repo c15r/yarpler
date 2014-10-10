@@ -6,7 +6,6 @@ module Yarpler
 
       def initialize(tree)
         @objects = {}
-        @constraints = []
         tree_converter(tree)
       end
 
@@ -19,9 +18,6 @@ module Yarpler
               @objects[current_name] = new_object
               attribute_reader(thing[1], new_object)
               initialize_relations(new_object)
-            when 'CONSTRAINT_DECLARATION'
-              c = ConstraintInterpreter.new(thing, @objects)
-              @constraints.push(c.constraint)
             when 'RELATION_DECLARATION'
               r = RelationInterpreter.new(thing, @objects).relation
               @objects[r.from.variable.to_s].set_value(r.from.attribute.to_s, r)

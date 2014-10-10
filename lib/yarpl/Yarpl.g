@@ -76,16 +76,20 @@ initialBody
 
 initialBodyDeclaration
     : localVariableDeclaration
-    | constraintDeclaration
     | relationDeclaration
     ;
 
 solveDeclaration
-    : 'solve' '{' solveBodyDeclaration '}' -> ^(SOLVE_DECLARATION solveBodyDeclaration)
+    : 'solve' solveBody -> ^(SOLVE_DECLARATION solveBody)
+    ;
+
+solveBody
+    : '{' solveBodyDeclaration* '}' -> solveBodyDeclaration*
     ;
 
 solveBodyDeclaration
-    : satisfyDeclaration
+    : constraintDeclaration
+    | satisfyDeclaration
     | minimizeDeclaration
     | maximizeDeclaration
     ;
@@ -95,11 +99,11 @@ satisfyDeclaration
     ;
 
 minimizeDeclaration
-    : 'minimize' expression ';' -> MINIMIZE ^(EXPRESSION expression)
+    : 'minimize' expression ';' -> ^(MINIMIZE ^(EXPRESSION expression))
     ;
 
 maximizeDeclaration
-    : 'maximize' expression ';' -> MAXIMIZE ^(EXPRESSION expression)
+    : 'maximize' expression ';' -> ^(MAXIMIZE ^(EXPRESSION expression))
     ;
 
 typeDeclaration

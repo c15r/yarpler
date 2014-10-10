@@ -60,16 +60,15 @@ initial {
   relation(m2t2.tag, t2);
   relation(m3t1.tag, t1);
   relation(m3t2.tag, t2);
-
-  # Dienstschlüssel einhalten
-  constraint {
-    forAll(d in Diensttyp) {
-        count(d in Mitarbeitertag.dienst) == d.anzahl
-    }
-  }
-
 }
 
 solve {
-  satisfy;
+    # Dienstschlüssel einhalten
+    constraint {
+        forAll(d in Diensttyp) {
+            count(d in Mitarbeitertag.dienst) == d.anzahl
+        }
+    }
+
+    satisfy;
 }

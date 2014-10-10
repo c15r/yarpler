@@ -9,17 +9,17 @@ initial {
   d2 = new Dienst(anzahl = 2);
   d3 = new Dienst(anzahl = 3);
   d4 = new Dienst(anzahl = 4);
-
-  constraint {
-    d1.anzahl == d2.anzahl
-  }
-
-  constraint {
-      d3.anzahl == d4.anzahl
-  }
 }
 
 
 solve {
-  satisfy;
+    constraint {
+      d1.anzahl == d2.anzahl
+    }
+
+    constraint {
+        d3.anzahl == d4.anzahl
+    }
+
+    satisfy;
 }
