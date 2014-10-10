@@ -2,9 +2,12 @@ module Yarpler
   class Log
     include Singleton
 
+    attr_reader :haserror
+
     def initialize
       @logger = Logging.logger(STDOUT)
       switch_level(:info)
+      @haserror = false
     end
 
     def switch_level(level)
@@ -21,6 +24,7 @@ module Yarpler
 
     def error(error)
       @logger.error error
+      @haserror = true
     end
 
     def debug(debug)

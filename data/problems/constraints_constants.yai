@@ -6,7 +6,7 @@ model {
 
 initial {
   d1 = new Dienst(anzahl = 1);
-  d2 = new Dienst(anzahl = 2);
+  d2 = new Dienst(anzahl = 1);
 }
 
 solve {
@@ -15,4 +15,5 @@ solve {
   }
 
   satisfy;
+
 }

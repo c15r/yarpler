@@ -53,6 +53,11 @@ module Yarpler
       unless options[:noresult]
         print_output_objects(objects)
       end
+
+      # check if we had an error and end program
+      if (Yarpler::Log.instance.haserror)
+        exit(1)
+      end
     end
 
     private
