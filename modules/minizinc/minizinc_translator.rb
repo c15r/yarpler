@@ -121,9 +121,14 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     def translate_const(relation)
+      # @TODO is this always correct?
       code = ''
       var_name = MinizincFieldTranslator.new.resolve_variable_from_field(relation.from)
-      code << T_CONSTANT % ['int', var_name, 1]
+      if relation.to.size > 1
+        code << T_SET % [var_name, array_to_set_range(relation.to)]
+      else
+        code << T_CONSTANT % ['int', var_name, relation.to[0].id]
+      end
       code
     end
 

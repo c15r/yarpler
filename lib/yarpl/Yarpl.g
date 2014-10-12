@@ -197,7 +197,7 @@ signExpression
 functionExpression
     : 'count' LPAREN countExpression RPAREN -> ^(FUNCTION_EXPRESSION countExpression)
     | 'sum' LPAREN sumExpression RPAREN -> ^(FUNCTION_EXPRESSION sumExpression)
-    | primeExpression
+    | primeExpression ('in' primeExpression)*
     ;
 
 primeExpression

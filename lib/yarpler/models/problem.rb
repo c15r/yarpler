@@ -1,8 +1,11 @@
 module Yarpler
-  module Models
+  module Model
     ##
     # Stores the whole problem description
     class Problem
+
+      include Singleton
+
       attr_accessor :objects
       attr_accessor :constraints
       attr_accessor :solve
