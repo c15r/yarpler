@@ -22,7 +22,7 @@ initial {
   # Definition von Diensttypen
   d1 = new Diensttyp(anzahl=3);
   d2 = new Diensttyp(anzahl=3);
-  d3 = new Diensttyp(anzahl=1);
+  d3 = new Diensttyp(anzahl=3);
   f = new Diensttyp();
 
   # Definition von Tagen

@@ -1,0 +1,38 @@
+model {
+    class Item {
+        const integer weight;
+        const integer value;
+    }
+
+    class Knapsack {
+        const integer maxWeight;
+        var integer totalValue;
+        var integer currentWeight;
+        var collection Item items;
+    }
+}
+
+initial {
+    sack = new Knapsack(maxWeight=100);
+
+    item1 = new Item(weight=20,value=100);
+    item2 = new Item(weight=9,value=110);
+    item3 = new Item(weight=30,value=140);
+    item4 = new Item(weight=4,value=120);
+    item5 = new Item(weight=12,value=70);
+    item6 = new Item(weight=3,value=40);
+    item7 = new Item(weight=10,value=150);
+    item8 = new Item(weight=18,value=300);
+    item9 = new Item(weight=14,value=200);
+    item10 = new Item(weight=13,value=190);
+
+    relation(sack.items, {item1, item2, item3, item4, item5, item6, item7, item8, item9, item10});
+}
+
+solve {
+    #constraint {
+    #    sumAll(i.weight in sack.items) == sack.currentWeight
+    #}
+
+    maximize sack.totalValue;
+}
