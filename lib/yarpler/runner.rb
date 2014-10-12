@@ -27,8 +27,8 @@ module Yarpler
     end
 
     def interpret(tree)
-      interpreter = Yarpler::Interpreter::YARPLInterpreter.new(tree)
-      interpreter.problem
+      Yarpler::Interpreter::YARPLInterpreter.new(tree)
+      Yarpler::Models::Problem.instance
     end
   end
 end
