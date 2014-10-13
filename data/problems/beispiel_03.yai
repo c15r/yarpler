@@ -1,0 +1,79 @@
+model {
+      class Tag {
+      }
+
+      class Diensttyp {
+        var integer anzahl;
+      }
+
+      class Mitarbeiter {
+      }
+
+      class Dienst {
+        var Diensttyp typ;
+        const Tag tag;
+      }
+
+      class Mitarbeitertag {
+        var Dienst dienst;
+        const Mitarbeiter mitarbeiter;
+      }
+}
+
+initial {
+
+  # Definition von Tagen
+  t1 = new Tag();
+  t2 = new Tag();
+
+  # Definition von Diensttypen
+  dt1 = new Diensttyp(anzahl=1);
+  dt2 = new Diensttyp(anzahl=0);
+  dt3 = new Diensttyp(anzahl=0);
+  dtf = new Diensttyp();
+
+  # Definition von Mitarbeitern
+  m1 = new Mitarbeiter();
+  m2 = new Mitarbeiter();
+  m3 = new Mitarbeiter();
+
+  # Definition von Diensten
+  dt1t1 = new Dienst();
+
+  # Definition von Mitarbeitertagen
+  m1t1 = new Mitarbeitertag();
+  m1t2 = new Mitarbeitertag();
+  m2t1 = new Mitarbeitertag();
+  m2t2 = new Mitarbeitertag();
+  m3t1 = new Mitarbeitertag();
+  m3t2 = new Mitarbeitertag();
+
+  # Definition von Relationen
+  relation(m1t1.mitarbeiter, m1);
+  relation(m1t2.mitarbeiter, m1);
+  relation(m2t1.mitarbeiter, m2);
+  relation(m2t2.mitarbeiter, m2);
+  relation(m3t1.mitarbeiter, m3);
+  relation(m3t2.mitarbeiter, m3);
+
+  # Definition von Dienste pro Tag
+  relation(dt1t1.tag, t1);
+  relation(dt1t1.typ, dt1);
+}
+
+solve {
+  # Dienstschlüssel einhalten
+  constraint {
+    count(dt1 in Mitarbeitertag.dienst.typ) == dt1.anzahl
+  }
+
+  # constraint {
+  #   count(dt2 in Mitarbeitertag.dienst.typ) == dt2.anzahl
+  # }
+
+  # constraint {
+  #   count(dt3 in Mitarbeitertag.dienst.typ) == dt3.anzahl
+  # }
+
+  satisfy;
+}
