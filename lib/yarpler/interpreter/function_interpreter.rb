@@ -31,12 +31,30 @@ module Yarpler
         count
       end
 
-      def process_sum_function(function)
-        sum = Yarpler::Models::SumFunction.new
+      def process_sum_value_function(function)
+        function=function[0]
+        # @TODO Erlaube verschachtelungen über mehr als drei Ebenen, oder auch nur über zwei?
+        sum = Yarpler::Models::SumValueFunction.new
+        obj=Yarpler::Models::Problem.instance.objects[function[0].to_s]
+        sum.set=Yarpler::Models::Field.new
+        sum.set.variable=function[0].to_s
+        sum.set.attribute=function[1].to_s
+        sum.elements=obj.get_value(function[1].to_s)
+        sum.attribute=function[2].to_s
+        sum
+      end
 
-        function[0].each do |expression|
-          sum.elements.push(Yarpler::Interpreter::ExpressionInterpreter.new(expression).expression)
+      def process_sum_function(function)
+        if (function[0].size==1 && function[0][0].size==1)
+          sum=process_sum_value_function(function[0][0])
+        else
+          sum = Yarpler::Models::SumFunction.new
+          function[0].each do |expression|
+            sum.elements.push(Yarpler::Interpreter::ExpressionInterpreter.new(expression).expression)
+          end
         end
+
+
 
         sum
       end

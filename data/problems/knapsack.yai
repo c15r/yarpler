@@ -30,9 +30,17 @@ initial {
 }
 
 solve {
-    #constraint {
-    #    sumAll(i.weight in sack.items) == sack.currentWeight
-    #}
+    constraint {
+        sack.maxWeight >= sack.currentWeight
+    }
+
+    constraint {
+        sum(sack.items.weight) == sack.currentWeight
+    }
+
+    constraint {
+        sum(sack.items.value) == sack.totalValue
+    }
 
     maximize sack.totalValue;
 }

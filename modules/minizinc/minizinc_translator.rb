@@ -7,6 +7,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   T_OUTPUT = ", \"%s=\" , show(%s) , \" \"   "
   T_SET = "set of int: %s = {%s};\n"
   T_VARIABLE = "var %s: %s;\n" # var 0..2: m0t0;
+  T_VARIABLE_SET = "var set of {%s}: %s;\n"
 
   FIXNUM_MAX = (2**(0.size * 8 - 2) - 1)
   FIXNUM_MIN = -(2**(0.size * 8 - 2))
@@ -107,6 +108,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
             r = resource.get_value(a)
             relation = MinizincRelationTranslator.new
             code << relation.translate_const(r)
+          when 'VARIABLE_HASMANY'
+            r = resource.get_value(a)
+            relation = MinizincRelationTranslator.new
+            code << relation.translate_var_set(r)
         end
       end
       code
@@ -129,6 +134,16 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       else
         code << T_CONSTANT % ['int', var_name, relation.to[0].id]
       end
+      code
+    end
+
+    def translate_var_set(relation)
+      code = ''
+      var_name = MinizincFieldTranslator.new.resolve_variable_from_field(relation.from)
+      #code << T_SET % [set_name, array_to_set_range(relation.to)]
+      code << T_VARIABLE_SET % [array_to_set_range(relation.to), var_name]
+      @output << T_OUTPUT % [var_name, var_name]
+
       code
     end
 
@@ -320,7 +335,28 @@ class MinizincTranslator < Yarpler::Extensions::Translator
         translate_count_function(function, problem)
       elsif function.is_a? Yarpler::Models::SumFunction
         translate_sum_function(function, problem)
+      elsif function.is_a? Yarpler::Models::SumValueFunction
+        translate_sum_value_function(function, problem)
       end
+    end
+
+    def translate_sum_value_function(function, problem)
+      index = MinizincHelper.instance.get_array_id
+      first = true
+      objects = function.elements.to
+
+      code = 'let' + SPACE + LCBRACKET + 'array[1..' + objects.size.to_s + '] of var int: array' + index.to_s + ' = ['
+
+      objects.each do |obj|
+        if first
+          first = false
+        else
+          code << ','
+        end
+        code << resolve_variable_from_object_and_attribute_name(obj, function.attribute) + '*bool2int(' + obj.id.to_s + ' in ' + MinizincFieldTranslator.new.resolve_variable_from_field(function.set) + ')'
+      end
+
+      code << ' ]} in sum(t0 in 1..' + objects.size.to_s + ')(array' + index.to_s + '[t0])'
     end
 
     def translate_sum_function(function, problem)

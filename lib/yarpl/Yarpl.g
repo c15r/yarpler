@@ -39,6 +39,7 @@ tokens {
   SOLVE_DECLARATION;
   START;
   SUM;
+  SUM_VALUE;
   TYPE_DECLARATION;
   VARIABLE;
   VARIABLE_DECLARATOR;
@@ -212,6 +213,7 @@ countExpression
     
 sumExpression
     : expressionList -> ^(SUM expressionList)
+    // |fieldAccessor -> ^(SUM_VALUE fieldAccessor)
     ;
 
 expressionList

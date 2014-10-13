@@ -1,6 +1,8 @@
-T__17=17
 T__18=18
 T__19=19
+T__20=20
+T__21=21
+T__22=22
 ALPHABET=4
 ALPHANUMERIC=5
 DIGIT=6
@@ -12,8 +14,11 @@ LOWERCASE=11
 OUTPUT=12
 OUTPUT_LIST=13
 START=14
-UPPERCASE=15
-WS=16
-' '=17
-'----------'=18
-'='=19
+UNSAT=15
+UPPERCASE=16
+WS=17
+' '=18
+'----------'=19
+'='=20
+'=========='=21
+'=====UNSATISFIABLE====='=22

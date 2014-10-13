@@ -17,7 +17,7 @@ class MinizincRunner
   def run(model)
     path = File.join(Dir.pwd, 'wrk.mzn')
     File.open(path, 'wb') { |f| f.write(model) }
-    @cmd = ` bash -c "minizinc #{path}" `
+    @cmd = ` bash -c "minizinc #{path} -n 1" `
 
     if @cmd.include? '=====UNSATISFIABLE====='
       Yarpler::Log.instance.error 'Problem is unsatisfiable!'
