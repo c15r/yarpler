@@ -13,7 +13,7 @@ model {
 }
 
 initial {
-    sack = new Knapsack(maxWeight=100);
+    sack = new Knapsack(maxWeight=50);
 
     item1 = new Item(weight=20,value=100);
     item2 = new Item(weight=9,value=110);

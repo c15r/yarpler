@@ -6,6 +6,7 @@ options {
 }
 
 tokens {
+  DIGIT_LIST;
   START;
   OUTPUT;
   OUTPUT_LIST;
@@ -23,6 +24,11 @@ outputlist
 
 output
     : IDENTIFIER '=' DIGITS -> ^(OUTPUT IDENTIFIER DIGITS)
+    | IDENTIFIER '=' '{' digitlist '}' -> ^(OUTPUT IDENTIFIER digitlist)
+    ;
+
+digitlist
+    : DIGITS (', ' DIGITS)* -> DIGITS*
     ;
 
 // NEWLINE
