@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
 
-require 'require_all'
-require 'logging'
-require_all 'lib'
-require_all 'modules'
+$LOAD_PATH.unshift(File.dirname(File.realpath(__FILE__)) + '/../lib')
+
+require 'yarpler'
+
+require 'modules/minizinc/minizinc_translator'
+
 
 Yarpler::CLI.start(ARGV, debug: true)
