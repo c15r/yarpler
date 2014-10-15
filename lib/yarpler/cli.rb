@@ -1,5 +1,3 @@
-require 'thor'
-
 module Yarpler
   class CLI < Thor
     def initialize(*args)

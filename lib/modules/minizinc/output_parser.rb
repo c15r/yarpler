@@ -1,3 +1,6 @@
+require_relative 'yarpler_output/YarplerOutputLexer'
+require_relative 'yarpler_output/YarplerOutputParser'
+
 class OutputParser
   attr_reader :tree
   attr_reader :problem
