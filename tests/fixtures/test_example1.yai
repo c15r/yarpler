@@ -1,0 +1,80 @@
+model {
+      class Tag {
+      }
+
+      class Diensttyp {
+        var integer anzahl;
+      }
+
+      class Mitarbeiter {
+      }
+
+      class Mitarbeitertag {
+        var Diensttyp dienst;
+        const Mitarbeiter mitarbeiter;
+        const Tag tag;
+      }
+}
+
+initial {
+
+  # Definition von Diensttypen
+  d1 = new Diensttyp(anzahl=1);
+  d2 = new Diensttyp(anzahl=1);
+  d3 = new Diensttyp(anzahl=1);
+  f = new Diensttyp();
+
+  # Definition von Tagen
+  t1 = new Tag();
+  t2 = new Tag();
+
+  # Definition von Mitarbeitern
+  m1 = new Mitarbeiter();
+  m2 = new Mitarbeiter();
+  m3 = new Mitarbeiter();
+
+  # Definition von Mitarbeitertagen
+  m1t1 = new Mitarbeitertag();
+  m1t2 = new Mitarbeitertag();
+  m2t1 = new Mitarbeitertag();
+  m2t2 = new Mitarbeitertag();
+  m3t1 = new Mitarbeitertag();
+  m3t2 = new Mitarbeitertag();
+
+  # Definition von Relationen
+  relation(m1t1.dienst, {d1,d2,f});
+  relation(m1t2.dienst, {d1,d2,f});
+  relation(m2t1.dienst, {d1,d2,d3,f});
+  relation(m2t2.dienst, {d1,d2,d3,f});
+  relation(m3t1.dienst, {d2,d3,f});
+  relation(m3t2.dienst, {d2,d3,f});
+  relation(m1t1.mitarbeiter, m1);
+  relation(m1t2.mitarbeiter, m1);
+  relation(m2t1.mitarbeiter, m2);
+  relation(m2t2.mitarbeiter, m2);
+  relation(m3t1.mitarbeiter, m3);
+  relation(m3t2.mitarbeiter, m3);
+  relation(m1t1.tag, t1);
+  relation(m1t2.tag, t2);
+  relation(m2t1.tag, t1);
+  relation(m2t2.tag, t2);
+  relation(m3t1.tag, t1);
+  relation(m3t2.tag, t2);
+}
+
+solve {
+  # Dienstschlüssel einhalten
+  constraint {
+    count(d1 in Mitarbeitertag.dienst) == d1.anzahl
+  }
+
+  constraint {
+    count(d2 in Mitarbeitertag.dienst) == d2.anzahl
+  }
+
+  constraint {
+    count(d3 in Mitarbeitertag.dienst) == d3.anzahl
+  }
+
+  satisfy;
+}
