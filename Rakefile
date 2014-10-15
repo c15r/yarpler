@@ -1,9 +1,21 @@
 require 'rake/testtask'
 
 Rake::TestTask.new do |t|
-  t.libs << 'tests'
-  t.test_files = FileList['tests/test*.rb']
+  t.libs = ['lib', 'tests']
   t.verbose = true
+  t.test_files = FileList['tests/unit/test*.rb']
+end
+
+Rake::TestTask.new('test:integration') do |t|
+  t.libs = ['lib', 'tests']
+  t.verbose = true
+  t.test_files = FileList['tests/integration/test*.rb']
+end
+
+Rake::TestTask.new('test:all') do |t|
+  t.libs = ['lib', 'tests']
+  t.verbose = true
+  t.test_files = FileList['tests/**/test*.rb']
 end
 
 desc 'Generate yarpl parser and lexer from the grammar'
