@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'require_all'
+gem 'antlr3'
 gem 'logging'
 gem 'thor'

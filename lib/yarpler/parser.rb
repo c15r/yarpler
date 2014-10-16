@@ -1,24 +1,20 @@
 module Yarpler
   class Parser
-    def initialize(yarpl)
-      @yarpl = yarpl
-      parse
+    def initialize
+
     end
 
-    attr_reader :tree
-
-    private
-
-    def parse
+    def parse(yarpl_problem)
       out = StringIO.new
       err = StringIO.new
       $stdout = out
       $stderr = err
 
-      lexer = Yarpl::Lexer.new(@yarpl)
+      lexer = Yarpl::Lexer.new(yarpl_problem)
       tokens = ANTLR3::CommonTokenStream.new(lexer)  # Ein Array
       parser = Yarpl::Parser.new(tokens)
-      returnValue = parser.start
+      antlr_result = parser.start
+      tree = antlr_result.tree
 
       $stdout = STDOUT
       $stderr = STDERR
@@ -26,12 +22,14 @@ module Yarpler
       if !err.string.empty?
         Yarpler::Log.instance.error 'Syntax error in YARPL input file.'
         Yarpler::Log.instance.error err.string
-        Yarpler::Log.instance.error print_input_tree(returnValue.tree)
+        Yarpler::Log.instance.error print_input_tree(tree)
         abort
       else
-        @tree = returnValue.tree
+        tree
       end
     end
+
+    private
 
     def print_input_tree(tree, depth = 0)
       indent = ''
