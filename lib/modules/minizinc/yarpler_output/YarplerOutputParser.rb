@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 #
-# YarplerOutput.g
+# lib/modules/minizinc/yarpler_output/YarplerOutput.g
 # --
 # Generated using ANTLR version: 3.5
 # Ruby runtime library version: 1.10.0
-# Input grammar file: YarplerOutput.g
-# Generated at: 2014-10-15 22:16:01
+# Input grammar file: lib/modules/minizinc/yarpler_output/YarplerOutput.g
+# Generated at: 2014-10-16 13:41:18
 #
 
 # ~~~> start load path setup
@@ -99,7 +99,7 @@ module YarplerOutput
     include TokenData
 
     begin
-      generated_using( "YarplerOutput.g", "3.5", "1.10.0" )
+      generated_using( "lib/modules/minizinc/yarpler_output/YarplerOutput.g", "3.5", "1.10.0" )
     rescue NoMethodError => error
       # ignore
     end
@@ -113,7 +113,7 @@ module YarplerOutput
     #
     # parser rule start
     #
-    # (in YarplerOutput.g)
+    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
     # 16:1: start : ( outputlist '----------' ( '==========' )? -> ^( START outputlist ) | '=====UNSATISFIABLE=====' -> ^( START UNSAT ) );
     #
     def start
@@ -270,7 +270,7 @@ module YarplerOutput
     #
     # parser rule outputlist
     #
-    # (in YarplerOutput.g)
+    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
     # 21:1: outputlist : ( output ' ' )* -> ^( OUTPUT_LIST ( output )* ) ;
     #
     def outputlist
@@ -383,7 +383,7 @@ module YarplerOutput
     #
     # parser rule output
     #
-    # (in YarplerOutput.g)
+    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
     # 25:1: output : ( IDENTIFIER '=' DIGITS -> ^( OUTPUT IDENTIFIER DIGITS ) | IDENTIFIER '=' '{' digitlist '}' -> ^( OUTPUT IDENTIFIER digitlist ) );
     #
     def output
@@ -510,7 +510,7 @@ module YarplerOutput
         stream_T__26.add( char_literal14 )
 
         # AST Rewrite
-        # elements: digitlist, IDENTIFIER
+        # elements: IDENTIFIER, digitlist
         # token labels: 
         # rule labels: return_value
         # token list labels: 
@@ -568,7 +568,7 @@ module YarplerOutput
     #
     # parser rule digitlist
     #
-    # (in YarplerOutput.g)
+    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
     # 30:1: digitlist : DIGITS ( ', ' DIGITS )* -> ( DIGITS )* ;
     #
     def digitlist
