@@ -13,7 +13,11 @@ module Yarpler
 
       def process_forall(expression)
         forall_selector(expression[0])
-        @forall.expression = ExpressionInterpreter.new(expression[1]).expression
+        if expression[1].to_s == 'FORALL'
+          @forall.expression = ForallInterpreter.new(expression[1],@objects).forall
+        else
+          @forall.expression = ExpressionInterpreter.new(expression[1]).expression
+        end
       end
 
       def forall_selector(expression)

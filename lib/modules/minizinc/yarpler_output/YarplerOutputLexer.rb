@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 #
-# lib/modules/minizinc/yarpler_output/YarplerOutput.g
+# YarplerOutput.g
 # --
 # Generated using ANTLR version: 3.5
 # Ruby runtime library version: 1.10.0
-# Input grammar file: lib/modules/minizinc/yarpler_output/YarplerOutput.g
-# Generated at: 2014-10-16 13:41:18
+# Input grammar file: YarplerOutput.g
+# Generated at: 2014-10-16 17:48:07
 #
 
 # ~~~> start load path setup
@@ -81,7 +81,7 @@ module YarplerOutput
     include TokenData
 
     begin
-      generated_using( "lib/modules/minizinc/yarpler_output/YarplerOutput.g", "3.5", "1.10.0" )
+      generated_using( "YarplerOutput.g", "3.5", "1.10.0" )
     rescue NoMethodError => error
       # ignore
     end
@@ -102,7 +102,7 @@ module YarplerOutput
 
     # - - - - - - - - - - - lexer rules - - - - - - - - - - - -
     # lexer rule t__19! (T__19)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def t__19!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 1 )
@@ -129,7 +129,7 @@ module YarplerOutput
     end
 
     # lexer rule t__20! (T__20)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def t__20!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 2 )
@@ -157,7 +157,7 @@ module YarplerOutput
     end
 
     # lexer rule t__21! (T__21)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def t__21!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 3 )
@@ -185,7 +185,7 @@ module YarplerOutput
     end
 
     # lexer rule t__22! (T__22)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def t__22!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 4 )
@@ -212,7 +212,7 @@ module YarplerOutput
     end
 
     # lexer rule t__23! (T__23)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def t__23!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 5 )
@@ -240,7 +240,7 @@ module YarplerOutput
     end
 
     # lexer rule t__24! (T__24)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def t__24!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 6 )
@@ -268,7 +268,7 @@ module YarplerOutput
     end
 
     # lexer rule t__25! (T__25)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def t__25!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 7 )
@@ -295,7 +295,7 @@ module YarplerOutput
     end
 
     # lexer rule t__26! (T__26)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def t__26!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 8 )
@@ -322,7 +322,7 @@ module YarplerOutput
     end
 
     # lexer rule ws! (WS)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def ws!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 9 )
@@ -363,7 +363,7 @@ module YarplerOutput
     end
 
     # lexer rule identifier! (IDENTIFIER)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def identifier!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 10 )
@@ -419,7 +419,7 @@ module YarplerOutput
     end
 
     # lexer rule letter! (LETTER)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def letter!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 11 )
@@ -449,7 +449,7 @@ module YarplerOutput
     end
 
     # lexer rule letterordigit! (LETTERORDIGIT)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def letterordigit!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 12 )
@@ -479,7 +479,7 @@ module YarplerOutput
     end
 
     # lexer rule lowercase! (LOWERCASE)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def lowercase!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 13 )
@@ -509,7 +509,7 @@ module YarplerOutput
     end
 
     # lexer rule uppercase! (UPPERCASE)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def uppercase!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 14 )
@@ -539,7 +539,7 @@ module YarplerOutput
     end
 
     # lexer rule alphabet! (ALPHABET)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def alphabet!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 15 )
@@ -569,7 +569,7 @@ module YarplerOutput
     end
 
     # lexer rule alphanumeric! (ALPHANUMERIC)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def alphanumeric!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 16 )
@@ -599,7 +599,7 @@ module YarplerOutput
     end
 
     # lexer rule digit! (DIGIT)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def digit!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 17 )
@@ -629,7 +629,7 @@ module YarplerOutput
     end
 
     # lexer rule digits! (DIGITS)
-    # (in lib/modules/minizinc/yarpler_output/YarplerOutput.g)
+    # (in YarplerOutput.g)
     def digits!
       # -> uncomment the next line to manually enable rule tracing
       # trace_in( __method__, 18 )
