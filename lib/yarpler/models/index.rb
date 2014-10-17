@@ -1,20 +1,18 @@
 module Yarpler
   module Models
-    class Field
+    class Index
       attr_accessor :variable
+      attr_accessor :index
       attr_accessor :attribute
 
       def initialize
       end
 
-      def is_valid?
-        not variable.nil? && attribute.nil?
-      end
-
       def clone
-        new = Field.new
+        new = Index.new
         new.variable = @variable.clone
         new.attribute = @attribute.clone
+        new.index = @index.clone
         new
       end
     end

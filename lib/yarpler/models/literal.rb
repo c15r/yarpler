@@ -6,6 +6,10 @@ module Yarpler
       def initialize
       end
 
+      def is_valid?
+        not value.nil?
+      end
+
       def clone
         new = Literal.new
         new.value = @value.clone

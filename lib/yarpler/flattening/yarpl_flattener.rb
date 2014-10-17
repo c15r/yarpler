@@ -25,6 +25,21 @@ class YarplFlattener < Yarpler::Extensions::Process
       @constraints = []
       problem = YarplFlattener.new.process(problem)
     end
+
+
+    # remove all invalid constraints
+    invalid=[]
+    problem.constraints.each do |constraint|
+      if not constraint.is_valid?
+        invalid<<constraint
+      end
+    end
+
+    invalid.each do |i|
+      problem.constraints.delete(i)
+    end
+
+
     problem
   end
 
@@ -33,7 +48,7 @@ class YarplFlattener < Yarpler::Extensions::Process
       forall.range.each do |obj|
         new_constraint = Yarpler::Models::Constraint.new
         new_constraint.expression = forall.expression.clone
-        new_constraint.expression = replace_selector_placeholder(new_constraint.expression, forall.variable, obj.to_s)
+        new_constraint.expression = replace_selector_placeholder(new_constraint.expression, forall.variable, obj.to_s, forall.range)
         replace_substitute(new_constraint.expression)
         @constraints << new_constraint
       end
@@ -70,23 +85,41 @@ class YarplFlattener < Yarpler::Extensions::Process
     expression
   end
 
-  def replace_selector_placeholder(expression, placeholder_variable, real_variable)
+  def replace_selector_placeholder(expression, placeholder_variable, real_variable, range)
     if expression.is_a? Yarpler::Models::Expression
-      expression.left = replace_selector_placeholder(expression.left, placeholder_variable, real_variable)
-      expression.right = replace_selector_placeholder(expression.right, placeholder_variable, real_variable)
+      expression.left = replace_selector_placeholder(expression.left, placeholder_variable, real_variable,range)
+      expression.right = replace_selector_placeholder(expression.right, placeholder_variable, real_variable,range)
+    elsif expression.is_a? Yarpler::Models::Index
+      if expression.variable.to_s == placeholder_variable.to_s
+        next_value = nil
+
+        i=0
+        range.each do |r|
+          i=i.next
+          if r.get_instance_name == real_variable
+            next_value=range[i]
+            break
+          end
+        end
+
+        field=Yarpler::Models::Field.new
+        field.variable =next_value
+        field.attribute=expression.attribute
+        expression = field
+      end
     elsif expression.is_a? Yarpler::Models::Forall
-      expression.range = replace_selector_placeholder(expression.range, placeholder_variable, real_variable)
-      expression.expression = replace_selector_placeholder(expression.expression, placeholder_variable, real_variable)
+      expression.range = replace_selector_placeholder(expression.range, placeholder_variable, real_variable,range)
+      expression.expression = replace_selector_placeholder(expression.expression, placeholder_variable, real_variable,range)
     elsif expression.is_a? Yarpler::Models::Field
       if expression.variable.is_a? Yarpler::Models::Substitute
-        expression.variable = replace_selector_placeholder(expression.variable, placeholder_variable, real_variable)
+        expression.variable = replace_selector_placeholder(expression.variable, placeholder_variable, real_variable,range)
       elsif expression.variable == placeholder_variable
         expression.variable=real_variable
       end
     elsif field_or_instance?(expression, placeholder_variable)
       expression.variable = real_variable
     elsif count_function?(expression)
-      expression.element = replace_selector_placeholder(expression.element, placeholder_variable, real_variable)
+      expression.element = replace_selector_placeholder(expression.element, placeholder_variable, real_variable,range)
     end
     expression
   end

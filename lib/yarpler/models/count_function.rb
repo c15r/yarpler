@@ -7,6 +7,10 @@ module Yarpler
       def initialize
       end
 
+      def is_valid?
+        not element.nil? && range.nil?
+      end
+
       def clone
         new = CountFunction.new
         new.element = @element.clone

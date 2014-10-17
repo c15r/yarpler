@@ -46,6 +46,8 @@ module Yarpler
         case item.to_s
           when 'FIELD_ACCESSOR'
             FieldAccessorInterpreter.new(item).field
+          when 'INDEX_ACCESSOR'
+            IndexAccessorInterpreter.new(item).index
           when 'FUNCTION_EXPRESSION'
             FunctionInterpreter.new(item).function
           when 'EXPRESSION'

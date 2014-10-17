@@ -7,6 +7,10 @@ module Yarpler
         @variable = ''
       end
 
+      def is_valid?
+        @variable.nil?
+      end
+
       def clone
         new = Instance.new
         new.variable = @variable

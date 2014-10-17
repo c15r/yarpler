@@ -8,6 +8,11 @@ module Yarpler
       def initialize
       end
 
+      def is_valid?
+        valid = !operator.nil?
+        valid && @left.is_valid? && @right.is_valid?
+      end
+
       def clone
         new = Expression.new
         new.operator = @operator.clone

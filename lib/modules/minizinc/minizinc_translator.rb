@@ -235,6 +235,8 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       case operator
         when 'and'
           '/\\'
+        when 'or'
+          '\\/'
         else
           operator
       end
@@ -328,7 +330,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     def resolve_variable_from_field(field)
-      field.variable + '_' + field.attribute
+      field.variable.to_s + '_' + field.attribute.to_s
     end
   end
 

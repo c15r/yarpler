@@ -113,6 +113,14 @@ initial {
 
 solve {
 
+    constraint {
+        forAll(m in Mitarbeiter) {
+            forAll(mt in m.tage) {
+                mt.dienst!=d1 or mt[1].dienst==d1
+            }
+        }
+    }
+
     # Mitarbeiter kriegen nur mögliche Dienste
     constraint {
         forAll(m in Mitarbeiter) {
@@ -124,11 +132,11 @@ solve {
 
 
     # Dienstschlüssel einhalten
-    #constraint {
-    #    forAll(d in Diensttyp) {
-    #        count(d in Mitarbeitertag.dienst) == d.anzahl
-    #    }
-    #}
+    constraint {
+        forAll(d in Diensttyp) {
+            count(d in Mitarbeitertag.dienst) == d.anzahl
+        }
+    }
 
     satisfy;
 }

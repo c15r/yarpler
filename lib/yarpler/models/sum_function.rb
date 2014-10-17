@@ -7,6 +7,10 @@ module Yarpler
         @elements = []
       end
 
+      def is_valid?
+        elements.size > 0
+      end
+
       def clone
         new = SumFunction.new
         new.elements = @elements.clone

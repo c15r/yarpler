@@ -25,6 +25,7 @@ tokens {
   HASONE;
   HASMANY;
   IN;
+  INDEX_ACCESSOR;
   INITIAL_DECLARATION;
   INSTANCE_ACCESSOR;
   INTEGER;
@@ -132,6 +133,7 @@ fieldDeclaration
 
 fieldAccessor
     : IDENTIFIER ('.' IDENTIFIER)* -> ^(FIELD_ACCESSOR IDENTIFIER*)
+    | IDENTIFIER '[' INTEGERLITERAL ']' ('.' IDENTIFIER)* -> ^(INDEX_ACCESSOR INTEGERLITERAL IDENTIFIER*)
     ;
 
 classAccessor
@@ -213,7 +215,6 @@ countExpression
     
 sumExpression
     : expressionList -> ^(SUM expressionList)
-    // |fieldAccessor -> ^(SUM_VALUE fieldAccessor)
     ;
 
 expressionList
