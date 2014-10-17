@@ -7,30 +7,54 @@ class YarplFlattener < Yarpler::Extensions::Process
   end
 
   def process(problem)
+    @problem = problem
+    godeeper = false
     problem.constraints.each do |constraint|
       process_constraint(constraint)
     end
     problem.constraints = @constraints
+
+    # check if we have other Allquantors inside now
+    problem.constraints.each do |constraint|
+      if constraint.expression.is_a? Yarpler::Models::Forall
+        godeeper = true
+      end
+    end
+
+    if godeeper
+      @constraints = []
+      problem = YarplFlattener.new.process(problem)
+    end
     problem
   end
 
+  def process_forall_statement(forall)
+    if forall.range.is_a?(Array)
+      forall.range.each do |obj|
+        new_constraint = Yarpler::Models::Constraint.new
+        new_constraint.expression = forall.expression.clone
+        new_constraint.expression = replace_selector_placeholder(new_constraint.expression, forall.variable, obj.to_s)
+        replace_substitute(new_constraint.expression)
+        @constraints << new_constraint
+      end
+    elsif forall.range.is_a?(Yarpler::Models::Field)
+      forall.range = range_from_field(forall.range)
+      process_forall_statement(forall)
+    end
+
+  end
+
   private
+
+  def range_from_field(field)
+    @problem.objects[field.variable].get_value(field.attribute).to
+  end
 
   def process_constraint(constraint)
     if constraint.expression.is_a? Yarpler::Models::Forall
       process_forall_statement(constraint.expression)
     elsif constraint.expression.is_a? Yarpler::Models::Expression
       @constraints << constraint
-    end
-  end
-
-  def process_forall_statement(forall)
-    forall.range.each do |obj|
-      new_constraint = Yarpler::Models::Constraint.new
-      new_constraint.expression = forall.expression.clone
-      new_constraint.expression = replace_selector_placeholder(new_constraint.expression, forall.variable, obj.to_s)
-      replace_substitute(new_constraint.expression)
-      @constraints << new_constraint
     end
   end
 
@@ -50,6 +74,9 @@ class YarplFlattener < Yarpler::Extensions::Process
     if expression.is_a? Yarpler::Models::Expression
       expression.left = replace_selector_placeholder(expression.left, placeholder_variable, real_variable)
       expression.right = replace_selector_placeholder(expression.right, placeholder_variable, real_variable)
+    elsif expression.is_a? Yarpler::Models::Forall
+      expression.range = replace_selector_placeholder(expression.range, placeholder_variable, real_variable)
+      expression.expression = replace_selector_placeholder(expression.expression, placeholder_variable, real_variable)
     elsif expression.is_a? Yarpler::Models::Field
       if expression.variable.is_a? Yarpler::Models::Substitute
         expression.variable = replace_selector_placeholder(expression.variable, placeholder_variable, real_variable)

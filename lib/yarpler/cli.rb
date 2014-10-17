@@ -12,7 +12,7 @@ module Yarpler
     option :noresult
     def solve(file, *args)
       if options[:nolog]
-        Yarpler::Log.instance.switch_level(:fatal)
+        Yarpler::Log.instance.switch_level(:warn)
       end
 
 

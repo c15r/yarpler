@@ -16,7 +16,11 @@ module Yarpler
         case expression[0].to_s
           when 'FORALL'
             interpreter = ForallInterpreter.new(expression[0], @objects)
-            constraint = interpreter.forall
+            if interpreter.constraints.nil?
+              constraint = interpreter.forall
+            else
+              constraint = interpreter.constraints
+            end
           when 'CONSTRAINT_EXPRESSION'
             interpreter = ExpressionInterpreter.new(expression[0])
             constraint = interpreter.expression

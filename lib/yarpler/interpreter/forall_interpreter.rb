@@ -2,10 +2,13 @@ module Yarpler
   module Interpreter
     class ForallInterpreter
       attr_reader :forall
+      attr_reader :constraints
 
-      def initialize(tree, objects)
+      def initialize(tree, objects, parent=nil)
         @objects = objects
         @forall = Yarpler::Models::Forall.new
+        @parent = parent
+        @constraints = nil
         process_forall(tree)
       end
 
@@ -14,7 +17,7 @@ module Yarpler
       def process_forall(expression)
         forall_selector(expression[0])
         if expression[1].to_s == 'FORALL'
-          @forall.expression = ForallInterpreter.new(expression[1],@objects).forall
+          @forall.expression = ForallInterpreter.new(expression[1],@objects,@forall).forall
         else
           @forall.expression = ExpressionInterpreter.new(expression[1]).expression
         end
@@ -35,6 +38,9 @@ module Yarpler
             # Access to all objects of class
             if expression.size == 1 && class_exists?(expression[0].to_s)
               range = get_objects_of_class(expression[0].to_s)
+            else
+              range = FieldAccessorInterpreter.new(expression).field
+
             end
         end
         range
