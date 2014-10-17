@@ -1,13 +1,38 @@
 model {
+      class Tag {
+      }
+
+      class Diensttyp {
+        var integer anzahl;
+      }
+
       class Mitarbeiter {
-        const integer nr;
+      }
+
+      class Mitarbeitertag {
+          var Diensttyp dienst;
+          const Mitarbeiter mitarbeiter;
+          const Tag tag;
       }
 }
 
 initial {
-  m1 = new Mitarbeiter(nr=1);
+  # instanzen erstellen
+  t1 = new Tag();
+  d1 = new Diensttyp(anzahl=1);
+  f = new Diensttyp();
+  m1 = new Mitarbeiter();
+  m1t1 = new Mitarbeitertag();
+
+  relation(m1t1.mitarbeiter, m1);
+  relation(m1t1.tag, t1);
 }
 
 solve {
+  # Dienstschlüssel einhalten
+  constraint {
+    count(d1 in Mitarbeitertag.dienst) == d1.anzahl
+  }
+
   satisfy;
 }

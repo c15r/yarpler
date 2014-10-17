@@ -87,29 +87,6 @@ initial {
   relation(m2.moeglich, {d1,d2,d3,f});
   relation(m3.moeglich, {d2,d3,f});
 
-  # Mitarbeitertag zu Mitarbeiter
-  # relation(m1t1.mitarbeiter, m1);
-  # relation(m1t2.mitarbeiter, m1);
-  # relation(m1t3.mitarbeiter, m1);
-  # relation(m1t4.mitarbeiter, m1);
-  # relation(m1t5.mitarbeiter, m1);
-  # relation(m1t6.mitarbeiter, m1);
-  # relation(m1t7.mitarbeiter, m1);
-  # relation(m2t1.mitarbeiter, m2);
-  # relation(m2t2.mitarbeiter, m2);
-  # relation(m2t3.mitarbeiter, m2);
-  # relation(m2t4.mitarbeiter, m2);
-  # relation(m2t5.mitarbeiter, m2);
-  # relation(m2t6.mitarbeiter, m2);
-  # relation(m2t7.mitarbeiter, m2);
-  # relation(m3t1.mitarbeiter, m3);
-  # relation(m3t2.mitarbeiter, m3);
-  # relation(m3t3.mitarbeiter, m3);
-  # relation(m3t4.mitarbeiter, m3);
-  # relation(m3t5.mitarbeiter, m3);
-  # relation(m3t6.mitarbeiter, m3);
-  # relation(m3t7.mitarbeiter, m3);
-
   # Mitarbeitertag zu Tag
   relation(m1t1.tag, t1);
   relation(m1t2.tag, t2);
@@ -132,7 +109,6 @@ initial {
   relation(m3t5.tag, t5);
   relation(m3t6.tag, t6);
   relation(m3t7.tag, t7);
-
 }
 
 solve {
@@ -146,12 +122,12 @@ solve {
         }
     }
 
-    constraint {
+    #constraint {
         #forAll(mt in Mitarbeitertag) {
         #    sum(mt.dienst.dauer) == mt.dauer
         #}
-        sum(m1t1.dienst.dauer) == m1t1.dauer
-    }
+        #sum(m1t1.dienst.dauer) == m1t1.dauer
+    #}
 
     #constraint {
     #   forAll(m in Mitarbeiter) {

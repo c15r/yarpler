@@ -5,6 +5,7 @@ $LOAD_PATH.unshift(File.dirname(File.realpath(__FILE__)) + '/../lib')
 require 'yarpler'
 
 require 'modules/minizinc/minizinc_translator'
+require 'modules/dienstplan_printer'
 
 
 Yarpler::CLI.start(ARGV, debug: true)

@@ -53,9 +53,6 @@ module Yarpler
             sum.elements.push(Yarpler::Interpreter::ExpressionInterpreter.new(expression).expression)
           end
         end
-
-
-
         sum
       end
     end

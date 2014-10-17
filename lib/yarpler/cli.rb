@@ -8,8 +8,14 @@ module Yarpler
     desc 'solve [FILE] [TRANSLATORS]', 'Parse input file and solve it'
     option :displaytree, aliases: :tree
     option :displaymodel, aliases: :model
+    option :nolog
     option :noresult
     def solve(file, *args)
+      if options[:nolog]
+        Yarpler::Log.instance.switch_level(:fatal)
+      end
+
+
       yarpler = Yarpler::Runner.new
 
       # Load the abstract syntax tree from input
