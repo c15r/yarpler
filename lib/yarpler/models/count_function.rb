@@ -8,7 +8,7 @@ module Yarpler
       end
 
       def is_valid?
-        not element.nil? && range.nil?
+        not @element.nil? || @range.nil?
       end
 
       def clone

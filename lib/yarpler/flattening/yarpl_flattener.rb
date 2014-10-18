@@ -26,7 +26,6 @@ class YarplFlattener < Yarpler::Extensions::Process
       problem = YarplFlattener.new.process(problem)
     end
 
-
     # remove all invalid constraints
     invalid=[]
     problem.constraints.each do |constraint|
@@ -89,6 +88,10 @@ class YarplFlattener < Yarpler::Extensions::Process
     if expression.is_a? Yarpler::Models::Expression
       expression.left = replace_selector_placeholder(expression.left, placeholder_variable, real_variable,range)
       expression.right = replace_selector_placeholder(expression.right, placeholder_variable, real_variable,range)
+    elsif expression.is_a? Yarpler::Models::SumValueFunction
+      expression.elements = replace_selector_placeholder(expression.elements, placeholder_variable, real_variable,range)
+      expression.set = replace_selector_placeholder(expression.set, placeholder_variable, real_variable,range)
+      expression.attribute  = replace_selector_placeholder(expression.attribute, placeholder_variable, real_variable,range)
     elsif expression.is_a? Yarpler::Models::Index
       if expression.variable.to_s == placeholder_variable.to_s
         next_value = nil

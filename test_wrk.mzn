@@ -2,44 +2,589 @@
 
 include "globals.mzn";
 
+var 22..22: d1_anzahl;
+int: d1_start = 0;
+int: d1_stop = 8;
+int: d1_dauer = 8;
+int: d1_id = 1;
+var 5..5: d2_anzahl;
+int: d2_start = 8;
+int: d2_stop = 16;
+int: d2_dauer = 8;
+int: d2_id = 2;
+var 7..7: d3_anzahl;
+int: d3_start = 16;
+int: d3_stop = 24;
+int: d3_dauer = 8;
+int: d3_id = 3;
+var int: f_anzahl;
+int: f_start = 0;
+int: f_stop = 24;
+int: f_dauer = 0;
+int: f_id = 4;
 int: t1_id = 1;
 int: t2_id = 2;
-var 1..1: dt1_anzahl;
-int: dt1_id = 1;
-var 0..0: dt2_anzahl;
-int: dt2_id = 2;
-var 0..0: dt3_anzahl;
-int: dt3_id = 3;
-var int: dtf_anzahl;
-int: dtf_id = 4;
+int: t3_id = 3;
+int: t4_id = 4;
+int: t5_id = 5;
+int: t6_id = 6;
+int: t7_id = 7;
+set of int: m1_moeglich = {1, 2, 4};
+set of int: m1_tage = {1, 2, 3, 4, 5, 6, 7};
+int: m1_sollarbeitszeit = 16;
+var 0..42: m1_istarbeitszeit;
+var int: m1_differenz;
 int: m1_id = 1;
+set of int: m2_moeglich = {1, 2, 3, 4};
+set of int: m2_tage = {8, 9, 10, 11, 12, 13, 14};
+int: m2_sollarbeitszeit = 16;
+var 0..42: m2_istarbeitszeit;
+var int: m2_differenz;
 int: m2_id = 2;
+set of int: m3_moeglich = {2, 3, 4};
+set of int: m3_tage = {15, 16, 17, 18, 19, 20, 21};
+int: m3_sollarbeitszeit = 16;
+var 0..42: m3_istarbeitszeit;
+var int: m3_differenz;
 int: m3_id = 3;
-var 1..1: dt1t1_typ;
-int: dt1t1_tag = 1;
-int: dt1t1_id = 1;
-var 1..1: m1t1_dienst;
-int: m1t1_mitarbeiter = 1;
+set of int: m4_moeglich = {2, 3, 4};
+set of int: m4_tage = {22, 23, 24, 25, 26, 27, 28};
+int: m4_sollarbeitszeit = 16;
+var 0..42: m4_istarbeitszeit;
+var int: m4_differenz;
+int: m4_id = 4;
+set of int: m5_moeglich = {1, 2, 3, 4};
+set of int: m5_tage = {29, 30, 31, 32, 33, 34, 35};
+int: m5_sollarbeitszeit = 16;
+var 0..42: m5_istarbeitszeit;
+var int: m5_differenz;
+int: m5_id = 5;
+set of int: m6_moeglich = {1, 3, 4};
+set of int: m6_tage = {36, 37, 38, 39, 40, 41, 42};
+int: m6_sollarbeitszeit = 16;
+var 0..42: m6_istarbeitszeit;
+var int: m6_differenz;
+int: m6_id = 6;
+var 1..4: m1t1_dienst;
+var int: m1t1_dauer;
+int: m1t1_tag = 1;
 int: m1t1_id = 1;
-var 1..1: m1t2_dienst;
-int: m1t2_mitarbeiter = 1;
+var 1..4: m1t2_dienst;
+var int: m1t2_dauer;
+int: m1t2_tag = 2;
 int: m1t2_id = 2;
-var 1..1: m2t1_dienst;
-int: m2t1_mitarbeiter = 2;
-int: m2t1_id = 3;
-var 1..1: m2t2_dienst;
-int: m2t2_mitarbeiter = 2;
-int: m2t2_id = 4;
-var 1..1: m3t1_dienst;
-int: m3t1_mitarbeiter = 3;
-int: m3t1_id = 5;
-var 1..1: m3t2_dienst;
-int: m3t2_mitarbeiter = 3;
-int: m3t2_id = 6;
+var 1..4: m1t3_dienst;
+var int: m1t3_dauer;
+int: m1t3_tag = 3;
+int: m1t3_id = 3;
+var 1..4: m1t4_dienst;
+var int: m1t4_dauer;
+int: m1t4_tag = 4;
+int: m1t4_id = 4;
+var 1..4: m1t5_dienst;
+var int: m1t5_dauer;
+int: m1t5_tag = 5;
+int: m1t5_id = 5;
+var 1..4: m1t6_dienst;
+var int: m1t6_dauer;
+int: m1t6_tag = 6;
+int: m1t6_id = 6;
+var 1..4: m1t7_dienst;
+var int: m1t7_dauer;
+int: m1t7_tag = 7;
+int: m1t7_id = 7;
+var 1..4: m2t1_dienst;
+var int: m2t1_dauer;
+int: m2t1_tag = 1;
+int: m2t1_id = 8;
+var 1..4: m2t2_dienst;
+var int: m2t2_dauer;
+int: m2t2_tag = 2;
+int: m2t2_id = 9;
+var 1..4: m2t3_dienst;
+var int: m2t3_dauer;
+int: m2t3_tag = 3;
+int: m2t3_id = 10;
+var 1..4: m2t4_dienst;
+var int: m2t4_dauer;
+int: m2t4_tag = 4;
+int: m2t4_id = 11;
+var 1..4: m2t5_dienst;
+var int: m2t5_dauer;
+int: m2t5_tag = 5;
+int: m2t5_id = 12;
+var 1..4: m2t6_dienst;
+var int: m2t6_dauer;
+int: m2t6_tag = 6;
+int: m2t6_id = 13;
+var 1..4: m2t7_dienst;
+var int: m2t7_dauer;
+int: m2t7_tag = 7;
+int: m2t7_id = 14;
+var 1..4: m3t1_dienst;
+var int: m3t1_dauer;
+int: m3t1_tag = 1;
+int: m3t1_id = 15;
+var 1..4: m3t2_dienst;
+var int: m3t2_dauer;
+int: m3t2_tag = 2;
+int: m3t2_id = 16;
+var 1..4: m3t3_dienst;
+var int: m3t3_dauer;
+int: m3t3_tag = 3;
+int: m3t3_id = 17;
+var 1..4: m3t4_dienst;
+var int: m3t4_dauer;
+int: m3t4_tag = 4;
+int: m3t4_id = 18;
+var 1..4: m3t5_dienst;
+var int: m3t5_dauer;
+int: m3t5_tag = 5;
+int: m3t5_id = 19;
+var 1..4: m3t6_dienst;
+var int: m3t6_dauer;
+int: m3t6_tag = 6;
+int: m3t6_id = 20;
+var 1..4: m3t7_dienst;
+var int: m3t7_dauer;
+int: m3t7_tag = 7;
+int: m3t7_id = 21;
+var 1..4: m4t1_dienst;
+var int: m4t1_dauer;
+int: m4t1_tag = 1;
+int: m4t1_id = 22;
+var 1..4: m4t2_dienst;
+var int: m4t2_dauer;
+int: m4t2_tag = 2;
+int: m4t2_id = 23;
+var 1..4: m4t3_dienst;
+var int: m4t3_dauer;
+int: m4t3_tag = 3;
+int: m4t3_id = 24;
+var 1..4: m4t4_dienst;
+var int: m4t4_dauer;
+int: m4t4_tag = 4;
+int: m4t4_id = 25;
+var 1..4: m4t5_dienst;
+var int: m4t5_dauer;
+int: m4t5_tag = 5;
+int: m4t5_id = 26;
+var 1..4: m4t6_dienst;
+var int: m4t6_dauer;
+int: m4t6_tag = 6;
+int: m4t6_id = 27;
+var 1..4: m4t7_dienst;
+var int: m4t7_dauer;
+int: m4t7_tag = 7;
+int: m4t7_id = 28;
+var 1..4: m5t1_dienst;
+var int: m5t1_dauer;
+int: m5t1_tag = 1;
+int: m5t1_id = 29;
+var 1..4: m5t2_dienst;
+var int: m5t2_dauer;
+int: m5t2_tag = 2;
+int: m5t2_id = 30;
+var 1..4: m5t3_dienst;
+var int: m5t3_dauer;
+int: m5t3_tag = 3;
+int: m5t3_id = 31;
+var 1..4: m5t4_dienst;
+var int: m5t4_dauer;
+int: m5t4_tag = 4;
+int: m5t4_id = 32;
+var 1..4: m5t5_dienst;
+var int: m5t5_dauer;
+int: m5t5_tag = 5;
+int: m5t5_id = 33;
+var 1..4: m5t6_dienst;
+var int: m5t6_dauer;
+int: m5t6_tag = 6;
+int: m5t6_id = 34;
+var 1..4: m5t7_dienst;
+var int: m5t7_dauer;
+int: m5t7_tag = 7;
+int: m5t7_id = 35;
+var 1..4: m6t1_dienst;
+var int: m6t1_dauer;
+int: m6t1_tag = 1;
+int: m6t1_id = 36;
+var 1..4: m6t2_dienst;
+var int: m6t2_dauer;
+int: m6t2_tag = 2;
+int: m6t2_id = 37;
+var 1..4: m6t3_dienst;
+var int: m6t3_dauer;
+int: m6t3_tag = 3;
+int: m6t3_id = 38;
+var 1..4: m6t4_dienst;
+var int: m6t4_dauer;
+int: m6t4_tag = 4;
+int: m6t4_id = 39;
+var 1..4: m6t5_dienst;
+var int: m6t5_dauer;
+int: m6t5_tag = 5;
+int: m6t5_id = 40;
+var 1..4: m6t6_dienst;
+var int: m6t6_dauer;
+int: m6t6_tag = 6;
+int: m6t6_id = 41;
+var 1..4: m6t7_dienst;
+var int: m6t7_dauer;
+int: m6t7_tag = 7;
+int: m6t7_id = 42;
 
 
 constraint
-	let {array[1..6] of var int: array0 = [bool2int(dt1_id==dt1t1_typ)*bool2int(m1t1_dienst==dt1_id),bool2int(dt1_id==dt1t1_typ)*bool2int(m1t2_dienst==dt1_id),bool2int(dt1_id==dt1t1_typ)*bool2int(m2t1_dienst==dt1_id),bool2int(dt1_id==dt1t1_typ)*bool2int(m2t2_dienst==dt1_id),bool2int(dt1_id==dt1t1_typ)*bool2int(m3t1_dienst==dt1_id),bool2int(dt1_id==dt1t1_typ)*bool2int(m3t2_dienst==dt1_id) ]} in sum(t0 in 1..6)(array0[t0]) == dt1_anzahl
+	let {array[1..7] of var int: array0 = [d1*bool2int(1 in m1t1_dienst),m1t2_dienst*bool2int(2 in m1_tage),m1t3_dienst*bool2int(3 in m1_tage),m1t4_dienst*bool2int(4 in m1_tage),m1t5_dienst*bool2int(5 in m1_tage),m1t6_dienst*bool2int(6 in m1_tage),m1t7_dienst*bool2int(7 in m1_tage) ]} in sum(t0 in 1..7)(array0[t0]) == m1_istarbeitszeit
+;
+
+constraint
+	let {array[1..7] of var int: array1 = [m2t1_dienst*bool2int(8 in m2_tage),m2t2_dienst*bool2int(9 in m2_tage),m2t3_dienst*bool2int(10 in m2_tage),m2t4_dienst*bool2int(11 in m2_tage),m2t5_dienst*bool2int(12 in m2_tage),m2t6_dienst*bool2int(13 in m2_tage),m2t7_dienst*bool2int(14 in m2_tage) ]} in sum(t0 in 1..7)(array1[t0]) == m2_istarbeitszeit
+;
+
+constraint
+	let {array[1..7] of var int: array2 = [m3t1_dienst*bool2int(15 in m3_tage),m3t2_dienst*bool2int(16 in m3_tage),m3t3_dienst*bool2int(17 in m3_tage),m3t4_dienst*bool2int(18 in m3_tage),m3t5_dienst*bool2int(19 in m3_tage),m3t6_dienst*bool2int(20 in m3_tage),m3t7_dienst*bool2int(21 in m3_tage) ]} in sum(t0 in 1..7)(array2[t0]) == m3_istarbeitszeit
+;
+
+constraint
+	let {array[1..7] of var int: array3 = [m4t1_dienst*bool2int(22 in m4_tage),m4t2_dienst*bool2int(23 in m4_tage),m4t3_dienst*bool2int(24 in m4_tage),m4t4_dienst*bool2int(25 in m4_tage),m4t5_dienst*bool2int(26 in m4_tage),m4t6_dienst*bool2int(27 in m4_tage),m4t7_dienst*bool2int(28 in m4_tage) ]} in sum(t0 in 1..7)(array3[t0]) == m4_istarbeitszeit
+;
+
+constraint
+	let {array[1..7] of var int: array4 = [m5t1_dienst*bool2int(29 in m5_tage),m5t2_dienst*bool2int(30 in m5_tage),m5t3_dienst*bool2int(31 in m5_tage),m5t4_dienst*bool2int(32 in m5_tage),m5t5_dienst*bool2int(33 in m5_tage),m5t6_dienst*bool2int(34 in m5_tage),m5t7_dienst*bool2int(35 in m5_tage) ]} in sum(t0 in 1..7)(array4[t0]) == m5_istarbeitszeit
+;
+
+constraint
+	let {array[1..7] of var int: array5 = [m6t1_dienst*bool2int(36 in m6_tage),m6t2_dienst*bool2int(37 in m6_tage),m6t3_dienst*bool2int(38 in m6_tage),m6t4_dienst*bool2int(39 in m6_tage),m6t5_dienst*bool2int(40 in m6_tage),m6t6_dienst*bool2int(41 in m6_tage),m6t7_dienst*bool2int(42 in m6_tage) ]} in sum(t0 in 1..7)(array5[t0]) == m6_istarbeitszeit
+;
+
+constraint
+	m1t1_dienst != d3_id \/ m1t2_dienst != d1_id
+;
+
+constraint
+	m1t2_dienst != d3_id \/ m1t3_dienst != d1_id
+;
+
+constraint
+	m1t3_dienst != d3_id \/ m1t4_dienst != d1_id
+;
+
+constraint
+	m1t4_dienst != d3_id \/ m1t5_dienst != d1_id
+;
+
+constraint
+	m1t5_dienst != d3_id \/ m1t6_dienst != d1_id
+;
+
+constraint
+	m1t6_dienst != d3_id \/ m1t7_dienst != d1_id
+;
+
+constraint
+	m2t1_dienst != d3_id \/ m2t2_dienst != d1_id
+;
+
+constraint
+	m2t2_dienst != d3_id \/ m2t3_dienst != d1_id
+;
+
+constraint
+	m2t3_dienst != d3_id \/ m2t4_dienst != d1_id
+;
+
+constraint
+	m2t4_dienst != d3_id \/ m2t5_dienst != d1_id
+;
+
+constraint
+	m2t5_dienst != d3_id \/ m2t6_dienst != d1_id
+;
+
+constraint
+	m2t6_dienst != d3_id \/ m2t7_dienst != d1_id
+;
+
+constraint
+	m3t1_dienst != d3_id \/ m3t2_dienst != d1_id
+;
+
+constraint
+	m3t2_dienst != d3_id \/ m3t3_dienst != d1_id
+;
+
+constraint
+	m3t3_dienst != d3_id \/ m3t4_dienst != d1_id
+;
+
+constraint
+	m3t4_dienst != d3_id \/ m3t5_dienst != d1_id
+;
+
+constraint
+	m3t5_dienst != d3_id \/ m3t6_dienst != d1_id
+;
+
+constraint
+	m3t6_dienst != d3_id \/ m3t7_dienst != d1_id
+;
+
+constraint
+	m4t1_dienst != d3_id \/ m4t2_dienst != d1_id
+;
+
+constraint
+	m4t2_dienst != d3_id \/ m4t3_dienst != d1_id
+;
+
+constraint
+	m4t3_dienst != d3_id \/ m4t4_dienst != d1_id
+;
+
+constraint
+	m4t4_dienst != d3_id \/ m4t5_dienst != d1_id
+;
+
+constraint
+	m4t5_dienst != d3_id \/ m4t6_dienst != d1_id
+;
+
+constraint
+	m4t6_dienst != d3_id \/ m4t7_dienst != d1_id
+;
+
+constraint
+	m5t1_dienst != d3_id \/ m5t2_dienst != d1_id
+;
+
+constraint
+	m5t2_dienst != d3_id \/ m5t3_dienst != d1_id
+;
+
+constraint
+	m5t3_dienst != d3_id \/ m5t4_dienst != d1_id
+;
+
+constraint
+	m5t4_dienst != d3_id \/ m5t5_dienst != d1_id
+;
+
+constraint
+	m5t5_dienst != d3_id \/ m5t6_dienst != d1_id
+;
+
+constraint
+	m5t6_dienst != d3_id \/ m5t7_dienst != d1_id
+;
+
+constraint
+	m6t1_dienst != d3_id \/ m6t2_dienst != d1_id
+;
+
+constraint
+	m6t2_dienst != d3_id \/ m6t3_dienst != d1_id
+;
+
+constraint
+	m6t3_dienst != d3_id \/ m6t4_dienst != d1_id
+;
+
+constraint
+	m6t4_dienst != d3_id \/ m6t5_dienst != d1_id
+;
+
+constraint
+	m6t5_dienst != d3_id \/ m6t6_dienst != d1_id
+;
+
+constraint
+	m6t6_dienst != d3_id \/ m6t7_dienst != d1_id
+;
+
+constraint
+	m1t1_dienst in m1_moeglich
+;
+
+constraint
+	m1t2_dienst in m1_moeglich
+;
+
+constraint
+	m1t3_dienst in m1_moeglich
+;
+
+constraint
+	m1t4_dienst in m1_moeglich
+;
+
+constraint
+	m1t5_dienst in m1_moeglich
+;
+
+constraint
+	m1t6_dienst in m1_moeglich
+;
+
+constraint
+	m1t7_dienst in m1_moeglich
+;
+
+constraint
+	m2t1_dienst in m2_moeglich
+;
+
+constraint
+	m2t2_dienst in m2_moeglich
+;
+
+constraint
+	m2t3_dienst in m2_moeglich
+;
+
+constraint
+	m2t4_dienst in m2_moeglich
+;
+
+constraint
+	m2t5_dienst in m2_moeglich
+;
+
+constraint
+	m2t6_dienst in m2_moeglich
+;
+
+constraint
+	m2t7_dienst in m2_moeglich
+;
+
+constraint
+	m3t1_dienst in m3_moeglich
+;
+
+constraint
+	m3t2_dienst in m3_moeglich
+;
+
+constraint
+	m3t3_dienst in m3_moeglich
+;
+
+constraint
+	m3t4_dienst in m3_moeglich
+;
+
+constraint
+	m3t5_dienst in m3_moeglich
+;
+
+constraint
+	m3t6_dienst in m3_moeglich
+;
+
+constraint
+	m3t7_dienst in m3_moeglich
+;
+
+constraint
+	m4t1_dienst in m4_moeglich
+;
+
+constraint
+	m4t2_dienst in m4_moeglich
+;
+
+constraint
+	m4t3_dienst in m4_moeglich
+;
+
+constraint
+	m4t4_dienst in m4_moeglich
+;
+
+constraint
+	m4t5_dienst in m4_moeglich
+;
+
+constraint
+	m4t6_dienst in m4_moeglich
+;
+
+constraint
+	m4t7_dienst in m4_moeglich
+;
+
+constraint
+	m5t1_dienst in m5_moeglich
+;
+
+constraint
+	m5t2_dienst in m5_moeglich
+;
+
+constraint
+	m5t3_dienst in m5_moeglich
+;
+
+constraint
+	m5t4_dienst in m5_moeglich
+;
+
+constraint
+	m5t5_dienst in m5_moeglich
+;
+
+constraint
+	m5t6_dienst in m5_moeglich
+;
+
+constraint
+	m5t7_dienst in m5_moeglich
+;
+
+constraint
+	m6t1_dienst in m6_moeglich
+;
+
+constraint
+	m6t2_dienst in m6_moeglich
+;
+
+constraint
+	m6t3_dienst in m6_moeglich
+;
+
+constraint
+	m6t4_dienst in m6_moeglich
+;
+
+constraint
+	m6t5_dienst in m6_moeglich
+;
+
+constraint
+	m6t6_dienst in m6_moeglich
+;
+
+constraint
+	m6t7_dienst in m6_moeglich
+;
+
+constraint
+	let {array[1..42] of var int: array6 = [bool2int(d1_id==m1t1_dienst),bool2int(d1_id==m1t2_dienst),bool2int(d1_id==m1t3_dienst),bool2int(d1_id==m1t4_dienst),bool2int(d1_id==m1t5_dienst),bool2int(d1_id==m1t6_dienst),bool2int(d1_id==m1t7_dienst),bool2int(d1_id==m2t1_dienst),bool2int(d1_id==m2t2_dienst),bool2int(d1_id==m2t3_dienst),bool2int(d1_id==m2t4_dienst),bool2int(d1_id==m2t5_dienst),bool2int(d1_id==m2t6_dienst),bool2int(d1_id==m2t7_dienst),bool2int(d1_id==m3t1_dienst),bool2int(d1_id==m3t2_dienst),bool2int(d1_id==m3t3_dienst),bool2int(d1_id==m3t4_dienst),bool2int(d1_id==m3t5_dienst),bool2int(d1_id==m3t6_dienst),bool2int(d1_id==m3t7_dienst),bool2int(d1_id==m4t1_dienst),bool2int(d1_id==m4t2_dienst),bool2int(d1_id==m4t3_dienst),bool2int(d1_id==m4t4_dienst),bool2int(d1_id==m4t5_dienst),bool2int(d1_id==m4t6_dienst),bool2int(d1_id==m4t7_dienst),bool2int(d1_id==m5t1_dienst),bool2int(d1_id==m5t2_dienst),bool2int(d1_id==m5t3_dienst),bool2int(d1_id==m5t4_dienst),bool2int(d1_id==m5t5_dienst),bool2int(d1_id==m5t6_dienst),bool2int(d1_id==m5t7_dienst),bool2int(d1_id==m6t1_dienst),bool2int(d1_id==m6t2_dienst),bool2int(d1_id==m6t3_dienst),bool2int(d1_id==m6t4_dienst),bool2int(d1_id==m6t5_dienst),bool2int(d1_id==m6t6_dienst),bool2int(d1_id==m6t7_dienst) ]} in sum(t0 in 1..42)(array6[t0]) == d1_anzahl
+;
+
+constraint
+	let {array[1..42] of var int: array7 = [bool2int(d2_id==m1t1_dienst),bool2int(d2_id==m1t2_dienst),bool2int(d2_id==m1t3_dienst),bool2int(d2_id==m1t4_dienst),bool2int(d2_id==m1t5_dienst),bool2int(d2_id==m1t6_dienst),bool2int(d2_id==m1t7_dienst),bool2int(d2_id==m2t1_dienst),bool2int(d2_id==m2t2_dienst),bool2int(d2_id==m2t3_dienst),bool2int(d2_id==m2t4_dienst),bool2int(d2_id==m2t5_dienst),bool2int(d2_id==m2t6_dienst),bool2int(d2_id==m2t7_dienst),bool2int(d2_id==m3t1_dienst),bool2int(d2_id==m3t2_dienst),bool2int(d2_id==m3t3_dienst),bool2int(d2_id==m3t4_dienst),bool2int(d2_id==m3t5_dienst),bool2int(d2_id==m3t6_dienst),bool2int(d2_id==m3t7_dienst),bool2int(d2_id==m4t1_dienst),bool2int(d2_id==m4t2_dienst),bool2int(d2_id==m4t3_dienst),bool2int(d2_id==m4t4_dienst),bool2int(d2_id==m4t5_dienst),bool2int(d2_id==m4t6_dienst),bool2int(d2_id==m4t7_dienst),bool2int(d2_id==m5t1_dienst),bool2int(d2_id==m5t2_dienst),bool2int(d2_id==m5t3_dienst),bool2int(d2_id==m5t4_dienst),bool2int(d2_id==m5t5_dienst),bool2int(d2_id==m5t6_dienst),bool2int(d2_id==m5t7_dienst),bool2int(d2_id==m6t1_dienst),bool2int(d2_id==m6t2_dienst),bool2int(d2_id==m6t3_dienst),bool2int(d2_id==m6t4_dienst),bool2int(d2_id==m6t5_dienst),bool2int(d2_id==m6t6_dienst),bool2int(d2_id==m6t7_dienst) ]} in sum(t0 in 1..42)(array7[t0]) == d2_anzahl
+;
+
+constraint
+	let {array[1..42] of var int: array8 = [bool2int(d3_id==m1t1_dienst),bool2int(d3_id==m1t2_dienst),bool2int(d3_id==m1t3_dienst),bool2int(d3_id==m1t4_dienst),bool2int(d3_id==m1t5_dienst),bool2int(d3_id==m1t6_dienst),bool2int(d3_id==m1t7_dienst),bool2int(d3_id==m2t1_dienst),bool2int(d3_id==m2t2_dienst),bool2int(d3_id==m2t3_dienst),bool2int(d3_id==m2t4_dienst),bool2int(d3_id==m2t5_dienst),bool2int(d3_id==m2t6_dienst),bool2int(d3_id==m2t7_dienst),bool2int(d3_id==m3t1_dienst),bool2int(d3_id==m3t2_dienst),bool2int(d3_id==m3t3_dienst),bool2int(d3_id==m3t4_dienst),bool2int(d3_id==m3t5_dienst),bool2int(d3_id==m3t6_dienst),bool2int(d3_id==m3t7_dienst),bool2int(d3_id==m4t1_dienst),bool2int(d3_id==m4t2_dienst),bool2int(d3_id==m4t3_dienst),bool2int(d3_id==m4t4_dienst),bool2int(d3_id==m4t5_dienst),bool2int(d3_id==m4t6_dienst),bool2int(d3_id==m4t7_dienst),bool2int(d3_id==m5t1_dienst),bool2int(d3_id==m5t2_dienst),bool2int(d3_id==m5t3_dienst),bool2int(d3_id==m5t4_dienst),bool2int(d3_id==m5t5_dienst),bool2int(d3_id==m5t6_dienst),bool2int(d3_id==m5t7_dienst),bool2int(d3_id==m6t1_dienst),bool2int(d3_id==m6t2_dienst),bool2int(d3_id==m6t3_dienst),bool2int(d3_id==m6t4_dienst),bool2int(d3_id==m6t5_dienst),bool2int(d3_id==m6t6_dienst),bool2int(d3_id==m6t7_dienst) ]} in sum(t0 in 1..42)(array8[t0]) == d3_anzahl
+;
+
+constraint
+	let {array[1..42] of var int: array9 = [bool2int(f_id==m1t1_dienst),bool2int(f_id==m1t2_dienst),bool2int(f_id==m1t3_dienst),bool2int(f_id==m1t4_dienst),bool2int(f_id==m1t5_dienst),bool2int(f_id==m1t6_dienst),bool2int(f_id==m1t7_dienst),bool2int(f_id==m2t1_dienst),bool2int(f_id==m2t2_dienst),bool2int(f_id==m2t3_dienst),bool2int(f_id==m2t4_dienst),bool2int(f_id==m2t5_dienst),bool2int(f_id==m2t6_dienst),bool2int(f_id==m2t7_dienst),bool2int(f_id==m3t1_dienst),bool2int(f_id==m3t2_dienst),bool2int(f_id==m3t3_dienst),bool2int(f_id==m3t4_dienst),bool2int(f_id==m3t5_dienst),bool2int(f_id==m3t6_dienst),bool2int(f_id==m3t7_dienst),bool2int(f_id==m4t1_dienst),bool2int(f_id==m4t2_dienst),bool2int(f_id==m4t3_dienst),bool2int(f_id==m4t4_dienst),bool2int(f_id==m4t5_dienst),bool2int(f_id==m4t6_dienst),bool2int(f_id==m4t7_dienst),bool2int(f_id==m5t1_dienst),bool2int(f_id==m5t2_dienst),bool2int(f_id==m5t3_dienst),bool2int(f_id==m5t4_dienst),bool2int(f_id==m5t5_dienst),bool2int(f_id==m5t6_dienst),bool2int(f_id==m5t7_dienst),bool2int(f_id==m6t1_dienst),bool2int(f_id==m6t2_dienst),bool2int(f_id==m6t3_dienst),bool2int(f_id==m6t4_dienst),bool2int(f_id==m6t5_dienst),bool2int(f_id==m6t6_dienst),bool2int(f_id==m6t7_dienst) ]} in sum(t0 in 1..42)(array9[t0]) == f_anzahl
 ;
 
 
@@ -49,5 +594,5 @@ solve satisfy
 
 
 
-output [ "" , "dt1_anzahl=" , show(dt1_anzahl) , " "   , "dt2_anzahl=" , show(dt2_anzahl) , " "   , "dt3_anzahl=" , show(dt3_anzahl) , " "   , "dtf_anzahl=" , show(dtf_anzahl) , " "   , "dt1t1_typ=" , show(dt1t1_typ) , " "   , "m1t1_dienst=" , show(m1t1_dienst) , " "   , "m1t2_dienst=" , show(m1t2_dienst) , " "   , "m2t1_dienst=" , show(m2t1_dienst) , " "   , "m2t2_dienst=" , show(m2t2_dienst) , " "   , "m3t1_dienst=" , show(m3t1_dienst) , " "   , "m3t2_dienst=" , show(m3t2_dienst) , " "   ];
+output [ "" , "d1_anzahl=" , show(d1_anzahl) , " "   , "d2_anzahl=" , show(d2_anzahl) , " "   , "d3_anzahl=" , show(d3_anzahl) , " "   , "f_anzahl=" , show(f_anzahl) , " "   , "m1_istarbeitszeit=" , show(m1_istarbeitszeit) , " "   , "m1_differenz=" , show(m1_differenz) , " "   , "m2_istarbeitszeit=" , show(m2_istarbeitszeit) , " "   , "m2_differenz=" , show(m2_differenz) , " "   , "m3_istarbeitszeit=" , show(m3_istarbeitszeit) , " "   , "m3_differenz=" , show(m3_differenz) , " "   , "m4_istarbeitszeit=" , show(m4_istarbeitszeit) , " "   , "m4_differenz=" , show(m4_differenz) , " "   , "m5_istarbeitszeit=" , show(m5_istarbeitszeit) , " "   , "m5_differenz=" , show(m5_differenz) , " "   , "m6_istarbeitszeit=" , show(m6_istarbeitszeit) , " "   , "m6_differenz=" , show(m6_differenz) , " "   , "m1t1_dienst=" , show(m1t1_dienst) , " "   , "m1t1_dauer=" , show(m1t1_dauer) , " "   , "m1t2_dienst=" , show(m1t2_dienst) , " "   , "m1t2_dauer=" , show(m1t2_dauer) , " "   , "m1t3_dienst=" , show(m1t3_dienst) , " "   , "m1t3_dauer=" , show(m1t3_dauer) , " "   , "m1t4_dienst=" , show(m1t4_dienst) , " "   , "m1t4_dauer=" , show(m1t4_dauer) , " "   , "m1t5_dienst=" , show(m1t5_dienst) , " "   , "m1t5_dauer=" , show(m1t5_dauer) , " "   , "m1t6_dienst=" , show(m1t6_dienst) , " "   , "m1t6_dauer=" , show(m1t6_dauer) , " "   , "m1t7_dienst=" , show(m1t7_dienst) , " "   , "m1t7_dauer=" , show(m1t7_dauer) , " "   , "m2t1_dienst=" , show(m2t1_dienst) , " "   , "m2t1_dauer=" , show(m2t1_dauer) , " "   , "m2t2_dienst=" , show(m2t2_dienst) , " "   , "m2t2_dauer=" , show(m2t2_dauer) , " "   , "m2t3_dienst=" , show(m2t3_dienst) , " "   , "m2t3_dauer=" , show(m2t3_dauer) , " "   , "m2t4_dienst=" , show(m2t4_dienst) , " "   , "m2t4_dauer=" , show(m2t4_dauer) , " "   , "m2t5_dienst=" , show(m2t5_dienst) , " "   , "m2t5_dauer=" , show(m2t5_dauer) , " "   , "m2t6_dienst=" , show(m2t6_dienst) , " "   , "m2t6_dauer=" , show(m2t6_dauer) , " "   , "m2t7_dienst=" , show(m2t7_dienst) , " "   , "m2t7_dauer=" , show(m2t7_dauer) , " "   , "m3t1_dienst=" , show(m3t1_dienst) , " "   , "m3t1_dauer=" , show(m3t1_dauer) , " "   , "m3t2_dienst=" , show(m3t2_dienst) , " "   , "m3t2_dauer=" , show(m3t2_dauer) , " "   , "m3t3_dienst=" , show(m3t3_dienst) , " "   , "m3t3_dauer=" , show(m3t3_dauer) , " "   , "m3t4_dienst=" , show(m3t4_dienst) , " "   , "m3t4_dauer=" , show(m3t4_dauer) , " "   , "m3t5_dienst=" , show(m3t5_dienst) , " "   , "m3t5_dauer=" , show(m3t5_dauer) , " "   , "m3t6_dienst=" , show(m3t6_dienst) , " "   , "m3t6_dauer=" , show(m3t6_dauer) , " "   , "m3t7_dienst=" , show(m3t7_dienst) , " "   , "m3t7_dauer=" , show(m3t7_dauer) , " "   , "m4t1_dienst=" , show(m4t1_dienst) , " "   , "m4t1_dauer=" , show(m4t1_dauer) , " "   , "m4t2_dienst=" , show(m4t2_dienst) , " "   , "m4t2_dauer=" , show(m4t2_dauer) , " "   , "m4t3_dienst=" , show(m4t3_dienst) , " "   , "m4t3_dauer=" , show(m4t3_dauer) , " "   , "m4t4_dienst=" , show(m4t4_dienst) , " "   , "m4t4_dauer=" , show(m4t4_dauer) , " "   , "m4t5_dienst=" , show(m4t5_dienst) , " "   , "m4t5_dauer=" , show(m4t5_dauer) , " "   , "m4t6_dienst=" , show(m4t6_dienst) , " "   , "m4t6_dauer=" , show(m4t6_dauer) , " "   , "m4t7_dienst=" , show(m4t7_dienst) , " "   , "m4t7_dauer=" , show(m4t7_dauer) , " "   , "m5t1_dienst=" , show(m5t1_dienst) , " "   , "m5t1_dauer=" , show(m5t1_dauer) , " "   , "m5t2_dienst=" , show(m5t2_dienst) , " "   , "m5t2_dauer=" , show(m5t2_dauer) , " "   , "m5t3_dienst=" , show(m5t3_dienst) , " "   , "m5t3_dauer=" , show(m5t3_dauer) , " "   , "m5t4_dienst=" , show(m5t4_dienst) , " "   , "m5t4_dauer=" , show(m5t4_dauer) , " "   , "m5t5_dienst=" , show(m5t5_dienst) , " "   , "m5t5_dauer=" , show(m5t5_dauer) , " "   , "m5t6_dienst=" , show(m5t6_dienst) , " "   , "m5t6_dauer=" , show(m5t6_dauer) , " "   , "m5t7_dienst=" , show(m5t7_dienst) , " "   , "m5t7_dauer=" , show(m5t7_dauer) , " "   , "m6t1_dienst=" , show(m6t1_dienst) , " "   , "m6t1_dauer=" , show(m6t1_dauer) , " "   , "m6t2_dienst=" , show(m6t2_dienst) , " "   , "m6t2_dauer=" , show(m6t2_dauer) , " "   , "m6t3_dienst=" , show(m6t3_dienst) , " "   , "m6t3_dauer=" , show(m6t3_dauer) , " "   , "m6t4_dienst=" , show(m6t4_dienst) , " "   , "m6t4_dauer=" , show(m6t4_dauer) , " "   , "m6t5_dienst=" , show(m6t5_dienst) , " "   , "m6t5_dauer=" , show(m6t5_dauer) , " "   , "m6t6_dienst=" , show(m6t6_dienst) , " "   , "m6t6_dauer=" , show(m6t6_dauer) , " "   , "m6t7_dienst=" , show(m6t7_dienst) , " "   , "m6t7_dauer=" , show(m6t7_dauer) , " "   ];
 

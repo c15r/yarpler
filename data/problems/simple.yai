@@ -1,8 +1,4 @@
 model {
-      class Plan {
-        var integer differenz;
-      }
-
       class Tag {
       }
 
@@ -24,63 +20,45 @@ model {
         const collection Mitarbeitertag tage;
         const integer sollarbeitszeit;
         var integer istarbeitszeit;
+        var integer differenz;
       }
 }
 
 initial {
 
-  # Definition des Planes
-  plan = new Plan();
-
   # Definition von Diensttypen
   d1 = new Diensttyp(anzahl=3,start=0,stop=8,dauer=8);
-  d2 = new Diensttyp(anzahl=3,start=8,stop=16,dauer=8);
-  d3 = new Diensttyp(anzahl=3,start=16,stop=24,dauer=8);
-  f = new Diensttyp(start=0,stop=24,dauer=24);
+  d2 = new Diensttyp(anzahl=2,start=8,stop=16,dauer=8);
+  d3 = new Diensttyp(anzahl=2,start=16,stop=24,dauer=8);
+  f = new Diensttyp(start=0,stop=24,dauer=0);
 
   # Definition von Tagen
   t1 = new Tag();
   t2 = new Tag();
   t3 = new Tag();
-  t4 = new Tag();
-  t5 = new Tag();
-  t6 = new Tag();
-  t7 = new Tag();
 
   # Definition von Mitarbeitern
-  m1 = new Mitarbeiter(sollarbeitszeit=16);
-  m2 = new Mitarbeiter(sollarbeitszeit=16);
-  m3 = new Mitarbeiter(sollarbeitszeit=16);
+  m1 = new Mitarbeiter(sollarbeitszeit=16,istarbeitszeit=0..42);
+  m2 = new Mitarbeiter(sollarbeitszeit=16,istarbeitszeit=0..42);
+  m3 = new Mitarbeiter(sollarbeitszeit=16,istarbeitszeit=0..42);
 
   # Definition von Mitarbeitertagen
-  m1t1 = new Mitarbeitertag();
-  m1t2 = new Mitarbeitertag();
-  m1t3 = new Mitarbeitertag();
-  m1t4 = new Mitarbeitertag();
-  m1t5 = new Mitarbeitertag();
-  m1t6 = new Mitarbeitertag();
-  m1t7 = new Mitarbeitertag();
-  m2t1 = new Mitarbeitertag();
-  m2t2 = new Mitarbeitertag();
-  m2t3 = new Mitarbeitertag();
-  m2t4 = new Mitarbeitertag();
-  m2t5 = new Mitarbeitertag();
-  m2t6 = new Mitarbeitertag();
-  m2t7 = new Mitarbeitertag();
-  m3t1 = new Mitarbeitertag();
-  m3t2 = new Mitarbeitertag();
-  m3t3 = new Mitarbeitertag();
-  m3t4 = new Mitarbeitertag();
-  m3t5 = new Mitarbeitertag();
-  m3t6 = new Mitarbeitertag();
-  m3t7 = new Mitarbeitertag();
+  m1t1 = new Mitarbeitertag(dauer=0..8);
+  m1t2 = new Mitarbeitertag(dauer=0..8);
+  m1t3 = new Mitarbeitertag(dauer=0..8);
+  m2t1 = new Mitarbeitertag(dauer=0..8);
+  m2t2 = new Mitarbeitertag(dauer=0..8);
+  m2t3 = new Mitarbeitertag(dauer=0..8);
+  m3t1 = new Mitarbeitertag(dauer=0..8);
+  m3t2 = new Mitarbeitertag(dauer=0..8);
+  m3t3 = new Mitarbeitertag(dauer=0..8);
 
   # Definition von Relationen
 
   # Mögliche Dienste pro Mitarbeiter
-  relation(m1.tage, {m1t1,m1t2,m1t3,m1t4,m1t5,m1t6,m1t7});
-  relation(m2.tage, {m2t1,m2t2,m2t3,m2t4,m2t5,m2t6,m2t7});
-  relation(m3.tage, {m3t1,m3t2,m3t3,m3t4,m3t5,m3t6,m3t7});
+  relation(m1.tage, {m1t1,m1t2,m1t3});
+  relation(m2.tage, {m2t1,m2t2,m2t3});
+  relation(m3.tage, {m3t1,m3t2,m3t3});
 
   # Mitarbeitertage pro Mitarbeiter
   relation(m1.moeglich, {d1,d2,f});
@@ -91,32 +69,42 @@ initial {
   relation(m1t1.tag, t1);
   relation(m1t2.tag, t2);
   relation(m1t3.tag, t3);
-  relation(m1t4.tag, t4);
-  relation(m1t5.tag, t5);
-  relation(m1t6.tag, t6);
-  relation(m1t7.tag, t7);
   relation(m2t1.tag, t1);
   relation(m2t2.tag, t2);
   relation(m2t3.tag, t3);
-  relation(m2t4.tag, t4);
-  relation(m2t5.tag, t5);
-  relation(m2t6.tag, t6);
-  relation(m2t7.tag, t7);
   relation(m3t1.tag, t1);
   relation(m3t2.tag, t2);
   relation(m3t3.tag, t3);
-  relation(m3t4.tag, t4);
-  relation(m3t5.tag, t5);
-  relation(m3t6.tag, t6);
-  relation(m3t7.tag, t7);
 }
 
 solve {
 
+    # Summieren der Arbeitszeit pro Tag
+    constraint {
+        forAll(mt in Mitarbeitertag) {
+            sum(mt.dienst.dauer) == mt.dauer
+        }
+    }
+
+    # Summieren der Arbeitszeit im gesamten Plan pro Mitarbeiter
+    constraint {
+        forAll(m in Mitarbeiter) {
+            sum(m.tage.dauer) == m.istarbeitszeit
+        }
+    }
+
+    # Differenz von Soll- und Istarbeitszeit berechnen pro Mitarbeiter
+    constraint {
+        forAll(m in Mitarbeiter) {
+            m.sollarbeitszeit - m.istarbeitszeit == m.differenz
+        }
+    }
+
+    # Nach D3 kein D1
     constraint {
         forAll(m in Mitarbeiter) {
             forAll(mt in m.tage) {
-                mt.dienst!=d1 or mt[1].dienst==d1
+               mt.dienst!=d3 or mt[1].dienst!=d1
             }
         }
     }
@@ -138,5 +126,5 @@ solve {
         }
     }
 
-    satisfy;
+    minimize abs(m1.differenz) + abs(m2.differenz) + abs(m3.differenz);
 }

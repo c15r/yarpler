@@ -10,7 +10,14 @@ module Yarpler
       end
 
       def is_valid?
-        !@attribute.nil? && !@set.nil? && (@elements.to.size > 0)
+
+        if @elements.is_a?(Yarpler::Models::Relation)
+          valid = @elements.to.size > 1
+        else
+          valid = @elements.is_valid?
+        end
+
+        !@attribute.nil? && !@set.nil? && valid
       end
 
       def clone

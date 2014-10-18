@@ -1,18 +1,18 @@
 module Yarpler
   module Models
-    class Literal
-      attr_accessor :value
+    class Absolute
+      attr_accessor :expression
 
       def initialize
       end
 
       def is_valid?
-        not @value.nil?
+       @expression.is_valid?
       end
 
       def clone
-        new = Literal.new
-        new.value = @value.clone
+        new = Absolute.new
+        new.expression = @expression.clone
         new
       end
     end

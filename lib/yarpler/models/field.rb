@@ -8,7 +8,7 @@ module Yarpler
       end
 
       def is_valid?
-        not variable.nil? && attribute.nil?
+        not (@variable.nil? || @attribute.nil?)
       end
 
       def clone

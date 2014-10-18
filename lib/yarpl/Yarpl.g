@@ -6,6 +6,7 @@ options {
 }
 
 tokens {
+  ABS_EXPRESSION;
   ATTRIBUTE;
   CLASS_ACCESSOR;
   CLASS_DECLARATION;
@@ -200,6 +201,7 @@ signExpression
 functionExpression
     : 'count' LPAREN countExpression RPAREN -> ^(FUNCTION_EXPRESSION countExpression)
     | 'sum' LPAREN sumExpression RPAREN -> ^(FUNCTION_EXPRESSION sumExpression)
+    | 'abs' LPAREN primeExpression RPAREN -> ^(ABS_EXPRESSION primeExpression)
     | primeExpression ('in' primeExpression)*
     ;
 
@@ -305,14 +307,10 @@ IDENTIFIER : YARPL_LETTER YARPL_LETTERORDIGIT*
 
 fragment
 YARPL_LETTER : ALPHABET
-			 | '_'
-    		 | '$'
     		 ;
 
 fragment
 YARPL_LETTERORDIGIT : ALPHANUMERIC
-    			    | '_'
-    			    | '$'
     			    ;
 
 fragment

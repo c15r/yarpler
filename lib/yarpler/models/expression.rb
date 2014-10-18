@@ -9,7 +9,7 @@ module Yarpler
       end
 
       def is_valid?
-        valid = !operator.nil?
+        valid = !@operator.nil?
         valid && @left.is_valid? && @right.is_valid?
       end
 

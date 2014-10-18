@@ -54,6 +54,8 @@ module Yarpler
             ExpressionInterpreter.new(item).expression
           when 'LITERAL'
             LiteralInterpreter.new(item).literal
+          when 'ABS_EXPRESSION'
+            AbsoluteInterpreter.new(item).absolute
         end
       end
     end

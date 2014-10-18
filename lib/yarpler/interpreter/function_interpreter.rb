@@ -39,7 +39,13 @@ module Yarpler
         sum.set=Yarpler::Models::Field.new
         sum.set.variable=function[0].to_s
         sum.set.attribute=function[1].to_s
-        sum.elements=obj.get_value(function[1].to_s)
+
+        # obj can not be found yet for objects in a allquantor with substitute identifier
+        if obj.nil?
+          sum.elements=sum.set
+        else
+          sum.elements=obj.get_value(function[1].to_s)
+        end
         sum.attribute=function[2].to_s
         sum
       end

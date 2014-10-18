@@ -307,6 +307,8 @@ class MinizincTranslator < Yarpler::Extensions::Translator
         MinizincFieldTranslator.new.resolve_variable_from_field(expression)
       elsif expression.is_a? Yarpler::Models::Instance
         MinizincFieldTranslator.new.resolve_variable_from_instance(expression)
+      elsif expression.is_a? Yarpler::Models::Absolute
+        MinizincAbsoluteTranslator.new.translate(expression.expression, problem)
       elsif expression.is_a? Yarpler::Models::Function
         MinizincFunctionTranslator.new.translate(expression, problem)
       elsif expression.is_a? Yarpler::Models::Expression
@@ -314,6 +316,23 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       elsif expression.is_a? Yarpler::Models::Literal
         MinizincLiteralTranslator.new.translate(expression, problem)
       end
+    end
+  end
+
+  class MinizincAbsoluteTranslator
+    def translate(expression, problem)
+      code = 'abs('
+      if expression.is_a? Yarpler::Models::Field
+        code << MinizincFieldTranslator.new.resolve_variable_from_field(expression)
+      elsif expression.is_a? Yarpler::Models::Instance
+        code << MinizincFieldTranslator.new.resolve_variable_from_instance(expression)
+      elsif expression.is_a? Yarpler::Models::Expression
+        code << MinizincExpressionTranslator.new.translate(expression, problem)
+      elsif expression.is_a? Yarpler::Models::Literal
+        code << MinizincLiteralTranslator.new.translate(expression, problem)
+      end
+      code << ')'
+      code
     end
   end
 
@@ -351,7 +370,15 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     def translate_sum_value_function(function, problem)
       index = MinizincHelper.instance.get_array_id
       first = true
-      objects = function.elements.to
+      if function.elements.is_a?(Yarpler::Models::Relation)
+        objects = function.elements.to
+      elsif function.elements.is_a?(Yarpler::Models::Field)
+        # @TODO Stimmt das immer?
+        obj = problem.objects[function.elements.variable]
+        objects = obj.get_value(function.elements.attribute).to
+      else
+        # @TODO : Mach Exception
+      end
 
       code = 'let' + SPACE + LCBRACKET + 'array[1..' + objects.size.to_s + '] of var int: array' + index.to_s + ' = ['
 
@@ -361,7 +388,18 @@ class MinizincTranslator < Yarpler::Extensions::Translator
         else
           code << ','
         end
-        code << resolve_variable_from_object_and_attribute_name(obj, function.attribute) + '*bool2int(' + obj.id.to_s + ' in ' + MinizincFieldTranslator.new.resolve_variable_from_field(function.set) + ')'
+
+        # operator in can be used for set of var
+        operator = 'in'
+        case problem.objects[function.set.variable].get_variabletype(function.set.attribute)
+          when 'VARIABLE_HASONE'
+            operator = '=='
+          when 'CONSTANT_HASONE'
+            operator = '=='
+        end
+
+
+        code << resolve_variable_from_object_and_attribute_name(obj, function.attribute) + '*bool2int(' + obj.id.to_s + ' ' + operator + ' ' + MinizincFieldTranslator.new.resolve_variable_from_field(function.set) + ')'
       end
 
       code << ' ]} in sum(t0 in 1..' + objects.size.to_s + ')(array' + index.to_s + '[t0])'

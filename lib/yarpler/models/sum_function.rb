@@ -8,7 +8,7 @@ module Yarpler
       end
 
       def is_valid?
-        elements.size > 0
+        @elements.size > 0
       end
 
       def clone
