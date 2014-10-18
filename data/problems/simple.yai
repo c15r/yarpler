@@ -27,54 +27,82 @@ model {
 initial {
 
   # Definition von Diensttypen
-  d1 = new Diensttyp(anzahl=3,start=0,stop=8,dauer=8);
-  d2 = new Diensttyp(anzahl=2,start=8,stop=16,dauer=8);
-  d3 = new Diensttyp(anzahl=2,start=16,stop=24,dauer=8);
+  d1 = new Diensttyp(anzahl=10,start=0,stop=8,dauer=8);
+  d2 = new Diensttyp(anzahl=5,start=8,stop=16,dauer=8);
+  d3 = new Diensttyp(anzahl=3,start=16,stop=24,dauer=8);
   f = new Diensttyp(start=0,stop=24,dauer=0);
 
   # Definition von Tagen
   t1 = new Tag();
   t2 = new Tag();
   t3 = new Tag();
+  t4 = new Tag();
+  t5 = new Tag();
 
   # Definition von Mitarbeitern
-  m1 = new Mitarbeiter(sollarbeitszeit=16,istarbeitszeit=0..42);
-  m2 = new Mitarbeiter(sollarbeitszeit=16,istarbeitszeit=0..42);
-  m3 = new Mitarbeiter(sollarbeitszeit=16,istarbeitszeit=0..42);
+  m1 = new Mitarbeiter(sollarbeitszeit=40,istarbeitszeit=0..42);
+  m2 = new Mitarbeiter(sollarbeitszeit=40,istarbeitszeit=0..42);
+  m3 = new Mitarbeiter(sollarbeitszeit=32,istarbeitszeit=0..42);
+  m4 = new Mitarbeiter(sollarbeitszeit=32,istarbeitszeit=0..42);
 
   # Definition von Mitarbeitertagen
   m1t1 = new Mitarbeitertag(dauer=0..8);
   m1t2 = new Mitarbeitertag(dauer=0..8);
   m1t3 = new Mitarbeitertag(dauer=0..8);
+  m1t4 = new Mitarbeitertag(dauer=0..8);
+  m1t5 = new Mitarbeitertag(dauer=0..8);
   m2t1 = new Mitarbeitertag(dauer=0..8);
   m2t2 = new Mitarbeitertag(dauer=0..8);
   m2t3 = new Mitarbeitertag(dauer=0..8);
+  m2t4 = new Mitarbeitertag(dauer=0..8);
+  m2t5 = new Mitarbeitertag(dauer=0..8);
   m3t1 = new Mitarbeitertag(dauer=0..8);
   m3t2 = new Mitarbeitertag(dauer=0..8);
   m3t3 = new Mitarbeitertag(dauer=0..8);
+  m3t4 = new Mitarbeitertag(dauer=0..8);
+  m3t5 = new Mitarbeitertag(dauer=0..8);
+  m4t1 = new Mitarbeitertag(dauer=0..8);
+  m4t2 = new Mitarbeitertag(dauer=0..8);
+  m4t3 = new Mitarbeitertag(dauer=0..8);
+  m4t4 = new Mitarbeitertag(dauer=0..8);
+  m4t5 = new Mitarbeitertag(dauer=0..8);
 
   # Definition von Relationen
 
   # Mögliche Dienste pro Mitarbeiter
-  relation(m1.tage, {m1t1,m1t2,m1t3});
-  relation(m2.tage, {m2t1,m2t2,m2t3});
-  relation(m3.tage, {m3t1,m3t2,m3t3});
+  relation(m1.tage, {m1t1,m1t2,m1t3,m1t4,m1t5});
+  relation(m2.tage, {m2t1,m2t2,m2t3,m2t4,m2t5});
+  relation(m3.tage, {m3t1,m3t2,m3t3,m3t4,m3t5});
+  relation(m4.tage, {m4t1,m4t2,m4t3,m4t4,m4t5});
 
   # Mitarbeitertage pro Mitarbeiter
   relation(m1.moeglich, {d1,d2,f});
   relation(m2.moeglich, {d1,d2,d3,f});
   relation(m3.moeglich, {d2,d3,f});
+  relation(m4.moeglich, {d1,f});
+
 
   # Mitarbeitertag zu Tag
   relation(m1t1.tag, t1);
   relation(m1t2.tag, t2);
   relation(m1t3.tag, t3);
+  relation(m1t4.tag, t4);
+  relation(m1t5.tag, t5);
   relation(m2t1.tag, t1);
   relation(m2t2.tag, t2);
   relation(m2t3.tag, t3);
+  relation(m2t4.tag, t4);
+  relation(m2t5.tag, t5);
   relation(m3t1.tag, t1);
   relation(m3t2.tag, t2);
   relation(m3t3.tag, t3);
+  relation(m3t4.tag, t4);
+  relation(m3t5.tag, t5);
+  relation(m4t1.tag, t1);
+  relation(m4t2.tag, t2);
+  relation(m4t3.tag, t3);
+  relation(m4t4.tag, t4);
+  relation(m4t5.tag, t5);
 }
 
 solve {
@@ -96,7 +124,7 @@ solve {
     # Differenz von Soll- und Istarbeitszeit berechnen pro Mitarbeiter
     constraint {
         forAll(m in Mitarbeiter) {
-            m.sollarbeitszeit - m.istarbeitszeit == m.differenz
+            m.istarbeitszeit - m.sollarbeitszeit == m.differenz
         }
     }
 
