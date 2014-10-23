@@ -65,7 +65,7 @@ module Yarpler
 
       def get_list_of_attributes
         unwanted = ['=', '_datatype', '_variabletype']
-        attribute_methods = methods - Object.methods - [:get_list_of_attributes, :is_referenced, :load, :get_value, :set_value, :set_value_at_index, :get_instance_name, :get_datatype, :get_variabletype]
+        attribute_methods = methods - Object.methods - [:validate_initialization, :get_list_of_attributes, :is_referenced, :load, :get_value, :set_value, :set_value_at_index, :get_instance_name, :get_datatype, :get_variabletype]
         all_methods = []
         attribute_methods.each do |x|
           set = true
@@ -93,6 +93,16 @@ module Yarpler
 
       def get_instance_name
         @_instance_name
+      end
+
+      def validate_initialization
+        self.get_list_of_attributes.each do |a|
+          if self.get_variabletype(a) == "CONSTANT"
+            if self.get_value(a).nil?
+              raise Yarpler::Exceptions::UninitializedConstantException.new(self.get_instance_name, a)
+            end
+          end
+        end
       end
     end
   end

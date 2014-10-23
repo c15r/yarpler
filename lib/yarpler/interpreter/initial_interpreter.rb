@@ -68,6 +68,9 @@ module Yarpler
               end
           end
         end
+
+        current_obj.validate_initialization
+
       end
 
       def prepare_value(type, value)

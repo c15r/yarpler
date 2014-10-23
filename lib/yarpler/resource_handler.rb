@@ -18,6 +18,8 @@ module Yarpler
 
     def new_object(definition, name)
       Object.const_get(name).new(definition)
+    rescue
+      raise Yarpler::Exceptions::ClassNotInModelException.new(name)
     end
 
     def get_datatype(name, attribute)

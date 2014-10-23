@@ -1,11 +1,13 @@
 module Yarpler
   module Extensions
+    ##
+    # Superclass for translator extensions of the YARPLER pipeline. Inherited classes can be used to to convert the datastructure into another language. (for example see MinizincTranslator)
     class Translator
+      attr_reader :output
+
       def initialize
         @output = ''
       end
-
-      attr_reader :output
 
       ##
       # Processes the model and returns it

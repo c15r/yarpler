@@ -24,10 +24,7 @@ module Yarpler
       $stderr = STDERR
 
       if !err.string.empty?
-        Yarpler::Log.instance.error 'Syntax error in YARPL input file.'
-        Yarpler::Log.instance.error err.string
-        Yarpler::Log.instance.error print_input_tree(returnValue.tree)
-        abort
+        raise Yarpler::Exceptions::SyntaxErrorException.new(err.string)
       else
         @tree = returnValue.tree
       end

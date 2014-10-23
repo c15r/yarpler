@@ -16,6 +16,8 @@ require 'yarpler/utils/file_loader'
 require 'yarpler/extensions/process'
 require 'yarpler/extensions/translator'
 
+require 'yarpler/exception/yarpler_exception'
+
 require 'yarpler/flattening/yarpl_flattener'
 
 require 'yarpler/interpreter/class_interpreter'
@@ -52,8 +54,7 @@ require 'yarpler/models/substitute'
 require 'yarpler/models/sum_function'
 require 'yarpler/models/sum_value_function'
 
+##
+# Main Yarpler Gem class to include all relevant files.
 module Yarpler
-  def self.hi(n = 'Default Name')
-    n
-  end
 end
