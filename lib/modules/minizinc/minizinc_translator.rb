@@ -433,7 +433,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     def translate_sum_value_function(function, problem)
-      index = MinizincHelper.instance.get_array_id
+      index = MinizincHelper.instance.array_id
       first = true
       objects = load_sum_objects(function, problem)
 
@@ -483,7 +483,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     def translate_sum_function(function, problem)
-      index = MinizincHelper.instance.get_array_id
+      index = MinizincHelper.instance.array_id
       first = true
       objects = function.elements
 
@@ -499,7 +499,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     def translate_count_function(function, problem)
-      index = MinizincHelper.instance.get_array_id
+      index = MinizincHelper.instance.array_id
       first = true
       variable_to_check = function.element.variable + '_id'
       objects = problem.get_objects_of_class(function.range.variable)
