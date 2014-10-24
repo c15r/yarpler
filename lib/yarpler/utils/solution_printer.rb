@@ -1,10 +1,10 @@
 module Yarpler
   module Utils
+    # SolutionPrinter is responsible for printing the results to the user
     class SolutionPrinter
-
       def print_ast(tree, depth = 0)
         indent = ''
-        for i in 0..depth
+        (0..depth).each do
           indent += '    '
         end
 
@@ -48,18 +48,20 @@ module Yarpler
         out = '{' +  "\n"
         out << threshold + '"ressource_type": "' + object.class.to_s + '"' + "\n"
         out << threshold + ',"instance_name": "' + object.get_instance_name + '"' + "\n"
+
         object.get_list_of_attributes.each do |a|
-
-          val = object.get_value(a.to_s)
-
-          if val.is_a?(Yarpler::Models::Relation)
-            out << threshold + ',"' + a.to_s + '": "' + print_datastructure(val, threshold + '  ') + '"' + "\n"
-          else
-            out << threshold + ',"' + a.to_s + '": "' + val.to_s + '"' + "\n"
-          end
+          out << print_attribute(a.to_s, object.get_value(a.to_s), threshold)
         end
         out << '}'
-        out
+      end
+
+      def print_attribute(name, value, threshold)
+        out = ''
+        if value.is_a?(Yarpler::Models::Relation)
+          out << threshold + ',"' + name + '": "' + print_datastructure(value, threshold + '  ') + '"' + "\n"
+        else
+          out << threshold + ',"' + name + '": "' + value.to_s + '"' + "\n"
+        end
       end
     end
   end
