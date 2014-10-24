@@ -1,5 +1,7 @@
 module Yarpler
   # Command Line Interface of YARPLER
+  # CLI is responsible for handling the logic for the user interaction
+  # It uses the Thor library to build the interface
   class CLI < Thor
     def initialize(*args)
       super
