@@ -26,7 +26,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   DOUBLE_NEWLINE = NEWLINE * 2
   TAB = "\t"
 
-  def get_array_index
+  def array_index
     @array_index = @array_index.next
     @array_index
   end
@@ -52,6 +52,15 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     code << T_INCLUDES + DOUBLE_NEWLINE
 
     # Generate variables
+    code << translate_solution(problem)
+
+    # Footer
+    code << T_FOOTER
+    @output = code
+  end
+
+  def translate_solution(problem)
+    code = ''
     attribute_translator = MinizincAttributeTranslator.new
     code << attribute_translator.translate(problem.objects) + DOUBLE_NEWLINE
 
@@ -65,10 +74,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
     # Output
     code << 'output [ "" ' + attribute_translator.attribute_output + '];' + DOUBLE_NEWLINE
-
-    # Footer
-    code << T_FOOTER
-    @output = code
+    code
   end
 
   ##
@@ -89,40 +95,63 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       result
     end
 
-    def convert_attributes(name, resource, reference = false)
+    def convert_attributes(name, resource)
       code = ''
       resource.get_list_of_attributes.each do |a|
-        case resource.get_variabletype(a)
-          when 'CONSTANT'
-            if reference
-              next
-            end
-            value = resource.load(a)
-            unless value.nil?
-              code << T_CONSTANT % [resource.get_datatype(a), name + '_' + a, value]
-            end
-          when 'VARIABLE'
-            code << T_VARIABLE % [resource.load(a), name + '_' + a]
-            @attribute_output << T_OUTPUT % [name + '_' + a, name + '_' + a]
-          when 'VARIABLE_HASONE'
-            r = resource.get_value(a)
-            relation = MinizincRelationTranslator.new
-            code << relation.translate_var(r)
-            @attribute_output << relation.output
-          when 'CONSTANT_HASONE'
-            r = resource.get_value(a)
-            relation = MinizincRelationTranslator.new
-            code << relation.translate_const(r)
-          when 'VARIABLE_HASMANY'
-            r = resource.get_value(a)
-            relation = MinizincRelationTranslator.new
-            code << relation.translate_var_set(r)
-            @attribute_output << relation.output
-          when 'CONSTANT_HASMANY'
-            r = resource.get_value(a)
-            relation = MinizincRelationTranslator.new
-            code << relation.translate_const(r)
-        end
+        code << translate_attribute(a, name, resource)
+      end
+      code
+    end
+
+    def translate_attribute(a, name, resource)
+      case resource.get_variabletype(a)
+        when 'CONSTANT'
+          translate_constant(a, name, resource)
+        when 'VARIABLE'
+          translate_variable(a, name, resource)
+        when 'VARIABLE_HASONE'
+          translate_variable_hasone(a, resource)
+        when 'CONSTANT_HASONE'
+          translate_constant_relation(a, resource)
+        when 'VARIABLE_HASMANY'
+          translate_variable_hasmany(a, resource)
+        when 'CONSTANT_HASMANY'
+          translate_constant_relation(a, resource)
+      end
+    end
+
+    def translate_variable_hasmany(a, resource)
+      r = resource.get_value(a)
+      relation = MinizincRelationTranslator.new
+      code = relation.translate_var_set(r)
+      @attribute_output << relation.output
+      code
+    end
+
+    def translate_constant_relation(a, resource)
+      r = resource.get_value(a)
+      relation = MinizincRelationTranslator.new
+      relation.translate_const(r)
+    end
+
+    def translate_variable_hasone(a, resource)
+      r = resource.get_value(a)
+      relation = MinizincRelationTranslator.new
+      code = relation.translate_var(r)
+      @attribute_output << relation.output
+      code
+    end
+
+    def translate_variable(a, name, resource)
+      code = format(T_VARIABLE, resource.load(a), name + '_' + a)
+      @attribute_output << format(T_OUTPUT, name + '_' + a, name + '_' + a)
+      code
+    end
+
+    def translate_constant(a, name, resource)
+      value = resource.load(a)
+      unless value.nil?
+        code = format(T_CONSTANT, resource.get_datatype(a), name + '_' + a, value)
       end
       code
     end
@@ -142,9 +171,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       code = ''
       var_name = MinizincFieldTranslator.new.resolve_variable_from_field(relation.from)
       if relation.to.size > 1
-        code << T_SET % [var_name, array_to_set_range(relation.to)]
+        code << format(T_SET, var_name, array_to_set_range(relation.to))
       else
-        code << T_CONSTANT % ['int', var_name, relation.to[0].id]
+        code << format(T_CONSTANT, 'int', var_name, relation.to[0].id)
       end
       code
     end
@@ -152,10 +181,8 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     def translate_var_set(relation)
       code = ''
       var_name = MinizincFieldTranslator.new.resolve_variable_from_field(relation.from)
-      #code << T_SET % [set_name, array_to_set_range(relation.to)]
-      code << T_VARIABLE_SET % [array_to_set_range(relation.to), var_name]
-      @output << T_OUTPUT % [var_name, var_name]
-
+      code << format(T_VARIABLE_SET, array_to_set_range(relation.to), var_name)
+      @output << format(T_OUTPUT, var_name, var_name)
       code
     end
 
@@ -163,37 +190,43 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       code = ''
       var_name = MinizincFieldTranslator.new.resolve_variable_from_field(relation.from)
       if constant_range?(relation.to)
-        code << T_VARIABLE % [array_to_constant_range(relation.to), var_name]
+        code << translate_constant_range(relation, var_name)
       else
-        set_name = 'SET_' + var_name
-        code << T_SET % [set_name, array_to_set_range(relation.to)]
-        code << T_VARIABLE % [set_name, var_name]
+        code << translate_set_range(relation, var_name)
       end
 
-      @output << T_OUTPUT % [var_name, var_name]
+      @output << format(T_OUTPUT, var_name, var_name)
 
       code
+    end
+
+    def translate_constant_range(relation, var_name)
+      format(T_VARIABLE, array_to_constant_range(relation.to), var_name)
+    end
+
+    def translate_set_range(relation, var_name)
+      set_name = 'SET_' + var_name
+      code = format(T_SET, set_name, array_to_set_range(relation.to))
+      code << format(T_VARIABLE, set_name, var_name)
     end
 
     private
 
     ## Checks if the range is constant (0,1,2) or not (0,1,3)
     def constant_range?(array)
-      values = []
-      answer = true
-      array.each do |o|
-        values.push(o.id)
-      end
-      values.sort
-
+      values = initialize_values(array)
       last_value = nil
-      values.each do |v|
+      answer = check_range(last_value, values)
+      answer
+    end
 
+    def check_range(last_value, values)
+      answer = true
+      values.each do |v|
         if last_value.nil?
           last_value = v
           next
         end
-
         if last_value + 1 == v
           last_value = v
         else
@@ -204,13 +237,20 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       answer
     end
 
+    def initialize_values(array)
+      values = []
+      array.each do |o|
+        values.push(o.id)
+      end
+      values.sort
+      values
+    end
+
     def array_to_set_range(array)
       range = ''
       is_first = true
       array.each do |o|
-        unless is_first
-          range << ', '
-        end
+        range << ', ' unless is_first
         range << o.id.to_s
         is_first = false
       end
@@ -221,13 +261,8 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       min = FIXNUM_MAX
       max = FIXNUM_MIN
       array.each do |o|
-        if min > o.id
-          min = o.id
-        end
-
-        if max < o.id
-          max = o.id
-        end
+        min = o.id  if min > o.id
+        max = o.id if max < o.id
       end
       min.to_s + '..' + max.to_s
     end
@@ -259,15 +294,20 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
     def translate(problem)
       code = 'solve '
+      code << translate_solve_expression(problem)
+      code << ';' + DOUBLE_NEWLINE
+      code
+    end
+
+    def translate_solve_expression(problem)
       case problem.solve.statement
         when 'SATISFY'
-          code << 'satisfy' + NEWLINE
+          code = 'satisfy' + NEWLINE
         when 'MINIMIZE'
-          code << 'minimize ' + MinizincExpressionTranslator.new.translate(problem.solve.expression, problem) + NEWLINE
+          code = 'minimize ' + MinizincExpressionTranslator.new.translate(problem.solve.expression, problem) + NEWLINE
         when 'MAXIMIZE'
-          code << 'maximize ' + MinizincExpressionTranslator.new.translate(problem.solve.expression, problem) + NEWLINE
+          code = 'maximize ' + MinizincExpressionTranslator.new.translate(problem.solve.expression, problem) + NEWLINE
       end
-      code << ';' + DOUBLE_NEWLINE
       code
     end
   end
@@ -284,10 +324,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
         expression = constraint.expression
         if expression.is_a? Yarpler::Models::Expression
           code <<  'constraint' + NEWLINE
-          code << TAB + MinizincExpressionTranslator.new.translate(expression, problem) + NEWLINE
-          code << ';' + DOUBLE_NEWLINE
-        elsif expression.is_a? Yarpler::Models::Forall
-          # @TODO Muss das überhaupt implementiert werden, oder wird immer vorher geflattet?
+          code << TAB + MinizincExpressionTranslator.new.translate(expression, problem) + NEWLINE + ';' + DOUBLE_NEWLINE
+        else
+          # @TODO exception!
         end
       end
       code
@@ -338,6 +377,12 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   class MinizincAbsoluteTranslator
     def translate(expression, problem)
       code = 'abs('
+      translate_expression(code, expression, problem)
+      code << ')'
+      code
+    end
+
+    def translate_expression(code, expression, problem)
       if expression.is_a? Yarpler::Models::Field
         code << MinizincFieldTranslator.new.resolve_variable_from_field(expression)
       elsif expression.is_a? Yarpler::Models::Instance
@@ -347,8 +392,6 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       elsif expression.is_a? Yarpler::Models::Literal
         code << MinizincLiteralTranslator.new.translate(expression)
       end
-      code << ')'
-      code
     end
   end
 
