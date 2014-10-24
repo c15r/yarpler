@@ -1,4 +1,5 @@
 require 'rake/testtask'
+require 'rubocop/rake_task'
 
 Rake::TestTask.new do |t|
   t.libs = ['lib', 'tests']
@@ -51,4 +52,11 @@ task :integration_test do
     puts "Oops, there are #{number_of_errors} errors! Please fix them!"
   end
 
+end
+
+desc 'Run RuboCop'
+RuboCop::RakeTask.new(:rubocop) do |task|
+  #task.patterns = ['lib/**/*.rb']
+  # don't abort rake on failure
+  task.fail_on_error = false
 end
