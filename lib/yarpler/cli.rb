@@ -20,7 +20,6 @@ module Yarpler
 
     def print_result(options, solution)
       printer = Yarpler::Utils::SolutionPrinter.new
-
       printer.print_ast solution.ast if options[:display_ast]
       printer.print_model solution.model if options[:display_model]
     end

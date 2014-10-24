@@ -12,14 +12,12 @@ module Yarpler
 
     def solve_from_file(filename, extensions)
       Yarpler::Log.instance.info "Extracting the problem from file #{filename}"
-
       problem = read_file(filename)
       solve_problem(problem, extensions)
     end
 
     def solve_problem(yarpl_problem, extensions)
       Yarpler::Log.instance.info 'Starting to solve the problem'
-
       solution = Yarpler::Models::Solution.new
       solution.ast = parse_problem_with_antlr(yarpl_problem)
       solution.model = interpret_ast(solution.ast)
@@ -41,7 +39,7 @@ module Yarpler
 
     # Interprets the AST and creates a YARPL data structure out of it
     #
-    # @param tree [ANTR3::AST::CommonTree] the complete AST
+    # @param antlr_ast [ANTR3::AST::CommonTree] the complete AST
     def interpret_ast(antlr_ast)
       interpreter = Yarpler::Interpreter.new
       interpreter.interpret(antlr_ast)
