@@ -56,7 +56,7 @@ module Yarpler
       end
 
       def attribute_reader(tree, current_obj)
-        # @TODO REINGENEER
+        # TODO: REINGENEER
         tree.each do |thing|
           case thing.to_s
             when 'ATTRIBUTE'
@@ -68,9 +68,6 @@ module Yarpler
               end
           end
         end
-
-        current_obj.validate_initialization
-
       end
 
       def prepare_value(type, value)
@@ -80,41 +77,6 @@ module Yarpler
           end
         end
         value
-      end
-
-      class RelationInterpreter
-        attr_reader :relation
-
-        def initialize(tree, objects)
-          @relation = Yarpler::Models::Relation.new
-          parse_relation(tree, objects)
-        end
-
-        private
-
-        def parse_relation(relation, objects)
-          # @TODO Error Handling if const and SET and other wrong inputs
-          @relation.from = FieldAccessorInterpreter.new(relation[0]).field
-          @relation.type = objects[@relation.from.variable.to_s].get_variabletype(@relation.from.attribute.to_s)
-          @relation.to = SetInterpreter.new(relation[1], objects).set
-        end
-      end
-
-      class SetInterpreter
-        attr_accessor :set
-
-        def initialize(item, objects)
-          @set = []
-          process_set(item, objects)
-        end
-
-        def process_set(tree, objects)
-          # @TODO Error handling
-          tree.each do |thing|
-            set.push(objects[thing.to_s])
-          end
-          set
-        end
       end
     end
   end

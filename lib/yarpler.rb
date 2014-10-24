@@ -32,6 +32,8 @@ require 'yarpler/interpreters/initial_interpreter'
 require 'yarpler/interpreters/instance_interpreter'
 require 'yarpler/interpreters/literal_interpreter'
 require 'yarpler/interpreters/model_interpreter'
+require 'yarpler/interpreters/relation_interpreter'
+require 'yarpler/interpreters/set_interpreter'
 require 'yarpler/interpreters/solve_interpreter'
 
 require 'yarpler/models/function'
