@@ -2,7 +2,7 @@
 # Runs a Minizinc file on the bash. It is important to have Minizinc installed
 # on the system, otherwise this component will not work.
 class MinizincRunner
-  attr_reader output
+  attr_reader :output
 
   def print
     puts @output
