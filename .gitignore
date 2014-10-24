@@ -48,3 +48,6 @@ Gemfile.lock
 # generated yarpler files
 wrk.mzn
 wrk.fzn
+
+# rubocop
+.rubocop_todo.yml
