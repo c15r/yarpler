@@ -29,7 +29,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     # remove all invalid constraints
     invalid=[]
     problem.constraints.each do |constraint|
-      if not constraint.is_valid?
+      if not constraint.valid?
         invalid<<constraint
       end
     end
@@ -79,7 +79,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     elsif expression.is_a? Yarpler::Models::Field
       expression.variable = replace_substitute(expression.variable)
     elsif expression.is_a? Yarpler::Models::Substitute
-      expression=Yarpler::Models::Problem.instance.objects[expression.variable.to_s].get_value(expression.attribute.to_s).to[0].get_instance_name
+      expression=Yarpler::Models::Problem.instance.objects[expression.variable.to_s].get_value(expression.attribute.to_s).to[0].instance_name
     end
     expression
   end
@@ -99,7 +99,7 @@ class YarplFlattener < Yarpler::Extensions::Process
         i=0
         range.each do |r|
           i=i.next
-          if r.get_instance_name == real_variable
+          if r.instance_name == real_variable
             next_value=range[i]
             break
           end

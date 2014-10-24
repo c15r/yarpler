@@ -1,5 +1,7 @@
 module Yarpler
   module Models
+    ##
+    # Model for a constraint
     class Constraint
       attr_accessor :expression
 
@@ -7,8 +9,8 @@ module Yarpler
         @expression = nil
       end
 
-      def is_valid?
-        @expression.is_valid?
+      def valid?
+        @expression.valid?
       end
 
       def clone

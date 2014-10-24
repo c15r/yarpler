@@ -38,7 +38,7 @@ module Yarpler
           end
           puts var_array.to_s
         else
-          var_array=get_objects_of_class_by_class_name(obj)
+          var_array = get_objects_of_class_by_class_name(obj)
         end
         var_array
       end
@@ -48,9 +48,7 @@ module Yarpler
       def get_objects_of_class_by_class_name(class_name)
         var_array = []
         @objects.each do |_k, v|
-          if v.class.to_s == class_name.to_s
-            var_array.push(v)
-          end
+          var_array.push(v) if v.class.to_s == class_name.to_s
         end
         var_array
       end

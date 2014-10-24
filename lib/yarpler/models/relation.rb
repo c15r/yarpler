@@ -1,5 +1,7 @@
 module Yarpler
   module Models
+    ##
+    # Model for a Relation between multiple objects
     class Relation
       attr_accessor :from
       attr_accessor :to

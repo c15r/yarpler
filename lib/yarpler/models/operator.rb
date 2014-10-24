@@ -1,9 +1,11 @@
 module Yarpler
   module Models
-    OPERATORS = %w(== != >= <= + - * / AND OR IN)
-
+    ##
+    # Model for an operator symobl
     class Operator
       attr_reader :operator
+
+      OPERATORS = %w(== != >= <= + - * / AND OR IN)
 
       def initialize(operator)
         @operator = operator

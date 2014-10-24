@@ -89,7 +89,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     def translate(objects)
       result = ''
       objects.each do |key, var|
-        var.get_list_of_attributes
+        var.list_of_attributes
         result << convert_attributes(key, var)
       end
       result
@@ -97,7 +97,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
     def convert_attributes(name, resource)
       code = ''
-      resource.get_list_of_attributes.each do |a|
+      resource.list_of_attributes.each do |a|
         code << translate_attribute(a, name, resource)
       end
       code
@@ -522,7 +522,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     def resolve_variable_from_object_and_attribute_name(obj, attribute)
-      obj.get_instance_name + '_' + attribute
+      obj.instance_name + '_' + attribute
     end
   end
 end

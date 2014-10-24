@@ -1,5 +1,7 @@
 module Yarpler
   module Models
+    ##
+    # Model for a sum value function. Sum value function can be used to sum all attributes of a certain type.
     class SumValueFunction < Function
       attr_accessor :elements
       attr_accessor :set
@@ -9,12 +11,11 @@ module Yarpler
         @elements = []
       end
 
-      def is_valid?
-
+      def valid?
         if @elements.is_a?(Yarpler::Models::Relation)
           valid = @elements.to.size > 1
         else
-          valid = @elements.is_valid?
+          valid = @elements.valid?
         end
 
         !@attribute.nil? && !@set.nil? && valid

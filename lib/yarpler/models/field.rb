@@ -1,5 +1,7 @@
 module Yarpler
   module Models
+    ##
+    # Field model for a single instance and attribute connection
     class Field
       attr_accessor :variable
       attr_accessor :attribute
@@ -7,8 +9,8 @@ module Yarpler
       def initialize
       end
 
-      def is_valid?
-        not (@variable.nil? || @attribute.nil?)
+      def valid?
+        !(@variable.nil? || @attribute.nil?)
       end
 
       def clone

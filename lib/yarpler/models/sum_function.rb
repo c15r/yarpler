@@ -1,5 +1,7 @@
 module Yarpler
   module Models
+    ##
+    # Model for sum function that sums up a list of expressions
     class SumFunction < Function
       attr_accessor :elements
 
@@ -7,7 +9,7 @@ module Yarpler
         @elements = []
       end
 
-      def is_valid?
+      def valid?
         @elements.size > 0
       end
 

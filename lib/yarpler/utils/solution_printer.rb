@@ -47,9 +47,9 @@ module Yarpler
       def print_object(object, threshold = '')
         out = '{' +  "\n"
         out << threshold + '"ressource_type": "' + object.class.to_s + '"' + "\n"
-        out << threshold + ',"instance_name": "' + object.get_instance_name + '"' + "\n"
+        out << threshold + ',"instance_name": "' + object.instance_name + '"' + "\n"
 
-        object.get_list_of_attributes.each do |a|
+        object.list_of_attributes.each do |a|
           out << print_attribute(a.to_s, object.get_value(a.to_s), threshold)
         end
         out << '}'

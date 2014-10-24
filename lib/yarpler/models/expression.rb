@@ -1,5 +1,9 @@
 module Yarpler
   module Models
+    ##
+    # Model for a expression node. Multiple expression build a binary tree with the
+    # left and right attributes and guarantee a correct way of resolving the expression
+    # when it is printed
     class Expression
       attr_accessor :operator
       attr_accessor :left
@@ -8,9 +12,9 @@ module Yarpler
       def initialize
       end
 
-      def is_valid?
+      def valid?
         valid = !@operator.nil?
-        valid && @left.is_valid? && @right.is_valid?
+        valid && @left.valid? && @right.valid?
       end
 
       def clone
