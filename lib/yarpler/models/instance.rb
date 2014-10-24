@@ -1,5 +1,7 @@
 module Yarpler
   module Models
+    ##
+    # Model for an instance, that will always link to the attribute id
     class Instance
       attr_accessor :variable
 
@@ -8,7 +10,7 @@ module Yarpler
       end
 
       def valid?
-        not @variable.nil?
+        !@variable.nil?
       end
 
       def clone

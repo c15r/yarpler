@@ -1,5 +1,7 @@
 module Yarpler
   module Models
+    ##
+    # Model for sum function that sums up a list of expressions
     class SumFunction < Function
       attr_accessor :elements
 

@@ -1,5 +1,7 @@
 module Yarpler
   module Models
+    ##
+    # Model for a literal value like an INTEGER
     class Literal
       attr_accessor :value
 
@@ -7,7 +9,7 @@ module Yarpler
       end
 
       def valid?
-        not @value.nil?
+        !@value.nil?
       end
 
       def clone

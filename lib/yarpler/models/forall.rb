@@ -1,5 +1,7 @@
 module Yarpler
   module Models
+    ##
+    # Forall model to encapsulate a loop. This model can not be translated to a solver and has to be flattened before.
     class Forall
       attr_accessor :range
       attr_accessor :variable

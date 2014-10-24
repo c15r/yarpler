@@ -1,5 +1,8 @@
 module Yarpler
   module Models
+    ##
+    # Model for a Count function. Count function is used to count the number of occurences
+    # of a value in a set of values
     class CountFunction < Function
       attr_accessor :element
       attr_accessor :range
@@ -8,7 +11,7 @@ module Yarpler
       end
 
       def valid?
-        not @element.nil? || @range.nil?
+        !(@element.nil? || @range.nil?)
       end
 
       def clone

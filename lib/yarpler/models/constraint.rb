@@ -1,5 +1,7 @@
 module Yarpler
   module Models
+    ##
+    # Model for a constraint
     class Constraint
       attr_accessor :expression
 

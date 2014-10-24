@@ -26,13 +26,13 @@ module Yarpler
       end
 
       def initialize_relations(object)
-        object.get_list_of_attributes.each do |a|
+        object.list_of_attributes.each do |a|
           case object.get_variabletype(a.to_s)
             when 'VARIABLE_HASONE'
               class_name = object.get_datatype(a.to_s)
 
               field = Yarpler::Models::Field.new
-              field.variable = object.get_instance_name
+              field.variable = object.instance_name
               field.attribute = a.to_s
 
               relation = Yarpler::Models::Relation.new
