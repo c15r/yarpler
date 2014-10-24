@@ -9,12 +9,12 @@ module Yarpler
         @elements = []
       end
 
-      def is_valid?
+      def valid?
 
         if @elements.is_a?(Yarpler::Models::Relation)
           valid = @elements.to.size > 1
         else
-          valid = @elements.is_valid?
+          valid = @elements.valid?
         end
 
         !@attribute.nil? && !@set.nil? && valid

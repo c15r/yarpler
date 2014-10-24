@@ -8,9 +8,9 @@ module Yarpler
       def initialize
       end
 
-      def is_valid?
+      def valid?
         valid = !@operator.nil?
-        valid && @left.is_valid? && @right.is_valid?
+        valid && @left.valid? && @right.valid?
       end
 
       def clone

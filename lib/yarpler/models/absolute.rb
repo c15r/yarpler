@@ -6,8 +6,8 @@ module Yarpler
       def initialize
       end
 
-      def is_valid?
-       @expression.is_valid?
+      def valid?
+       @expression.valid?
       end
 
       def clone

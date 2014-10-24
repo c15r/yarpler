@@ -6,7 +6,7 @@ module Yarpler
       def initialize
       end
 
-      def is_valid?
+      def valid?
         not @value.nil?
       end
 

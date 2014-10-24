@@ -7,7 +7,7 @@ module Yarpler
       def initialize
       end
 
-      def is_valid?
+      def valid?
         not @element.nil? || @range.nil?
       end
 

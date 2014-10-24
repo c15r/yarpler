@@ -29,7 +29,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     # remove all invalid constraints
     invalid=[]
     problem.constraints.each do |constraint|
-      if not constraint.is_valid?
+      if not constraint.valid?
         invalid<<constraint
       end
     end

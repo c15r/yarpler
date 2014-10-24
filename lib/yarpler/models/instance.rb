@@ -7,7 +7,7 @@ module Yarpler
         @variable = ''
       end
 
-      def is_valid?
+      def valid?
         not @variable.nil?
       end
 

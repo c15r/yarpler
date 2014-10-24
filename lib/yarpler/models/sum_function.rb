@@ -7,7 +7,7 @@ module Yarpler
         @elements = []
       end
 
-      def is_valid?
+      def valid?
         @elements.size > 0
       end
 
