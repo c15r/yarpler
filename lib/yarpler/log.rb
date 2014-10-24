@@ -1,4 +1,6 @@
 module Yarpler
+  # Log facility which abstracts the Logging gem
+  # Implemented as Singleton
   class Log
     include Singleton
 
