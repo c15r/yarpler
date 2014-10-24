@@ -13,11 +13,12 @@ module Yarpler
             initial = Yarpler::Interpreters::InitialInterpreter.new(thing)
             Yarpler::Models::Problem.instance.objects = initial.objects
           when 'SOLVE_DECLARATION'
-            solve_interpreter = SolveInterpreter.new(thing, Yarpler::Models::Problem.instance.objects)
+            solve_interpreter = Yarpler::Interpreters::SolveInterpreter.new(thing, Yarpler::Models::Problem.instance.objects)
             Yarpler::Models::Problem.instance.solve = solve_interpreter.solve
             Yarpler::Models::Problem.instance.constraints = solve_interpreter.constraints
         end
       end
+      Yarpler::Models::Problem.instance
     end
   end
 end

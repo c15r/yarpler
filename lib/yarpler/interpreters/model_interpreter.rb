@@ -1,5 +1,5 @@
 module Yarpler
-  module Interpreter
+  module Interpreters
     class ModelInterpreter
       def initialize(tree)
         tree_converter(tree)

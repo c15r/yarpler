@@ -4,6 +4,7 @@ $LOAD_PATH.unshift(File.dirname(File.realpath(__FILE__)) + '/../lib')
 
 require 'yarpler'
 
+require 'modules/flattening/yarpl_flattener'
 require 'modules/minizinc/minizinc_translator'
 
 

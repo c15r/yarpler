@@ -5,7 +5,7 @@
 # Generated using ANTLR version: 3.5
 # Ruby runtime library version: 1.10.0
 # Input grammar file: YarplerOutput.g
-# Generated at: 2014-10-15 22:16:01
+# Generated at: 2014-10-24 09:54:54
 #
 
 # ~~~> start load path setup
@@ -462,7 +462,7 @@ module YarplerOutput
         stream_DIGITS.add( __DIGITS9__ )
 
         # AST Rewrite
-        # elements: DIGITS, IDENTIFIER
+        # elements: IDENTIFIER, DIGITS
         # token labels: 
         # rule labels: return_value
         # token list labels: 
@@ -510,7 +510,7 @@ module YarplerOutput
         stream_T__26.add( char_literal14 )
 
         # AST Rewrite
-        # elements: digitlist, IDENTIFIER
+        # elements: IDENTIFIER, digitlist
         # token labels: 
         # rule labels: return_value
         # token list labels: 

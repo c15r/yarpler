@@ -1,5 +1,5 @@
 module Yarpler
-  module Interpreter
+  module Interpreters
     class InstanceInterpreter
       attr_accessor :instance
 
