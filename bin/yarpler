@@ -8,5 +8,4 @@ require 'modules/flattening/yarpl_flattener'
 require 'modules/minizinc/minizinc_translator'
 require 'modules/dienstplan_printer'
 
-
 Yarpler::CLI.start(ARGV, debug: true)
