@@ -1,6 +1,5 @@
 module Yarpler
   module Utils
-    ##
     # YARPL File Loader is responsible to read the problem files
     # and create a string out of them
     #
@@ -12,11 +11,8 @@ module Yarpler
     # It's optional to split the problem into multiple files.
     # You can pack all just in one .yai file.
     class FileLoader
-
       def initialize
-
       end
-
 
       def load_files(filename)
         filename_domain = filename.sub('.yai', '.yad')
