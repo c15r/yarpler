@@ -1,44 +1,35 @@
 module Yarpler
+  # The Yarpler Parser abstracts the auto generated ANTLR3 Lexer/Parser
+  # Responsible for parsing a YARPL problem specification and generating an AST
   class Parser
     def initialize
-
     end
 
     def parse(yarpl_problem)
-      out = StringIO.new
-      err = StringIO.new
-      $stdout = out
-      $stderr = err
+      out, err = StringIO.new, StringIO.new
+      previous_stderr, $stderr = $stderr, err
+      previous_stdout, $stdout = $stdout, out
 
-      lexer = Yarpl::Lexer.new(yarpl_problem)
-      tokens = ANTLR3::CommonTokenStream.new(lexer)  # Ein Array
-      parser = Yarpl::Parser.new(tokens)
-      antlr_result = parser.start
-      tree = antlr_result.tree
-
-      $stdout = STDOUT
-      $stderr = STDERR
-
-      if !err.string.empty?
-        raise Yarpler::Exceptions::SyntaxErrorException.new(err.string)
-      else
-        tree
-      end
+      tree = process_problem(yarpl_problem)
+      error?(err)
+      tree
+    ensure
+      $stderr = previous_stderr
+      $stdout = previous_stdout
     end
 
     private
 
-    def print_input_tree(tree, depth = 0)
-      indent = ''
-      for i in 0..depth
-        indent += '    '
-      end
+    def error?(error)
+      fail Yarpler::Exceptions::SyntaxErrorException, error.string unless error.string.empty?
+    end
 
-      val = indent + tree.to_s + "\n"
-      tree.each do |thing|
-        val << print_input_tree(thing, 1 + depth)
-      end
-      val
+    def process_problem(yarpl_problem)
+      lexer = Yarpl::Lexer.new(yarpl_problem)
+      tokens = ANTLR3::CommonTokenStream.new(lexer)  # Ein Array
+      parser = Yarpl::Parser.new(tokens)
+      antlr_result = parser.start
+      antlr_result.tree
     end
   end
 end
