@@ -41,9 +41,9 @@ Gemfile.lock
 /lib/yarpl/YarplParser.rb
 /lib/yarpl/Yarpl.tokens
 
-/modules/minizinc/yarpler_output/YarplerOutputLexer.rb
-/modules/minizinc/yarpler_output/YarplerOutputParser.rb
-/modules/minizinc/yarpler_output/YarplerOutput.tokens
+/lib/modules/minizinc/yarpler_output/YarplerOutputLexer.rb
+/lib/modules/minizinc/yarpler_output/YarplerOutputParser.rb
+/lib/modules/minizinc/yarpler_output/YarplerOutput.tokens
 
 # generated yarpler files
 wrk.mzn

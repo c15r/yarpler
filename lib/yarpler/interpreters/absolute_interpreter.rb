@@ -1,5 +1,5 @@
 module Yarpler
-  module Interpreter
+  module Interpreters
     class AbsoluteInterpreter
       attr_reader :absolute
 
@@ -13,9 +13,9 @@ module Yarpler
       def process_absolute(expression)
         case expression[0].to_s
           when 'FIELD_ACCESSOR'
-            @absolute.expression=Yarpler::Interpreter::FieldAccessorInterpreter.new(expression[0]).field
+            @absolute.expression=Yarpler::Interpreters::FieldAccessorInterpreter.new(expression[0]).field
           when 'EXPRESSION'
-            @absolute.expression=Yarpler::Interpreter::ExpressionInterpreter.new(expression[0]).expression
+            @absolute.expression=Yarpler::Interpreters::ExpressionInterpreter.new(expression[0]).expression
         end
 
       end

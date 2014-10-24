@@ -1,5 +1,5 @@
 module Yarpler
-  module Interpreter
+  module Interpreters
     class ConstraintInterpreter
       attr_reader :constraint
 

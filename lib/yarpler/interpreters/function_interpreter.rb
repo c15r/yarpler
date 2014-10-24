@@ -1,5 +1,5 @@
 module Yarpler
-  module Interpreter
+  module Interpreters
     class FunctionInterpreter
       attr_reader :function
 
@@ -22,11 +22,11 @@ module Yarpler
       def process_count_function(function)
         count = Yarpler::Models::CountFunction.new
 
-        count.element = Yarpler::Interpreter::InstanceInterpreter.new(function[0]).instance
+        count.element = Yarpler::Interpreters::InstanceInterpreter.new(function[0]).instance
 
         # TODO: hier können potentiell verschiedene Ranges angegeben werden
         #       es bräuchte also noch eine Fallunterscheidung...
-        count.range = Yarpler::Interpreter::FieldAccessorInterpreter.new(function[1]).field
+        count.range = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[1]).field
 
         count
       end
@@ -56,7 +56,7 @@ module Yarpler
         else
           sum = Yarpler::Models::SumFunction.new
           function[0].each do |expression|
-            sum.elements.push(Yarpler::Interpreter::ExpressionInterpreter.new(expression).expression)
+            sum.elements.push(Yarpler::Interpreters::ExpressionInterpreter.new(expression).expression)
           end
         end
         sum

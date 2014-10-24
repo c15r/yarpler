@@ -1,5 +1,5 @@
 module Yarpler
-  module Interpreter
+  module Interpreters
     class ClassInterpreter
       def initialize(tree)
         @dynamic_name = tree[0].to_s

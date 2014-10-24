@@ -1,5 +1,5 @@
 module Yarpler
-  module Interpreter
+  module Interpreters
     ##
     # Interpreter for the solve block
     #   solve { }

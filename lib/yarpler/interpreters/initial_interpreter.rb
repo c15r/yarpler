@@ -1,5 +1,5 @@
 module Yarpler
-  module Interpreter
+  module Interpreters
     class InitialInterpreter
       attr_accessor :objects
       attr_accessor :constraints
