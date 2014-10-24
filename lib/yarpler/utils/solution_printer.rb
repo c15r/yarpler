@@ -13,7 +13,7 @@ module Yarpler
           print_ast(thing, 1 + depth)
         end
       end
-      
+
       def print_model(problem)
         problem.objects.each do |_k, v|
           puts ''
