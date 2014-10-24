@@ -1,5 +1,6 @@
 module Yarpler
   module Interpreters
+    # ConstraintInterpreter is responsible for interpreting YARPL constraints
     class ConstraintInterpreter
       attr_reader :constraint
 
@@ -16,11 +17,7 @@ module Yarpler
         case expression[0].to_s
           when 'FORALL'
             interpreter = ForallInterpreter.new(expression[0], @objects)
-            if interpreter.constraints.nil?
-              constraint = interpreter.forall
-            else
-              constraint = interpreter.constraints
-            end
+            constraint = interpreter.forall
           when 'CONSTRAINT_EXPRESSION'
             interpreter = ExpressionInterpreter.new(expression[0])
             constraint = interpreter.expression

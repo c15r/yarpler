@@ -1,5 +1,7 @@
 module Yarpler
   module Interpreters
+    # FunctionInterpreter is responsible for interpreting YARPL functions
+    # like count(), sum()
     class FunctionInterpreter
       attr_reader :function
 
@@ -24,35 +26,29 @@ module Yarpler
 
         count.element = Yarpler::Interpreters::InstanceInterpreter.new(function[0]).instance
 
-        # TODO: hier können potentiell verschiedene Ranges angegeben werden
-        #       es bräuchte also noch eine Fallunterscheidung...
+        # TODO: hier koennen potentiell verschiedene Ranges angegeben werden
+        #       es braeuchte also noch eine Fallunterscheidung...
         count.range = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[1]).field
 
         count
       end
 
       def process_sum_value_function(function)
-        function=function[0]
-        # @TODO Erlaube verschachtelungen über mehr als drei Ebenen, oder auch nur über zwei?
+        function = function[0]
+        # TODO: Erlaube verschachtelungen ueber mehr als drei Ebenen, oder auch nur ueber zwei?
         sum = Yarpler::Models::SumValueFunction.new
-        obj=Yarpler::Models::Problem.instance.objects[function[0].to_s]
-        sum.set=Yarpler::Models::Field.new
-        sum.set.variable=function[0].to_s
-        sum.set.attribute=function[1].to_s
-
-        # obj can not be found yet for objects in a allquantor with substitute identifier
-        if obj.nil?
-          sum.elements=sum.set
-        else
-          sum.elements=obj.get_value(function[1].to_s)
-        end
-        sum.attribute=function[2].to_s
+        obj = Yarpler::Models::Problem.instance.objects[function[0].to_s]
+        sum.set = Yarpler::Models::Field.new
+        sum.set.variable = function[0].to_s
+        sum.set.attribute = function[1].to_s
+        sum.elements = obj.get_value(function[1].to_s)
+        sum.attribute = function[2].to_s
         sum
       end
 
       def process_sum_function(function)
-        if (function[0].size==1 && function[0][0].size==1)
-          sum=process_sum_value_function(function[0][0])
+        if function[0].size == 1 && function[0][0].size == 1
+          sum = process_sum_value_function(function[0][0])
         else
           sum = Yarpler::Models::SumFunction.new
           function[0].each do |expression|
