@@ -1,13 +1,7 @@
 module Yarpler
   # Core is the interface to YARPLER
   class Core
-
-    # features which yarpler should provide:
-    # - method to solve a problem
-    # - what else???
-
     def initialize
-
     end
 
     def solve_from_file(filename, extensions)
