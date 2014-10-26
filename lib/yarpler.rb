@@ -18,7 +18,7 @@ require 'yarpler/utils/solution_printer'
 require 'yarpler/extensions/process'
 require 'yarpler/extensions/translator'
 
-require 'yarpler/exception/yarpler_exception'
+require 'yarpler/exceptions/yarpler_exception'
 
 require 'yarpler/interpreters/absolute_interpreter'
 require 'yarpler/interpreters/class_interpreter'
