@@ -1,4 +1,3 @@
-##
 # Runs a Minizinc file on the bash. It is important to have Minizinc installed
 # on the system, otherwise this component will not work.
 class MinizincRunner
@@ -23,14 +22,19 @@ class MinizincRunner
   end
 
   def check_minizinc_output
-    if @output.include?('=====UNSATISFIABLE=====')
-      Yarpler::Log.instance.error 'Problem is unsatisfiable!'
-      abort
-    end
+    check_for_unsatifiable(@output)
+    check_for_error(@output)
+  end
 
-    unless @output.include?('----------')
-      Yarpler::Log.instance.error 'Exception in MiniZinc!'
-      abort
-    end
+  def check_for_unsatifiable(output)
+    return false unless output.include?('=====UNSATISFIABLE=====')
+    Yarpler::Log.instance.error 'Problem is unsatisfiable!'
+    abort
+  end
+
+  def check_for_error(output)
+    return false if output.include?('----------')
+    Yarpler::Log.instance.error 'Exception in MiniZinc!'
+    abort
   end
 end
