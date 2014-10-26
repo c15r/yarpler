@@ -1,6 +1,8 @@
 require_relative 'yarpler_output/YarplerOutputLexer'
 require_relative 'yarpler_output/YarplerOutputParser'
 
+# MiniZinc Output Parser
+# Reads the return value of the minizinc solver and updates the YARPL data structure
 class OutputParser
   attr_reader :tree
   attr_reader :problem
@@ -17,11 +19,11 @@ class OutputParser
   def fill_output(tree, problem)
     tree.each do |t|
       if t.to_s == 'OUTPUT'
-          if t.size==2
-            read_variable(t[0].to_s, t[1].to_s, problem)
-          else
-            read_variable_list(t[0].to_s, t[1..t.size], problem)
-          end
+        if t.size == 2
+          read_variable(t[0].to_s, t[1].to_s, problem)
+        else
+          read_variable_list(t[0].to_s, t[1..t.size], problem)
+        end
       else
         fill_output(t, problem)
       end
@@ -31,29 +33,27 @@ class OutputParser
   def read_variable_list(var, values, problem)
     instance_name = var.slice(0..(var.index('_') - 1))
     field_name = var[var.index('_') + 1..var.length]
-    if problem.objects[instance_name].get_variabletype(field_name) == 'VARIABLE_HASMANY'
-      datatype = problem.objects[instance_name].get_datatype(field_name)
 
-      relation = problem.objects[instance_name].get_value(field_name)
-      relation.to.clear
+    # Guard Clasue
+    return false unless (problem.objects[instance_name].get_variabletype(field_name) == 'VARIABLE_HASMANY')
 
-      values.each do |val|
-        problem.objects.each do |_k, v|
-          if v.class.to_s == datatype.to_s
-            if v.id.to_s == val.to_s
-              relation.to << v
-              break
-            end
-          end
-        end
+    datatype = problem.objects[instance_name].get_datatype(field_name)
+
+    relation = problem.objects[instance_name].get_value(field_name)
+    relation.to.clear
+
+    values.each do |val|
+      problem.objects.each do |_k, v|
+        next unless (v.class.to_s == datatype.to_s) && (v.id.to_s == val.to_s)
+        relation.to << v
+        break
       end
-      problem.objects[instance_name].set_value(field_name, relation)
     end
-
+    problem.objects[instance_name].set_value(field_name, relation)
   end
 
   def read_variable(var, val, problem)
-    # @TODO: Reingineering, etwas schöner machen
+    # TODO: Reingineering, etwas schoener machen
     instance_name = var.slice(0..(var.index('_') - 1))
     field_name = var[var.index('_') + 1..var.length]
     arr = field_name.split('_')
@@ -61,15 +61,12 @@ class OutputParser
     if problem.objects[instance_name].get_variabletype(field_name) == 'VARIABLE_HASONE'
       datatype = problem.objects[instance_name].get_datatype(field_name)
       problem.objects.each do |_k, v|
-        if v.class.to_s == datatype.to_s
-          if v.id.to_s == val.to_s
-            relation = problem.objects[instance_name].get_value(field_name)
-            relation.to.clear
-            relation.to << v
-            problem.objects[instance_name].set_value(field_name, relation)
-            break
-          end
-        end
+        next unless (v.class.to_s == datatype.to_s) && (v.id.to_s == val.to_s)
+        relation = problem.objects[instance_name].get_value(field_name)
+        relation.to.clear
+        relation.to << v
+        problem.objects[instance_name].set_value(field_name, relation)
+        break
       end
     else
       field_name = arr[0]
