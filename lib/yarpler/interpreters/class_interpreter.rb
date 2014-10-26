@@ -1,5 +1,11 @@
 module Yarpler
   module Interpreters
+    # ClassInterpreter processes a YARPL Class which defines the data model for a specific problem
+    #
+    # == YARPL Example
+    #
+    #   class { ... }
+    #
     class ClassInterpreter
       def initialize(tree)
         @dynamic_name = tree[0].to_s
@@ -10,8 +16,6 @@ module Yarpler
       private
 
       def load_attributes(tree)
-        rh = Yarpler::ResourceHandler.instance
-
         tree.each do |thing|
           case thing.to_s
             when 'FIELD_DECLARATION'
