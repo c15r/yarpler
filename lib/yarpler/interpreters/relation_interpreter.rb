@@ -1,5 +1,13 @@
 module Yarpler
   module Interpreters
+    # RelationInterpreter processes a YARPL relation declaration
+    # This language concept is used to express relations between objects
+    #
+    # == YARPL Example
+    #
+    #   # Relation between a employee and a work day
+    #   relation(employee1Day1.day, day1);
+    #
     class RelationInterpreter
       attr_reader :relation
 
