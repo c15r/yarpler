@@ -1,8 +1,13 @@
 module Yarpler
   module Interpreters
-    ##
-    # Interpreter for the solve block
-    #   solve { }
+    # SolveInterpreter processes a YARPL solve block
+    #
+    # == YARPL Example
+    #
+    #   solve { ... }
+    #
+    # Currently the solve interpreter processes the following items:
+    # Constraints, Statisfy, Minimize, Maximize
     class SolveInterpreter
       attr_accessor :solve
       attr_accessor :constraints
