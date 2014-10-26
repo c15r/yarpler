@@ -103,6 +103,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       code
     end
 
+    # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity
     def translate_attribute(a, name, resource)
       case resource.get_variabletype(a)
         when 'CONSTANT'
@@ -119,6 +120,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
           translate_constant_relation(a, resource)
       end
     end
+    # rubocop:enable Metrics/MethodLength, Metrics/CyclomaticComplexity
 
     def translate_variable_hasmany(a, resource)
       r = resource.get_value(a)
@@ -220,15 +222,16 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       answer
     end
 
+    # rubocop:disable Metrics/MethodLength
     def check_range(last_value, values)
       answer = true
-      values.each do |v|
+      values.each do |value|
         if last_value.nil?
-          last_value = v
+          last_value = value
           next
         end
-        if last_value + 1 == v
-          last_value = v
+        if last_value + 1 == value
+          last_value = value
         else
           answer = false
           break
@@ -236,6 +239,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       end
       answer
     end
+    # rubocop:enable Metrics/MethodLength
 
     def initialize_values(array)
       values = []
@@ -355,6 +359,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       code
     end
 
+    # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     def resolve_expression(expression, problem)
       if expression.is_a? Yarpler::Models::Field
         MinizincFieldTranslator.new.resolve_variable_from_field(expression)
@@ -370,6 +375,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
         MinizincLiteralTranslator.new.translate(expression)
       end
     end
+    # rubocop:enable Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   end
 
   ##
