@@ -1,10 +1,16 @@
 module Yarpler
   module Interpreters
+    # ForallInterpreter processes a YARPL Allquantor statement
+    #
+    # == YARPL Example
+    #
+    #   forall(...) { ... }
+    #
     class ForallInterpreter
       attr_reader :forall
       attr_reader :constraints
 
-      def initialize(tree, objects, parent=nil)
+      def initialize(tree, objects, parent = nil)
         @objects = objects
         @forall = Yarpler::Models::Forall.new
         @parent = parent
@@ -17,7 +23,7 @@ module Yarpler
       def process_forall(expression)
         forall_selector(expression[0])
         if expression[1].to_s == 'FORALL'
-          @forall.expression = ForallInterpreter.new(expression[1],@objects,@forall).forall
+          @forall.expression = ForallInterpreter.new(expression[1], @objects, @forall).forall
         else
           @forall.expression = ExpressionInterpreter.new(expression[1]).expression
         end
@@ -56,9 +62,7 @@ module Yarpler
       def get_objects_of_class(class_name)
         var_array = []
         @objects.each do |_k, v|
-          if v.class.to_s == class_name.to_s
-            var_array.push(v)
-          end
+          var_array.push(v) if (v.class.to_s == class_name.to_s)
         end
         var_array
       end
