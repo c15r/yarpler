@@ -3,6 +3,7 @@ require_relative 'yarpler_output/YarplerOutputParser'
 
 # MiniZinc Output Parser
 # Reads the return value of the minizinc solver and updates the YARPL data structure
+# rubocop:disable Metrics/MethodLength
 class OutputParser
   attr_reader :tree
   attr_reader :problem
@@ -96,3 +97,4 @@ class OutputParser
     end
   end
 end
+# rubocop:enable Metrics/MethodLength
