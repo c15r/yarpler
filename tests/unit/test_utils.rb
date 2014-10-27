@@ -14,6 +14,7 @@ TEST_DATA_PATH = 'tests/data/'
 TEST_COMBINED_FILE = TEST_DATA_PATH + 'combined.yai'
 TEST_SINGLE_FILES = TEST_DATA_PATH + 'single'
 
+# TestCase to test the YARPLER utils
 class TestUtils < Test::Unit::TestCase
   def setup
     @test_data_path = 'tests/data/'
