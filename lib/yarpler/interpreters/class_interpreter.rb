@@ -1,5 +1,11 @@
 module Yarpler
   module Interpreters
+    # ClassInterpreter processes a YARPL Class which defines the data model for a specific problem
+    #
+    # == YARPL Example
+    #
+    #   class { ... }
+    #
     class ClassInterpreter
       def initialize(tree)
         @dynamic_name = tree[0].to_s
@@ -10,15 +16,12 @@ module Yarpler
       private
 
       def load_attributes(tree)
-        rh = Yarpler::ResourceHandler.instance
-
         tree.each do |thing|
           case thing.to_s
             when 'FIELD_DECLARATION'
               create_attr(@dynamic_name, thing[2].to_s, thing[1], thing[0].to_s)
             when 'REFERENCE'
               create_attr(@dynamic_name, thing[3].to_s, thing[2].to_s, thing[0].to_s + '_' + thing[1].to_s)
-              set_is_referenced(thing[2].to_s, true)
           end
         end
       end
@@ -47,12 +50,6 @@ module Yarpler
       def set_variable_type(obj_name, name, variable_type)
         create_method(obj_name, "#{name}_variabletype".to_sym) do
           variable_type
-        end
-      end
-
-      def set_is_referenced(obj_name, value)
-        create_method(obj_name, 'is_referenced'.to_sym) do
-          value
         end
       end
 

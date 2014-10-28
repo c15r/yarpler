@@ -1,3 +1,6 @@
+##
+# Helper singleton class for Minizinc Translator which helps generating
+# unique IDs for arrays
 class MinizincHelper
   include Singleton
 
@@ -5,7 +8,7 @@ class MinizincHelper
     @array_id = -1
   end
 
-  def get_array_id
+  def array_id
     @array_id = @array_id.next
     @array_id
   end

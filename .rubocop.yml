@@ -4,8 +4,11 @@ AllCops:
   Include:
     - '**/Rakefile'
   Exclude:
-    - 'modules/minizinc/yarpler_output/*'
+    - 'lib/modules/minizinc/yarpler_output/*'
     - 'lib/yarpl/*'
 
 Metrics/LineLength:
   Max: 120
+
+Style/CaseIndentation:
+  Enabled: false

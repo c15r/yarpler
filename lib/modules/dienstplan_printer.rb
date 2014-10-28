@@ -1,15 +1,15 @@
+# DienstplanPrinter is a process extension which prints the solution of a solved minizinc problem
 class DienstplanPrinter < Yarpler::Extensions::Process
-  def process(_problem)
-    _problem.get_objects_of_class('Mitarbeiter').each do |m|
-      puts "\n" + m.get_instance_name
+  def process(problem)
+    problem.get_objects_of_class('Mitarbeiter').each do |m|
+      puts "\n" + m.instance_name
       puts '##############'
       out = ''
       m.tage.to.each do |t|
-        out << t.get_instance_name + ': ' + t.dienst.to.to_s + ', '
-
+        out << t.instance_name + ': ' + t.dienst.to.to_s + ', '
       end
       puts out + "\n"
     end
-    _problem
+    problem
   end
 end

@@ -1,5 +1,11 @@
 module Yarpler
   module Interpreters
+    # IndexAccessorInterpreter processes a YARPL statement which accesses a object in a list
+    #
+    # == YARPL Example
+    #
+    #   mt[1].dienst != d1
+    #
     class IndexAccessorInterpreter
       attr_accessor :index
 
@@ -8,7 +14,7 @@ module Yarpler
       end
 
       def process_index(item)
-        # @TODO Index auch für Tiefe verschachtelungen erweitern
+        # TODO: Index auch fuer Tiefe verschachtelungen erweitern
         process_single(item)
       end
 

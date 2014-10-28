@@ -1,5 +1,7 @@
 module Yarpler
   module Interpreters
+    # LiteralInterpreter processes a YARPL literal
+    # Literals can be for example integers or booleans
     class LiteralInterpreter
       attr_accessor :literal
 

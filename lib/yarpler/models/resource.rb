@@ -11,20 +11,20 @@ module Yarpler
     #     }
     #   }
     class Resource
+      attr_reader :instance_name
+
       def initialize(name)
-        @_instance_name = name
+        @instance_name = name
         @id = -1
       end
 
       def id
-        if @id == -1
-          @id = Yarpler::ResourceHandler.instance.next_id(self)
-        end
+        @id = Yarpler::ResourceHandler.instance.next_id(self) if @id == -1
         @id
       end
 
       def to_s
-        @_instance_name
+        @instance_name
       end
 
       def id_datatype
@@ -33,10 +33,6 @@ module Yarpler
 
       def id_variabletype
         'CONSTANT'
-      end
-
-      def is_referenced
-        false
       end
 
       def get_value(attribute)
@@ -63,10 +59,14 @@ module Yarpler
         val
       end
 
-      def get_list_of_attributes
+      def list_of_attributes
         unwanted = ['=', '_datatype', '_variabletype']
-        attribute_methods = methods - Object.methods - [:validate_initialization, :get_list_of_attributes, :is_referenced, :load, :get_value, :set_value, :set_value_at_index, :get_instance_name, :get_datatype, :get_variabletype]
         all_methods = []
+        preprare_attributes(all_methods, unwanted)
+        all_methods
+      end
+
+      def preprare_attributes(all_methods, unwanted)
         attribute_methods.each do |x|
           set = true
           unwanted.each do |u|
@@ -75,12 +75,16 @@ module Yarpler
               break
             end
           end
-
-          if set
-            all_methods.push(x.to_s)
-          end
+          all_methods.push(x.to_s) if set
         end
-        all_methods
+      end
+
+      def attribute_methods
+        methods - Object.methods - [:validate_initialization, :list_of_attributes,
+                                    :load, :get_value, :set_value,
+                                    :set_value_at_index, :instance_name,
+                                    :get_datatype, :get_variabletype,
+                                    :preprare_attributes, :attribute_methods]
       end
 
       def get_datatype(attribute)
@@ -91,16 +95,14 @@ module Yarpler
         send(attribute + '_variabletype')
       end
 
-      def get_instance_name
-        @_instance_name
-      end
-
       def validate_initialization
-        self.get_list_of_attributes.each do |a|
-          if self.get_variabletype(a) == "CONSTANT"
-            if self.get_value(a).nil?
-              raise Yarpler::Exceptions::UninitializedConstantException.new(self.get_instance_name, a)
+        list_of_attributes.each do |a|
+          if get_variabletype(a) == 'CONSTANT'
+            if get_value(a).nil?
+              fail Yarpler::Exceptions::UninitializedConstantException.new(@instance_name, a)
             end
+          else
+            # @TODO implement
           end
         end
       end

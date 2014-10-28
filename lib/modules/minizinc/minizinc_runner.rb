@@ -1,10 +1,10 @@
+# Runs a Minizinc file on the bash. It is important to have Minizinc installed
+# on the system, otherwise this component will not work.
 class MinizincRunner
-  def print
-    puts @cmd
-  end
+  attr_reader :output
 
-  def output
-    @cmd
+  def print
+    puts @output
   end
 
   def run_from_file(filename)
@@ -17,16 +17,24 @@ class MinizincRunner
   def run(model)
     path = File.join(Dir.pwd, 'wrk.mzn')
     File.open(path, 'wb') { |f| f.write(model) }
-    @cmd = ` bash -c "minizinc #{path} -n 1" `
+    @output = ` bash -c "minizinc #{path} -n 1" `
+    check_minizinc_output
+  end
 
-    if @cmd.include? '=====UNSATISFIABLE====='
-      Yarpler::Log.instance.error 'Problem is unsatisfiable!'
-      abort
-    end
+  def check_minizinc_output
+    check_for_unsatifiable(@output)
+    check_for_error(@output)
+  end
 
-    unless @cmd.include? '----------'
-      Yarpler::Log.instance.error 'Exception in MiniZinc!'
-      abort
-    end
+  def check_for_unsatifiable(output)
+    return false unless output.include?('=====UNSATISFIABLE=====')
+    Yarpler::Log.instance.error 'Problem is unsatisfiable!'
+    abort
+  end
+
+  def check_for_error(output)
+    return false if output.include?('----------')
+    Yarpler::Log.instance.error 'Exception in MiniZinc!'
+    abort
   end
 end

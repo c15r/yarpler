@@ -1,5 +1,18 @@
 module Yarpler
   module Interpreters
+    # ExpressionInterpreter processes a YARPL expression which is typically a boolean expression
+    #
+    # == YARPL Example
+    #
+    #   m.istarbeitszeit - m.sollarbeitszeit == m.differenz
+    #
+    # Currently supported are the following expressions:
+    # FIELD_ACCESSOR
+    # INDEX_ACCESSOR
+    # FUNCTION_EXPRESSION
+    # EXPRESSION
+    # LITERAL
+    # ABS_EXPRESSION
     class ExpressionInterpreter
       attr_reader :expression
 
@@ -29,19 +42,21 @@ module Yarpler
       end
 
       def process_normal_expression(expression)
-        if Yarpler::Models::Operator.operator?(expression[1].to_s)
-          @expression.operator = Yarpler::Models::Operator.new(expression[1].to_s)
-          @expression.left = process_expression_item(expression[0])
+        # Guard Clasue
+        return false unless Yarpler::Models::Operator.operator?(expression[1].to_s)
 
-          # allow multiple expression of the same cardinality
-          if expression.size == 3
-            @expression.right = process_expression_item(expression[2])
-          else
-            @expression.right = ExpressionInterpreter.new(expression[2..expression.size]).expression
-          end
+        @expression.operator = Yarpler::Models::Operator.new(expression[1].to_s)
+        @expression.left = process_expression_item(expression[0])
+
+        # allow multiple expression of the same cardinality
+        if expression.size == 3
+          @expression.right = process_expression_item(expression[2])
+        else
+          @expression.right = ExpressionInterpreter.new(expression[2..expression.size]).expression
         end
       end
 
+      # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
       def process_expression_item(item)
         case item.to_s
           when 'FIELD_ACCESSOR'
@@ -58,6 +73,7 @@ module Yarpler
             AbsoluteInterpreter.new(item).absolute
         end
       end
+      # rubocop:enable Metrics/CyclomaticComplexity, Metrics/MethodLength
     end
   end
 end

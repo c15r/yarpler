@@ -1,5 +1,6 @@
 module Yarpler
   module Interpreters
+    # InstanceInterpreter processes a YARPL variable which references a class instance
     class InstanceInterpreter
       attr_accessor :instance
 
