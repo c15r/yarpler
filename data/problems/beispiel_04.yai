@@ -2,90 +2,53 @@ model {
       class Zeitfenster {
         const integer start;
         const integer stop;
+        const collection Zeitfenster forbidden;
       }
 
       class Diensttyp {
-        var integer anzahl;
       }
 
       class Dienst {
-        var Diensttyp dienst;
+        const Diensttyp typ;
         const Zeitfenster fenster;
-
       }
 
       class Mitarbeiter {
-        const collection Diensttyp moeglich;
-        const collection Dienst tage;
+        var collection Dienst dienste;
       }
 }
 
 initial {
-
-  # Definition von Diensttypen
-  d1 = new Diensttyp(anzahl=1);
-  d2 = new Diensttyp(anzahl=1);
-  d3 = new Diensttyp(anzahl=1);
-  f = new Diensttyp();
-
-  # Definition von Tagen
-  t1 = new Tag();
-  t2 = new Tag();
-
-  # Definition von Mitarbeitern
   m1 = new Mitarbeiter();
   m2 = new Mitarbeiter();
-  m3 = new Mitarbeiter();
 
-  # Definition von Dienst
-  m1t1 = new Dienst();
-  m1t2 = new Dienst();
-  m2t1 = new Dienst();
-  m2t2 = new Dienst();
-  m3t1 = new Dienst();
-  m3t2 = new Dienst();
+  dt1 = new Diensttyp();
 
-  # Definition von Relationen
-  relation(m1t1.tag, t1);
-  relation(m1t2.tag, t2);
-  relation(m2t1.tag, t1);
-  relation(m2t2.tag, t2);
-  relation(m3t1.tag, t1);
-  relation(m3t2.tag, t2);
+  zf1 = new Zeitfenster(start=0, stop=8);
+  zf2 = new Zeitfenster(start=8, stop=16);
+  zf3 = new Zeitfenster(start=10, stop=18);
 
-  # Tage pro Mitarbeiter
-  relation(m1.tage, {m1t1,m1t2});
-  relation(m2.tage, {m2t1,m2t2});
-  relation(m3.tage, {m3t1,m3t2});
+  d1 = new Dienst();
+  relation(d1.typ, dt1);
+  relation(d1.fenster, zf1);
 
-  # Mögliche Dienste pro Mitarbeiter
-  relation(m1.moeglich, {d1,d2,f});
-  relation(m2.moeglich, {d1,d2,d3,f});
-  relation(m3.moeglich, {d2,d3,f});
+  d2 = new Dienst();
+  relation(d2.typ, dt1);
+  relation(d2.fenster, zf2);
+
+  d3 = new Dienst();
+  relation(d3.typ, dt1);
+  relation(d3.fenster, zf3);
+
+  relation(zf1.forbidden, {zf1});
+  relation(zf2.forbidden, {zf2,zf3});
+  relation(zf3.forbidden, {zf2,zf3});
+
+  relation(m1.dienste, {d1,d2,d3});
+  relation(m2.dienste, {d1,d2,d3});
+
 }
 
 solve {
-  # Dienstschlüssel einhalten
-  constraint {
-    count(d1 in Dienst.dienst) == d1.anzahl
-  }
-
-  constraint {
-    count(d2 in Dienst.dienst) == d2.anzahl
-  }
-
-  constraint {
-    count(d3 in Dienst.dienst) == d3.anzahl
-  }
-
-  # Mitarbeiter kriegen nur mögliche Dienste
-  constraint {
-      forAll(m in Mitarbeiter) {
-          forAll(mt in m.tage) {
-              mt.dienst in m.moeglich
-          }
-      }
-  }
-
   satisfy;
 }
