@@ -155,5 +155,5 @@ solve {
         }
     }
 
-    minimize abs(m1.differenz) + abs(m2.differenz) + abs(m3.differenz);
+    minimize abs(m1.differenz) + abs(m2.differenz) + abs(m3.differenz) + abs(m4.differenz);
 }

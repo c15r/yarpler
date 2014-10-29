@@ -1,5 +1,5 @@
 require 'rake/testtask'
-require 'rubocop/rake_task'
+#require 'rubocop/rake_task'
 
 Rake::TestTask.new do |t|
   t.libs = %w(lib tests)
@@ -54,9 +54,9 @@ task :integration_test do
 
 end
 
-desc 'Run RuboCop'
-RuboCop::RakeTask.new(:rubocop) do |task|
-  # task.patterns = ['lib/**/*.rb']
-  # don't abort rake on failure
-  task.fail_on_error = false
-end
+#desc 'Run RuboCop'
+#RuboCop::RakeTask.new(:rubocop) do |task|
+#  # task.patterns = ['lib/**/*.rb']
+#  # don't abort rake on failure
+#  task.fail_on_error = false
+#end
