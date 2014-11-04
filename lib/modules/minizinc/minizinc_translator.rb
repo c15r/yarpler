@@ -352,7 +352,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       code << resolve_expression(expression.left, problem) + SPACE
 
       # no operator and right for literal expressions
-      if expression.operator.to_s != 'LITERAL'
+      if expression.operator.to_s != 'LITERAL' && expression.operator.to_s != 'NOT'
         code << MinizincOperatorTranslator.new.translate(expression.operator.to_s)
         code << SPACE + resolve_expression(expression.right, problem)
       end
@@ -367,6 +367,8 @@ class MinizincTranslator < Yarpler::Extensions::Translator
         MinizincFieldTranslator.new.resolve_variable_from_instance(expression)
       elsif expression.is_a? Yarpler::Models::Absolute
         MinizincAbsoluteTranslator.new.translate(expression.expression, problem)
+      elsif expression.is_a? Yarpler::Models::Not
+        MinizincNotTranslator.new.translate(expression.expression, problem)
       elsif expression.is_a? Yarpler::Models::Function
         MinizincFunctionTranslator.new.translate(expression, problem)
       elsif expression.is_a? Yarpler::Models::Expression
@@ -383,6 +385,29 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   class MinizincAbsoluteTranslator
     def translate(expression, problem)
       code = 'abs('
+      translate_expression(code, expression, problem)
+      code << ')'
+      code
+    end
+
+    def translate_expression(code, expression, problem)
+      if expression.is_a? Yarpler::Models::Field
+        code << MinizincFieldTranslator.new.resolve_variable_from_field(expression)
+      elsif expression.is_a? Yarpler::Models::Instance
+        code << MinizincFieldTranslator.new.resolve_variable_from_instance(expression)
+      elsif expression.is_a? Yarpler::Models::Expression
+        code << MinizincExpressionTranslator.new.translate(expression, problem)
+      elsif expression.is_a? Yarpler::Models::Literal
+        code << MinizincLiteralTranslator.new.translate(expression)
+      end
+    end
+  end
+
+  ##
+  # Translates a not expression to Minizinc
+  class MinizincNotTranslator
+    def translate(expression, problem)
+      code = 'not('
       translate_expression(code, expression, problem)
       code << ')'
       code

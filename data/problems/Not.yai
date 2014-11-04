@@ -1,0 +1,18 @@
+model {
+    class Test {
+        var integer a;
+        var integer b;
+    }
+}
+
+initial {
+    t = new Test(a=0..1, b=0..1);
+}
+
+solve {
+    constraint {
+        not(t.a == t.b)
+    }
+
+    satisfy;
+}

@@ -13,6 +13,7 @@ module Yarpler
     # EXPRESSION
     # LITERAL
     # ABS_EXPRESSION
+    # NOT_EXPRESSION
     class ExpressionInterpreter
       attr_reader :expression
 
@@ -27,13 +28,18 @@ module Yarpler
         # fix unlimited stack of expression
         if expression[0].to_s == 'EXPRESSION' && expression.size == 1
           process_expression(expression[0])
+        elsif expression[0].to_s == 'NOT_EXPRESSION' && expression.size == 1
+          process_not_operator_expression(expression)
+        elsif expression.size == 1
+          process_no_operator_expression(expression)
         else
-          if expression.size == 1
-            process_no_operator_expression(expression)
-          else
-            process_normal_expression(expression)
-          end
+          process_normal_expression(expression)
         end
+      end
+
+      def process_not_operator_expression(expression)
+        @expression.left = process_expression_item(expression[0])
+        @expression.operator = 'NOT'
       end
 
       def process_no_operator_expression(expression)
@@ -71,6 +77,8 @@ module Yarpler
             LiteralInterpreter.new(item).literal
           when 'ABS_EXPRESSION'
             AbsoluteInterpreter.new(item).absolute
+          when 'NOT_EXPRESSION'
+            NotInterpreter.new(item).not
         end
       end
       # rubocop:enable Metrics/CyclomaticComplexity, Metrics/MethodLength

@@ -34,6 +34,7 @@ tokens {
   MAXIMIZE;
   MEMBER_DECLARATION;
   MINIMIZE;
+  NOT_EXPRESSION;
   REFERENCE;
   RELATION_DECLARATION;
   SATISFY;
@@ -180,6 +181,7 @@ forallSelector
 
 expression
     : relationalExpression (('and'|'or') relationalExpression)*
+    | 'not' LPAREN relationalExpression RPAREN -> ^(NOT_EXPRESSION relationalExpression)
     ;
 
 relationalExpression
@@ -384,10 +386,6 @@ EQUALS           : '==';
 LTE              : '<=';
 GTE              : '>=';
 NOT_EQUALS        : '!=';
-AND             : '&&';
-OR              : '||';
-INC             : '++';
-DEC             : '--';
 PLUS             : '+';
 MINUS             : '-';
 TIMES             : '*';

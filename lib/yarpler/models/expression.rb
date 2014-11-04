@@ -14,7 +14,12 @@ module Yarpler
 
       def valid?
         valid = !@operator.nil?
-        valid && @left.valid? && @right.valid?
+        if @operator == 'NOT'
+          valid &&= @left.valid?
+        else
+          valid &&= @left.valid? && @right.valid?
+        end
+        valid
       end
 
       def clone
