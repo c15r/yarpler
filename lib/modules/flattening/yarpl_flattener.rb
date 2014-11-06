@@ -52,7 +52,19 @@ class YarplFlattener < Yarpler::Extensions::Process
   end
 
   def process_array_range(forall)
-    forall.range.each do |obj|
+
+    range = forall.range
+
+    if forall.order.is_a? (Yarpler::Models::Order)
+      if forall.order.type == 'ASC'
+        range.sort! { |a,b| a.get_value(forall.order.field.attribute) <=> b.get_value(forall.order.field.attribute)}
+      else
+        range.sort! { |a,b| b.get_value(forall.order.field.attribute) <=> a.get_value(forall.order.field.attribute)}
+      end
+
+    end
+
+    range.each do |obj|
       new_constraint = Yarpler::Models::Constraint.new
       new_constraint.expression = forall.expression.clone
       new_constraint.expression = replace_selector(new_constraint.expression, forall.variable, obj.to_s,
@@ -61,10 +73,11 @@ class YarplFlattener < Yarpler::Extensions::Process
 
       do_add = true
 
-      forall.wheres.each do |w|
-        expression = w.clone
+      if !forall.where.nil?
+        expression = forall.where.clone
         replace_substitute_string(expression, forall.variable, obj.instance_name)
-        do_add &&= eval(evaluate_expression(expression))
+        bla = evaluate_expression(expression)
+        do_add &&= eval(bla)
       end
 
       @constraints << new_constraint if do_add

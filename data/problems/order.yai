@@ -16,7 +16,7 @@ initial {
 
 solve {
     constraint {
-        forAll(t in Test).where(t.index > 2) {
+        forAll(t in Test).order_desc(t.index) {
             t.b == 1
         }
     }

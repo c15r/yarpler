@@ -6,7 +6,8 @@ module Yarpler
       attr_accessor :range
       attr_accessor :variable
       attr_accessor :expression
-      attr_accessor :wheres
+      attr_accessor :where
+      attr_accessor :order
 
       def initialize
       end
@@ -16,7 +17,8 @@ module Yarpler
         new.range = @range.clone
         new.variable = @variable.clone
         new.expression = @expression.clone
-        new.wheres = @wheres.clone
+        new.where = @where.clone if not @where.nil?
+        new.order = @order.clone if not @order.nil?
         new
       end
     end

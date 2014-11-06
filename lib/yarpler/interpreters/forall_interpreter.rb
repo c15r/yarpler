@@ -9,13 +9,14 @@ module Yarpler
     class ForallInterpreter
       attr_reader :forall
       attr_reader :constraints
-      attr_reader :wheres
+      attr_reader :where
 
       def initialize(tree, objects, parent = nil)
         @objects = objects
         @forall = Yarpler::Models::Forall.new
         @parent = parent
-        @wheres = []
+        @where = nil
+        @order = nil
         @constraints = nil
         process_forall(tree)
       end
@@ -23,8 +24,9 @@ module Yarpler
       private
 
       def process_forall(expression)
-        process_where(expression)
-        @forall.wheres = @wheres
+        process_filters(expression)
+        @forall.where = @where
+        @forall.order = @order
         forall_selector(expression[0])
         if expression[1].to_s == 'FORALL'
           @forall.expression = ForallInterpreter.new(expression[1], @objects, @forall).forall
@@ -34,12 +36,20 @@ module Yarpler
         end
       end
 
-      def process_where(expression)
+      def process_filters(expression)
         return if expression.size <=2
 
         for i in 2..expression.size
           if expression[i].to_s == 'WHERE'
-            @wheres.push(ExpressionInterpreter.new(expression[i]).expression)
+            @where = ExpressionInterpreter.new(expression[i]).expression
+          elsif expression[i].to_s == 'ORDER_ASC'
+            @order = Yarpler::Models::Order.new
+            @order.field = FieldAccessorInterpreter.new(expression[i][0]).field
+            @order.type = 'ASC'
+          elsif expression[i].to_s == 'ORDER_DESC'
+            @order = Yarpler::Models::Order.new
+            @order.field = FieldAccessorInterpreter.new(expression[i][0]).field
+            @order.type = 'DESC'
           end
         end
       end

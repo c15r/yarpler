@@ -35,6 +35,8 @@ tokens {
   MEMBER_DECLARATION;
   MINIMIZE;
   NOT_EXPRESSION;
+  ORDER_ASC;
+  ORDER_DESC;
   REFERENCE;
   RELATION_DECLARATION;
   SATISFY;
@@ -172,13 +174,19 @@ constraintDeclaration
     ;
 
 constraintBody
-    : 'forAll' LPAREN forallSelector RPAREN forallWhere?  LBRACE constraintBody RBRACE -> ^(FORALL forallSelector constraintBody forallWhere?)
+    : 'forAll' LPAREN forallSelector RPAREN forallWhere? forallOrder?  LBRACE constraintBody RBRACE -> ^(FORALL forallSelector constraintBody forallWhere? forallOrder?)
     | expression -> ^(CONSTRAINT_EXPRESSION expression)
     ;
 
 forallWhere
     : '.' 'where' LPAREN expression RPAREN -> ^(WHERE expression)
     ;
+
+forallOrder
+    : '.' 'order_desc' LPAREN fieldAccessor RPAREN -> ^(ORDER_DESC fieldAccessor)
+    | '.' 'order_asc' LPAREN fieldAccessor RPAREN -> ^(ORDER_ASC fieldAccessor)
+    ;
+
 
 forallSelector
     : variableDeclaratorId 'in' fieldAccessor -> ^(IN variableDeclaratorId fieldAccessor)
