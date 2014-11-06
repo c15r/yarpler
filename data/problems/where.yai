@@ -1,0 +1,25 @@
+model {
+    class Test {
+        const integer index;
+        var integer b;
+    }
+}
+
+initial {
+    t1 = new Test(index=1, b=0..1);
+    t2 = new Test(index=2, b=0..1);
+    t3 = new Test(index=3, b=0..1);
+    t4 = new Test(index=4, b=0..1);
+    t5 = new Test(index=5, b=0..1);
+    t6 = new Test(index=6, b=0..1);
+}
+
+solve {
+    constraint {
+        forAll(t in Test).where(t.index < 4 and t.index > 1) {
+            t.b == 1
+        }
+    }
+
+    satisfy;
+}

@@ -30,5 +30,12 @@ module Yarpler
         @message = "The constant [#{instance}.#{attribute}] has not been initialized."
       end
     end
+
+    # Indicates that there is an invalid where exception
+    class InvalidWhereExpression < YarplerException
+      def initialize()
+        @message = "The where-Expression is invalid. You tried to use a feature that was not implemented yet."
+      end
+    end
   end
 end

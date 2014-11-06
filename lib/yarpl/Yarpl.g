@@ -47,6 +47,7 @@ tokens {
   VARIABLE;
   VARIABLE_DECLARATOR;
   VARIABLE_DECLARATION;
+  WHERE;
 }
 
 start
@@ -171,8 +172,12 @@ constraintDeclaration
     ;
 
 constraintBody
-    : 'forAll' LPAREN forallSelector RPAREN LBRACE constraintBody RBRACE -> ^(FORALL forallSelector constraintBody)
+    : 'forAll' LPAREN forallSelector RPAREN forallWhere?  LBRACE constraintBody RBRACE -> ^(FORALL forallSelector constraintBody forallWhere?)
     | expression -> ^(CONSTRAINT_EXPRESSION expression)
+    ;
+
+forallWhere
+    : '.' 'where' LPAREN expression RPAREN -> ^(WHERE expression)
     ;
 
 forallSelector

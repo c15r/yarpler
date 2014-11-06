@@ -9,11 +9,13 @@ module Yarpler
     class ForallInterpreter
       attr_reader :forall
       attr_reader :constraints
+      attr_reader :wheres
 
       def initialize(tree, objects, parent = nil)
         @objects = objects
         @forall = Yarpler::Models::Forall.new
         @parent = parent
+        @wheres = []
         @constraints = nil
         process_forall(tree)
       end
@@ -21,11 +23,24 @@ module Yarpler
       private
 
       def process_forall(expression)
+        process_where(expression)
+        @forall.wheres = @wheres
         forall_selector(expression[0])
         if expression[1].to_s == 'FORALL'
           @forall.expression = ForallInterpreter.new(expression[1], @objects, @forall).forall
         else
           @forall.expression = ExpressionInterpreter.new(expression[1]).expression
+
+        end
+      end
+
+      def process_where(expression)
+        return if expression.size <=2
+
+        for i in 2..expression.size
+          if expression[i].to_s == 'WHERE'
+            @wheres.push(ExpressionInterpreter.new(expression[i]).expression)
+          end
         end
       end
 

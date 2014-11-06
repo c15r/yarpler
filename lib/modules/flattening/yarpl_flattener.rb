@@ -58,8 +58,33 @@ class YarplFlattener < Yarpler::Extensions::Process
       new_constraint.expression = replace_selector(new_constraint.expression, forall.variable, obj.to_s,
                                                    forall.range)
       replace_substitute(new_constraint.expression)
-      @constraints << new_constraint
+
+      do_add = true
+
+      forall.wheres.each do |w|
+        expression = w.clone
+        replace_substitute_string(expression, forall.variable, obj.instance_name)
+        do_add &&= eval(evaluate_expression(expression))
+      end
+
+      @constraints << new_constraint if do_add
     end
+  end
+
+  def evaluate_expression(expression)
+    expression_string = ''
+    if expression.is_a? Yarpler::Models::Expression
+      expression_string << evaluate_expression(expression.left)
+      expression_string << ' ' + expression.operator.to_s + ' '
+      expression_string << evaluate_expression(expression.right)
+    elsif expression.is_a? Yarpler::Models::Field
+      expression_string << @problem.objects[expression.variable].get_value(expression.attribute)
+    elsif expression.is_a? Yarpler::Models::Literal
+      expression_string << expression.value
+    else
+      fail Yarpler::Exceptions::InvalidWhereExpression.new
+    end
+    expression_string
   end
 
   def process_field_range(forall)
@@ -79,6 +104,16 @@ class YarplFlattener < Yarpler::Extensions::Process
     elsif constraint.expression.is_a? Yarpler::Models::Expression
       @constraints << constraint
     end
+  end
+
+  def replace_substitute_string(expression, variable_old, variable_new)
+    if expression.is_a? Yarpler::Models::Expression
+      expression.left = replace_substitute_string(expression.left, variable_old, variable_new)
+      expression.right = replace_substitute_string(expression.right, variable_old, variable_new)
+    elsif expression.is_a? Yarpler::Models::Field
+      expression.variable = variable_new if expression.variable == variable_old
+    end
+    expression
   end
 
   def replace_substitute(expression)
