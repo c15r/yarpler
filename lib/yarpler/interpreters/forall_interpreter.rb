@@ -37,21 +37,29 @@ module Yarpler
       end
 
       def process_filters(expression)
-        return if expression.size <=2
+        return if expression.size <= 2
 
-        for i in 2..expression.size
-          if expression[i].to_s == 'WHERE'
-            @where = ExpressionInterpreter.new(expression[i]).expression
-          elsif expression[i].to_s == 'ORDER_ASC'
-            @order = Yarpler::Models::Order.new
-            @order.field = FieldAccessorInterpreter.new(expression[i][0]).field
-            @order.type = 'ASC'
-          elsif expression[i].to_s == 'ORDER_DESC'
-            @order = Yarpler::Models::Order.new
-            @order.field = FieldAccessorInterpreter.new(expression[i][0]).field
-            @order.type = 'DESC'
+        expression[2..expression.size].each do |e|
+          if e.to_s == 'WHERE'
+            @where = ExpressionInterpreter.new(e).expression
+          elsif e.to_s == 'ORDER_ASC'
+            process_order_asc(e)
+          elsif e.to_s == 'ORDER_DESC'
+            process_order_desc(e)
           end
         end
+      end
+
+      def process_order_desc(e)
+        @order = Yarpler::Models::Order.new
+        @order.field = FieldAccessorInterpreter.new(e[0]).field
+        @order.type = 'DESC'
+      end
+
+      def process_order_asc(e)
+        @order = Yarpler::Models::Order.new
+        @order.field = FieldAccessorInterpreter.new(e[0]).field
+        @order.type = 'ASC'
       end
 
       def forall_selector(expression)

@@ -12,3 +12,6 @@ Metrics/LineLength:
 
 Style/CaseIndentation:
   Enabled: false
+
+Lint/Eval:
+  Enabled: false

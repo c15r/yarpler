@@ -52,17 +52,7 @@ class YarplFlattener < Yarpler::Extensions::Process
   end
 
   def process_array_range(forall)
-
-    range = forall.range
-
-    if forall.order.is_a? (Yarpler::Models::Order)
-      if forall.order.type == 'ASC'
-        range.sort! { |a,b| a.get_value(forall.order.field.attribute) <=> b.get_value(forall.order.field.attribute)}
-      else
-        range.sort! { |a,b| b.get_value(forall.order.field.attribute) <=> a.get_value(forall.order.field.attribute)}
-      end
-
-    end
+    range = order_range(forall)
 
     range.each do |obj|
       new_constraint = Yarpler::Models::Constraint.new
@@ -71,32 +61,52 @@ class YarplFlattener < Yarpler::Extensions::Process
                                                    forall.range)
       replace_substitute(new_constraint.expression)
 
-      do_add = true
-
-      if !forall.where.nil?
-        expression = forall.where.clone
-        replace_substitute_string(expression, forall.variable, obj.instance_name)
-        bla = evaluate_expression(expression)
-        do_add &&= eval(bla)
-      end
-
-      @constraints << new_constraint if do_add
+      @constraints << new_constraint if where(forall, obj)
     end
   end
 
-  def evaluate_expression(expression)
-    expression_string = ''
-    if expression.is_a? Yarpler::Models::Expression
-      expression_string << evaluate_expression(expression.left)
-      expression_string << ' ' + expression.operator.to_s + ' '
-      expression_string << evaluate_expression(expression.right)
-    elsif expression.is_a? Yarpler::Models::Field
-      expression_string << @problem.objects[expression.variable].get_value(expression.attribute)
-    elsif expression.is_a? Yarpler::Models::Literal
-      expression_string << expression.value
-    else
-      fail Yarpler::Exceptions::InvalidWhereExpression.new
+  def where(forall, obj)
+    do_add = true
+
+    unless forall.where.nil?
+      expression = forall.where.clone
+      replace_substitute_string(expression, forall.variable, obj.instance_name)
+      bla = evaluate_expression(expression)
+      do_add &&= eval(bla)
     end
+    do_add
+  end
+
+  def order_range(forall)
+    range = forall.range
+
+    if forall.order.is_a? Yarpler::Models::Order
+      if forall.order.type == 'ASC'
+        range.sort! { |a, b| a.get_value(forall.order.field.attribute) <=> b.get_value(forall.order.field.attribute) }
+      else
+        range.sort! { |a, b| b.get_value(forall.order.field.attribute) <=> a.get_value(forall.order.field.attribute) }
+      end
+    end
+    range
+  end
+
+  def evaluate_expression(expression, eval_string = '')
+    if expression.is_a? Yarpler::Models::Expression
+      eval_string << evaluate_expression_inner(expression).to_s
+    elsif expression.is_a? Yarpler::Models::Field
+      eval_string << @problem.objects[expression.variable].get_value(expression.attribute).to_s
+    elsif expression.is_a? Yarpler::Models::Literal
+      eval_string << expression.value.to_s
+    else
+      fail Yarpler::Exceptions::InvalidWhereExpression.new, 'Where Expression is illegal'
+    end
+    eval_string
+  end
+
+  def evaluate_expression_inner(expression)
+    expression_string = evaluate_expression(expression.left)
+    expression_string << ' ' + expression.operator.to_s + ' '
+    expression_string << evaluate_expression(expression.right)
     expression_string
   end
 

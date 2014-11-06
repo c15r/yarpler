@@ -38,7 +38,6 @@ module Yarpler
       def process_count_function_element(function)
         count = Yarpler::Models::CountFunction.new
 
-
         count.element = Yarpler::Interpreters::InstanceInterpreter.new(function[0]).instance
         count.range = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[1]).field
         count

@@ -17,8 +17,8 @@ module Yarpler
         new.range = @range.clone
         new.variable = @variable.clone
         new.expression = @expression.clone
-        new.where = @where.clone if not @where.nil?
-        new.order = @order.clone if not @order.nil?
+        new.where = @where.clone unless @where.nil?
+        new.order = @order.clone unless @order.nil?
         new
       end
     end

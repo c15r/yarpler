@@ -461,11 +461,11 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       elsif function.is_a? Yarpler::Models::SumValueFunction
         translate_sum_value_function(function, problem)
       elsif function.is_a? Yarpler::Models::Cardinality
-        translate_cardinality(function, problem)
+        translate_cardinality(function)
       end
     end
 
-    def translate_cardinality(function, problem)
+    def translate_cardinality(function)
       'card(' + MinizincFieldTranslator.new.resolve_variable_from_field(function.element) + ')'
     end
 
