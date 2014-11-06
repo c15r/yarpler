@@ -25,6 +25,7 @@ outputlist
 output
     : IDENTIFIER '=' DIGITS -> ^(OUTPUT IDENTIFIER DIGITS)
     | IDENTIFIER '=' '{' digitlist '}' -> ^(OUTPUT IDENTIFIER digitlist)
+    | IDENTIFIER '=' DIGITS '..' DIGITS -> ^(OUTPUT IDENTIFIER DIGITS '..' DIGITS)
     ;
 
 digitlist

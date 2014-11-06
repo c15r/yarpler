@@ -22,12 +22,24 @@ module Yarpler
       end
 
       def process_count_function(function)
+        if function.size == 2
+          process_count_function_element(function)
+        elsif function.size == 1
+          process_card_function(function)
+        end
+      end
+
+      def process_card_function(function)
+        count = Yarpler::Models::Cardinality.new
+        count.element = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[0]).field
+        count
+      end
+
+      def process_count_function_element(function)
         count = Yarpler::Models::CountFunction.new
 
-        count.element = Yarpler::Interpreters::InstanceInterpreter.new(function[0]).instance
 
-        # TODO: hier koennen potentiell verschiedene Ranges angegeben werden
-        #       es braeuchte also noch eine Fallunterscheidung...
+        count.element = Yarpler::Interpreters::InstanceInterpreter.new(function[0]).instance
         count.range = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[1]).field
         count
       end

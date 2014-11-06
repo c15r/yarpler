@@ -38,6 +38,7 @@ require 'yarpler/interpreters/set_interpreter'
 require 'yarpler/interpreters/solve_interpreter'
 
 require 'yarpler/models/function'
+require 'yarpler/models/cardinality'
 require 'yarpler/models/absolute'
 require 'yarpler/models/not'
 require 'yarpler/models/constraint'

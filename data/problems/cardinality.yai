@@ -1,0 +1,28 @@
+model {
+    class Item {
+    }
+
+    class Test {
+        var collection Item items;
+    }
+
+
+}
+
+initial {
+    a = new Item();
+    b = new Item();
+    c = new Item();
+
+    t = new Test();
+
+    relation(t.items, {a,b,c});
+}
+
+solve {
+    constraint {
+        count(t.items) == 2
+    }
+
+    satisfy;
+}

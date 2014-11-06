@@ -215,6 +215,7 @@ primeExpression
 
 countExpression
     : fieldAccessor 'in' fieldAccessor -> ^(COUNT_IN fieldAccessor fieldAccessor)
+    | fieldAccessor -> ^(COUNT_IN fieldAccessor)
     ;
     
 sumExpression
