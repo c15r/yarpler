@@ -35,6 +35,7 @@ Gemfile.lock
 
 # intellij idea
 .idea
+yarpler.iml
 
 # generated yarpl files (parser/lexer)
 /lib/yarpl/YarplLexer.rb
