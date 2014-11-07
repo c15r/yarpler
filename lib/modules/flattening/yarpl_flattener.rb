@@ -151,7 +151,20 @@ class YarplFlattener < Yarpler::Extensions::Process
     elsif expression.is_a? Yarpler::Models::Cardinality
       expression.element = replace_substitute_string(expression.element, expression.element.variable, object.instance_name)
     elsif expression.is_a? Yarpler::Models::Literal
-
+    elsif expression.is_a? Yarpler::Models::SumValueFunction
+      # @TODO implement this!
+    elsif expression.is_a? Yarpler::Models::CountFunction
+      # @TODO implement this!
+    elsif expression.is_a? Yarpler::Models::Forall
+      # @TODO implement this!
+    elsif expression.is_a? Yarpler::Models::Instance
+      # @TODO implement this!
+    elsif expression.is_a? Yarpler::Models::Resource
+      # @TODO implement this!
+    elsif expression.is_a? String
+      # do nothing
+    elsif expression.nil?
+      # do nothing
     else
       fail Yarpler::Exceptions::UnsupportedTypeForSubstitutionException.new(expression.class.to_s)
     end

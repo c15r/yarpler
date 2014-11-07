@@ -551,10 +551,17 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     def translate_count_body(attribute, first, obj, variable_to_check)
+
+      operator = '=='
+      if obj.get_variabletype(attribute) == 'VARIABLE_HASMANY'
+        operator = ' in '
+      end
+
+
       code = ''
       code << ',' unless first
       code << 'bool2int('
-      code << variable_to_check + '==' + resolve_variable_from_object_and_attribute_name(obj, attribute)
+      code << variable_to_check + operator + resolve_variable_from_object_and_attribute_name(obj, attribute)
       code << ')'
     end
 

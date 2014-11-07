@@ -65,10 +65,15 @@ initial {
 }
 
 solve {
+  # Kardinalitaet aller Dienstvariablen auf 1 setzen
   constraint {
     forAll(mt in Mitarbeitertag) {
         count(mt.dienste) == 1
     }
+  }
+
+  constraint {
+    count(d1 in Mitarbeitertag.dienste) == d1.anzahl
   }
 
   satisfy;
