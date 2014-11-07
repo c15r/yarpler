@@ -70,7 +70,7 @@ class YarplFlattener < Yarpler::Extensions::Process
 
     unless forall.where.nil?
       expression = forall.where.clone
-      replace_substitute_string(expression, forall.variable, obj.instance_name)
+      replace_placeholder_string(expression, forall.variable, obj.instance_name)
       bla = evaluate_expression(expression)
       do_add &&= eval(bla)
     end
@@ -129,10 +129,10 @@ class YarplFlattener < Yarpler::Extensions::Process
     end
   end
 
-  def replace_substitute_string(expression, variable_old, variable_new)
+  def replace_placeholder_string(expression, variable_old, variable_new)
     if expression.is_a? Yarpler::Models::Expression
-      expression.left = replace_substitute_string(expression.left, variable_old, variable_new)
-      expression.right = replace_substitute_string(expression.right, variable_old, variable_new)
+      expression.left = replace_placeholder_string(expression.left, variable_old, variable_new)
+      expression.right = replace_placeholder_string(expression.right, variable_old, variable_new)
     elsif expression.is_a? Yarpler::Models::Field
       expression.variable = variable_new if expression.variable == variable_old
     end
@@ -149,7 +149,7 @@ class YarplFlattener < Yarpler::Extensions::Process
       object = Yarpler::Models::Problem.instance.objects[expression.variable.to_s]
       expression = object.get_value(expression.attribute.to_s).to[0].instance_name
     elsif expression.is_a? Yarpler::Models::Cardinality
-      expression.element = replace_substitute_string(expression.element, expression.element.variable, object.instance_name)
+      # @TODO implement this!
     elsif expression.is_a? Yarpler::Models::Literal
     elsif expression.is_a? Yarpler::Models::SumValueFunction
       # @TODO implement this!
@@ -198,6 +198,8 @@ class YarplFlattener < Yarpler::Extensions::Process
         field.attribute = expression.attribute
         expression = field
       end
+    elsif expression.is_a? Yarpler::Models::Cardinality
+      expression.element = replace_placeholder_string(expression.element, placeholder_variable, real_variable)
     elsif expression.is_a? Yarpler::Models::Forall
       expression.range = replace_selector(expression.range, placeholder_variable, real_variable, range)
       expression.expression = replace_selector(expression.expression, placeholder_variable, real_variable, range)
