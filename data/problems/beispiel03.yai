@@ -55,14 +55,14 @@ initial {
   relation(m2.tage, {m2t1,m2t2});
   relation(m3.tage, {m3t1,m3t2});
 
-  # Mögliche Dienste pro Mitarbeiter
+  # Moegliche Dienste pro Mitarbeiter
   relation(m1.moeglich, {d1,d2,f});
   relation(m2.moeglich, {d1,d2,d3,f});
   relation(m3.moeglich, {d2,d3,f});
 }
 
 solve {
-  # Dienstschlüssel einhalten
+  # Dienstschluessel einhalten
   constraint {
     count(d1 in Dienst.dienst) == d1.anzahl
   }
@@ -84,7 +84,7 @@ solve {
     }
   }
 
-  # Mitarbeiter kriegen nur mögliche Dienste
+  # Mitarbeiter kriegen nur moegliche Dienste
   constraint {
       forAll(m in Mitarbeiter) {
           forAll(mt in m.tage) {

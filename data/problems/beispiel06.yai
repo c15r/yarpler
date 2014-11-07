@@ -69,7 +69,7 @@ initial {
 
   # Definition von Relationen
 
-  # Mögliche Dienste pro Mitarbeiter
+  # Moegliche Dienste pro Mitarbeiter
   relation(m1.tage, {m1t1,m1t2,m1t3,m1t4,m1t5});
   relation(m2.tage, {m2t1,m2t2,m2t3,m2t4,m2t5});
   relation(m3.tage, {m3t1,m3t2,m3t3,m3t4,m3t5});
@@ -138,7 +138,7 @@ solve {
         }
     }
 
-    # Mitarbeiter kriegen nur mögliche Dienste
+    # Mitarbeiter kriegen nur moegliche Dienste
     constraint {
         forAll(m in Mitarbeiter) {
             forAll(mt in m.tage) {
@@ -148,7 +148,7 @@ solve {
     }
 
 
-    # Dienstschlüssel einhalten
+    # Dienstschluessel einhalten
     constraint {
         forAll(d in Diensttyp) {
             count(d in Mitarbeitertag.dienst) == d.anzahl
