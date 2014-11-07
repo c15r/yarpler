@@ -59,7 +59,7 @@ class YarplFlattener < Yarpler::Extensions::Process
       new_constraint.expression = forall.expression.clone
       new_constraint.expression = replace_selector(new_constraint.expression, forall.variable, obj.to_s,
                                                    forall.range)
-      replace_substitute(new_constraint.expression)
+      replace_substitute(new_constraint.expression, obj)
 
       @constraints << new_constraint if where(forall, obj)
     end
@@ -139,15 +139,21 @@ class YarplFlattener < Yarpler::Extensions::Process
     expression
   end
 
-  def replace_substitute(expression)
+  def replace_substitute(expression, object)
     if expression.is_a? Yarpler::Models::Expression
-      expression.left = replace_substitute(expression.left)
-      expression.right = replace_substitute(expression.right)
+      expression.left = replace_substitute(expression.left, object)
+      expression.right = replace_substitute(expression.right, object)
     elsif expression.is_a? Yarpler::Models::Field
-      expression.variable = replace_substitute(expression.variable)
+      expression.variable = replace_substitute(expression.variable, object)
     elsif expression.is_a? Yarpler::Models::Substitute
       object = Yarpler::Models::Problem.instance.objects[expression.variable.to_s]
       expression = object.get_value(expression.attribute.to_s).to[0].instance_name
+    elsif expression.is_a? Yarpler::Models::Cardinality
+      expression.element = replace_substitute_string(expression.element, expression.element.variable, object.instance_name)
+    elsif expression.is_a? Yarpler::Models::Literal
+
+    else
+      fail Yarpler::Exceptions::UnsupportedTypeForSubstitutionException.new(expression.class.to_s)
     end
     expression
   end

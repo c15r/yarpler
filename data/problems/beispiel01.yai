@@ -2,28 +2,27 @@ model {
       class Tag {
       }
 
-      class Diensttyp {
+      class Dienst {
         var integer anzahl;
       }
 
-      class Dienst {
-        var Diensttyp dienst;
-        const Tag tag;
+      class Mitarbeiter {
       }
 
-      class Mitarbeiter {
-        const collection Diensttyp moeglich;
-        const collection Dienst tage;
+      class Mitarbeitertag {
+        var collection Dienst dienste;
+        const Mitarbeiter ma;
+        const Tag tag;
       }
 }
 
 initial {
 
-  # Definition von Diensttypen
-  d1 = new Diensttyp(anzahl=3);
-  d2 = new Diensttyp(anzahl=1);
-  d3 = new Diensttyp(anzahl=1);
-  f = new Diensttyp();
+  # Definition von Diensten
+  d1 = new Dienst(anzahl=1);
+  d2 = new Dienst(anzahl=1);
+  d3 = new Dienst(anzahl=1);
+  f = new Dienst();
 
   # Definition von Tagen
   t1 = new Tag();
@@ -34,13 +33,13 @@ initial {
   m2 = new Mitarbeiter();
   m3 = new Mitarbeiter();
 
-  # Definition von Dienst
-  m1t1 = new Dienst();
-  m1t2 = new Dienst();
-  m2t1 = new Dienst();
-  m2t2 = new Dienst();
-  m3t1 = new Dienst();
-  m3t2 = new Dienst();
+  # Definition von Mitarbeitertagen
+  m1t1 = new Mitarbeitertag();
+  m1t2 = new Mitarbeitertag();
+  m2t1 = new Mitarbeitertag();
+  m2t2 = new Mitarbeitertag();
+  m3t1 = new Mitarbeitertag();
+  m3t2 = new Mitarbeitertag();
 
   # Definition von Relationen
   relation(m1t1.tag, t1);
@@ -50,38 +49,26 @@ initial {
   relation(m3t1.tag, t1);
   relation(m3t2.tag, t2);
 
-  # Tage pro Mitarbeiter
-  relation(m1.tage, {m1t1,m1t2});
-  relation(m2.tage, {m2t1,m2t2});
-  relation(m3.tage, {m3t1,m3t2});
+  relation(m1t1.ma, m1);
+  relation(m1t2.ma, m1);
+  relation(m2t1.ma, m2);
+  relation(m2t2.ma, m2);
+  relation(m3t1.ma, m3);
+  relation(m3t2.ma, m3);
 
-  # Moegliche Dienste pro Mitarbeiter
-  relation(m1.moeglich, {d1,d2,f});
-  relation(m2.moeglich, {d1,d2,d3,f});
-  relation(m3.moeglich, {d2,d3,f});
+  relation(m1t1.dienste, {d1,d2,d3,f});
+  relation(m1t2.dienste, {d1,d2,d3,f});
+  relation(m2t1.dienste, {d1,d2,d3,f});
+  relation(m2t2.dienste, {d1,d2,d3,f});
+  relation(m3t1.dienste, {d1,d2,d3,f});
+  relation(m3t2.dienste, {d1,d2,d3,f});
 }
 
 solve {
-  # Dienstschluessel einhalten
   constraint {
-    count(d1 in Dienst.dienst) == d1.anzahl
-  }
-
-  constraint {
-    count(d2 in Dienst.dienst) == d2.anzahl
-  }
-
-  constraint {
-    count(d3 in Dienst.dienst) == d3.anzahl
-  }
-
-  # Mitarbeiter kriegen nur moegliche Dienste
-  constraint {
-      forAll(m in Mitarbeiter) {
-          forAll(mt in m.tage) {
-              mt.dienst in m.moeglich
-          }
-      }
+    forAll(mt in Mitarbeitertag) {
+        count(mt.dienste) == 1
+    }
   }
 
   satisfy;

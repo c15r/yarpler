@@ -31,6 +31,13 @@ module Yarpler
       end
     end
 
+    # Indicates that there was a constant used without initialization
+    class UnsupportedTypeForSubstitutionException < YarplerException
+      def initialize(type)
+        @message = "The type [#{type}] can not be used to enclose substitution."
+      end
+    end
+
     # Indicates that there is an invalid where exception
     class InvalidWhereExpression < YarplerException
       def initialize
