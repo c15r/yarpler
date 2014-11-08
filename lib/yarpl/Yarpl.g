@@ -25,7 +25,7 @@ tokens {
   FUNCTION_EXPRESSION;
   HASONE;
   HASMANY;
-  IN;
+  FROM;
   INDEX_ACCESSOR;
   INITIAL_DECLARATION;
   INSTANCE_ACCESSOR;
@@ -189,7 +189,7 @@ forallOrder
 
 
 forallSelector
-    : variableDeclaratorId 'in' fieldAccessor -> ^(IN variableDeclaratorId fieldAccessor)
+    : variableDeclaratorId 'from' fieldAccessor -> ^(FROM variableDeclaratorId fieldAccessor)
     ;
 
 expression
@@ -227,7 +227,7 @@ primeExpression
     ;
 
 sumExpression
-    : expressionList -> ^(SUM expressionList)
+    : forallSelector ',' fieldAccessor  -> ^(SUM forallSelector fieldAccessor)
     ;
 
 expressionList

@@ -35,11 +35,11 @@ solve {
     }
 
     constraint {
-        sum(sack.items.weight) == sack.currentWeight
+        sum(d from sack.items, d.weight) == sack.currentWeight
     }
 
     constraint {
-        sum(sack.items.value) == sack.totalValue
+        sum(d from sack.items, d.value) == sack.totalValue
     }
 
     maximize sack.totalValue;

@@ -21,7 +21,7 @@ initial {
 
 solve {
     constraint {
-        count(i in t.items) == 2
+        count(i from t.items) == 2
     }
 
     satisfy;

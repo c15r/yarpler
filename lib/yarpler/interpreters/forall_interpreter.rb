@@ -64,7 +64,7 @@ module Yarpler
 
       def forall_selector(expression)
         case expression.to_s
-          when 'IN'
+          when 'FROM'
             @forall.range = forall_range_builder(expression[1])
             @forall.variable = expression[0].to_s
         end

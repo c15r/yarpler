@@ -31,7 +31,7 @@ initial {
 solve {
   # Dienstschlüssel einhalten
   constraint {
-    count(d in Mitarbeitertag.dienst where d==d1) == d1.anzahl
+    count(d from Mitarbeitertag.dienst where d==d1) == d1.anzahl
   }
 
   satisfy;

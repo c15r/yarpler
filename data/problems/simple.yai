@@ -109,30 +109,30 @@ solve {
 
     # Summieren der Arbeitszeit pro Tag
     constraint {
-        forall(mt in Mitarbeitertag) {
-            sum(mt.dienst.dauer) == mt.dauer
+        forall(mt from Mitarbeitertag) {
+            sum(d from mt.dienst, d.dauer) == mt.dauer
         }
     }
 
     # Summieren der Arbeitszeit im gesamten Plan pro Mitarbeiter
     constraint {
-        forall(m in Mitarbeiter) {
-            sum(m.tage.dauer) == m.istarbeitszeit
+        forall(m from Mitarbeiter) {
+            sum(t from m.tage, t.dauer) == m.istarbeitszeit
 
         }
     }
 
     # Differenz von Soll- und Istarbeitszeit berechnen pro Mitarbeiter
     constraint {
-        forall(m in Mitarbeiter) {
+        forall(m from Mitarbeiter) {
             m.istarbeitszeit - m.sollarbeitszeit == m.differenz
         }
     }
 
     # Nach D3 kein D1
     constraint {
-        forall(m in Mitarbeiter) {
-            forall(mt in m.tage) {
+        forall(m from Mitarbeiter) {
+            forall(mt from m.tage) {
                mt.dienst!=d3 or mt[1].dienst!=d1
             }
         }
@@ -140,8 +140,8 @@ solve {
 
     # Mitarbeiter kriegen nur moegliche Dienste
     constraint {
-        forall(m in Mitarbeiter) {
-            forall(mt in m.tage) {
+        forall(m from Mitarbeiter) {
+            forall(mt from m.tage) {
                 mt.dienst in m.moeglich
             }
         }
@@ -150,8 +150,8 @@ solve {
 
     # Dienstschluessel einhalten
     constraint {
-        forall(d in Diensttyp) {
-            count(di in Mitarbeitertag.dienst where di==d) == d.anzahl
+        forall(d from Diensttyp) {
+            count(di from Mitarbeitertag.dienst where di==d) == d.anzahl
         }
     }
 
