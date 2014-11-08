@@ -15,7 +15,7 @@ model {
 
 initial {
   # Dienstschlüssel definieren
-  end = new Plan(anzahld1=2, anzahld2=1, anzahld3=1);
+  end = new Plan(anzahld1=3, anzahld2=1, anzahld3=1);
 
   # Definition von möglichen Diensten
   d1 = new Dienst();
@@ -31,7 +31,7 @@ initial {
 
 solve {
     constraint {
-        count(d1 in Mitarbeiter.dienst) == end.anzahld1
+        count(d in Mitarbeiter.dienst where d==d1) == end.anzahld1
     }
 
     satisfy;

@@ -214,7 +214,7 @@ signExpression
     ;
 
 functionExpression
-    : 'count' LPAREN countExpression RPAREN -> ^(FUNCTION_EXPRESSION countExpression)
+    : 'count' LPAREN forallSelector forallWhere? RPAREN -> ^(FUNCTION_EXPRESSION ^(COUNT_IN forallSelector forallWhere?))
     | 'sum' LPAREN sumExpression RPAREN -> ^(FUNCTION_EXPRESSION sumExpression)
     | 'abs' LPAREN primeExpression RPAREN -> ^(ABS_EXPRESSION primeExpression)
     | primeExpression ('in' primeExpression)*
@@ -226,11 +226,12 @@ primeExpression
     | LPAREN expression /* recursion!!! */ RPAREN -> ^(EXPRESSION expression)
     ;
 
+/*
 countExpression
     : fieldAccessor 'in' fieldAccessor -> ^(COUNT_IN fieldAccessor fieldAccessor)
     | fieldAccessor -> ^(COUNT_IN fieldAccessor)
     ;
-    
+*/
 sumExpression
     : expressionList -> ^(SUM expressionList)
     ;

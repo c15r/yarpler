@@ -64,15 +64,15 @@ initial {
 solve {
   # Dienstschluessel einhalten
   constraint {
-    count(d1 in Dienst.dienst) == d1.anzahl
+    count(d in Dienst.dienst where d==d1) == d1.anzahl
   }
 
   constraint {
-    count(d2 in Dienst.dienst) == d2.anzahl
+    count(d in Dienst.dienst where d==d2) == d2.anzahl
   }
 
   constraint {
-    count(d3 in Dienst.dienst) == d3.anzahl
+    count(d in Dienst.dienst where d==d3) == d3.anzahl
   }
 
   # Nach D1 kein D2

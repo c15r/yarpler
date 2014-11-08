@@ -6,6 +6,7 @@ module Yarpler
     class CountFunction < Function
       attr_accessor :element
       attr_accessor :range
+      attr_accessor :where
 
       def initialize
       end
@@ -18,6 +19,7 @@ module Yarpler
         new = CountFunction.new
         new.element = @element.clone
         new.range = @range.clone
+        new.where = @where.clone unless @where.nil?
         new
       end
     end

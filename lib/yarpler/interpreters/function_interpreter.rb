@@ -31,15 +31,26 @@ module Yarpler
 
       def process_card_function(function)
         count = Yarpler::Models::Cardinality.new
-        count.element = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[0]).field
+        count.element = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[0][1]).field
         count
       end
 
       def process_count_function_element(function)
         count = Yarpler::Models::CountFunction.new
 
-        count.element = Yarpler::Interpreters::InstanceInterpreter.new(function[0]).instance
-        count.range = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[1]).field
+        count.where = ExpressionInterpreter.new(function[1]).expression
+        if count.where.operator.to_s != '==' or !count.where.left.is_a? Yarpler::Models::Instance or !count.where.right.is_a? Yarpler::Models::Instance
+          fail Yarpler::Exceptions::InvalidCountExpression
+        end
+
+        if count.where.left.variable == function[0][0].to_s
+          count.element = count.where.right
+        elsif count.where.right.variable == function[0][0].to_s
+          count.element = count.where.left
+        else
+          fail Yarpler::Exceptions::InvalidCountExpressionNoSubstitution
+        end
+        count.range = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[0][1]).field
         count
       end
 

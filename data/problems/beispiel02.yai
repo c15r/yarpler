@@ -69,25 +69,16 @@ solve {
   # Kardinalitaet aller Dienstvariablen auf 1 setzen
   constraint {
     forAll(mt in Mitarbeitertag) {
-        count(mt.dienste) == 1
+        count(d in mt.dienste) == 1
     }
   }
 
   # Summe aller Dienste D1, D2, D3 ueber alle Mitarbeiter und Tage ist je 1
   constraint {
-     forAll(d in Dienst).where(d.istfrei==0) {
-       count(d in Mitarbeitertag.dienste) == d.anzahl
+     forAll(d in Dienst where d.istfrei==0) {
+       count(di in Mitarbeitertag.dienste where di==d) == d.anzahl
      }
   }
-
-  # Nach D1 kein D2
-    constraint {
-      forAll(m in Mitarbeiter) {
-        forAll(mt in m.tage) {
-          mt.dienst!=d1 or mt[1].dienst!=d2
-        }
-      }
-    }
 
   satisfy;
 }

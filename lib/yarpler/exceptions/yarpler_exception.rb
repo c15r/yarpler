@@ -44,5 +44,19 @@ module Yarpler
         @message = 'The where-Expression is invalid. You tried to use a feature that was not implemented yet.'
       end
     end
+
+    # Indicates that there is an invalid count
+    class InvalidCountExpression < YarplerException
+      def initialize
+        @message = 'The where-Expression for a count function is invalid. You are only allowed to check if instance == substitution variable.'
+      end
+    end
+
+    # Indicates that there is an invalid count, because the substitution variable was not used in where
+    class InvalidCountExpressionNoSubstitution < YarplerException
+      def initialize
+        @message = 'The where-Expression did not contain a substitution variable. Example: instance == substitution variable.'
+      end
+    end
   end
 end

@@ -151,7 +151,7 @@ solve {
     # Dienstschluessel einhalten
     constraint {
         forAll(d in Diensttyp) {
-            count(d in Mitarbeitertag.dienst) == d.anzahl
+            count(di in Mitarbeitertag.dienst where di==d) == d.anzahl
         }
     }
 
