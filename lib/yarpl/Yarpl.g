@@ -174,17 +174,17 @@ constraintDeclaration
     ;
 
 constraintBody
-    : 'forAll' LPAREN forallSelector RPAREN forallWhere? forallOrder?  LBRACE constraintBody RBRACE -> ^(FORALL forallSelector constraintBody forallWhere? forallOrder?)
+    : 'forAll' LPAREN forallSelector forallWhere? forallOrder? RPAREN LBRACE constraintBody RBRACE -> ^(FORALL forallSelector constraintBody forallWhere? forallOrder?)
     | expression -> ^(CONSTRAINT_EXPRESSION expression)
     ;
 
 forallWhere
-    : '.' 'where' LPAREN expression RPAREN -> ^(WHERE expression)
+    : 'where' expression -> ^(WHERE expression)
     ;
 
 forallOrder
-    : '.' 'order_desc' LPAREN fieldAccessor RPAREN -> ^(ORDER_DESC fieldAccessor)
-    | '.' 'order_asc' LPAREN fieldAccessor RPAREN -> ^(ORDER_ASC fieldAccessor)
+    : 'order' 'by' fieldAccessor 'desc' -> ^(ORDER_DESC fieldAccessor)
+    | 'order' 'by' fieldAccessor 'asc'? -> ^(ORDER_ASC fieldAccessor)
     ;
 
 
