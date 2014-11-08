@@ -59,7 +59,6 @@ class YarplFlattener < Yarpler::Extensions::Process
       new_constraint.expression = forall.expression.clone
       new_constraint.expression = replace_selector(new_constraint.expression, forall.variable, obj.to_s,
                                                    forall.range)
-      replace_substitute(new_constraint.expression, obj)
 
       @constraints << new_constraint if where(forall, obj)
     end
@@ -139,38 +138,6 @@ class YarplFlattener < Yarpler::Extensions::Process
     expression
   end
 
-  def replace_substitute(expression, object)
-    if expression.is_a? Yarpler::Models::Expression
-      expression.left = replace_substitute(expression.left, object)
-      expression.right = replace_substitute(expression.right, object)
-    elsif expression.is_a? Yarpler::Models::Field
-      expression.variable = replace_substitute(expression.variable, object)
-    elsif expression.is_a? Yarpler::Models::Substitute
-      object = Yarpler::Models::Problem.instance.objects[expression.variable.to_s]
-      expression = object.get_value(expression.attribute.to_s).to[0].instance_name
-    elsif expression.is_a? Yarpler::Models::Cardinality
-      # @TODO implement this!
-    elsif expression.is_a? Yarpler::Models::Literal
-    elsif expression.is_a? Yarpler::Models::SumValueFunction
-      # @TODO implement this!
-    elsif expression.is_a? Yarpler::Models::CountFunction
-      # @TODO implement this!
-    elsif expression.is_a? Yarpler::Models::Forall
-      # @TODO implement this!
-    elsif expression.is_a? Yarpler::Models::Instance
-      # @TODO implement this!
-    elsif expression.is_a? Yarpler::Models::Resource
-      # @TODO implement this!
-    elsif expression.is_a? String
-      # do nothing
-    elsif expression.nil?
-      # do nothing
-    else
-      fail Yarpler::Exceptions::UnsupportedTypeForSubstitutionException.new(expression.class.to_s)
-    end
-    expression
-  end
-
   # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def replace_selector(expression, placeholder_variable, real_variable, range)
     if expression.is_a? Yarpler::Models::Expression
@@ -204,11 +171,7 @@ class YarplFlattener < Yarpler::Extensions::Process
       expression.range = replace_selector(expression.range, placeholder_variable, real_variable, range)
       expression.expression = replace_selector(expression.expression, placeholder_variable, real_variable, range)
     elsif expression.is_a? Yarpler::Models::Field
-      if expression.variable.is_a? Yarpler::Models::Substitute
-        expression.variable = replace_selector(expression.variable, placeholder_variable, real_variable, range)
-      elsif expression.variable == placeholder_variable
-        expression.variable = real_variable
-      end
+      expression.variable = real_variable if expression.variable == placeholder_variable
     elsif field_or_instance?(expression, placeholder_variable)
       expression.variable = real_variable
     elsif count_function?(expression)
@@ -221,9 +184,8 @@ class YarplFlattener < Yarpler::Extensions::Process
   def field_or_instance?(expression, placeholder_variable)
     is_field = (expression.is_a? Yarpler::Models::Field)
     is_instance = (expression.is_a? Yarpler::Models::Instance)
-    is_substitute = (expression.is_a? Yarpler::Models::Substitute)
 
-    is_field_or_instance =  is_field || is_instance || is_substitute
+    is_field_or_instance =  is_field || is_instance
     is_field_or_instance && (expression.variable == placeholder_variable)
   end
 
