@@ -174,7 +174,7 @@ constraintDeclaration
     ;
 
 constraintBody
-    : 'forAll' LPAREN forallSelector forallWhere? forallOrder? RPAREN LBRACE constraintBody RBRACE -> ^(FORALL forallSelector constraintBody forallWhere? forallOrder?)
+    : 'forall' LPAREN forallSelector forallWhere? forallOrder? RPAREN LBRACE constraintBody RBRACE -> ^(FORALL forallSelector constraintBody forallWhere? forallOrder?)
     | expression -> ^(CONSTRAINT_EXPRESSION expression)
     ;
 
@@ -226,12 +226,6 @@ primeExpression
     | LPAREN expression /* recursion!!! */ RPAREN -> ^(EXPRESSION expression)
     ;
 
-/*
-countExpression
-    : fieldAccessor 'in' fieldAccessor -> ^(COUNT_IN fieldAccessor fieldAccessor)
-    | fieldAccessor -> ^(COUNT_IN fieldAccessor)
-    ;
-*/
 sumExpression
     : expressionList -> ^(SUM expressionList)
     ;

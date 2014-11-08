@@ -16,7 +16,7 @@ initial {
 
 solve {
     constraint {
-        forAll(t in Test order by t.index desc) {
+        forall(t in Test order by t.index desc) {
             t.b == 1
         }
     }

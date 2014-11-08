@@ -1,7 +1,7 @@
 module Yarpler
   module Models
     ##
-    # Model for an index selector in a forAll clause
+    # Model for an index selector in a forall clause
     class Index
       attr_accessor :variable
       attr_accessor :index

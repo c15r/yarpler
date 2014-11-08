@@ -16,19 +16,19 @@ initial {
 
 solve {
     constraint {
-        forAll(t in Test where t.index > 2 order by t.index desc) {
+        forall(t in Test where t.index > 2 order by t.index desc) {
             t.b == 1
         }
     }
 
     constraint {
-        forAll(t in Test) {
+        forall(t in Test) {
             t.b >= 0
         }
     }
 
     constraint {
-        forAll(t in Test where t.index == 2) {
+        forall(t in Test where t.index == 2) {
             t.b == 7
         }
     }

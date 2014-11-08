@@ -77,8 +77,8 @@ solve {
 
   # Nach D1 kein D2
   constraint {
-    forAll(m in Mitarbeiter) {
-      forAll(mt in m.tage) {
+    forall(m in Mitarbeiter) {
+      forall(mt in m.tage) {
         mt.dienst!=d1 or mt[1].dienst!=d2
       }
     }
@@ -86,8 +86,8 @@ solve {
 
   # Mitarbeiter kriegen nur moegliche Dienste
   constraint {
-      forAll(m in Mitarbeiter) {
-          forAll(mt in m.tage) {
+      forall(m in Mitarbeiter) {
+          forall(mt in m.tage) {
               mt.dienst in m.moeglich
           }
       }
