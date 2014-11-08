@@ -75,7 +75,7 @@ solve {
 
   # Summe aller Dienste D1, D2, D3 ueber alle Mitarbeiter und Tage ist je 1
   constraint {
-     forAll(d in Dienst).where(d.istfrei==0) {
+     forAll(d in Dienst whered.istfrei==0) {
        count(d in Mitarbeitertag.dienste) == d.anzahl
      }
   }
