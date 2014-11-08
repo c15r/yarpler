@@ -20,9 +20,7 @@ initial {
 }
 
 solve {
-    constraint {
-        count(i from t.items) == 2
-    }
+    constraint count(i from t.items) == 2;
 
     satisfy;
 }

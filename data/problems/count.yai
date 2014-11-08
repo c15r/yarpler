@@ -30,9 +30,7 @@ initial {
 }
 
 solve {
-    constraint {
-        count(d from Mitarbeiter.dienst where d==d1) == end.anzahld1
-    }
+    constraint count(d from Mitarbeiter.dienst where d==d1) == end.anzahld1;
 
     satisfy;
 }

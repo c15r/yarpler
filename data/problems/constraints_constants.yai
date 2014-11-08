@@ -10,9 +10,7 @@ initial {
 }
 
 solve {
-  constraint {
-      d1.anzahl == d2.anzahl
-  }
+  constraint d1.anzahl == d2.anzahl;
 
   satisfy;
 

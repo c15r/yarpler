@@ -15,11 +15,9 @@ initial {
 }
 
 solve {
-    constraint {
-        forall(t from Test order by t.index desc) {
-            t.b == 1
-        }
-    }
+    constraint forall(t from Test order by t.index desc) {
+      t.b == 1
+    };
 
     satisfy;
 }

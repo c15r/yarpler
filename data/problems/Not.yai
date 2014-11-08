@@ -10,9 +10,7 @@ initial {
 }
 
 solve {
-    constraint {
-        not(t.a == t.b)
-    }
+    constraint not(t.a == t.b);
 
     satisfy;
 }

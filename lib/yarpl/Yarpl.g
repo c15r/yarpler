@@ -170,7 +170,7 @@ relationDeclaration
     ;
 
 constraintDeclaration
-    : 'constraint' LBRACE constraintBody RBRACE -> ^(CONSTRAINT_DECLARATION constraintBody)
+    : 'constraint' constraintBody ';' -> ^(CONSTRAINT_DECLARATION constraintBody)
     ;
 
 constraintBody

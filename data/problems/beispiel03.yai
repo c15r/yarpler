@@ -63,35 +63,25 @@ initial {
 
 solve {
   # Dienstschluessel einhalten
-  constraint {
-    count(d from Dienst.dienst where d==d1) == d1.anzahl
-  }
+  constraint count(d from Dienst.dienst where d==d1) == d1.anzahl;
 
-  constraint {
-    count(d from Dienst.dienst where d==d2) == d2.anzahl
-  }
+  constraint count(d from Dienst.dienst where d==d2) == d2.anzahl;
 
-  constraint {
-    count(d from Dienst.dienst where d==d3) == d3.anzahl
-  }
+  constraint count(d from Dienst.dienst where d==d3) == d3.anzahl;
 
   # Nach D1 kein D2
-  constraint {
-    forall(m from Mitarbeiter) {
-      forall(mt from m.tage) {
-        mt.dienst!=d1 or mt[1].dienst!=d2
-      }
+  constraint forall(m from Mitarbeiter) {
+    forall(mt from m.tage) {
+      mt.dienst!=d1 or mt[1].dienst!=d2
     }
-  }
+  };
 
   # Mitarbeiter kriegen nur moegliche Dienste
-  constraint {
-      forall(m from Mitarbeiter) {
-          forall(mt from m.tage) {
-              mt.dienst in m.moeglich
-          }
-      }
-  }
+  constraint forall(m from Mitarbeiter) {
+    forall(mt from m.tage) {
+      mt.dienst in m.moeglich
+    }
+  };
 
   satisfy;
 }

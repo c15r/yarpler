@@ -15,23 +15,17 @@ initial {
 }
 
 solve {
-    constraint {
-        forall(t from Test where t.index > 2 order by t.index desc) {
-            t.b == 1
-        }
-    }
+    constraint forall(t from Test where t.index > 2 order by t.index desc) {
+      t.b == 1
+    };
 
-    constraint {
-        forall(t from Test) {
-            t.b >= 0
-        }
-    }
+    constraint forall(t from Test) {
+      t.b >= 0
+    };
 
-    constraint {
-        forall(t from Test where t.index == 2) {
-            t.b == 7
-        }
-    }
+    constraint forall(t from Test where t.index == 2) {
+      t.b == 7
+    };
 
     satisfy;
 }

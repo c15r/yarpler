@@ -108,52 +108,39 @@ initial {
 solve {
 
     # Summieren der Arbeitszeit pro Tag
-    constraint {
-        forall(mt from Mitarbeitertag) {
-            sum(d from mt.dienst, d.dauer) == mt.dauer
-        }
-    }
+    constraint forall(mt from Mitarbeitertag) {
+      sum(d from mt.dienst, d.dauer) == mt.dauer
+    };
 
     # Summieren der Arbeitszeit im gesamten Plan pro Mitarbeiter
-    constraint {
-        forall(m from Mitarbeiter) {
-            sum(t from m.tage, t.dauer) == m.istarbeitszeit
-
-        }
-    }
+    constraint forall(m from Mitarbeiter) {
+      sum(t from m.tage, t.dauer) == m.istarbeitszeit
+    };
 
     # Differenz von Soll- und Istarbeitszeit berechnen pro Mitarbeiter
-    constraint {
-        forall(m from Mitarbeiter) {
-            m.istarbeitszeit - m.sollarbeitszeit == m.differenz
-        }
-    }
+    constraint forall(m from Mitarbeiter) {
+      m.istarbeitszeit - m.sollarbeitszeit == m.differenz
+    };
 
     # Nach D3 kein D1
-    constraint {
-        forall(m from Mitarbeiter) {
-            forall(mt from m.tage) {
-               mt.dienst!=d3 or mt[1].dienst!=d1
-            }
-        }
-    }
+    constraint forall(m from Mitarbeiter) {
+      forall(mt from m.tage) {
+        mt.dienst!=d3 or mt[1].dienst!=d1
+      }
+    };
 
     # Mitarbeiter kriegen nur moegliche Dienste
-    constraint {
-        forall(m from Mitarbeiter) {
-            forall(mt from m.tage) {
-                mt.dienst in m.moeglich
-            }
-        }
-    }
+    constraint forall(m from Mitarbeiter) {
+      forall(mt from m.tage) {
+        mt.dienst in m.moeglich
+      }
+    };
 
 
     # Dienstschluessel einhalten
-    constraint {
-        forall(d from Diensttyp) {
-            count(di from Mitarbeitertag.dienst where di==d) == d.anzahl
-        }
-    }
+    constraint forall(d from Diensttyp) {
+      count(di from Mitarbeitertag.dienst where di==d) == d.anzahl
+    };
 
     minimize abs(m1.differenz) + abs(m2.differenz) + abs(m3.differenz) + abs(m4.differenz);
 }

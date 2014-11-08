@@ -108,13 +108,11 @@ initial {
 solve {
 
     # Mitarbeiter kriegen nur moegliche Dienste
-    constraint {
-        forall(m from Mitarbeiter) {
-            forall(mt from m.tage) {
-                mt.dienst in m.moeglich
-            }
+    constraint forall(m from Mitarbeiter) {
+        forall(mt from m.tage) {
+            mt.dienst in m.moeglich
         }
-    }
+    };
 
 
     satisfy;

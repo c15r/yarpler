@@ -13,13 +13,9 @@ initial {
 
 
 solve {
-    constraint {
-      d1.anzahl == d2.anzahl
-    }
+    constraint d1.anzahl == d2.anzahl;
 
-    constraint {
-        d3.anzahl == d4.anzahl
-    }
+    constraint d3.anzahl == d4.anzahl;
 
     satisfy;
 }
