@@ -55,7 +55,6 @@ require 'yarpler/models/relation'
 require 'yarpler/models/resource'
 require 'yarpler/models/solution'
 require 'yarpler/models/solve_instruction'
-require 'yarpler/models/sum_function'
 require 'yarpler/models/sum_value_function'
 require 'yarpler/models/order'
 

@@ -456,8 +456,6 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     def translate(function, problem)
       if function.is_a? Yarpler::Models::CountFunction
         translate_count_function(function, problem)
-      elsif function.is_a? Yarpler::Models::SumFunction
-        translate_sum_function(function, problem)
       elsif function.is_a? Yarpler::Models::SumValueFunction
         translate_sum_value_function(function, problem)
       elsif function.is_a? Yarpler::Models::Cardinality
@@ -517,22 +515,6 @@ class MinizincTranslator < Yarpler::Extensions::Translator
           operator = '=='
       end
       operator
-    end
-
-    def translate_sum_function(function, problem)
-      index = MinizincHelper.instance.array_id
-      first = true
-      objects = function.elements
-
-      code = 'let' + SPACE + LCBRACKET + 'array[1..' + objects.size.to_s + '] of var int: array' + index.to_s + ' = ['
-
-      objects.each do |obj|
-        code << ',' unless first
-        code << 'bool2int(' + MinizincExpressionTranslator.new.translate(obj, problem) + ')'
-        first = false if first
-      end
-
-      code << ' ]} in sum(t0 in 1..' + objects.size.to_s + ')(array' + index.to_s + '[t0])'
     end
 
     def translate_count_function(function, problem)

@@ -17,7 +17,7 @@ module Yarpler
           when 'COUNT_IN'
             @function = process_count_function(function[0])
           when 'SUM'
-            @function = process_sum_function(function[0])
+            @function = process_sum_value_function(function[0])
         end
       end
 
@@ -61,21 +61,6 @@ module Yarpler
         sum.attribute = field.attribute
         sum.elements = sum.set
         sum
-      end
-
-      def process_sum_function(function)
-        process_sum_value_function(function)
-
-
-        #if function[0].size == 1 && function[0][0].size == 1
-        #  sum = process_sum_value_function(function[0][0])
-        #else
-        #  sum = Yarpler::Models::SumFunction.new
-        #  function[0].each do |expression|
-        #    sum.elements.push(Yarpler::Interpreters::ExpressionInterpreter.new(expression).expression)
-        #  end
-        #end
-        #sum
       end
     end
   end
