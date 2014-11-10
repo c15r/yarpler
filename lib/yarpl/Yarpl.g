@@ -13,6 +13,7 @@ tokens {
   CONSTANT;
   CONSTRAINT_DECLARATION;
   CONSTRAINT_EXPRESSION;
+  COUNTALL;
   COUNT_EXPRESSION;
   EXPRESSION_LIST;
   MODEL_DECLARATION;
@@ -187,7 +188,6 @@ forallOrder
     | 'order' 'by' fieldAccessor 'asc'? -> ^(ORDER_ASC fieldAccessor)
     ;
 
-
 forallSelector
     : variableDeclaratorId 'from' fieldAccessor -> ^(FROM variableDeclaratorId fieldAccessor)
     ;
@@ -214,7 +214,8 @@ signExpression
     ;
 
 functionExpression
-    : 'count' LPAREN forallSelector forallWhere? RPAREN -> ^(FUNCTION_EXPRESSION ^(COUNT_IN forallSelector forallWhere?))
+    : 'countall' LPAREN countallSelector countallWhere? countallOrder? RPAREN LBRACE constraintBody RBRACE -> ^(FUNCTION_EXPRESSION ^(COUNTALL countallSelector constraintBody countallWhere? countallOrder?))
+    | 'count' LPAREN forallSelector forallWhere? RPAREN -> ^(FUNCTION_EXPRESSION ^(COUNT_IN forallSelector forallWhere?))
     | 'sum' LPAREN sumExpression RPAREN -> ^(FUNCTION_EXPRESSION sumExpression)
     | 'abs' LPAREN primeExpression RPAREN -> ^(ABS_EXPRESSION primeExpression)
     | primeExpression ('in' primeExpression)*
@@ -224,6 +225,19 @@ primeExpression
     : literal -> ^(LITERAL literal)
     | fieldAccessor
     | LPAREN expression /* recursion!!! */ RPAREN -> ^(EXPRESSION expression)
+    ;
+
+countallWhere
+    : 'where' expression -> ^(WHERE expression)
+    ;
+
+countallOrder
+    : 'order' 'by' fieldAccessor 'desc' -> ^(ORDER_DESC fieldAccessor)
+    | 'order' 'by' fieldAccessor 'asc'? -> ^(ORDER_ASC fieldAccessor)
+    ;
+
+countallSelector
+    : variableDeclaratorId 'from' fieldAccessor -> ^(FROM variableDeclaratorId fieldAccessor)
     ;
 
 sumExpression

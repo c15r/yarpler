@@ -1,0 +1,43 @@
+model {
+    class Woche {
+        const collection Tag tage;
+    }
+
+    class Dienst {
+            var integer b;
+        }
+
+    class Tag {
+        const integer index;
+        const collection Dienst dienste;
+        const integer anzahl;
+    }
+}
+
+initial {
+    woche = new Woche();
+
+    t1 = new Tag(index=1, anzahl=1);
+    t2 = new Tag(index=2, anzahl=2);
+
+    d1t1 = new Dienst(b=1);
+    d2t1 = new Dienst(b=1);
+
+    d1t2 = new Dienst(b=1);
+    d2t2 = new Dienst(b=1);
+    d3t2 = new Dienst(b=1);
+
+    relation(woche.tage, {t1,t2});
+
+    relation(t1.dienste, {d1t1,d2t1});
+    relation(t2.dienste, {d1t2,d2t2,d3t2});
+}
+
+solve {
+    constraint
+        countall(d from t.dienste) {
+            d.b == 1
+        } == t.anzahl;
+
+    satisfy;
+}
