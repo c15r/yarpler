@@ -22,6 +22,16 @@ class YarplFlattener < Yarpler::Extensions::Process
     remove_invalid_constraints(problem)
   end
 
+  private
+
+  def process_constraint(constraint)
+    if constraint.expression.is_a? Yarpler::Models::Forall
+      process_forall_statement(constraint.expression)
+    elsif constraint.expression.is_a? Yarpler::Models::Expression
+      @constraints << constraint
+    end
+  end
+
   # remove all invalid constraints
   def remove_invalid_constraints(problem)
     invalid = []
@@ -114,18 +124,8 @@ class YarplFlattener < Yarpler::Extensions::Process
     process_forall_statement(forall)
   end
 
-  private
-
   def range_from_field(field)
     @problem.objects[field.variable].get_value(field.attribute).to
-  end
-
-  def process_constraint(constraint)
-    if constraint.expression.is_a? Yarpler::Models::Forall
-      process_forall_statement(constraint.expression)
-    elsif constraint.expression.is_a? Yarpler::Models::Expression
-      @constraints << constraint
-    end
   end
 
   def replace_placeholder_string(expression, variable_old, variable_new)
