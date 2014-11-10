@@ -23,7 +23,7 @@ solve {
         + 1000*alpha.M+100*alpha.O+10*alpha.R+alpha.E
         == 10000*alpha.M+1000*alpha.O+100*alpha.N+10*alpha.E+alpha.Y;
 
-    # all different
+    // all different
     constraint
         alpha.S != alpha.E and alpha.S != alpha.N and alpha.S != alpha.D and alpha.S != alpha.M and alpha.S != alpha.O and alpha.S != alpha.R and alpha.S != alpha.Y and
         alpha.E != alpha.N and alpha.E != alpha.D and alpha.E != alpha.M and alpha.E != alpha.O and alpha.E != alpha.R and alpha.E != alpha.Y and
@@ -33,7 +33,7 @@ solve {
         alpha.O != alpha.R and alpha.O != alpha.Y and
         alpha.R != alpha.Y;
 
-    # starting digits not zero
+    // starting digits not zero
     constraint alpha.S != 0 and alpha.M != 0;
 
     maximize alpha.E;

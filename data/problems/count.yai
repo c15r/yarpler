@@ -14,16 +14,16 @@ model {
 }
 
 initial {
-  # Dienstschlüssel definieren
+  // Dienstschlüssel definieren
   end = new Plan(anzahld1=3, anzahld2=1, anzahld3=1);
 
-  # Definition von möglichen Diensten
+  // Definition von möglichen Diensten
   d1 = new Dienst();
   d2 = new Dienst();
   d3 = new Dienst();
   f = new Dienst();
 
-  # Definition von Mitarbeitern und möglichen Diensten pro Tag
+  // Definition von Mitarbeitern und möglichen Diensten pro Tag
   m1 = new Mitarbeiter();
   m2 = new Mitarbeiter();
   m3 = new Mitarbeiter();

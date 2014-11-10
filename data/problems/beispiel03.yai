@@ -19,22 +19,22 @@ model {
 
 initial {
 
-  # Definition von Diensttypen
+  // Definition von Diensttypen
   d1 = new Diensttyp(anzahl=3);
   d2 = new Diensttyp(anzahl=1);
   d3 = new Diensttyp(anzahl=1);
   f = new Diensttyp();
 
-  # Definition von Tagen
+  // Definition von Tagen
   t1 = new Tag();
   t2 = new Tag();
 
-  # Definition von Mitarbeitern
+  // Definition von Mitarbeitern
   m1 = new Mitarbeiter();
   m2 = new Mitarbeiter();
   m3 = new Mitarbeiter();
 
-  # Definition von Dienst
+  // Definition von Dienst
   m1t1 = new Dienst();
   m1t2 = new Dienst();
   m2t1 = new Dienst();
@@ -42,7 +42,7 @@ initial {
   m3t1 = new Dienst();
   m3t2 = new Dienst();
 
-  # Definition von Relationen
+  // Definition von Relationen
   relation(m1t1.tag, t1);
   relation(m1t2.tag, t2);
   relation(m2t1.tag, t1);
@@ -50,33 +50,33 @@ initial {
   relation(m3t1.tag, t1);
   relation(m3t2.tag, t2);
 
-  # Tage pro Mitarbeiter
+  // Tage pro Mitarbeiter
   relation(m1.tage, {m1t1,m1t2});
   relation(m2.tage, {m2t1,m2t2});
   relation(m3.tage, {m3t1,m3t2});
 
-  # Moegliche Dienste pro Mitarbeiter
+  // Moegliche Dienste pro Mitarbeiter
   relation(m1.moeglich, {d1,d2,f});
   relation(m2.moeglich, {d1,d2,d3,f});
   relation(m3.moeglich, {d2,d3,f});
 }
 
 solve {
-  # Dienstschluessel einhalten
+  // Dienstschluessel einhalten
   constraint count(d from Dienst.dienst where d==d1) == d1.anzahl;
 
   constraint count(d from Dienst.dienst where d==d2) == d2.anzahl;
 
   constraint count(d from Dienst.dienst where d==d3) == d3.anzahl;
 
-  # Nach D1 kein D2
+  // Nach D1 kein D2
   constraint forall(m from Mitarbeiter) {
     forall(mt from m.tage) {
       mt.dienst!=d1 or mt[1].dienst!=d2
     }
   };
 
-  # Mitarbeiter kriegen nur moegliche Dienste
+  // Mitarbeiter kriegen nur moegliche Dienste
   constraint forall(m from Mitarbeiter) {
     forall(mt from m.tage) {
       mt.dienst in m.moeglich

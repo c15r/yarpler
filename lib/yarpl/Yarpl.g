@@ -308,7 +308,8 @@ WS : (' ' | '\t' | '\r' | '\n') {skip();}
                         ;
 
 COMMENT
-    :	'#' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
+    :	'//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
+    | 	'/*' .* '*/' {$channel=HIDDEN;}
     ;
 
 
