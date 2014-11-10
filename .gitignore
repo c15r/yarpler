@@ -49,6 +49,7 @@ yarpler.iml
 # generated yarpler files
 wrk.mzn
 wrk.fzn
+test_wrk.mzn
 
 # rubocop
 .rubocop_todo.yml
