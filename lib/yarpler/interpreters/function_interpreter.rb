@@ -5,8 +5,9 @@ module Yarpler
     class FunctionInterpreter
       attr_reader :function
 
-      def initialize(tree)
+      def initialize(tree, objects=nil)
         @function = ''
+        @objects = objects
         process_function(tree)
       end
 
@@ -18,6 +19,8 @@ module Yarpler
             @function = process_count_function(function[0])
           when 'SUM'
             @function = process_sum_value_function(function[0])
+          when 'COUNTALL'
+            @function = process_countall_function(function[0])
         end
       end
 
@@ -61,6 +64,11 @@ module Yarpler
         sum.attribute = field.attribute
         sum.elements = sum.set
         sum
+      end
+
+      def process_countall_function(function)
+        interpreter = CountallInterpreter.new(function, @objects)
+        interpreter.countAll
       end
     end
   end
