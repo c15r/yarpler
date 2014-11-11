@@ -216,7 +216,7 @@ signExpression
 functionExpression
     : 'countall' LPAREN countallSelector countallWhere? countallOrder? RPAREN LBRACE constraintBody RBRACE -> ^(FUNCTION_EXPRESSION ^(COUNTALL countallSelector constraintBody countallWhere? countallOrder?))
     | 'count' LPAREN forallSelector forallWhere? RPAREN -> ^(FUNCTION_EXPRESSION ^(COUNT_IN forallSelector forallWhere?))
-    | 'sum' LPAREN sumExpression RPAREN -> ^(FUNCTION_EXPRESSION sumExpression)
+    | 'sum' LPAREN forallSelector RPAREN LBRACE fieldAccessor RBRACE -> ^(FUNCTION_EXPRESSION ^(SUM forallSelector fieldAccessor))
     | 'abs' LPAREN primeExpression RPAREN -> ^(ABS_EXPRESSION primeExpression)
     | primeExpression ('in' primeExpression)*
     ;
@@ -238,10 +238,6 @@ countallOrder
 
 countallSelector
     : variableDeclaratorId 'from' fieldAccessor -> ^(FROM variableDeclaratorId fieldAccessor)
-    ;
-
-sumExpression
-    : forallSelector ',' fieldAccessor  -> ^(SUM forallSelector fieldAccessor)
     ;
 
 expressionList
