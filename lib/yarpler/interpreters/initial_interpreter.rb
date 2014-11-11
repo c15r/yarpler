@@ -1,3 +1,6 @@
+require 'time'
+require 'date'
+
 module Yarpler
   module Interpreters
     # InitialInterpreter processes a YARPL initial block
@@ -83,7 +86,7 @@ module Yarpler
               if thing[1].to_s == 'SET'
                 current_obj.set_value(thing[0].to_s, SetInterpreter.new(thing[1], objects))
               else
-                value = prepare_value(current_obj.get_variabletype(thing[0].to_s), thing[1].to_s)
+                value = prepare_value(current_obj.get_variabletype(thing[0].to_s), current_obj.get_datatype(thing[0].to_s), thing[1].to_s)
                 current_obj.set_value(thing[0].to_s, value)
               end
           end
@@ -91,8 +94,11 @@ module Yarpler
       end
       # rubocop:enable Metrics/MethodLength
 
-      def prepare_value(type, value)
-        if type == 'VARIABLE' &&  !value.include?('..')
+      def prepare_value(type, datatype, value)
+        if datatype == 'DATE'
+          fail Yarpler::Exceptions::VariableDateNotAllowed.new if type == 'VARIABLE'
+          value = Date.parse(value).to_time.to_i
+        elsif type == 'VARIABLE' &&  !value.include?('..')
           value = value.to_s + '..' + value.to_s
         end
         value
