@@ -3,7 +3,7 @@ model {
       }
 
       class Diensttyp {
-        var integer anzahl;
+        var integer anzahl = 1;
       }
 
       class Mitarbeiter {
@@ -17,9 +17,9 @@ model {
 }
 
 initial {
-  // instanzen erstellen
+  // Instanzen erstellen
   t1 = new Tag();
-  d1 = new Diensttyp(anzahl=1);
+  d1 = new Diensttyp();
   f = new Diensttyp();
   m1 = new Mitarbeiter();
   m1t1 = new Mitarbeitertag();

@@ -132,7 +132,7 @@ memberDeclaration
     ;
 
 fieldDeclaration
-    : variableType primitiveType variableDeclaratorId ';' -> ^(FIELD_DECLARATION variableType primitiveType variableDeclaratorId)
+    : variableType primitiveType variableDeclaratorId ('=' declaration)? ';' -> ^(FIELD_DECLARATION variableType primitiveType variableDeclaratorId declaration?)
     | variableType structType variableDeclaratorId ';' -> ^(REFERENCE variableType HASONE structType variableDeclaratorId)
     | variableType 'collection' structType variableDeclaratorId ';' -> ^(REFERENCE variableType HASMANY structType variableDeclaratorId)
     ;

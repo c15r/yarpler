@@ -6,11 +6,21 @@ module Yarpler
     #
     #   class { ... }
     #
+    attr_reader :init
+
     class ClassInterpreter
       def initialize(tree)
+        @init = Hash.new
         @dynamic_name = tree[0].to_s
         Object.const_set(@dynamic_name, Class.new(Yarpler::Models::Resource) {})
         load_attributes(tree[0])
+
+        init = @init
+        create_method(@dynamic_name, 'initialize_variables'.to_sym) do
+          init.each do |k,v|
+            self.set_value(k,v)
+          end
+        end
       end
 
       private
@@ -20,17 +30,35 @@ module Yarpler
           case thing.to_s
             when 'FIELD_DECLARATION'
               create_attr(@dynamic_name, thing[2].to_s, thing[1], thing[0].to_s)
+              if (thing.size == 4)
+                add_attribute_init(thing[2].to_s, thing[3].to_s, thing[0].to_s)
+              end
             when 'REFERENCE'
               create_attr(@dynamic_name, thing[3].to_s, thing[2].to_s, thing[0].to_s + '_' + thing[1].to_s)
           end
         end
       end
 
+      def add_attribute_init(attr, value, type)
+        if value.to_s == 'SET'
+          @init[attr] = SetInterpreter.new(thing[1])
+        else
+          @init[attr] = prepare_value(type, value);
+        end
+      end
+
+      def prepare_value(type, value)
+        if type == 'VARIABLE' &&  !value.include?('..')
+          value = value.to_s + '..' + value.to_s
+        end
+        value
+      end
+
       def create_method(obj_name, name, &block)
         Object.const_get(obj_name).send(:define_method, name, &block)
       end
 
-      def remove_method(obj_name, name, &_block)
+      def remove_method(obj_name, name)
         Object.const_get(obj_name).send(:remove_method, name)
       end
 

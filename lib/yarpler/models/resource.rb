@@ -16,6 +16,7 @@ module Yarpler
       def initialize(name)
         @instance_name = name
         @id = -1
+        initialize_variables
       end
 
       def id
@@ -84,7 +85,8 @@ module Yarpler
                                     :load, :get_value, :set_value,
                                     :set_value_at_index, :instance_name,
                                     :get_datatype, :get_variabletype,
-                                    :preprare_attributes, :attribute_methods]
+                                    :preprare_attributes, :attribute_methods,
+                                    :initialize_variables]
       end
 
       def get_datatype(attribute)

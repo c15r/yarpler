@@ -9,9 +9,23 @@ module Yarpler
     class SetInterpreter
       attr_accessor :set
 
-      def initialize(item, objects)
+      def initialize(item, objects=nil)
         @set = []
-        process_set(item, objects)
+        if objects.nil?
+          process_integer_set(item)
+        else
+          process_set(item, objects)
+        end
+      end
+
+      private
+
+      def process_integer_set(tree)
+        # @TODO Error handling
+        tree.each do |thing|
+          set.push(thing.to_s)
+        end
+        set
       end
 
       def process_set(tree, objects)
