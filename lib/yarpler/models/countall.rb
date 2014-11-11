@@ -19,6 +19,10 @@ module Yarpler
         new.comparison = @comparison.clone
         new
       end
+
+      def valid?
+        true
+      end
     end
   end
 end

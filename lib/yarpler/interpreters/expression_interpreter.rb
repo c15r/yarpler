@@ -17,8 +17,9 @@ module Yarpler
     class ExpressionInterpreter
       attr_reader :expression
 
-      def initialize(tree)
+      def initialize(tree, objects=nil)
         @expression = Yarpler::Models::Expression.new
+        @objects = objects
         process_expression(tree)
       end
 
@@ -70,7 +71,7 @@ module Yarpler
           when 'INDEX_ACCESSOR'
             IndexAccessorInterpreter.new(item).index
           when 'FUNCTION_EXPRESSION'
-            FunctionInterpreter.new(item).function
+            FunctionInterpreter.new(item, @objects).function
           when 'EXPRESSION'
             ExpressionInterpreter.new(item).expression
           when 'LITERAL'

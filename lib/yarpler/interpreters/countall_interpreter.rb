@@ -15,6 +15,8 @@ module Yarpler
         @objects = objects
         @countAll = Yarpler::Models::Countall.new
         @parent = parent
+        @where = nil
+        @order = nil
         @constraints = nil
         process_countall(tree)
       end
@@ -26,13 +28,38 @@ module Yarpler
         if expression[1].to_s == 'FORALL'
           @countAll.expression = ForallInterpreter.new(expression[1], @objects, @countAll).forall
         else
-          #@countAll.expression = ExpressionInterpreter.new(expression[1], @objects).expression
+          @countAll.expression = ExpressionInterpreter.new(expression[1], @objects).expression
         end
+      end
+
+      def process_filters(expression)
+        return if expression.size <= 2
+        expression[2..expression.size].each do |e|
+          if e.to_s == 'WHERE'
+            @where = ExpressionInterpreter.new(e).expression
+          elsif e.to_s == 'ORDER_ASC'
+            process_order_asc(e)
+          elsif e.to_s == 'ORDER_DESC'
+            process_order_desc(e)
+          end
+        end
+      end
+
+      def process_order_desc(e)
+        @order = Yarpler::Models::Order.new
+        @order.field = FieldAccessorInterpreter.new(e[0]).field
+        @order.type = 'DESC'
+      end
+
+      def process_order_asc(e)
+        @order = Yarpler::Models::Order.new
+        @order.field = FieldAccessorInterpreter.new(e[0]).field
+        @order.type = 'ASC'
       end
 
       def countall_selector(expression)
         case expression.to_s
-          when 'IN'
+          when 'FROM'
             @countAll.range = countall_range_builder(expression[1])
             @countAll.variable = expression[0].to_s
         end

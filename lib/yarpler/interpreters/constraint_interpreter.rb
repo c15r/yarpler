@@ -19,7 +19,7 @@ module Yarpler
             interpreter = ForallInterpreter.new(expression[0], @objects)
             constraint = interpreter.forall
           when 'CONSTRAINT_EXPRESSION'
-            interpreter = ExpressionInterpreter.new(expression[0])
+            interpreter = ExpressionInterpreter.new(expression[0], @objects)
             constraint = interpreter.expression
         end
         constraint
