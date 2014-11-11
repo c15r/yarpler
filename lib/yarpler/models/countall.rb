@@ -12,7 +12,7 @@ module Yarpler
       end
 
       def clone
-        new = Forall.new
+        new = Countall.new
         new.range = @range.clone
         new.variable = @variable.clone
         new.expression = @expression.clone
@@ -21,7 +21,7 @@ module Yarpler
       end
 
       def valid?
-        true
+
       end
     end
   end
