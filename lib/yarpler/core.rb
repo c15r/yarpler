@@ -1,19 +1,16 @@
 module Yarpler
   # Core is the interface to YARPLER
   class Core
-    def initialize
-    end
+    def solve(yarpl, extensions)
+      problem = yarpl
+      if File.file?(problem)
+        Yarpler::Log.instance.info "Extracting the problem from file #{problem}"
+        problem = read_file(problem)
+      end
 
-    def solve_from_file(filename, extensions)
-      Yarpler::Log.instance.info "Extracting the problem from file #{filename}"
-      problem = read_file(filename)
-      solve_problem(problem, extensions)
-    end
-
-    def solve_problem(yarpl_problem, extensions)
       Yarpler::Log.instance.info 'Starting to solve the problem'
       solution = Yarpler::Models::Solution.new
-      solution.ast = parse_problem_with_antlr(yarpl_problem)
+      solution.ast = parse_problem_with_antlr(problem)
       solution.model = interpret_ast(solution.ast)
       solution.model = translate_problem(solution.model, extensions)
       solution

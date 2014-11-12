@@ -14,7 +14,7 @@ module Yarpler
     option :no_result, type: :boolean
     def solve(file, *args)
       core = Yarpler::Core.new
-      solution = core.solve_from_file(file, args)
+      solution = core.solve(file, args)
       print_result(options, solution)
     end
 
