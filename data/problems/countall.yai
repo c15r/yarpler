@@ -35,9 +35,7 @@ initial {
 
 solve {
     constraint
-        countall(d from t.dienste) {
-            d.b == 1
-        } == t.anzahl;
+        countall(d from Dienst) { d.b == 1 } == t.anzahl;
 
     satisfy;
 }

@@ -1,0 +1,28 @@
+model {
+    class Item {
+        const date a;
+    }
+
+    class Bag {
+        var collection Item items;
+    }
+
+}
+
+initial {
+    t1 = new Item(a=22.1.2014);
+    t2 = new Item(a=23.1.2014);
+    t3 = new Item(a=24.1.2014);
+
+    b = new Bag();
+
+    relation(b.items, {t1, t2, t3});
+}
+
+solve {
+    constraint forall(i from Item where i.a <= 23.1.2014) {
+      not(i in b.items)
+    };
+
+    satisfy;
+}

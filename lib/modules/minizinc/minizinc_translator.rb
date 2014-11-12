@@ -153,7 +153,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     def translate_constant(a, name, resource)
       value = resource.load(a)
       unless value.nil?
-        code = format(T_CONSTANT, resource.get_datatype(a), name + '_' + a, value)
+        dt = resource.get_datatype(a)
+        dt = 'int' if 'DATE'.include? dt
+        code = format(T_CONSTANT, dt , name + '_' + a, value)
       end
       code
     end

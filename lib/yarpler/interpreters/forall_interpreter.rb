@@ -32,7 +32,6 @@ module Yarpler
           @forall.expression = ForallInterpreter.new(expression[1], @objects, @forall).forall
         else
           @forall.expression = ExpressionInterpreter.new(expression[1]).expression
-
         end
       end
 

@@ -109,12 +109,17 @@ solve {
 
     // Summieren der Arbeitszeit pro Tag
     constraint forall(mt from Mitarbeitertag) {
-      sum(d from mt.dienst, d.dauer) == mt.dauer
+      sum(d from mt.dienst) {
+        d.dauer
+      } == mt.dauer
     };
 
     // Summieren der Arbeitszeit im gesamten Plan pro Mitarbeiter
     constraint forall(m from Mitarbeiter) {
-      sum(t from m.tage, t.dauer) == m.istarbeitszeit
+      sum(t from m.tage) {
+        t.dauer
+      } == m.istarbeitszeit
+
     };
 
     // Differenz von Soll- und Istarbeitszeit berechnen pro Mitarbeiter

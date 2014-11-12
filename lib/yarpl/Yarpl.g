@@ -15,6 +15,7 @@ tokens {
   CONSTRAINT_EXPRESSION;
   COUNTALL;
   COUNT_EXPRESSION;
+  DATE;
   EXPRESSION_LIST;
   MODEL_DECLARATION;
   MODEL_BODY;
@@ -214,9 +215,9 @@ signExpression
     ;
 
 functionExpression
-    : 'countall' LPAREN countallSelector countallWhere? countallOrder? RPAREN LBRACE constraintBody RBRACE -> ^(FUNCTION_EXPRESSION ^(COUNTALL countallSelector constraintBody countallWhere? countallOrder?))
+    : 'countall' LPAREN forallSelector forallWhere? forallOrder? RPAREN LBRACE constraintBody RBRACE -> ^(FUNCTION_EXPRESSION ^(COUNTALL forallSelector constraintBody forallWhere? forallOrder?))
     | 'count' LPAREN forallSelector forallWhere? RPAREN -> ^(FUNCTION_EXPRESSION ^(COUNT_IN forallSelector forallWhere?))
-    | 'sum' LPAREN sumExpression RPAREN -> ^(FUNCTION_EXPRESSION sumExpression)
+    | 'sum' LPAREN forallSelector RPAREN LBRACE fieldAccessor RBRACE -> ^(FUNCTION_EXPRESSION ^(SUM forallSelector fieldAccessor))
     | 'abs' LPAREN primeExpression RPAREN -> ^(ABS_EXPRESSION primeExpression)
     | primeExpression ('in' primeExpression)*
     ;
@@ -225,23 +226,6 @@ primeExpression
     : literal -> ^(LITERAL literal)
     | fieldAccessor
     | LPAREN expression /* recursion!!! */ RPAREN -> ^(EXPRESSION expression)
-    ;
-
-countallWhere
-    : 'where' expression -> ^(WHERE expression)
-    ;
-
-countallOrder
-    : 'order' 'by' fieldAccessor 'desc' -> ^(ORDER_DESC fieldAccessor)
-    | 'order' 'by' fieldAccessor 'asc'? -> ^(ORDER_ASC fieldAccessor)
-    ;
-
-countallSelector
-    : variableDeclaratorId 'from' fieldAccessor -> ^(FROM variableDeclaratorId fieldAccessor)
-    ;
-
-sumExpression
-    : forallSelector ',' fieldAccessor  -> ^(SUM forallSelector fieldAccessor)
     ;
 
 expressionList
@@ -288,6 +272,7 @@ argument
 literal
 	: RANGEINTEGERLITERAL
 	| INTEGERLITERAL
+	| DATELITERAL
 	;
 
 type
@@ -301,6 +286,7 @@ structType
 
 primitiveType
     : 'integer' -> ^(INTEGER)
+    | 'date' -> ^(DATE)
     ;
 
 variableType
@@ -378,8 +364,11 @@ ALPHANUMERIC		: ALPHABET
 RANGEINTEGERLITERAL	: DIGITS '..' DIGITS
                     ;
 
-INTEGERLITERAL     : DIGITS
+INTEGERLITERAL  : DIGITS
     			;
+
+DATELITERAL     : DIGITS '.' DIGITS '.' DIGITS
+         ;
 
 fragment
 SIGN			: '+'

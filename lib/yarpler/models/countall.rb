@@ -12,12 +12,16 @@ module Yarpler
       end
 
       def clone
-        new = Forall.new
+        new = Countall.new
         new.range = @range.clone
         new.variable = @variable.clone
         new.expression = @expression.clone
         new.comparison = @comparison.clone
         new
+      end
+
+      def valid?
+
       end
     end
   end

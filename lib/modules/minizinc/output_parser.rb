@@ -43,8 +43,10 @@ class OutputParser
     relation = problem.objects[instance_name].get_value(field_name)
     relation.to.clear
 
+    values = rewrite_range(values)
+
     values.each do |val|
-      problem.objects.each do |_k, v|
+      problem.objects.each do | _k, v|
         next unless (v.class.to_s == datatype.to_s) && (v.id.to_s == val.to_s)
         relation.to << v
         break
@@ -53,15 +55,25 @@ class OutputParser
     problem.objects[instance_name].set_value(field_name, relation)
   end
 
+  def rewrite_range(values)
+    if values.size == 3 and values[1].to_s == '..'
+      new_values = Array.new
+      for i in values[0].to_s.to_i..values[2].to_s.to_i
+        new_values.push(i.to_s)
+      end
+      values = new_values
+    end
+    values
+  end
+
   def read_variable(var, val, problem)
-    # TODO: Reingineering, etwas schoener machen
     instance_name = var.slice(0..(var.index('_') - 1))
     field_name = var[var.index('_') + 1..var.length]
     arr = field_name.split('_')
 
     if problem.objects[instance_name].get_variabletype(field_name) == 'VARIABLE_HASONE'
       datatype = problem.objects[instance_name].get_datatype(field_name)
-      problem.objects.each do |_k, v|
+      problem.objects.each do |v|
         next unless (v.class.to_s == datatype.to_s) && (v.id.to_s == val.to_s)
         relation = problem.objects[instance_name].get_value(field_name)
         relation.to.clear
