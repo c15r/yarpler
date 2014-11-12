@@ -345,26 +345,26 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     def initialize
     end
 
-    def translate(expression, problem)
-      translate_expression(expression, problem)
+    def translate(expression, problem, context=nil)
+      translate_expression(expression, problem, context)
     end
 
-    def translate_expression(expression, problem)
+    def translate_expression(expression, problem, context)
       code = ''
-      code << resolve_expression(expression.left, problem) + SPACE
+      code << resolve_expression(expression.left, problem, context) + SPACE
 
       # no operator and right for literal expressions
       if expression.operator.to_s != 'LITERAL' && expression.operator.to_s != 'NOT'
         code << MinizincOperatorTranslator.new.translate(expression.operator.to_s)
-        code << SPACE + resolve_expression(expression.right, problem)
+        code << SPACE + resolve_expression(expression.right, problem, context)
       end
       code
     end
 
     # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
-    def resolve_expression(expression, problem)
+    def resolve_expression(expression, problem, context)
       if expression.is_a? Yarpler::Models::Field
-        MinizincFieldTranslator.new.resolve_variable_from_field(expression)
+        MinizincFieldTranslator.new.resolve_variable_from_field(expression, context)
       elsif expression.is_a? Yarpler::Models::Instance
         MinizincFieldTranslator.new.resolve_variable_from_instance(expression)
       elsif expression.is_a? Yarpler::Models::Absolute
@@ -444,8 +444,12 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       field.variable + '_id'
     end
 
-    def resolve_variable_from_field(field)
-      field.variable.to_s + '_' + field.attribute.to_s
+    def resolve_variable_from_field(field, context=nil)
+      if context
+        context.get(field.variable.to_s) + '_' + field.attribute.to_s
+      else
+        field.variable.to_s + '_' + field.attribute.to_s
+      end
     end
   end
 
@@ -571,9 +575,35 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       code = ''
       code << ',' unless first
 
+      context = MinizincContext.new
+      context.add(countall.variable, item.instance_name)
+
       code << 'bool2int('
-      code << MinizincExpressionTranslator.new.translate(countall.expression, problem)
+      code << MinizincExpressionTranslator.new.translate(countall.expression, problem, context)
       code << ')'
+    end
+  end
+
+  class MinizincContext
+    attr_accessor :variable
+    attr_accessor :object
+
+    attr_accessor :variables
+
+    def initialize()
+      @variables = {}
+    end
+
+    def add(variable, replacement)
+      @variables[variable] = replacement
+    end
+
+    def get(variable)
+      if @variables[variable]
+        @variables[variable]
+      else
+        variable
+      end
     end
   end
 end

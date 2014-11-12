@@ -12,8 +12,8 @@ model {
 initial {
     woche = new Woche(anzahl=1);
 
-    d1 = new Dienst(b=1);
-    d2 = new Dienst(b=1);
+    d1 = new Dienst(b=0..1);
+    d2 = new Dienst(b=0..1);
 
     relation(woche.dienste, {d1,d2});
 }
