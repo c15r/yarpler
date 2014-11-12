@@ -170,6 +170,9 @@ class YarplFlattener < Yarpler::Extensions::Process
     elsif expression.is_a? Yarpler::Models::Forall
       expression.range = replace_selector(expression.range, placeholder_variable, real_variable, range)
       expression.expression = replace_selector(expression.expression, placeholder_variable, real_variable, range)
+    elsif expression.is_a? Yarpler::Models::Countall
+      expression.range = replace_selector(expression.range, placeholder_variable, real_variable, range)
+      expression.expression = replace_selector(expression.expression, placeholder_variable, real_variable, range)
     elsif expression.is_a? Yarpler::Models::Field
       expression.variable = real_variable if expression.variable == placeholder_variable
     elsif field_or_instance?(expression, placeholder_variable)

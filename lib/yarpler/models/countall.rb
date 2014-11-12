@@ -2,7 +2,7 @@ module Yarpler
   module Models
     # Countall model to encapsulate a loop.
     # This model can not be translated to a solver and has to be flattened before.
-    class Countall
+    class Countall < Function
       attr_accessor :range
       attr_accessor :variable
       attr_accessor :expression
@@ -21,7 +21,7 @@ module Yarpler
       end
 
       def valid?
-
+        true
       end
     end
   end

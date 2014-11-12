@@ -460,6 +460,8 @@ class MinizincTranslator < Yarpler::Extensions::Translator
         translate_sum_value_function(function, problem)
       elsif function.is_a? Yarpler::Models::Cardinality
         translate_cardinality(function)
+      elsif function.is_a? Yarpler::Models::Countall
+        translate_countall_function(function, problem)
       end
     end
 
@@ -533,13 +535,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     def translate_count_body(attribute, first, obj, variable_to_check)
-
       operator = '=='
       if obj.get_variabletype(attribute) == 'VARIABLE_HASMANY'
         operator = ' in '
       end
-
-
       code = ''
       code << ',' unless first
       code << 'bool2int('
@@ -549,6 +548,30 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
     def resolve_variable_from_object_and_attribute_name(obj, attribute)
       obj.instance_name + '_' + attribute
+    end
+
+    def translate_countall_function(countall, problem)
+      index = MinizincHelper.instance.array_id
+      first = true
+      objects = countall.range
+
+      code = 'let' + SPACE + LCBRACKET + 'array[1..' + objects.size.to_s + '] of var int: array' + index.to_s + ' = ['
+
+      objects.each do |item|
+        code << translate_countall_body(first, countall, item, problem)
+        first = false if first
+      end
+
+      code << ' ]} in sum(t0 in 1..' + objects.size.to_s + ')(array' + index.to_s + '[t0])'
+    end
+
+    def translate_countall_body(first, countall, item, problem)
+      code = ''
+      code << ',' unless first
+
+      code << 'bool2int('
+      code << MinizincExpressionTranslator.new.translate(countall.expression, problem)
+      code << ')'
     end
   end
 end
