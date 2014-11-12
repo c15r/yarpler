@@ -4,7 +4,6 @@ model {
 
       class Dienst {
         var integer anzahl;
-        const integer istfrei;
       }
 
       class Mitarbeiter {
@@ -20,10 +19,10 @@ model {
 initial {
 
   // Definition von Diensten
-  d1 = new Dienst(anzahl=1, istfrei=0);
-  d2 = new Dienst(anzahl=1, istfrei=0);
-  d3 = new Dienst(anzahl=1, istfrei=0);
-  f = new Dienst(istfrei=1);
+  d1 = new Dienst(anzahl=1);
+  d2 = new Dienst(anzahl=1);
+  d3 = new Dienst(anzahl=1);
+  f = new Dienst();
 
   // Definition von Tagen
   t1 = new Tag();
@@ -72,7 +71,7 @@ solve {
   };
 
   // Summe aller Dienste D1, D2, D3 ueber alle Mitarbeiter und Tage ist je 1
-  constraint forall(d from Dienst where d.istfrei==0) {
+  constraint forall(d from Dienst where d.id!=f.id) {
     count(di from Mitarbeitertag.dienste where di==d) == d.anzahl
   };
 

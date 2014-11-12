@@ -15,6 +15,7 @@ tokens {
   CONSTRAINT_EXPRESSION;
   COUNTALL;
   COUNT_EXPRESSION;
+  DATE;
   EXPRESSION_LIST;
   MODEL_DECLARATION;
   MODEL_BODY;
@@ -271,6 +272,7 @@ argument
 literal
 	: RANGEINTEGERLITERAL
 	| INTEGERLITERAL
+	| DATELITERAL
 	;
 
 type
@@ -284,6 +286,7 @@ structType
 
 primitiveType
     : 'integer' -> ^(INTEGER)
+    | 'date' -> ^(DATE)
     ;
 
 variableType
@@ -361,8 +364,11 @@ ALPHANUMERIC		: ALPHABET
 RANGEINTEGERLITERAL	: DIGITS '..' DIGITS
                     ;
 
-INTEGERLITERAL     : DIGITS
+INTEGERLITERAL  : DIGITS
     			;
+
+DATELITERAL     : DIGITS '.' DIGITS '.' DIGITS
+         ;
 
 fragment
 SIGN			: '+'

@@ -26,7 +26,7 @@ module Yarpler
         new = Expression.new
         new.operator = @operator.clone
         new.left = @left.clone
-        new.right = @right.clone
+        new.right = @right.clone unless @right.nil?
         new
       end
     end

@@ -58,5 +58,12 @@ module Yarpler
         @message = 'The where-Expression did not contain a substitution variable. Example: instance == substitution variable.'
       end
     end
+
+    # Indicates that there is an invalid count, because the substitution variable was not used in where
+    class VariableDateNotAllowed < YarplerException
+      def initialize
+        @message = 'The datatype date can not be used as a variable.'
+      end
+    end
   end
 end
