@@ -6,9 +6,11 @@ module Yarpler
       attr_accessor :range
       attr_accessor :variable
       attr_accessor :expression
-      attr_accessor :comparison
+      attr_accessor :expressions
+      attr_accessor :field
 
       def initialize
+        @expressions = Array.new
       end
 
       def clone
@@ -16,7 +18,8 @@ module Yarpler
         new.range = @range.clone
         new.variable = @variable.clone
         new.expression = @expression.clone
-        new.comparison = @comparison.clone
+        new.expressions = @expressions.clone
+        new.field = @field.clone
         new
       end
 

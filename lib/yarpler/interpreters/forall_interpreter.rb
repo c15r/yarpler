@@ -65,6 +65,7 @@ module Yarpler
         case expression.to_s
           when 'FROM'
             @forall.range = forall_range_builder(expression[1])
+            @forall.field = FieldAccessorInterpreter.new(expression[1]).field
             @forall.variable = expression[0].to_s
         end
       end

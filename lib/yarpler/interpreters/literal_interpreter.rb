@@ -15,6 +15,8 @@ module Yarpler
         # Date
         if /(\d{1,2})\.(\d{1,2})\.(\d{4})/.match value
           value = Date.parse(value).to_time.to_i.to_s
+        elsif /(\d{1,2})\.(\d{1,2})\.(\d{4}\+\d{1,2})\:(\d{1,2})\:(\d{1,2})/.match value
+          value = Date.parse(value).to_time.to_i.to_s
         end
         @literal.value = value
       end

@@ -4,6 +4,7 @@ module Yarpler
     # Forall model to encapsulate a loop. This model can not be translated to a solver and has to be flattened before.
     class Forall
       attr_accessor :range
+      attr_accessor :field
       attr_accessor :variable
       attr_accessor :expression
       attr_accessor :where
@@ -19,6 +20,7 @@ module Yarpler
         new.expression = @expression.clone
         new.where = @where.clone unless @where.nil?
         new.order = @order.clone unless @order.nil?
+        new.field = @field.clone unless @field.nil?
         new
       end
     end

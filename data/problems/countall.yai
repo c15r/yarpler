@@ -1,26 +1,29 @@
 model {
     class Woche {
-        const integer anzahl;
+        const integer anzahlA;
+        const integer anzahlB;
         const collection Dienst dienste;
     }
 
     class Dienst {
-        var integer b;
+        var integer b = 0..1;
+        var integer a = 0..1;
     }
 }
 
 initial {
-    woche = new Woche(anzahl=1);
+    woche = new Woche(anzahlA=1,anzahlB=1);
 
-    d1 = new Dienst(b=0..1);
-    d2 = new Dienst(b=0..1);
+    d1 = new Dienst();
+    d2 = new Dienst();
 
     relation(woche.dienste, {d1,d2});
 }
 
 solve {
-    constraint
-        countall(d from Dienst) { d.b == 1 } == woche.anzahl;
+    constraint countall(d from Dienst) { d.a == 1 } == woche.anzahlA;
+
+    constraint countall(d from Dienst) { d.b == 1 } == woche.anzahlB;
 
     satisfy;
 }

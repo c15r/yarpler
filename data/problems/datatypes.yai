@@ -1,26 +1,35 @@
 model {
-    class Item {
+    class DateItem {
+        const date a;
+    }
+
+    class DateTimeItem {
         const date a;
     }
 
     class Bag {
-        var collection Item items;
+        var collection DateItem items;
+        var collection DateItem dts;
     }
 
 }
 
 initial {
-    t1 = new Item(a=22.1.2014);
-    t2 = new Item(a=23.1.2014);
-    t3 = new Item(a=24.1.2014);
+    t1 = new DateItem(a=22.1.2014);
+    t2 = new DateItem(a=23.1.2014);
+    t3 = new DateItem(a=24.1.2014);
+    dt1 = new DateTimeItem(a=22.1.2014+8:00:00)
+    dt2 = new DateTimeItem(a=22.1.2014+14:40:00)
+    dt3 = new DateTimeItem(a=22.1.2014+18:00:00)
 
     b = new Bag();
 
     relation(b.items, {t1, t2, t3});
+    relation(b.dts, {dt1, dt2, dt3});
 }
 
 solve {
-    constraint forall(i from Item where i.a <= 23.1.2014) {
+    constraint forall(i from DateItem where i.a <= 23.1.2014) {
       not(i in b.items)
     };
 

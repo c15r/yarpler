@@ -19,14 +19,52 @@ class YarplFlattener < Yarpler::Extensions::Process
       problem = YarplFlattener.new.process(problem)
     end
 
+    problem.constraints.each do |constraint|
+      expand_count_all(constraint.expression)
+    end
+
     remove_invalid_constraints(problem)
   end
 
   private
 
+  def expand_count_all(expression)
+    if expression.is_a? Yarpler::Models::Countall
+      expression.range.each do |e|
+        expr = expression.expression.clone
+        expr = replace_selector(expr, expression.variable, e.instance_name, expression.range)
+
+        if expr.is_a? Yarpler::Models::Forall
+          constraints = process_forall_statement(expr)
+          constraints.each do |c|
+            e = Yarpler::Models::Expression.new
+            e.operator = 'in'
+            e.left = Yarpler::Models::Instance.new
+            # @TODO Mach das besser! ist extrem Fehleranfällig
+            e.left.variable = c.expression.left.variable if c.expression.left.is_a? (Yarpler::Models::Field)
+            e.left.variable = c.expression.right.variable if c.expression.right.is_a? (Yarpler::Models::Field)
+            e.right = expr.field.clone
+
+            e2 = Yarpler::Models::Expression.new
+            e2.left = e
+            e2.right = c.expression
+            e2.operator = 'and'
+
+            expression.expressions << e2
+          end
+        else
+          expression.expressions << expr
+        end
+      end
+    elsif expression.is_a? Yarpler::Models::Expression
+      expand_count_all(expression.left)
+      expand_count_all(expression.right)
+    end
+  end
+
   def process_constraint(constraint)
     if constraint.expression.is_a? Yarpler::Models::Forall
-      process_forall_statement(constraint.expression)
+      @constraints = process_forall_statement(constraint.expression)
     elsif constraint.expression.is_a? Yarpler::Models::Expression
       @constraints << constraint
     end
@@ -62,6 +100,7 @@ class YarplFlattener < Yarpler::Extensions::Process
   end
 
   def process_array_range(forall)
+    constraints = Array.new
     range = order_range(forall)
 
     range.each do |obj|
@@ -70,8 +109,9 @@ class YarplFlattener < Yarpler::Extensions::Process
       new_constraint.expression = replace_selector(new_constraint.expression, forall.variable, obj.to_s,
                                                    forall.range)
 
-      @constraints << new_constraint if where(forall, obj)
+      constraints << new_constraint if where(forall, obj)
     end
+    constraints
   end
 
   def where(forall, obj)
@@ -125,7 +165,12 @@ class YarplFlattener < Yarpler::Extensions::Process
   end
 
   def range_from_field(field)
-    @problem.objects[field.variable].get_value(field.attribute).to
+    if class_exists? field.variable
+      range = @problem.get_objects_of_class(field.variable)
+    else
+      range = @problem.objects[field.variable].get_value(field.attribute).to
+    end
+    range
   end
 
   def replace_placeholder_string(expression, variable_old, variable_new)
@@ -169,9 +214,13 @@ class YarplFlattener < Yarpler::Extensions::Process
       expression.element = replace_placeholder_string(expression.element, placeholder_variable, real_variable)
     elsif expression.is_a? Yarpler::Models::Forall
       expression.range = replace_selector(expression.range, placeholder_variable, real_variable, range)
+      expression.field = replace_selector(expression.field, placeholder_variable, real_variable, range)
       expression.expression = replace_selector(expression.expression, placeholder_variable, real_variable, range)
     elsif expression.is_a? Yarpler::Models::Countall
       expression.range = replace_selector(expression.range, placeholder_variable, real_variable, range)
+      if expression.range.is_a? Yarpler::Models::Field
+        expression.range = range_from_field(expression.range)
+      end
       expression.expression = replace_selector(expression.expression, placeholder_variable, real_variable, range)
     elsif expression.is_a? Yarpler::Models::Field
       expression.variable = real_variable if expression.variable == placeholder_variable
@@ -196,6 +245,13 @@ class YarplFlattener < Yarpler::Extensions::Process
 
   def count_function?(expression)
     expression.is_a? Yarpler::Models::CountFunction
+  end
+
+  def class_exists?(class_name)
+    klass = Object.const_get(class_name)
+    return klass.is_a?(Class)
+  rescue NameError
+    return false
   end
 end
 # rubocop:enable Metrics/ClassLength

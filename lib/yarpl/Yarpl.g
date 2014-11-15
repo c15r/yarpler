@@ -16,6 +16,7 @@ tokens {
   COUNTALL;
   COUNT_EXPRESSION;
   DATE;
+  DATETIME;
   EXPRESSION_LIST;
   MODEL_DECLARATION;
   MODEL_BODY;
@@ -195,7 +196,6 @@ forallSelector
 
 expression
     : relationalExpression (('and'|'or') relationalExpression)*
-    | 'not' LPAREN relationalExpression RPAREN -> ^(NOT_EXPRESSION relationalExpression)
     ;
 
 relationalExpression
@@ -225,6 +225,7 @@ functionExpression
 primeExpression
     : literal -> ^(LITERAL literal)
     | fieldAccessor
+    | 'not' LPAREN expression RPAREN -> ^(NOT_EXPRESSION expression)
     | LPAREN expression /* recursion!!! */ RPAREN -> ^(EXPRESSION expression)
     ;
 
@@ -273,6 +274,7 @@ literal
 	: RANGEINTEGERLITERAL
 	| INTEGERLITERAL
 	| DATELITERAL
+	| DATETIMELITERAL
 	;
 
 type
@@ -287,6 +289,7 @@ structType
 primitiveType
     : 'integer' -> ^(INTEGER)
     | 'date' -> ^(DATE)
+    | 'datetime' -> ^(DATETIME)
     ;
 
 variableType
@@ -368,6 +371,9 @@ INTEGERLITERAL  : DIGITS
     			;
 
 DATELITERAL     : DIGITS '.' DIGITS '.' DIGITS
+         ;
+
+DATETIMELITERAL     : DIGITS '.' DIGITS '.' DIGITS '+' DIGITS ':' DIGITS ':' DIGITS
          ;
 
 fragment

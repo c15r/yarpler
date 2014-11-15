@@ -4,26 +4,26 @@ model {
 
       class Dienst {
         var integer anzahl;
-        const integer istfrei;
-      }
-
-      class Mitarbeiter {
       }
 
       class Mitarbeitertag {
-        var collection Dienst dienste;
-        const Mitarbeiter ma;
+        var collection Dienst dienst;
         const Tag tag;
       }
+
+      class Mitarbeiter {
+        const collection Mitarbeitertag tage;
+      }
+
 }
 
 initial {
 
   // Definition von Diensten
-  d1 = new Dienst(anzahl=1, istfrei=0);
-  d2 = new Dienst(anzahl=1, istfrei=0);
-  d3 = new Dienst(anzahl=1, istfrei=0);
-  f = new Dienst(istfrei=1);
+  d1 = new Dienst(anzahl=1);
+  d2 = new Dienst(anzahl=1);
+  d3 = new Dienst(anzahl=1);
+  f = new Dienst();
 
   // Definition von Tagen
   t1 = new Tag();
@@ -43,6 +43,10 @@ initial {
   m3t2 = new Mitarbeitertag();
 
   // Definition von Relationen
+  relation(m1.tage, {m1t1, m1t2});
+  relation(m2.tage, {m2t1, m2t2});
+  relation(m3.tage, {m3t1, m3t2});
+
   relation(m1t1.tag, t1);
   relation(m1t2.tag, t2);
   relation(m2t1.tag, t1);
@@ -50,30 +54,31 @@ initial {
   relation(m3t1.tag, t1);
   relation(m3t2.tag, t2);
 
-  relation(m1t1.ma, m1);
-  relation(m1t2.ma, m1);
-  relation(m2t1.ma, m2);
-  relation(m2t2.ma, m2);
-  relation(m3t1.ma, m3);
-  relation(m3t2.ma, m3);
-
-  relation(m1t1.dienste, {d1,d2,d3,f});
-  relation(m1t2.dienste, {d1,d2,d3,f});
-  relation(m2t1.dienste, {d1,d2,d3,f});
-  relation(m2t2.dienste, {d1,d2,d3,f});
-  relation(m3t1.dienste, {d1,d2,d3,f});
-  relation(m3t2.dienste, {d1,d2,d3,f});
+  relation(m1t1.dienst, {d1,d2,d3,f});
+  relation(m1t2.dienst, {d1,d2,d3,f});
+  relation(m2t1.dienst, {d1,d2,d3,f});
+  relation(m2t2.dienst, {d1,d2,d3,f});
+  relation(m3t1.dienst, {d1,d2,d3,f});
+  relation(m3t2.dienst, {d1,d2,d3,f});
 }
 
 solve {
+
   // Kardinalitaet aller Dienstvariablen auf 1 setzen
   constraint forall(mt from Mitarbeitertag) {
-    count(d from mt.dienste) == 1
+    count(d from mt.dienst) == 1
   };
 
   // Summe aller Dienste D1, D2, D3 ueber alle Mitarbeiter und Tage ist je 1
-  constraint forall(d from Dienst where d.istfrei==0) {
-    count(di from Mitarbeitertag.dienste where di==d) == d.anzahl
+  constraint forall(d from Dienst where d.id!=f.id) {
+    count(di from Mitarbeitertag.dienst where di==d) == d.anzahl
+  };
+
+  // Nach D1 kein D2
+  constraint forall(m from Mitarbeiter) {
+    forall (mt from m.tage) {
+      not(d1 in mt.dienst) or not(d2 in mt[1].dienst)
+    }
   };
 
   satisfy;

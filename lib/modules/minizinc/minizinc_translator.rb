@@ -559,7 +559,7 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     def translate_countall_function(countall, problem)
       index = MinizincHelper.instance.array_id
       first = true
-      objects = countall.range
+      objects = countall.expressions
 
       code = 'let' + SPACE + LCBRACKET + 'array[1..' + objects.size.to_s + '] of var int: array' + index.to_s + ' = ['
 
@@ -575,11 +575,11 @@ class MinizincTranslator < Yarpler::Extensions::Translator
       code = ''
       code << ',' unless first
 
-      context = MinizincContext.new
-      context.add(countall.variable, item.instance_name)
+      # context = MinizincContext.new
+      # context.add(countall.variable, item.instance_name)
 
       code << 'bool2int('
-      code << MinizincExpressionTranslator.new.translate(countall.expression, problem, context)
+      code << MinizincExpressionTranslator.new.translate(item, problem)
       code << ')'
     end
   end
