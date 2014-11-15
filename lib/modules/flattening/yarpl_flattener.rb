@@ -35,23 +35,7 @@ class YarplFlattener < Yarpler::Extensions::Process
         expr = replace_selector(expr, expression.variable, e.instance_name, expression.range)
 
         if expr.is_a? Yarpler::Models::Forall
-          constraints = process_forall_statement(expr)
-          constraints.each do |c|
-            e = Yarpler::Models::Expression.new
-            e.operator = 'in'
-            e.left = Yarpler::Models::Instance.new
-            # @TODO Mach das besser! ist extrem Fehleranfällig
-            e.left.variable = c.expression.left.variable if c.expression.left.is_a? (Yarpler::Models::Field)
-            e.left.variable = c.expression.right.variable if c.expression.right.is_a? (Yarpler::Models::Field)
-            e.right = expr.field.clone
-
-            e2 = Yarpler::Models::Expression.new
-            e2.left = e
-            e2.right = c.expression
-            e2.operator = 'and'
-
-            expression.expressions << e2
-          end
+          expression.expressions.push(expand_forall_in_countall(expr, expression))
         else
           expression.expressions << expr
         end
@@ -60,6 +44,28 @@ class YarplFlattener < Yarpler::Extensions::Process
       expand_count_all(expression.left)
       expand_count_all(expression.right)
     end
+  end
+
+  def expand_forall_in_countall(expr, expression)
+    expressions = Array.new
+    constraints = process_forall_statement(expr)
+    constraints.each do |c|
+      e = Yarpler::Models::Expression.new
+      e.operator = 'in'
+      e.left = Yarpler::Models::Instance.new
+      # @TODO Mach das besser! ist extrem Fehleranfällig
+      e.left.variable = c.expression.left.variable if c.expression.left.is_a? (Yarpler::Models::Field)
+      e.left.variable = c.expression.right.variable if c.expression.right.is_a? (Yarpler::Models::Field)
+      e.right = expr.field.clone
+
+      e2 = Yarpler::Models::Expression.new
+      e2.left = e
+      e2.right = c.expression
+      e2.operator = 'and'
+
+      expressions << e2
+    end
+    expressions
   end
 
   def process_constraint(constraint)
