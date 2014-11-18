@@ -43,27 +43,17 @@ solve {
   };
 
   constraint countall(m from Mitarbeiter) {
-    d1 in m.dienste and d2 in m.dienste and not(zf1.stop < zf2.start or zf2.stop < zf1.start)
-  } == 0;
-
-  constraint countall(m from Mitarbeiter) {
-    d1 in m.dienste and d3 in m.dienste and not(zf1.stop < zf3.start or zf3.stop < zf1.start)
-  } == 0;
-
-  constraint countall(m from Mitarbeiter) {
-    d2 in m.dienste and d1 in m.dienste and not(zf2.stop < zf1.start or zf1.stop < zf2.start)
-  } == 0;
-
-  constraint countall(m from Mitarbeiter) {
-    d2 in m.dienste and d3 in m.dienste and not(zf2.stop < zf3.start or zf3.stop < zf2.start)
-  } == 0;
-
-  constraint countall(m from Mitarbeiter) {
-    d3 in m.dienste and d1 in m.dienste and not(zf3.stop < zf1.start or zf1.stop < zf3.start)
-  } == 0;
-
-  constraint countall(m from Mitarbeiter) {
-    d3 in m.dienste and d2 in m.dienste and not(zf3.stop < zf2.start or zf2.stop < zf3.start)
+    (d1 in m.dienste and d2 in m.dienste and not(zf1.stop < zf2.start or zf2.stop < zf1.start))
+    or
+    (d1 in m.dienste and d3 in m.dienste and not(zf1.stop < zf3.start or zf3.stop < zf1.start))
+    or
+    (d2 in m.dienste and d1 in m.dienste and not(zf2.stop < zf1.start or zf1.stop < zf2.start))
+    or
+    (d2 in m.dienste and d3 in m.dienste and not(zf2.stop < zf3.start or zf3.stop < zf2.start))
+    or
+    (d3 in m.dienste and d1 in m.dienste and not(zf3.stop < zf1.start or zf1.stop < zf3.start))
+    or
+    (d3 in m.dienste and d2 in m.dienste and not(zf3.stop < zf2.start or zf2.stop < zf3.start))
   } == 0;
 
   satisfy;
