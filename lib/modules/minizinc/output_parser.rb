@@ -73,7 +73,7 @@ class OutputParser
 
     if problem.objects[instance_name].get_variabletype(field_name) == 'VARIABLE_HASONE'
       datatype = problem.objects[instance_name].get_datatype(field_name)
-      problem.objects.each do |v|
+      problem.objects.each do |_k,v|
         next unless (v.class.to_s == datatype.to_s) && (v.id.to_s == val.to_s)
         relation = problem.objects[instance_name].get_value(field_name)
         relation.to.clear

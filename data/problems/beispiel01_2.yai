@@ -10,7 +10,7 @@ model {
       }
 
       class Mitarbeitertag {
-        var Dienst dienste;
+        var collection Dienst dienste;
         const Mitarbeiter ma;
         const Tag tag;
       }
