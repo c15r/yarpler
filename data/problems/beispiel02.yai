@@ -7,7 +7,7 @@ model {
       }
 
       class Mitarbeitertag {
-        var collection Dienst dienst;
+        var Dienst dienst;
         const Tag tag;
       }
 
@@ -77,7 +77,7 @@ solve {
   // Nach D1 kein D2
   constraint forall(m from Mitarbeiter) {
     forall (mt from m.tage) {
-      not(d1 in mt.dienst) or not(d2 in mt[1].dienst)
+      not(d1 == mt.dienst) or not(d2 == mt[1].dienst)
     }
   };
 
