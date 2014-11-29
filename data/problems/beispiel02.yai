@@ -7,6 +7,7 @@ model {
       }
 
       class Mitarbeitertag {
+        const integer index;
         var Dienst dienst;
         const Tag tag;
       }
@@ -35,12 +36,12 @@ initial {
   m3 = new Mitarbeiter();
 
   // Definition von Mitarbeitertagen
-  m1t1 = new Mitarbeitertag();
-  m1t2 = new Mitarbeitertag();
-  m2t1 = new Mitarbeitertag();
-  m2t2 = new Mitarbeitertag();
-  m3t1 = new Mitarbeitertag();
-  m3t2 = new Mitarbeitertag();
+  m1t1 = new Mitarbeitertag(index=1);
+  m1t2 = new Mitarbeitertag(index=2);
+  m2t1 = new Mitarbeitertag(index=1);
+  m2t2 = new Mitarbeitertag(index=2);
+  m3t1 = new Mitarbeitertag(index=1);
+  m3t2 = new Mitarbeitertag(index=2);
 
   // Definition von Relationen
   relation(m1.tage, {m1t1, m1t2});
@@ -71,7 +72,7 @@ solve {
 
   // Nach D1 kein D2
   constraint forall(m from Mitarbeiter) {
-    forall (mt from m.tage) {
+    forall (mt from m.tage order by mt.index asc) {
       not(d1 == mt.dienst) or not(d2 == mt[1].dienst)
     }
   };
