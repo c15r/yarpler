@@ -35,7 +35,7 @@ class YarplFlattener < Yarpler::Extensions::Process
         expr = replace_selector(expr, expression.variable, e.instance_name, expression.range)
 
         if expr.is_a? Yarpler::Models::Forall
-          expression.expressions.push(expand_forall_in_countall(expr, expression))
+          expression.expressions.concat(expand_forall_in_countall(expr, expression))
         else
           expression.expressions << expr
         end
@@ -51,7 +51,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     constraints = process_forall_statement(expr)
     constraints.each do |c|
       e = Yarpler::Models::Expression.new
-      e.operator = 'in'
+      e.operator = '=='
       e.left = Yarpler::Models::Instance.new
       # @TODO Mach das besser! ist extrem Fehleranfällig
       e.left.variable = c.expression.left.variable if c.expression.left.is_a? (Yarpler::Models::Field)

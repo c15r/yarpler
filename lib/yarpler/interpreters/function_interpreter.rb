@@ -42,7 +42,7 @@ module Yarpler
         count = Yarpler::Models::CountFunction.new
 
         count.where = ExpressionInterpreter.new(function[1]).expression
-        if count.where.operator.to_s != '==' or !count.where.left.is_a? Yarpler::Models::Instance or !count.where.right.is_a? Yarpler::Models::Instance
+        if count.where.operator.to_s != '==' or !(count.where.left.is_a? Yarpler::Models::Instance or count.where.left.is_a? Yarpler::Models::Field) or !(count.where.right.is_a? Yarpler::Models::Instance or !count.where.right.is_a? Yarpler::Models::Field)
           fail Yarpler::Exceptions::InvalidCountExpression
         end
 
@@ -54,6 +54,7 @@ module Yarpler
           fail Yarpler::Exceptions::InvalidCountExpressionNoSubstitution
         end
         count.range = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[0][1]).field
+        # count.inner =
         count
       end
 

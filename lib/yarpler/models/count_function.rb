@@ -7,6 +7,7 @@ module Yarpler
       attr_accessor :element
       attr_accessor :range
       attr_accessor :where
+      attr_accessor :inner
 
       def initialize
       end
@@ -20,6 +21,7 @@ module Yarpler
         new.element = @element.clone
         new.range = @range.clone
         new.where = @where.clone unless @where.nil?
+        new.inner = @inner.clone unless @inner.nil?
         new
       end
     end

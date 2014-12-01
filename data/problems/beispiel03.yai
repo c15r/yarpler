@@ -11,7 +11,7 @@ model {
       }
 
       class Mitarbeitertag {
-        var collection Dienst dienst;
+        var Dienst dienst;
         const Tag tag;
       }
 
@@ -79,31 +79,25 @@ initial {
 
 solve {
 
-  // Kardinalitaet aller Dienstvariablen auf 1 setzen
-  constraint forall(mt from Mitarbeitertag) {
-    count(d from mt.dienst) == 1
-  };
-
-  // Summe aller Diensttypen DT1, DT2, DT3 ueber alle Mitarbeiter und Tage ist je 1
   constraint countall(mt from Mitarbeitertag) {
-    forall(d from mt.dienst) {
-        dt1 == d.typ
-    }
+      forall(d from mt.dienst) {
+          dt1 == d.typ
+      }
   } == dt1.anzahl;
 
-  // Summe aller Diensttypen DT1, DT2, DT3 ueber alle Mitarbeiter und Tage ist je 1
   constraint countall(mt from Mitarbeitertag) {
-    forall(d from mt.dienst) {
-        dt2 == d.typ
-    }
+      forall(d from mt.dienst) {
+          dt2 == d.typ
+      }
   } == dt2.anzahl;
 
-  // Summe aller Diensttypen DT1, DT2, DT3 ueber alle Mitarbeiter und Tage ist je 1
   constraint countall(mt from Mitarbeitertag) {
-    forall(d from mt.dienst) {
-        dt3 == d.typ
-    }
+      forall(d from mt.dienst) {
+          dt3 == d.typ
+      }
   } == dt3.anzahl;
 
   satisfy;
+
+
 }
