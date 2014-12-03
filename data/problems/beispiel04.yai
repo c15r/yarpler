@@ -23,7 +23,7 @@ initial {
   zf2 = new Zeitfenster(start=8, stop=16);
   zf3 = new Zeitfenster(start=10, stop=18);
 
-  d1 = new Dienst(start=0, stop=7);
+  d1 = new Dienst(start=1, stop=9);
   relation(d1.fenster, zf1);
 
   d2 = new Dienst(start=8, stop=16);
