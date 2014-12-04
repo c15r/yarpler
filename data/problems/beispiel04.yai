@@ -6,8 +6,8 @@ model {
 
       class Dienst {
         const Zeitfenster fenster;
-        const integer start;
-        const integer stop;
+        var integer start;
+        var integer stop;
       }
 
       class Mitarbeiter {
@@ -19,21 +19,26 @@ initial {
   m1 = new Mitarbeiter();
   m2 = new Mitarbeiter();
 
-  zf1 = new Zeitfenster(start=0, stop=8);
-  zf2 = new Zeitfenster(start=8, stop=16);
-  zf3 = new Zeitfenster(start=10, stop=18);
+  zf1 = new Zeitfenster(start=0, stop=4);
+  zf2 = new Zeitfenster(start=3, stop=7);
+  zf3 = new Zeitfenster(start=6, stop=10);
+  zf4 = new Zeitfenster(start=9, stop=13);
 
-  d1 = new Dienst(start=1, stop=9);
+  d1 = new Dienst();
   relation(d1.fenster, zf1);
 
-  d2 = new Dienst(start=8, stop=16);
+  d2 = new Dienst();
   relation(d2.fenster, zf2);
 
-  d3 = new Dienst(start=10, stop=18);
+  d3 = new Dienst();
   relation(d3.fenster, zf3);
 
-  relation(m1.dienste, {d1,d2,d3});
-  relation(m2.dienste, {d1,d2,d3});
+  d4 = new Dienst();
+  relation(d4.fenster, zf4);
+
+
+  relation(m1.dienste, {d1,d2,d3,d4});
+  relation(m2.dienste, {d1,d2,d3,d4});
 }
 
 solve {
@@ -42,19 +47,21 @@ solve {
     count(di from Mitarbeiter.dienste where di==d) == 1
   };
 
-  constraint countall(m from Mitarbeiter) {
-    (d1 in m.dienste and d2 in m.dienste and not(zf1.stop < zf2.start or zf2.stop < zf1.start))
-    or
-    (d1 in m.dienste and d3 in m.dienste and not(zf1.stop < zf3.start or zf3.stop < zf1.start))
-    or
-    (d2 in m.dienste and d1 in m.dienste and not(zf2.stop < zf1.start or zf1.stop < zf2.start))
-    or
-    (d2 in m.dienste and d3 in m.dienste and not(zf2.stop < zf3.start or zf3.stop < zf2.start))
-    or
-    (d3 in m.dienste and d1 in m.dienste and not(zf3.stop < zf1.start or zf1.stop < zf3.start))
-    or
-    (d3 in m.dienste and d2 in m.dienste and not(zf3.stop < zf2.start or zf2.stop < zf3.start))
-  } == 0;
+  // Hilfsvariablen auf Dienst abfuellen
+  constraint forall(d from Dienst) {
+    forall(z from Zeitfenster) {
+        (z==d.fenster and d.start == z.start and d.stop == z.stop) or z!=d.fenster
+    }
+  };
+
+  // Ueberschneidungen ausschliessen
+  constraint forall(m from Mitarbeiter) {
+    forall(a from Dienst) {
+        forall(b from Dienst where a.id!=b.id) {
+            not(a in m.dienste and b in m.dienste and not(a.stop <= b.start or b.stop <= a.start))
+        }
+    }
+  };
 
   satisfy;
 }

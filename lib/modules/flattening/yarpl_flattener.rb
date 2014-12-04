@@ -222,6 +222,7 @@ class YarplFlattener < Yarpler::Extensions::Process
       expression.range = replace_selector(expression.range, placeholder_variable, real_variable, range)
       expression.field = replace_selector(expression.field, placeholder_variable, real_variable, range)
       expression.expression = replace_selector(expression.expression, placeholder_variable, real_variable, range)
+      expression.where = replace_selector(expression.where, placeholder_variable, real_variable, range)
     elsif expression.is_a? Yarpler::Models::Countall
       expression.range = replace_selector(expression.range, placeholder_variable, real_variable, range)
       if expression.range.is_a? Yarpler::Models::Field
