@@ -80,20 +80,20 @@ initial {
 solve {
 
   constraint countall(mt from Mitarbeitertag) {
-      forall(d from mt.dienst) {
-          dt1 == d.typ
+      forall(d from Dienst where dt1.id == d.typ) {
+          mt.dienst == d
       }
   } == dt1.anzahl;
 
   constraint countall(mt from Mitarbeitertag) {
-      forall(d from mt.dienst) {
-          dt2 == d.typ
+      forall(d from Dienst where dt2.id == d.typ) {
+           mt.dienst == d
       }
   } == dt2.anzahl;
 
   constraint countall(mt from Mitarbeitertag) {
-      forall(d from mt.dienst) {
-          dt3 == d.typ
+      forall(d from Dienst where dt3.id == d.typ) {
+          mt.dienst == d
       }
   } == dt3.anzahl;
 

@@ -58,15 +58,15 @@ initial {
 solve {
   // Summe aller DT1 auf 2 setzen
   constraint countall(mt from Mitarbeiter) {
-    forall(d from Dienst) {
-      dt1 == d.typ and d in mt.dienste
+    forall(d from Dienst where dt1.id == d.typ) {
+       d in mt.dienste
     }
   } == 3;
 
   // Summe aller DT2 auf 2 setzen
   constraint countall(mt from Mitarbeiter) {
-    forall(d from Dienst) {
-      dt2 == d.typ and d in mt.dienste
+    forall(d from Dienst where dt2.id == d.typ) {
+      d in mt.dienste
     }
   } == 3;
 
