@@ -20,7 +20,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     end
 
     problem.constraints.each do |constraint|
-      expand_count_all(constraint.expression)
+      expand_count_all(constraint.expression,problem)
     end
 
     remove_invalid_constraints(problem)
@@ -28,42 +28,47 @@ class YarplFlattener < Yarpler::Extensions::Process
 
   private
 
-  def expand_count_all(expression)
+  def expand_count_all(expression,problem)
     if expression.is_a? Yarpler::Models::Countall
+      expressions = Array.new
       expression.range.each do |e|
         expr = expression.expression.clone
         expr = replace_selector(expr, expression.variable, e.instance_name, expression.range)
 
         if expr.is_a? Yarpler::Models::Forall
-          expression.expressions.concat(expand_forall_in_countall(expr, expression))
+          expressions.concat(expand_forall_in_countall(expr, expression, problem))
         else
-          expression.expressions << expr
+          expressions << expr
         end
       end
+      expression.expressions = expressions
     elsif expression.is_a? Yarpler::Models::Expression
-      expand_count_all(expression.left)
-      expand_count_all(expression.right)
+      expand_count_all(expression.left,problem)
+      expand_count_all(expression.right,problem)
     end
   end
 
-  def expand_forall_in_countall(expr, expression)
+  def expand_forall_in_countall(expr, expression, problem)
     expressions = Array.new
     constraints = process_forall_statement(expr)
     constraints.each do |c|
-      e = Yarpler::Models::Expression.new
-      e.operator = '=='
-      e.left = Yarpler::Models::Instance.new
+      #e = Yarpler::Models::Expression.new
+      #e.operator = '=='
+      #if !expr.is_a? Yarpler::Models::Forall
+      #  e.operator = 'in' if problem.objects[expr.field.variable].get_variabletype(expr.field.attribute) == 'VARIABLE_HASMANY'
+      #end
+      #e.left = Yarpler::Models::Instance.new
       # @TODO Mach das besser! ist extrem Fehleranfällig
-      e.left.variable = c.expression.left.variable if c.expression.left.is_a? (Yarpler::Models::Field)
-      e.left.variable = c.expression.right.variable if c.expression.right.is_a? (Yarpler::Models::Field)
-      e.right = expr.field.clone
+      #e.left.variable = c.expression.left.variable if c.expression.left.is_a? (Yarpler::Models::Field)
+      #e.left.variable = c.expression.right.variable if c.expression.right.is_a? (Yarpler::Models::Field)
+      #e.right = expr.field.clone
 
-      e2 = Yarpler::Models::Expression.new
-      e2.left = e
-      e2.right = c.expression
-      e2.operator = 'and'
+      #e2 = Yarpler::Models::Expression.new
+      #e2.left = e
+      #e2.right = c.expression
+      #e2.operator = 'and'
 
-      expressions << e2
+      expressions << c.expression
     end
     expressions
   end
@@ -149,7 +154,11 @@ class YarplFlattener < Yarpler::Extensions::Process
     if expression.is_a? Yarpler::Models::Expression
       eval_string << evaluate_expression_inner(expression).to_s
     elsif expression.is_a? Yarpler::Models::Field
-      eval_string << @problem.objects[expression.variable].get_value(expression.attribute).to_s
+      obj = @problem.objects[expression.variable].get_value(expression.attribute)
+      if (obj.is_a? Yarpler::Models::Relation)
+        obj = @problem.objects[obj.to.first.to_s].id
+      end
+      eval_string << obj.to_s
     elsif expression.is_a? Yarpler::Models::Literal
       eval_string << expression.value.to_s
     else

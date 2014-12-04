@@ -2,31 +2,47 @@
 
 include "globals.mzn";
 
-var set of {1, 2, 3}: m1_dienste;
+var set of {1, 2, 3, 4}: m1_dienste;
 int: m1_id = 1;
-var set of {1, 2, 3}: m2_dienste;
+var set of {1, 2, 3, 4}: m2_dienste;
 int: m2_id = 2;
+int: dt1_id = 1;
+int: dt2_id = 2;
 int: zf1_start = 0;
-int: zf1_stop = 8;
+int: zf1_stop = 4;
 int: zf1_id = 1;
-int: zf2_start = 8;
-int: zf2_stop = 16;
+int: zf2_start = 3;
+int: zf2_stop = 7;
 int: zf2_id = 2;
-int: zf3_start = 10;
-int: zf3_stop = 18;
+int: zf3_start = 6;
+int: zf3_stop = 10;
 int: zf3_id = 3;
+int: zf4_start = 9;
+int: zf4_stop = 13;
+int: zf4_id = 4;
 int: d1_fenster = 1;
-int: d1_start = 1;
-int: d1_stop = 9;
+int: d1_typ = 1;
+var int: d1_start;
+var int: d1_stop;
 int: d1_id = 1;
 int: d2_fenster = 2;
-int: d2_start = 8;
-int: d2_stop = 16;
+int: d2_typ = 2;
+var int: d2_start;
+var int: d2_stop;
 int: d2_id = 2;
 int: d3_fenster = 3;
-int: d3_start = 10;
-int: d3_stop = 18;
+int: d3_typ = 1;
+var int: d3_start;
+var int: d3_stop;
 int: d3_id = 3;
+int: d4_fenster = 4;
+int: d4_typ = 2;
+var int: d4_start;
+var int: d4_stop;
+int: d4_id = 4;
+
+var int: A_DT1;
+var int: A_DT2;
 
 
 constraint
@@ -42,21 +58,190 @@ constraint
 ;
 
 constraint
-	not(d1_id in m1_dienste /\ d2_id in m1_dienste /\ not(zf1_stop < zf2_start \/ zf2_stop < zf1_start)) \/ 
-	not(d1_id in m1_dienste /\ d3_id in m1_dienste /\ not(zf1_stop < zf3_start \/ zf3_stop < zf1_start)) \/ 
-	not(d2_id in m1_dienste /\ d1_id in m1_dienste /\ not(zf2_stop < zf1_start \/ zf1_stop < zf2_start)) \/ 
-	not(d2_id in m1_dienste /\ d3_id in m1_dienste /\ not(zf2_stop < zf3_start \/ zf3_stop < zf2_start)) \/ 
-	not(d3_id in m1_dienste /\ d1_id in m1_dienste /\ not(zf3_stop < zf1_start \/ zf1_stop < zf3_start)) \/ 
-	not(d3_id in m1_dienste /\ d2_id in m1_dienste /\ not(zf3_stop < zf2_start \/ zf2_stop < zf3_start))
+	let {array[1..2] of var int: array3 = [bool2int(d4_id in m1_dienste),bool2int(d4_id in m2_dienste) ]} in sum(t0 in 1..2)(array3[t0]) == 1
 ;
 
 constraint
-%%	not(d1_id in m2_dienste /\ d2_id in m2_dienste /\ not(zf1_stop < zf2_start \/ zf2_stop < zf1_start)) \/
-%%	not(d1_id in m2_dienste /\ d3_id in m2_dienste /\ not(zf1_stop < zf3_start \/ zf3_stop < zf1_start)) \/ 
-%%	not(d2_id in m2_dienste /\ d1_id in m2_dienste /\ not(zf2_stop < zf1_start \/ zf1_stop < zf2_start)) \/ 
-%%	not(d2_id in m2_dienste /\ d3_id in m2_dienste /\ not(zf2_stop < zf3_start \/ zf3_stop < zf2_start)) \/ 
-%%	not(d3_id in m2_dienste /\ d1_id in m2_dienste /\ not(zf3_stop < zf1_start \/ zf1_stop < zf3_start)) \/ 
-	not(d3_id in m2_dienste /\ d2_id in m2_dienste /\ not(zf3_stop < zf2_start \/ zf2_stop < zf3_start))
+	let {array[1..8] of var int: array4 = [bool2int(d1_id in m1_dienste /\ dt1_id == d1_typ),
+						bool2int(d2_id in m1_dienste /\ dt1_id == d2_typ),
+						bool2int(d3_id in m1_dienste /\ dt1_id == d3_typ),
+						bool2int(d4_id in m1_dienste /\ dt1_id == d4_typ),
+						bool2int(d1_id in m2_dienste /\ dt1_id == d1_typ),
+						bool2int(d2_id in m2_dienste /\ dt1_id == d2_typ),
+						bool2int(d3_id in m2_dienste /\ dt1_id == d3_typ),
+						bool2int(d4_id in m2_dienste /\ dt1_id == d4_typ)) ]} in sum(t0 in 1..8)(array4[t0]) == A_DT1
+;
+
+constraint
+	let {array[1..8] of var int: array5 = [bool2int(d1_id in m1_dienste /\ dt2_id == d1_typ),
+						bool2int(d2_id in m1_dienste /\ dt2_id == d2_typ),
+						bool2int(d3_id in m1_dienste /\ dt2_id == d3_typ),
+						bool2int(d4_id in m1_dienste /\ dt2_id == d4_typ),
+						bool2int(d1_id in m2_dienste /\ dt2_id == d1_typ),
+						bool2int(d2_id in m2_dienste /\ dt2_id == d2_typ),
+						bool2int(d3_id in m2_dienste /\ dt2_id == d3_typ),
+						bool2int(d4_id in m2_dienste /\ dt2_id == d4_typ)
+						 ]} in sum(t0 in 1..8)(array5[t0]) == A_DT2
+;
+
+constraint
+	zf1_id == d1_fenster /\ d1_start == zf1_start /\ d1_stop == zf1_stop \/ zf1_id != d1_fenster
+;
+
+constraint
+	zf2_id == d1_fenster /\ d1_start == zf2_start /\ d1_stop == zf2_stop \/ zf2_id != d1_fenster
+;
+
+constraint
+	zf3_id == d1_fenster /\ d1_start == zf3_start /\ d1_stop == zf3_stop \/ zf3_id != d1_fenster
+;
+
+constraint
+	zf4_id == d1_fenster /\ d1_start == zf4_start /\ d1_stop == zf4_stop \/ zf4_id != d1_fenster
+;
+
+constraint
+	zf1_id == d2_fenster /\ d2_start == zf1_start /\ d2_stop == zf1_stop \/ zf1_id != d2_fenster
+;
+
+constraint
+	zf2_id == d2_fenster /\ d2_start == zf2_start /\ d2_stop == zf2_stop \/ zf2_id != d2_fenster
+;
+
+constraint
+	zf3_id == d2_fenster /\ d2_start == zf3_start /\ d2_stop == zf3_stop \/ zf3_id != d2_fenster
+;
+
+constraint
+	zf4_id == d2_fenster /\ d2_start == zf4_start /\ d2_stop == zf4_stop \/ zf4_id != d2_fenster
+;
+
+constraint
+	zf1_id == d3_fenster /\ d3_start == zf1_start /\ d3_stop == zf1_stop \/ zf1_id != d3_fenster
+;
+
+constraint
+	zf2_id == d3_fenster /\ d3_start == zf2_start /\ d3_stop == zf2_stop \/ zf2_id != d3_fenster
+;
+
+constraint
+	zf3_id == d3_fenster /\ d3_start == zf3_start /\ d3_stop == zf3_stop \/ zf3_id != d3_fenster
+;
+
+constraint
+	zf4_id == d3_fenster /\ d3_start == zf4_start /\ d3_stop == zf4_stop \/ zf4_id != d3_fenster
+;
+
+constraint
+	zf1_id == d4_fenster /\ d4_start == zf1_start /\ d4_stop == zf1_stop \/ zf1_id != d4_fenster
+;
+
+constraint
+	zf2_id == d4_fenster /\ d4_start == zf2_start /\ d4_stop == zf2_stop \/ zf2_id != d4_fenster
+;
+
+constraint
+	zf3_id == d4_fenster /\ d4_start == zf3_start /\ d4_stop == zf3_stop \/ zf3_id != d4_fenster
+;
+
+constraint
+	zf4_id == d4_fenster /\ d4_start == zf4_start /\ d4_stop == zf4_stop \/ zf4_id != d4_fenster
+;
+
+constraint
+	not(d1_id in m1_dienste /\ d2_id in m1_dienste /\ not(d1_stop <= d2_start \/ d2_stop <= d1_start)) 
+;
+
+constraint
+	not(d1_id in m1_dienste /\ d3_id in m1_dienste /\ not(d1_stop <= d3_start \/ d3_stop <= d1_start)) 
+;
+
+constraint
+	not(d1_id in m1_dienste /\ d4_id in m1_dienste /\ not(d1_stop <= d4_start \/ d4_stop <= d1_start)) 
+;
+
+constraint
+	not(d2_id in m1_dienste /\ d1_id in m1_dienste /\ not(d2_stop <= d1_start \/ d1_stop <= d2_start)) 
+;
+
+constraint
+	not(d2_id in m1_dienste /\ d3_id in m1_dienste /\ not(d2_stop <= d3_start \/ d3_stop <= d2_start)) 
+;
+
+constraint
+	not(d2_id in m1_dienste /\ d4_id in m1_dienste /\ not(d2_stop <= d4_start \/ d4_stop <= d2_start)) 
+;
+
+constraint
+	not(d3_id in m1_dienste /\ d1_id in m1_dienste /\ not(d3_stop <= d1_start \/ d1_stop <= d3_start)) 
+;
+
+constraint
+	not(d3_id in m1_dienste /\ d2_id in m1_dienste /\ not(d3_stop <= d2_start \/ d2_stop <= d3_start)) 
+;
+
+constraint
+	not(d3_id in m1_dienste /\ d4_id in m1_dienste /\ not(d3_stop <= d4_start \/ d4_stop <= d3_start)) 
+;
+
+constraint
+	not(d4_id in m1_dienste /\ d1_id in m1_dienste /\ not(d4_stop <= d1_start \/ d1_stop <= d4_start)) 
+;
+
+constraint
+	not(d4_id in m1_dienste /\ d2_id in m1_dienste /\ not(d4_stop <= d2_start \/ d2_stop <= d4_start)) 
+;
+
+constraint
+	not(d4_id in m1_dienste /\ d3_id in m1_dienste /\ not(d4_stop <= d3_start \/ d3_stop <= d4_start)) 
+;
+
+constraint
+	not(d1_id in m2_dienste /\ d2_id in m2_dienste /\ not(d1_stop <= d2_start \/ d2_stop <= d1_start)) 
+;
+
+constraint
+	not(d1_id in m2_dienste /\ d3_id in m2_dienste /\ not(d1_stop <= d3_start \/ d3_stop <= d1_start)) 
+;
+
+constraint
+	not(d1_id in m2_dienste /\ d4_id in m2_dienste /\ not(d1_stop <= d4_start \/ d4_stop <= d1_start)) 
+;
+
+constraint
+	not(d2_id in m2_dienste /\ d1_id in m2_dienste /\ not(d2_stop <= d1_start \/ d1_stop <= d2_start)) 
+;
+
+constraint
+	not(d2_id in m2_dienste /\ d3_id in m2_dienste /\ not(d2_stop <= d3_start \/ d3_stop <= d2_start)) 
+;
+
+constraint
+	not(d2_id in m2_dienste /\ d4_id in m2_dienste /\ not(d2_stop <= d4_start \/ d4_stop <= d2_start)) 
+;
+
+constraint
+	not(d3_id in m2_dienste /\ d1_id in m2_dienste /\ not(d3_stop <= d1_start \/ d1_stop <= d3_start)) 
+;
+
+constraint
+	not(d3_id in m2_dienste /\ d2_id in m2_dienste /\ not(d3_stop <= d2_start \/ d2_stop <= d3_start)) 
+;
+
+constraint
+	not(d3_id in m2_dienste /\ d4_id in m2_dienste /\ not(d3_stop <= d4_start \/ d4_stop <= d3_start)) 
+;
+
+constraint
+	not(d4_id in m2_dienste /\ d1_id in m2_dienste /\ not(d4_stop <= d1_start \/ d1_stop <= d4_start)) 
+;
+
+constraint
+	not(d4_id in m2_dienste /\ d2_id in m2_dienste /\ not(d4_stop <= d2_start \/ d2_stop <= d4_start)) 
+;
+
+constraint
+	not(d4_id in m2_dienste /\ d3_id in m2_dienste /\ not(d4_stop <= d3_start \/ d3_stop <= d4_start)) 
 ;
 
 
@@ -66,5 +251,5 @@ solve satisfy
 
 
 
-output [ "" , "m1_dienste=" , show(m1_dienste) , " "   , "m2_dienste=" , show(m2_dienste) , " "   ];
+output [ "" , "A_DT1=" , show(A_DT1) , " " , "A_DT2=" , show(A_DT2) , " " , "m1_dienste=" , show(m1_dienste) , " "   , "m2_dienste=" , show(m2_dienste) , " "   , "d1_start=" , show(d1_start) , " "   , "d1_stop=" , show(d1_stop) , " "   , "d2_start=" , show(d2_start) , " "   , "d2_stop=" , show(d2_stop) , " "   , "d3_start=" , show(d3_start) , " "   , "d3_stop=" , show(d3_stop) , " "   , "d4_start=" , show(d4_start) , " "   , "d4_stop=" , show(d4_stop) , " "   ];
 

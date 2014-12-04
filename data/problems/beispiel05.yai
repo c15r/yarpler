@@ -1,0 +1,91 @@
+model {
+      class Zeitfenster {
+        const integer start;
+        const integer stop;
+      }
+
+      class Diensttyp {
+
+      }
+
+      class Dienst {
+        const Zeitfenster fenster;
+        const Diensttyp typ;
+        var integer start;
+        var integer stop;
+      }
+
+      class Mitarbeiter {
+        var collection Dienst dienste;
+      }
+}
+
+initial {
+  m1 = new Mitarbeiter();
+  m2 = new Mitarbeiter();
+  m3 = new Mitarbeiter();
+
+  dt1 = new Diensttyp();
+  dt2 = new Diensttyp();
+
+  zf1 = new Zeitfenster(start=0, stop=4);
+  zf2 = new Zeitfenster(start=3, stop=7);
+  zf3 = new Zeitfenster(start=6, stop=10);
+  zf4 = new Zeitfenster(start=9, stop=13);
+
+  d1 = new Dienst();
+  relation(d1.fenster, zf1);
+  relation(d1.typ, dt1);
+
+  d2 = new Dienst();
+  relation(d2.fenster, zf2);
+  relation(d2.typ, dt2);
+
+  d3 = new Dienst();
+  relation(d3.fenster, zf3);
+  relation(d3.typ, dt1);
+
+  d4 = new Dienst();
+  relation(d4.fenster, zf4);
+  relation(d4.typ, dt2);
+
+
+  relation(m1.dienste, {d1,d2,d3,d4});
+  relation(m2.dienste, {d1,d2,d3,d4});
+  relation(m3.dienste, {d1,d2,d3,d4});
+}
+
+solve {
+  // Summe aller DT1 auf 2 setzen
+  constraint countall(mt from Mitarbeiter) {
+    forall(d from Dienst) {
+      dt1 == d.typ and d in mt.dienste
+    }
+  } == 3;
+
+  // Summe aller DT2 auf 2 setzen
+  constraint countall(mt from Mitarbeiter) {
+    forall(d from Dienst) {
+      dt2 == d.typ and d in mt.dienste
+    }
+  } == 3;
+
+
+  // Hilfsvariablen auf Dienst abfuellen
+  constraint forall(d from Dienst) {
+    forall(z from Zeitfenster) {
+        (z==d.fenster and d.start == z.start and d.stop == z.stop) or z!=d.fenster
+    }
+  };
+
+  // Ueberschneidungen ausschliessen
+  constraint forall(m from Mitarbeiter) {
+    forall(a from Dienst) {
+        forall(b from Dienst where a.id!=b.id) {
+            not(a in m.dienste and b in m.dienste and not(a.stop <= b.start or b.stop <= a.start))
+        }
+    }
+  };
+
+  satisfy;
+}
