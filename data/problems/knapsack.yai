@@ -38,7 +38,7 @@ solve {
 
     constraint sum(d from sack.items) {
         d.value
-    } == sack.totalValue;   
+    } == sack.totalValue;
 
     maximize sack.totalValue;
 }

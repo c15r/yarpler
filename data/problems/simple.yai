@@ -1,30 +1,186 @@
 model {
       class Tag {
+        const integer index;
+      }
+
+      class Diensttyp {
+        var integer anzahl;
+        const integer dauer;
       }
 
       class Dienst {
+        const Diensttyp typ;
+        var integer dauer;
+        const integer start;
+      }
 
+      class Mitarbeitertag {
+        var Dienst dienst;
+        const Tag tag;
+        var integer dauer;
       }
 
       class Mitarbeiter {
-        var collection Dienst dienste;
-        const Tag tag;
+        const collection Mitarbeitertag tage;
+        const integer sollarbeitszeit;
+        var integer istarbeitszeit;
+        var integer abweichung;
       }
+
 }
 
 initial {
 
-  // Instanzen
-  d1 = new Dienst();
-  d2 = new Dienst();
-  t1 = new Tag();
-  m1 = new Mitarbeiter();
+  // Definition von Diensttypen
+  dt1 = new Diensttyp(anzahl=1,dauer=8);
+  dt2 = new Diensttyp(anzahl=2,dauer=8);
+  dt3 = new Diensttyp(anzahl=1,dauer=8);
+  dtf = new Diensttyp(anzahl=1,dauer=0);
 
-  // Relationen
-  relation(m1.tag, t1);
-  relation(m1.dienste, {d1,d2});
+  // Definition von Diensttypen
+  d1 = new Dienst(start=0);
+  d2 = new Dienst(start=0);
+  d3 = new Dienst(start=0);
+  f = new Dienst(start=0);
+
+  // Definition von Tagen
+  t1 = new Tag(index=1);
+  t2 = new Tag(index=2);
+  t3 = new Tag(index=2);
+  t4 = new Tag(index=2);
+  t5 = new Tag(index=2);
+
+  // Definition von Mitarbeitern
+  m1 = new Mitarbeiter(sollarbeitszeit=4);
+  m2 = new Mitarbeiter(sollarbeitszeit=4);
+  m3 = new Mitarbeiter(sollarbeitszeit=4);
+  m4 = new Mitarbeiter(sollarbeitszeit=4);
+
+  // Definition von Mitarbeitertagen
+  m1t1 = new Mitarbeitertag();
+  m1t2 = new Mitarbeitertag();
+  m1t3 = new Mitarbeitertag();
+  m1t4 = new Mitarbeitertag();
+  m1t5 = new Mitarbeitertag();
+  m2t1 = new Mitarbeitertag();
+  m2t2 = new Mitarbeitertag();
+  m2t3 = new Mitarbeitertag();
+  m2t4 = new Mitarbeitertag();
+  m2t5 = new Mitarbeitertag();
+  m3t1 = new Mitarbeitertag();
+  m3t2 = new Mitarbeitertag();
+  m3t3 = new Mitarbeitertag();
+  m3t4 = new Mitarbeitertag();
+  m3t5 = new Mitarbeitertag();
+  m4t1 = new Mitarbeitertag();
+  m4t2 = new Mitarbeitertag();
+  m4t3 = new Mitarbeitertag();
+  m4t4 = new Mitarbeitertag();
+  m4t5 = new Mitarbeitertag();
+
+  // Definition von Relationen
+  relation(m1.tage, {m1t1, m1t2, m1t3, m1t4, m1t5});
+  relation(m2.tage, {m2t1, m2t2, m2t3, m2t4, m2t5});
+  relation(m3.tage, {m3t1, m3t2, m3t3, m3t4, m3t5});
+  relation(m4.tage, {m4t1, m4t2, m4t3, m4t4, m4t5});
+
+  relation(m1t1.tag, t1);
+  relation(m1t2.tag, t2);
+  relation(m1t3.tag, t3);
+  relation(m1t4.tag, t4);
+  relation(m1t5.tag, t5);
+  relation(m2t1.tag, t1);
+  relation(m2t2.tag, t2);
+  relation(m2t3.tag, t3);
+  relation(m2t4.tag, t4);
+  relation(m2t5.tag, t5);
+  relation(m3t1.tag, t1);
+  relation(m3t2.tag, t2);
+  relation(m3t3.tag, t3);
+  relation(m3t4.tag, t4);
+  relation(m3t5.tag, t5);
+  relation(m4t1.tag, t1);
+  relation(m4t2.tag, t2);
+  relation(m4t3.tag, t3);
+  relation(m4t4.tag, t4);
+  relation(m4t5.tag, t5);
+
+  relation(d1.typ, dt1);
+  relation(d2.typ, dt2);
+  relation(d3.typ, dt3);
+  relation(f.typ, dtf);
+
+  relation(m1t1.dienst, {d1,d2,d3,f});
+  relation(m1t2.dienst, {d1,d2,d3,f});
+  relation(m1t3.dienst, {d1,d2,d3,f});
+  relation(m1t4.dienst, {d1,d2,d3,f});
+  relation(m1t5.dienst, {d1,d2,d3,f});
+  relation(m2t1.dienst, {d1,d2,d3,f});
+  relation(m2t2.dienst, {d1,d2,d3,f});
+  relation(m2t3.dienst, {d1,d2,d3,f});
+  relation(m2t4.dienst, {d1,d2,d3,f});
+  relation(m2t5.dienst, {d1,d2,d3,f});
+  relation(m3t1.dienst, {d1,d2,d3,f});
+  relation(m3t2.dienst, {d1,d2,d3,f});
+  relation(m3t3.dienst, {d1,d2,d3,f});
+  relation(m3t4.dienst, {d1,d2,d3,f});
+  relation(m3t5.dienst, {d1,d2,d3,f});
+  relation(m4t1.dienst, {d1,d2,d3,f});
+  relation(m4t2.dienst, {d1,d2,d3,f});
+  relation(m4t3.dienst, {d1,d2,d3,f});
+  relation(m4t4.dienst, {d1,d2,d3,f});
+  relation(m4t5.dienst, {d1,d2,d3,f});
 }
 
 solve {
-    satisfy;
+
+  // Zaehlen von Diensttypen ueber alle Tage
+  constraint countall(mt from Mitarbeitertag) {
+    forall(d from Dienst where dt1.id == d.typ) {
+      mt.dienst == d and mt.tag == t1
+    }
+  } == dt1.anzahl;
+
+  constraint countall(mt from Mitarbeitertag) {
+    forall(d from Dienst where dt2.id == d.typ) {
+      mt.dienst == d and mt.tag == t1
+    }
+  } == dt2.anzahl;
+
+  constraint countall(mt from Mitarbeitertag) {
+    forall(d from Dienst where dt3.id == d.typ) {
+      mt.dienst == d and mt.tag == t1
+    }
+  } == dt3.anzahl;
+
+  // Istarbeitszeit entspricht der Dauer aller zugeordneten Diensten
+  constraint forall(m from Mitarbeiter) {
+    sum(mt from m.tage) {
+      mt.dauer
+    } == m.istarbeitszeit
+  };
+
+  // Dauer eines Mitarbeitertags entspricht der Summe der kompletten Dauer der zugeordneten Dienste
+  constraint forall(mt from Mitarbeitertag) {
+    sum(d from mt.dienst) {
+      d.dauer
+    } == mt.dauer
+  };
+
+  // Dauer eines Diensts entspricht der Summe der kompletten Dauer des zugeordneten Diensttyps
+  constraint forall(d from Dienst) {
+    sum(t from d.typ) {
+      t.dauer
+    } == d.dauer
+  };
+
+  // Abweichung entspricht der Differenz von Soll- zu Istarbeitszeit
+  constraint forall(m from Mitarbeiter) {
+    m.abweichung == m.sollarbeitszeit - m.istarbeitszeit
+  };
+
+  // Zielfunktion minimiert die Absolutwerte der Abweichungen
+  minimize abs(m1.abweichung) + abs(m2.abweichung) + abs(m3.abweichung);
+
+
 }
