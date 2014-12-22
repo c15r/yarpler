@@ -2,6 +2,7 @@
 
 include "globals.mzn";
 
+
 int: sack_maxWeight = 100;
 var int: sack_totalValue;
 var int: sack_currentWeight;
