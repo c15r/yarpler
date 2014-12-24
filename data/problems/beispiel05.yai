@@ -23,7 +23,6 @@ model {
 initial {
   m1 = new Mitarbeiter();
   m2 = new Mitarbeiter();
-  m3 = new Mitarbeiter();
 
   dt1 = new Diensttyp();
   dt2 = new Diensttyp();
@@ -52,23 +51,22 @@ initial {
 
   relation(m1.dienste, {d1,d2,d3,d4});
   relation(m2.dienste, {d1,d2,d3,d4});
-  relation(m3.dienste, {d1,d2,d3,d4});
 }
 
 solve {
-  // Summe aller DT1 auf 2 setzen
+  // Summe aller DT1 auf 3 setzen
   constraint countall(mt from Mitarbeiter) {
     forall(d from Dienst where dt1.id == d.typ) {
        d in mt.dienste
     }
-  } == 3;
+  } == 2;
 
-  // Summe aller DT2 auf 2 setzen
+  // Summe aller DT2 auf 3 setzen
   constraint countall(mt from Mitarbeiter) {
     forall(d from Dienst where dt2.id == d.typ) {
       d in mt.dienste
     }
-  } == 3;
+  } == 2;
 
 
   // Hilfsvariablen auf Dienst abfuellen
