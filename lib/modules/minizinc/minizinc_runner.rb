@@ -3,10 +3,12 @@
 class MinizincRunner
   attr_reader :output
 
+  # Prints the MiniZinc Output
   def print
     puts @output
   end
 
+  # Runs a MiniZinc problem from a file
   def run_from_file(filename)
     file = File.new(filename, 'r')
     content = file.read
@@ -14,6 +16,7 @@ class MinizincRunner
     run(content)
   end
 
+  # Runs a minizinc model from a model object
   def run(model)
     path = File.join(Dir.pwd, 'wrk.mzn')
     File.open(path, 'wb') { |f| f.write(model) }
@@ -21,17 +24,21 @@ class MinizincRunner
     check_minizinc_output
   end
 
+  # Checks if the answer of MiniZinc tells about an error
+  # or an unsatisfiable problem
   def check_minizinc_output
     check_for_unsatifiable(@output)
     check_for_error(@output)
   end
 
+  # Checks if the MiniZinc output is unsatisfiable
   def check_for_unsatifiable(output)
     return false unless output.include?('=====UNSATISFIABLE=====')
     Yarpler::Log.instance.error 'Problem is unsatisfiable!'
     abort
   end
 
+  # Checks if there is an error in MiniZinc output
   def check_for_error(output)
     return false if output.include?('----------')
     Yarpler::Log.instance.error 'Exception in MiniZinc!'

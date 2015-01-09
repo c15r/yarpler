@@ -4,10 +4,13 @@
 class MinizincHelper
   include Singleton
 
+  # Initializes the array id index
   def initialize
     @array_id = -1
   end
 
+  # Returs the next array index id and increases
+  # the index
   def array_id
     @array_id = @array_id.next
     @array_id

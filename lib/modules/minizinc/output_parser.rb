@@ -5,9 +5,14 @@ require_relative 'yarpler_output/YarplerOutputParser'
 # Reads the return value of the minizinc solver and updates the YARPL data structure
 # rubocop:disable Metrics/MethodLength
 class OutputParser
+
+  # ANTLR Tree of output parsing
   attr_reader :tree
+
+  # Object with problem definition
   attr_reader :problem
 
+  # Initializes the parser
   def initialize(output, problem)
     @output = output
     parse
@@ -17,6 +22,7 @@ class OutputParser
 
   private
 
+  # Fills the output back into the problem object
   def fill_output(tree, problem)
     tree.each do |t|
       if t.to_s == 'OUTPUT'
@@ -31,6 +37,7 @@ class OutputParser
     end
   end
 
+  # Gets a list of all variables
   def read_variable_list(var, values, problem)
     instance_name = var.slice(0..(var.index('_') - 1))
     field_name = var[var.index('_') + 1..var.length]
@@ -55,6 +62,7 @@ class OutputParser
     problem.objects[instance_name].set_value(field_name, relation)
   end
 
+  # Restructures the continuous ranges into an array of all values
   def rewrite_range(values)
     if values.size == 3 and values[1].to_s == '..'
       new_values = Array.new
@@ -66,6 +74,7 @@ class OutputParser
     values
   end
 
+  # Read a single variable
   def read_variable(var, val, problem)
     instance_name = var.slice(0..(var.index('_') - 1))
     field_name = var[var.index('_') + 1..var.length]
@@ -87,6 +96,7 @@ class OutputParser
     end
   end
 
+  # Parse the problem output
   def parse
     out = StringIO.new
     err = StringIO.new

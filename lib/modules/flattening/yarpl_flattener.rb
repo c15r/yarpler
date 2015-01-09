@@ -1,12 +1,15 @@
-# YARPL Flatttener is responsible to flatten allquantor statements
+# YARPL Flattener is responsible to flatten allquantor statements
 #
 # It's derived from Extensions::Process and must be invoked to generate proper minizinc code
 # rubocop:disable Metrics/ClassLength
 class YarplFlattener < Yarpler::Extensions::Process
+
+  # Initializes an array of constraints
   def initialize
     @constraints = []
   end
 
+  # Processes a problem declaration to flatten all allquantor and countall statements
   def process(problem)
     @problem = problem
     problem.constraints.each do |constraint|
@@ -28,6 +31,7 @@ class YarplFlattener < Yarpler::Extensions::Process
 
   private
 
+  # Expands a countAll construct by checking internal forall loops
   def expand_count_all(expression,problem)
     if expression.is_a? Yarpler::Models::Countall
       expressions = Array.new
@@ -48,31 +52,17 @@ class YarplFlattener < Yarpler::Extensions::Process
     end
   end
 
+  # Internal method to revolve forall clauses in countall
   def expand_forall_in_countall(expr, expression, problem)
     expressions = Array.new
     constraints = process_forall_statement(expr)
     constraints.each do |c|
-      #e = Yarpler::Models::Expression.new
-      #e.operator = '=='
-      #if !expr.is_a? Yarpler::Models::Forall
-      #  e.operator = 'in' if problem.objects[expr.field.variable].get_variabletype(expr.field.attribute) == 'VARIABLE_HASMANY'
-      #end
-      #e.left = Yarpler::Models::Instance.new
-      # @TODO Mach das besser! ist extrem Fehleranfällig
-      #e.left.variable = c.expression.left.variable if c.expression.left.is_a? (Yarpler::Models::Field)
-      #e.left.variable = c.expression.right.variable if c.expression.right.is_a? (Yarpler::Models::Field)
-      #e.right = expr.field.clone
-
-      #e2 = Yarpler::Models::Expression.new
-      #e2.left = e
-      #e2.right = c.expression
-      #e2.operator = 'and'
-
       expressions << c.expression
     end
     expressions
   end
 
+  # Recursive check for constraints to see if there are internal forall statements
   def process_constraint(constraint)
     if constraint.expression.is_a? Yarpler::Models::Forall
       @constraints.concat(process_forall_statement(constraint.expression))
@@ -81,7 +71,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     end
   end
 
-  # remove all invalid constraints
+  # Removes all invalid constraints
   def remove_invalid_constraints(problem)
     invalid = []
     problem.constraints.each do |constraint|
@@ -94,7 +84,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     problem
   end
 
-  # check if we have other Allquantors inside now
+  # Checks if we have other Allquantors inside now
   def allquantors_inside?(problem)
     problem.constraints.each do |constraint|
       return true if constraint.expression.is_a? Yarpler::Models::Forall
@@ -102,6 +92,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     false
   end
 
+  # Processes the range of a forall statement
   def process_forall_statement(forall)
     if forall.range.is_a?(Array)
       process_array_range(forall)
@@ -110,6 +101,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     end
   end
 
+  # Processes a range from an array
   def process_array_range(forall)
     constraints = Array.new
     range = order_range(forall)
@@ -125,6 +117,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     constraints
   end
 
+  # Processes a where inside a forall loop, which removes unnecessary constraints
   def where(forall, obj)
     do_add = true
 
@@ -137,6 +130,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     do_add
   end
 
+  # Orders the range of a loop
   def order_range(forall)
     range = forall.range
 
@@ -150,6 +144,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     range
   end
 
+  # Evaluates an expression inside of a forall statement
   def evaluate_expression(expression, eval_string = '')
     if expression.is_a? Yarpler::Models::Expression
       eval_string << evaluate_expression_inner(expression).to_s
@@ -167,6 +162,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     eval_string
   end
 
+  # Evaluates an inner expression
   def evaluate_expression_inner(expression)
     expression_string = evaluate_expression(expression.left)
     expression_string << ' ' + expression.operator.to_s + ' '
@@ -174,11 +170,13 @@ class YarplFlattener < Yarpler::Extensions::Process
     expression_string
   end
 
+  # Processes a range from a field
   def process_field_range(forall)
     forall.range = range_from_field(forall.range)
     process_forall_statement(forall)
   end
 
+  # Internal resolution of a range from a field
   def range_from_field(field)
     if class_exists? field.variable
       range = @problem.get_objects_of_class(field.variable)
@@ -188,6 +186,7 @@ class YarplFlattener < Yarpler::Extensions::Process
     range
   end
 
+  # Replaces placeholders based on a string
   def replace_placeholder_string(expression, variable_old, variable_new)
     if expression.is_a? Yarpler::Models::Expression
       expression.left = replace_placeholder_string(expression.left, variable_old, variable_new)
@@ -199,6 +198,7 @@ class YarplFlattener < Yarpler::Extensions::Process
   end
 
   # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  # Replaces a selector based on multiple variables
   def replace_selector(expression, placeholder_variable, real_variable, range)
     if expression.is_a? Yarpler::Models::Expression
       expression.left = replace_selector(expression.left, placeholder_variable, real_variable, range)
@@ -251,6 +251,7 @@ class YarplFlattener < Yarpler::Extensions::Process
   end
   # rubocop:enable Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
+  # Checks if the expression is a field or an instance
   def field_or_instance?(expression, placeholder_variable)
     is_field = (expression.is_a? Yarpler::Models::Field)
     is_instance = (expression.is_a? Yarpler::Models::Instance)
@@ -259,10 +260,12 @@ class YarplFlattener < Yarpler::Extensions::Process
     is_field_or_instance && (expression.variable == placeholder_variable)
   end
 
+  # Checks if the expression is a count function
   def count_function?(expression)
     expression.is_a? Yarpler::Models::CountFunction
   end
 
+  # Checks if the provided string is a class
   def class_exists?(class_name)
     klass = Object.const_get(class_name)
     return klass.is_a?(Class)
