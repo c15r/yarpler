@@ -9,6 +9,7 @@ module Yarpler
     class AbsoluteInterpreter
       attr_reader :absolute
 
+      # Inizializes the interpreter
       def initialize(tree)
         @absolute = Yarpler::Models::Absolute.new
         process_absolute(tree)
@@ -16,6 +17,7 @@ module Yarpler
 
       private
 
+      # Processes an absolute function
       def process_absolute(expression)
         case expression[0].to_s
           when 'FIELD_ACCESSOR'

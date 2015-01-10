@@ -4,6 +4,7 @@ module Yarpler
     class ConstraintInterpreter
       attr_reader :constraint
 
+      # Inizialize the interpreter
       def initialize(tree, objects)
         @objects = objects
         @constraint = Yarpler::Models::Constraint.new
@@ -12,6 +13,7 @@ module Yarpler
 
       private
 
+      # Parses a single expression
       def parse_expression(expression)
         constraint = nil
         case expression[0].to_s

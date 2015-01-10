@@ -1,14 +1,17 @@
 module Yarpler
   module Interpreters
+
+    attr_reader :init
+
     # ClassInterpreter processes a YARPL Class which defines the data model for a specific problem
     #
     # == YARPL Example
     #
     #   class { ... }
     #
-    attr_reader :init
-
     class ClassInterpreter
+
+      # Inizialize the interpreter
       def initialize(tree)
         @init = Hash.new
         @dynamic_name = tree[0].to_s
@@ -25,6 +28,7 @@ module Yarpler
 
       private
 
+      # Loads all attributes in the tree
       def load_attributes(tree)
         tree.each do |thing|
           case thing.to_s
@@ -39,6 +43,7 @@ module Yarpler
         end
       end
 
+      # Adds an initalizer for the variable
       def add_attribute_init(attr, value, type)
         if value.to_s == 'SET'
           @init[attr] = SetInterpreter.new(thing[1])
@@ -47,6 +52,7 @@ module Yarpler
         end
       end
 
+      # Takes value declaration apart if they are a continuous range
       def prepare_value(type, value)
         if type == 'VARIABLE' &&  !value.include?('..')
           value = value.to_s + '..' + value.to_s
@@ -54,14 +60,17 @@ module Yarpler
         value
       end
 
+      # Creates a method block in the class
       def create_method(obj_name, name, &block)
         Object.const_get(obj_name).send(:define_method, name, &block)
       end
 
+      # Removes a method block in the class
       def remove_method(obj_name, name)
         Object.const_get(obj_name).send(:remove_method, name)
       end
 
+      # Creates an attribute block in the class
       def create_attr(obj_name, name, data_type, variable_type)
         create_method(obj_name, "#{name}=".to_sym) do |val|
           instance_variable_set('@' + name, val)
@@ -75,12 +84,14 @@ module Yarpler
         set_variable_type(obj_name, name, variable_type)
       end
 
+      # Creates a method to determine the variable type per attribute
       def set_variable_type(obj_name, name, variable_type)
         create_method(obj_name, "#{name}_variabletype".to_sym) do
           variable_type
         end
       end
 
+      # Creates a method to determine the data type
       def set_data_type(obj_name, name, data_type)
         case data_type.to_s
           when 'INTEGER'

@@ -1,9 +1,10 @@
-# DienstplanPrinter is a process extension which prints the expressions in a format, that can be interpreted by yUML to
+# ExpressionPrinter is a process extension which prints the expressions in a format, that can be interpreted by yUML to
 # generate nice looking diagrams
 class ExpressionPrinter < Yarpler::Extensions::Process
 
   attr_reader :id
 
+  # Process the whole problem
   def process(problem)
     @id = 0
     problem.constraints.each do |c|
@@ -13,6 +14,7 @@ class ExpressionPrinter < Yarpler::Extensions::Process
     problem
   end
 
+  # Print a single expression in yuml syntax
   def print_expression(expression)
     string = ''
     if expression.is_a? Yarpler::Models::Forall

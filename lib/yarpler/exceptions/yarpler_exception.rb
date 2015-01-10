@@ -1,10 +1,12 @@
 module Yarpler
+  # Exception module
   module Exceptions
     # Main YARPLER Exception
     # Derive all specific exceptions from this one
     class YarplerException < StandardError
       attr_reader :message
 
+      # Initializes a yarpler exception
       def initialize
         @message = 'Unknown Exception'
       end
