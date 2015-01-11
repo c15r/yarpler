@@ -1,4 +1,7 @@
 module Yarpler
+  # Utilization module for all the things that
+  # are used but not really connected to anything
+  # specific.
   module Utils
     # YARPL File Loader is responsible to read the problem files
     # and create a string out of them
@@ -11,9 +14,13 @@ module Yarpler
     # It's optional to split the problem into multiple files.
     # You can pack all just in one .yai file.
     class FileLoader
+
+      # Initializes the file loader
       def initialize
       end
 
+      # Loads files based on a file name and combines
+      # split up instance and domain files
       def load_files(filename)
         filename_domain = filename.sub('.yai', '.yad')
 
@@ -24,6 +31,7 @@ module Yarpler
 
       private
 
+      # Loads the content from file system
       def load_file_to_content(filename)
         # @TODO Melde Fehler sobald File nicht vorhanden.
         return '' unless File.file?(filename)

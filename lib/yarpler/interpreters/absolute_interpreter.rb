@@ -1,4 +1,6 @@
 module Yarpler
+  # Interpreter module with all the classes to analyze the
+  # YARPL input
   module Interpreters
     # AbsoluteInterpreter processes a YARPL absolute expression
     #

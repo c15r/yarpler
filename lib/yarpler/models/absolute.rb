@@ -1,4 +1,7 @@
 module Yarpler
+  ##
+  # Model module with all data structures
+  # for the internal data of a problem
   module Models
     ##
     # Model for an absolute expression which can be used to minimize values to 0

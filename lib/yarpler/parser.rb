@@ -2,9 +2,12 @@ module Yarpler
   # The Yarpler Parser abstracts the auto generated ANTLR3 Lexer/Parser
   # Responsible for parsing a YARPL problem specification and generating an AST
   class Parser
+
+    # Initializes the parser
     def initialize
     end
 
+    # Parses a YARPL file
     def parse(yarpl_problem)
       out, err = StringIO.new, StringIO.new
       previous_stderr, $stderr = $stderr, err
@@ -20,10 +23,12 @@ module Yarpler
 
     private
 
+    # Checks if there is a syntax error
     def error?(error)
       fail Yarpler::Exceptions::SyntaxErrorException, error.string unless error.string.empty?
     end
 
+    # Processes the problem with yarpler
     def process_problem(yarpl_problem)
       lexer = Yarpl::Lexer.new(yarpl_problem)
       tokens = ANTLR3::CommonTokenStream.new(lexer)  # Ein Array

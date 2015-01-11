@@ -1,6 +1,8 @@
 module Yarpler
   # Core is the interface to YARPLER
   class Core
+
+    # Solves a YARPL file
     def solve(yarpl, extensions)
       problem = yarpl
       if File.file?(problem)
@@ -18,11 +20,13 @@ module Yarpler
 
     private
 
+    # Reads a file from the file system
     def read_file(filename)
       loader = Yarpler::Utils::FileLoader.new
       loader.load_files(filename)
     end
 
+    # Parses the problem with help of ANTLR library
     def parse_problem_with_antlr(problem)
       antlr_parser = Yarpler::Parser.new
       antlr_parser.parse(problem)
@@ -36,6 +40,7 @@ module Yarpler
       interpreter.interpret(antlr_ast)
     end
 
+    # Translates the problem to a solver problem
     def translate_problem(problem, extensions)
       extensions.each do |a|
         class_name = a.to_s
@@ -48,6 +53,7 @@ module Yarpler
       problem
     end
 
+    # Checks if a class exist by string
     def class_exists?(class_name)
       class_object = Object.const_get(class_name)
       return class_object.is_a?(Class)
@@ -55,6 +61,7 @@ module Yarpler
       return false
     end
 
+    # Runs one extension
     def run_extension(class_name, problem)
       extension = Object.const_get(class_name).new
 
@@ -69,6 +76,7 @@ module Yarpler
       problem
     end
 
+    # Runs a translator
     def run_translator(extension, problem)
       Yarpler::Log.instance.info 'Run translator ' + extension.class.to_s
       problem = extension.before_translate(problem)
@@ -76,6 +84,7 @@ module Yarpler
       extension.after_translate(problem)
     end
 
+    # Runs a processor
     def run_processor(processor, problem)
       Yarpler::Log.instance.info 'Run process ' + processor.class.to_s
       processor.process problem
