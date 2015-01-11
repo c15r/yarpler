@@ -7,6 +7,7 @@ module Yarpler
 
       OPERATORS = %w(== != >= <= < > + - * / AND OR IN)
 
+      # Initializes the model object
       def initialize(operator)
         @operator = operator
       end
@@ -19,6 +20,7 @@ module Yarpler
         @operator
       end
 
+      # Clones the object
       def clone
         new = Operator.new(@operator.clone)
         new

@@ -6,9 +6,11 @@ module Yarpler
       attr_accessor :statement
       attr_accessor :expression
 
+      # Initializes the model object
       def initialize
       end
 
+      # Clones the object
       def clone
         new = SolveInstruction.new
         new.statement = @statement.clone

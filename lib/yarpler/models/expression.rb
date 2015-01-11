@@ -9,9 +9,12 @@ module Yarpler
       attr_accessor :left
       attr_accessor :right
 
+      # Initializes the model object
       def initialize
       end
 
+      # Checks the validity of the object and if all required
+      # fields are initialized
       def valid?
         valid = !@operator.nil?
         if @operator == 'NOT'
@@ -22,6 +25,7 @@ module Yarpler
         valid
       end
 
+      # Clones the object
       def clone
         new = Expression.new
         new.operator = @operator.clone

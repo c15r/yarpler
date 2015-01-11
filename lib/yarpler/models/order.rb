@@ -6,6 +6,7 @@ module Yarpler
       attr_accessor :field
       attr_accessor :type
 
+      # Initializes the model object
       def initialize
       end
     end

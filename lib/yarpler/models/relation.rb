@@ -7,9 +7,11 @@ module Yarpler
       attr_accessor :to
       attr_accessor :type
 
+      # Initializes the model object
       def initialize
       end
 
+      # Clones the object
       def clone
         new = Relation.new
         new.from = @from.clone

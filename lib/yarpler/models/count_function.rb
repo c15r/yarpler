@@ -9,13 +9,17 @@ module Yarpler
       attr_accessor :where
       attr_accessor :inner
 
+      # Initializes the model object
       def initialize
       end
 
+      # Checks the validity of the object and if all required
+      # fields are initialized
       def valid?
         !(@element.nil? || @range.nil?)
       end
 
+      # Clones the object
       def clone
         new = CountFunction.new
         new.element = @element.clone

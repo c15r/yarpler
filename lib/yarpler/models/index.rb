@@ -7,9 +7,11 @@ module Yarpler
       attr_accessor :index
       attr_accessor :attribute
 
+      # Initializes the model object
       def initialize
       end
 
+      # Clones the object
       def clone
         new = Index.new
         new.variable = @variable.clone

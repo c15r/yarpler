@@ -9,10 +9,12 @@ module Yarpler
       attr_accessor :expressions
       attr_accessor :field
 
+      # Initializes the model object
       def initialize
         @expressions = Array.new
       end
 
+      # Clones the object
       def clone
         new = Countall.new
         new.range = @range.clone
@@ -23,6 +25,8 @@ module Yarpler
         new
       end
 
+      # Checks the validity of the object and if all required
+      # fields are initialized
       def valid?
         true
       end

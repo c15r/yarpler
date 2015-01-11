@@ -9,6 +9,7 @@ module Yarpler
       attr_accessor :constraints
       attr_accessor :solve
 
+      # Initializes the model object
       def initialize
         @objects = {}
         @constraints = []

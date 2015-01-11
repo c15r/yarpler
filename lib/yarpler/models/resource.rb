@@ -13,6 +13,7 @@ module Yarpler
     class Resource
       attr_reader :instance_name
 
+      # Initializes the model object
       def initialize(name)
         @instance_name = name
         @id = -1
