@@ -1,2 +1,11 @@
-lib/yarpl/*
-lib/modules/minizinc/yarpler_output/*
+lib/modules/*
+lib/modules/flattening/*
+lib/modules/minimizer/*
+lib/modules/minizinc/*
+lib/yarpler/*
+lib/yarpler/exceptions/*
+lib/yarpler/extensions/*
+lib/yarpler/interpreters/*
+lib/yarpler/models/*
+lib/yarpler/utils/*
+

@@ -3,6 +3,8 @@ module Yarpler
     ##
     # Model for an absolute expression which can be used to minimize values to 0
     class Absolute
+
+      # Expression for the absolute construct
       attr_accessor :expression
 
       # Initializes the model object
