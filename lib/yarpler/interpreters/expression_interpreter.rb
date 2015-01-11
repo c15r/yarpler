@@ -17,6 +17,7 @@ module Yarpler
     class ExpressionInterpreter
       attr_reader :expression
 
+      # Initializes the interpreter
       def initialize(tree, objects=nil)
         @expression = Yarpler::Models::Expression.new
         @objects = objects
@@ -25,6 +26,7 @@ module Yarpler
 
       private
 
+      # Processes an expression
       def process_expression(expression)
         # fix unlimited stack of expression
         if expression[0].to_s == 'EXPRESSION' && expression.size == 1
@@ -38,16 +40,19 @@ module Yarpler
         end
       end
 
+      # Process an expression with not
       def process_not_operator_expression(expression)
         @expression.left = process_expression_item(expression[0])
         @expression.operator = 'NOT'
       end
 
+      # Processes an operatorless expression
       def process_no_operator_expression(expression)
         @expression.left = process_expression_item(expression[0])
         @expression.operator = 'LITERAL'
       end
 
+      # Processes a default expression
       def process_normal_expression(expression)
         # Guard Clasue
         return false unless Yarpler::Models::Operator.operator?(expression[1].to_s)
@@ -64,6 +69,7 @@ module Yarpler
       end
 
       # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
+      # Processes the expression item
       def process_expression_item(item)
         case item.to_s
           when 'FIELD_ACCESSOR'

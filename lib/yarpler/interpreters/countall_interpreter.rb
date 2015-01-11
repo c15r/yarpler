@@ -11,6 +11,7 @@ module Yarpler
       attr_reader :countAll
       attr_reader :constraints
 
+      # Initializes the countall interpreter
       def initialize(tree, objects, parent = nil)
         @objects = objects
         @countAll = Yarpler::Models::Countall.new
@@ -23,6 +24,7 @@ module Yarpler
 
       private
 
+      # Processes the countall
       def process_countall(expression)
         countall_selector(expression[0])
         if expression[1].to_s == 'FORALL'
@@ -32,6 +34,7 @@ module Yarpler
         end
       end
 
+      # Processes all filters
       def process_filters(expression)
         return if expression.size <= 2
         expression[2..expression.size].each do |e|
@@ -45,18 +48,21 @@ module Yarpler
         end
       end
 
+      # Processes the order by desc
       def process_order_desc(e)
         @order = Yarpler::Models::Order.new
         @order.field = FieldAccessorInterpreter.new(e[0]).field
         @order.type = 'DESC'
       end
 
+      # Processes the order by asc
       def process_order_asc(e)
         @order = Yarpler::Models::Order.new
         @order.field = FieldAccessorInterpreter.new(e[0]).field
         @order.type = 'ASC'
       end
 
+      # Checks the selector
       def countall_selector(expression)
         case expression.to_s
           when 'FROM'
@@ -65,6 +71,7 @@ module Yarpler
         end
       end
 
+      # Builds the range
       def countall_range_builder(expression)
         range = []
         case expression.to_s
@@ -79,6 +86,7 @@ module Yarpler
         range
       end
 
+      # Checks if the class exists
       def class_exists?(class_name)
         klass = Object.const_get(class_name)
         return klass.is_a?(Class)
@@ -86,6 +94,7 @@ module Yarpler
         return false
       end
 
+      # Gets all object of a class
       def get_objects_of_class(class_name)
         var_array = []
         @objects.each do |_k, v|

@@ -4,6 +4,7 @@ module Yarpler
     class FieldAccessorInterpreter
       attr_accessor :field
 
+      # Initializes the interpreter
       def initialize(item)
         if item.size == 1
           @field = InstanceInterpreter.new(item).instance
@@ -12,6 +13,7 @@ module Yarpler
         end
       end
 
+      # Loads the provided field
       def process_field(item)
         @field = Yarpler::Models::Field.new
         @field.variable = item[0].to_s
