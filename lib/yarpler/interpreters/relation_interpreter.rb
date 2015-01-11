@@ -11,6 +11,7 @@ module Yarpler
     class RelationInterpreter
       attr_reader :relation
 
+      # Initializes the interpreter
       def initialize(tree, objects)
         @relation = Yarpler::Models::Relation.new
         parse_relation(tree, objects)
@@ -18,6 +19,7 @@ module Yarpler
 
       private
 
+      # Parses the rleation
       def parse_relation(relation, objects)
         # TODO: Error Handling if const and SET and other wrong inputs
         @relation.from = FieldAccessorInterpreter.new(relation[0]).field

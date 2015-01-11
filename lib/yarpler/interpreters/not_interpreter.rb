@@ -9,6 +9,7 @@ module Yarpler
     class NotInterpreter
       attr_reader :not
 
+      # Initializes the interpreter
       def initialize(tree)
         @not = Yarpler::Models::Not.new
         process_not(tree)
@@ -16,6 +17,7 @@ module Yarpler
 
       private
 
+      # Processes a not expression
       def process_not(expression)
         @not.expression = Yarpler::Interpreters::ExpressionInterpreter.new(expression).expression
       end

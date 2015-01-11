@@ -11,6 +11,7 @@ module Yarpler
       attr_reader :constraints
       attr_reader :where
 
+      # Initializes the interpreter
       def initialize(tree, objects, parent = nil)
         @objects = objects
         @forall = Yarpler::Models::Forall.new
@@ -23,6 +24,7 @@ module Yarpler
 
       private
 
+      # Processes the forall loop
       def process_forall(expression)
         process_filters(expression)
         @forall.where = @where
@@ -35,6 +37,7 @@ module Yarpler
         end
       end
 
+      # Processes the filters
       def process_filters(expression)
         return if expression.size <= 2
 
@@ -49,18 +52,21 @@ module Yarpler
         end
       end
 
+      # Processes the order by desc
       def process_order_desc(e)
         @order = Yarpler::Models::Order.new
         @order.field = FieldAccessorInterpreter.new(e[0]).field
         @order.type = 'DESC'
       end
 
+      # Processes the order by asc
       def process_order_asc(e)
         @order = Yarpler::Models::Order.new
         @order.field = FieldAccessorInterpreter.new(e[0]).field
         @order.type = 'ASC'
       end
 
+      # Processes the forall selector
       def forall_selector(expression)
         case expression.to_s
           when 'FROM'
@@ -70,6 +76,7 @@ module Yarpler
         end
       end
 
+      # Builds the range
       def forall_range_builder(expression)
         range = []
         case expression.to_s
@@ -85,6 +92,7 @@ module Yarpler
         range
       end
 
+      # Checks if a class exists
       def class_exists?(class_name)
         klass = Object.const_get(class_name)
         return klass.is_a?(Class)
@@ -92,6 +100,7 @@ module Yarpler
         return false
       end
 
+      # Gets all object of a class by string
       def get_objects_of_class(class_name)
         var_array = []
         @objects.each do |_k, v|

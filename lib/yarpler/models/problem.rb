@@ -37,6 +37,7 @@ module Yarpler
 
       private
 
+      # Gets all object by class
       def get_objects_of_class_by_class_name(class_name)
         var_array = []
         @objects.each do |_k, v|

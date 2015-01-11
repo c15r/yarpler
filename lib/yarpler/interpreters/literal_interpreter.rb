@@ -5,10 +5,12 @@ module Yarpler
     class LiteralInterpreter
       attr_accessor :literal
 
+      # Initializes the instance
       def initialize(item)
         process_literal(item)
       end
 
+      # Processes a literal
       def process_literal(item)
         @literal = Yarpler::Models::Literal.new
         value = item[0].to_s

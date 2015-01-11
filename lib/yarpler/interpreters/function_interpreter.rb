@@ -5,6 +5,7 @@ module Yarpler
     class FunctionInterpreter
       attr_reader :function
 
+      # Initializes the interpreter
       def initialize(tree, objects=nil)
         @function = ''
         @objects = objects
@@ -13,6 +14,7 @@ module Yarpler
 
       private
 
+      # Processes a function
       def process_function(function)
         case function[0].to_s
           when 'COUNT_IN'
@@ -24,6 +26,7 @@ module Yarpler
         end
       end
 
+      # Processes the count function
       def process_count_function(function)
         if function.size == 2
           process_count_function_element(function)
@@ -32,12 +35,14 @@ module Yarpler
         end
       end
 
+      # Processes the card function
       def process_card_function(function)
         count = Yarpler::Models::Cardinality.new
         count.element = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[0][1]).field
         count
       end
 
+      # Processes an element of the count function
       def process_count_function_element(function)
         count = Yarpler::Models::CountFunction.new
 
@@ -58,6 +63,7 @@ module Yarpler
         count
       end
 
+      # Processes the sum value function
       def process_sum_value_function(function)
         sum = Yarpler::Models::SumValueFunction.new
         sum.set = FieldAccessorInterpreter.new(function[0][1]).field
@@ -67,6 +73,7 @@ module Yarpler
         sum
       end
 
+      # Processes the countall function
       def process_countall_function(function)
         interpreter = CountallInterpreter.new(function, @objects)
         interpreter.countAll

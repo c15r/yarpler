@@ -14,11 +14,13 @@ module Yarpler
       attr_accessor :objects
       attr_accessor :constraints
 
+      # Initializes the interpreter
       def initialize(tree)
         @objects = {}
         tree_converter(tree)
       end
 
+      # Converts the tree
       def tree_converter(tree)
         tree.each do |item|
           case item.to_s
@@ -32,6 +34,7 @@ module Yarpler
 
       private
 
+      # Interprets a variable
       def interpret_variable(variable)
         current_name = variable[0].to_s
         new_object = Yarpler::ResourceHandler.instance.new_object(current_name, variable[1][0].to_s)
@@ -40,6 +43,7 @@ module Yarpler
         initialize_relations(new_object)
       end
 
+      # Interprets a relation
       def interpret_relation(relation)
         relation_interpreter = RelationInterpreter.new(relation, @objects).relation
         variable = relation_interpreter.from.variable.to_s
@@ -48,6 +52,7 @@ module Yarpler
       end
 
       # rubocop:disable Metrics/MethodLength
+      # Initializes the relations
       def initialize_relations(object)
         object.list_of_attributes.each do |attribute|
           case object.get_variabletype(attribute.to_s)
@@ -69,6 +74,7 @@ module Yarpler
       end
       # rubocop:enable Metrics/MethodLength
 
+      # Gets all objects of a class
       def get_objects_of_class(class_name)
         var_array = []
         @objects.each do |_k, v|
@@ -78,6 +84,7 @@ module Yarpler
       end
 
       # rubocop:disable Metrics/MethodLength
+      # Reads all attributes
       def attribute_reader(tree, current_obj)
         # TODO: REINGENEER
         tree.each do |thing|
@@ -94,6 +101,7 @@ module Yarpler
       end
       # rubocop:enable Metrics/MethodLength
 
+      # Prepares a value for the interpreter
       def prepare_value(type, datatype, value)
         if datatype == 'DATE'
           fail Yarpler::Exceptions::VariableDateNotAllowed.new if type == 'VARIABLE'

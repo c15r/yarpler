@@ -8,10 +8,13 @@ module Yarpler
     #   model { ... }
     #
     class ModelInterpreter
+
+      # Initializes the interpreter
       def initialize(tree)
         tree_converter(tree)
       end
 
+      # Converts the tree
       def tree_converter(tree)
         tree.each do |thing|
           case thing.to_s

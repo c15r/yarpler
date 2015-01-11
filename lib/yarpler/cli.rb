@@ -10,11 +10,12 @@ module Yarpler
       Yarpler::Log.instance.switch_level(:debug)
     end
 
-    # Solves a YARPL file
+
     desc 'solve [FILE] [TRANSLATORS]', 'Parse input file and solve it'
     option :display_ast, type: :boolean, aliases: :ast
     option :display_model, type: :boolean, aliases: :model
     option :no_result, type: :boolean
+    # Solves a YARPL file
     def solve(file, *args)
       core = Yarpler::Core.new
       solution = core.solve(file, args)

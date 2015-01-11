@@ -9,6 +9,7 @@ module Yarpler
     class SetInterpreter
       attr_accessor :set
 
+      # Initializes the interpreter
       def initialize(item, objects=nil)
         @set = []
         if objects.nil?
@@ -20,6 +21,7 @@ module Yarpler
 
       private
 
+      # Processes a set of integers
       def process_integer_set(tree)
         # @TODO Error handling
         tree.each do |thing|
@@ -28,6 +30,7 @@ module Yarpler
         set
       end
 
+      # Processes a set of objects
       def process_set(tree, objects)
         # @TODO Error handling
         tree.each do |thing|

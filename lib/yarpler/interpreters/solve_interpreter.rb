@@ -12,6 +12,7 @@ module Yarpler
       attr_accessor :solve
       attr_accessor :constraints
 
+      # Initializes the interpreter
       def initialize(tree, objects)
         @constraints = []
         @objects = objects
@@ -19,6 +20,7 @@ module Yarpler
         tree_converter(tree)
       end
 
+      # Converts a tree
       def tree_converter(tree)
         tree.each do |item|
           interpret_statement(item)
@@ -27,6 +29,7 @@ module Yarpler
 
       private
 
+      # Interprets a statement
       def interpret_statement(statement)
         case statement.to_s
           when 'CONSTRAINT_DECLARATION'
@@ -40,20 +43,24 @@ module Yarpler
         end
       end
 
+      # Interprets a constraint
       def interpret_constraint(constraint)
         constraint_interpreter = ConstraintInterpreter.new(constraint, @objects)
         @constraints.push(constraint_interpreter.constraint)
       end
 
+      # Interprets a satisfy
       def interpret_satisfy(statement)
         @solve.statement = statement.to_s
       end
 
+      # Interprets a minimize
       def interpret_minimize(statement)
         @solve.statement = statement.to_s
         @solve.expression = ExpressionInterpreter.new(statement[0]).expression
       end
 
+      # Interprets a maximize
       def interpret_maximize(statement)
         @solve.statement = statement.to_s
         @solve.expression = ExpressionInterpreter.new(statement[0]).expression
