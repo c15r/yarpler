@@ -5,6 +5,10 @@ module Yarpler
       attr_reader :constraint
 
       # Inizialize the interpreter
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR tree node
+      # @param objects [Hash<String, Object>] hash map of all yarpl objects
+      # @return [void]
       def initialize(tree, objects)
         @objects = objects
         @constraint = Yarpler::Models::Constraint.new
@@ -14,6 +18,9 @@ module Yarpler
       private
 
       # Parses a single expression
+      #
+      # @param exprewssion [ANTLR3::AST::CommonTree] constraint expression parsed by antlr
+      # @return [Yarpler::Models::Constraint] interpreted constraint object
       def parse_expression(expression)
         constraint = nil
         case expression[0].to_s

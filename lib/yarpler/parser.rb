@@ -8,6 +8,8 @@ module Yarpler
     end
 
     # Parses a YARPL file
+    # @param yarpl_problem [String] yarpl problem definition
+    # @return [ANTRL3::AST::CommonTree] parsed tree by antlr
     def parse(yarpl_problem)
       out, err = StringIO.new, StringIO.new
       previous_stderr, $stderr = $stderr, err
@@ -24,11 +26,17 @@ module Yarpler
     private
 
     # Checks if there is a syntax error
+    #
+    # @param error [StringIO] error stream
+    # @return [Boolean] returns true if there was an error, false otherwise
     def error?(error)
       fail Yarpler::Exceptions::SyntaxErrorException, error.string unless error.string.empty?
     end
 
     # Processes the problem with yarpler
+    #
+    # @param yarpl_problem [String] yarpl problem definition
+    # @return [ANTRL3::AST::CommonTree] parsed tree by antlr
     def process_problem(yarpl_problem)
       lexer = Yarpl::Lexer.new(yarpl_problem)
       tokens = ANTLR3::CommonTokenStream.new(lexer)  # Ein Array

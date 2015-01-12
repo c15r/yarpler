@@ -4,6 +4,10 @@ module Yarpler
     class SolutionPrinter
 
       # Prints the abstract syntax tree
+      #
+      # @param tree [ANTLR3::AST::CommonTree] parsed antlr tree object
+      # @param depth [Integer] depth to print
+      # @return [void]
       def print_ast(tree, depth = 0)
         indent = ''
         (0..depth).each do
@@ -17,6 +21,9 @@ module Yarpler
       end
 
       # Prints the complete model
+      #
+      # @param problem [Problem] internal datastructure which represents a yarpl problem
+      # @return [void]
       def print_model(problem)
         problem.objects.each do |_k, v|
           puts ''
@@ -26,6 +33,10 @@ module Yarpler
       end
 
       # Prints a data structure
+      #
+      # @param object [Object] object to print
+      # @param threshold [String] space to indent
+      # @return [void]
       def print_datastructure(object, threshold = '  ')
         out = ''
         if object.is_a?(Yarpler::Models::Relation)
@@ -37,6 +48,10 @@ module Yarpler
       end
 
       # Prints a relation between objects
+      #
+      # @param object [Object] object to print
+      # @param threshold [String] space to indent
+      # @return [void]
       def print_relation(object, threshold = '')
         out = ''
         if object.to.is_a?(Array)
@@ -50,6 +65,10 @@ module Yarpler
       end
 
       # Prints a resource object
+      #
+      # @param object [Object] object to print
+      # @param threshold [String] space to indent
+      # @return [void]
       def print_object(object, threshold = '')
         out = '{' +  "\n"
         out << threshold + '"ressource_type": "' + object.class.to_s + '"' + "\n"
@@ -62,6 +81,11 @@ module Yarpler
       end
 
       # Prints a single attribute
+      #
+      # @param name [String] name of the attribute to print
+      # param value [String] value of the attribute to print
+      # @param threshold [String] space to indent
+      # @return [void]
       def print_attribute(name, value, threshold)
         out = ''
         if value.is_a?(Yarpler::Models::Relation)

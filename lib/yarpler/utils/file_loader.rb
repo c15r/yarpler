@@ -21,6 +21,9 @@ module Yarpler
 
       # Loads files based on a file name and combines
       # split up instance and domain files
+      #
+      # @param filename [String] path to a yarpl file
+      # @return [String] content of the yarpl file (merged yai and yad)
       def load_files(filename)
         filename_domain = filename.sub('.yai', '.yad')
 
@@ -32,6 +35,9 @@ module Yarpler
       private
 
       # Loads the content from file system
+      #
+      # @param filename [String] path to a yarpl file
+      # @return [String] content of the yarpl file
       def load_file_to_content(filename)
         # @TODO Melde Fehler sobald File nicht vorhanden.
         return '' unless File.file?(filename)

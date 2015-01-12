@@ -8,6 +8,9 @@ module Yarpler
     end
 
     # Interprets an AST from ANTLR
+    #
+    # @param antlr_ast [ANTLR3::AST::CommonTree] interpreted problem as an ANTLR AST
+    # @return [Problem] interpreted yarpl problem
     def interpret(antlr_ast)
       antlr_ast.each do |item|
         interpret_block(item)
@@ -16,6 +19,10 @@ module Yarpler
     end
 
     # Interprets the main blocks of the YARPL file
+    #
+    # @param item [ANTLR3::AST::CommonTree] ANTLR token, first level of a yarpl problem
+    #   MODEL_DECLARATION, INITIAL_DECLARATION or SOLVE_DECLARATION
+    # @return [void]
     def interpret_block(item)
       case item.to_s
       when 'MODEL_DECLARATION'
@@ -30,17 +37,26 @@ module Yarpler
     end
 
     # Interprets a model declaration
+    #
+    # @param item [ANTLR3::AST::CommonTree] model node to interpret
+    # @return [void]
     def interpret_model_declaration(item)
       Yarpler::Interpreters::ModelInterpreter.new(item)
     end
 
     # Interprets an initial declaration
+    #
+    # @param item [ANTLR3::AST::CommonTree] initial node to interpret
+    # @return [void]
     def interpret_initial_declaration(item)
       initial = Yarpler::Interpreters::InitialInterpreter.new(item)
       Yarpler::Models::Problem.instance.objects = initial.objects
     end
 
     # Interprets a solve declaration
+    #
+    # @param item [ANTLR3::AST::CommonTree] solve node to interpret
+    # @return [void]
     def interpret_solve_declaration(item)
       solve_interpreter = Yarpler::Interpreters::SolveInterpreter.new(item, Yarpler::Models::Problem.instance.objects)
       Yarpler::Models::Problem.instance.solve = solve_interpreter.solve

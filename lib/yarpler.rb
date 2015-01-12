@@ -1,4 +1,3 @@
-
 require 'logging'
 require 'thor'
 
@@ -60,7 +59,6 @@ require 'yarpler/models/solve_instruction'
 require 'yarpler/models/sum_value_function'
 require 'yarpler/models/order'
 
-##
 # Main Yarpler Gem class to include all relevant files.
 module Yarpler
 end

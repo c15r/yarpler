@@ -3,6 +3,8 @@ module Yarpler
     # CountallInterpreter processes a YARPL Allquantor statement
     # and counts items according to the expression
     #
+    # @attr_reader countAll [Yarpler::Models::Countall] interpreted countall object
+    #
     # == YARPL Example
     #
     #   countAll(...) { ... } == <expression>
@@ -12,6 +14,11 @@ module Yarpler
       attr_reader :constraints
 
       # Initializes the countall interpreter
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR tree node
+      # @param objects [Hash<String, Object>] hash map of all yarpl objects
+      # @param parent [Object] parent
+      # @return [void]
       def initialize(tree, objects, parent = nil)
         @objects = objects
         @countAll = Yarpler::Models::Countall.new
@@ -25,6 +32,9 @@ module Yarpler
       private
 
       # Processes the countall
+      #
+      # @param expression [ANTLR3::AST::CommonTree] countall expression parsed by antlr
+      # @return [void]
       def process_countall(expression)
         countall_selector(expression[0])
         if expression[1].to_s == 'FORALL'
@@ -35,6 +45,9 @@ module Yarpler
       end
 
       # Processes all filters
+      #
+      # @param expression [ANTLR3::AST::CommonTree] filter expression parsed by antlr
+      # @return [void]
       def process_filters(expression)
         return if expression.size <= 2
         expression[2..expression.size].each do |e|
@@ -49,6 +62,9 @@ module Yarpler
       end
 
       # Processes the order by desc
+      #
+      # @param e [ANTLR3::AST::CommonTree] desc expression parsed by antlr
+      # @return [void]
       def process_order_desc(e)
         @order = Yarpler::Models::Order.new
         @order.field = FieldAccessorInterpreter.new(e[0]).field
@@ -56,6 +72,9 @@ module Yarpler
       end
 
       # Processes the order by asc
+      #
+      # @param e [ANTLR3::AST::CommonTree] asc expression parsed by antlr
+      # @return [void]
       def process_order_asc(e)
         @order = Yarpler::Models::Order.new
         @order.field = FieldAccessorInterpreter.new(e[0]).field
@@ -63,6 +82,9 @@ module Yarpler
       end
 
       # Checks the selector
+      #
+      # @param expression [ANTLR3::AST::CommonTree] selector expression parsed by antlr
+      # @return [void]
       def countall_selector(expression)
         case expression.to_s
           when 'FROM'
@@ -72,6 +94,9 @@ module Yarpler
       end
 
       # Builds the range
+      #
+      # @param expression [ANTLR3::AST::CommonTree] range expression parsed by antlr
+      # @return [void]
       def countall_range_builder(expression)
         range = []
         case expression.to_s
@@ -87,6 +112,9 @@ module Yarpler
       end
 
       # Checks if the class exists
+      #
+      # @param class_name [String] name of a class to check
+      # @return true if class exists, false otherwise
       def class_exists?(class_name)
         klass = Object.const_get(class_name)
         return klass.is_a?(Class)
@@ -95,6 +123,9 @@ module Yarpler
       end
 
       # Gets all object of a class
+      #
+      # @param class_name [String] name of a class to get
+      # @return [Array<Object>] array of objects from a given class
       def get_objects_of_class(class_name)
         var_array = []
         @objects.each do |_k, v|

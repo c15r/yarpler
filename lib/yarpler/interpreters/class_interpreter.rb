@@ -12,6 +12,9 @@ module Yarpler
     class ClassInterpreter
 
       # Inizialize the interpreter
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR tree node
+      # @return [void]
       def initialize(tree)
         @init = Hash.new
         @dynamic_name = tree[0].to_s
@@ -29,6 +32,9 @@ module Yarpler
       private
 
       # Loads all attributes in the tree
+      #
+      # @param tree [ANTLR3::AST::CommonTree] attribute nodes interpreted by ANTRL
+      # @return [void]
       def load_attributes(tree)
         tree.each do |thing|
           case thing.to_s
@@ -44,6 +50,11 @@ module Yarpler
       end
 
       # Adds an initalizer for the variable
+      #
+      # @param attr [String] attribute name
+      # @param value [Object] value of the attribute
+      # @param type [String] type of the attribute
+      # @return [void]
       def add_attribute_init(attr, value, type)
         if value.to_s == 'SET'
           @init[attr] = SetInterpreter.new(thing[1])
@@ -53,6 +64,10 @@ module Yarpler
       end
 
       # Takes value declaration apart if they are a continuous range
+      #
+      # @param type [String] type of an attribute
+      # @param value [Ojbect] value of an attribute
+      # @return value [Object] processed value
       def prepare_value(type, value)
         if type == 'VARIABLE' &&  !value.include?('..')
           value = value.to_s + '..' + value.to_s
@@ -61,16 +76,31 @@ module Yarpler
       end
 
       # Creates a method block in the class
+      #
+      # @param obj_name [String] name of an object
+      # @param name [String] name of the method
+      # @param block [Object] code block of the method
+      # @return [void]
       def create_method(obj_name, name, &block)
         Object.const_get(obj_name).send(:define_method, name, &block)
       end
 
       # Removes a method block in the class
+      #
+      # @param obj_name [String] name of an object
+      # @param name [String] name of the method
+      # @return [void]
       def remove_method(obj_name, name)
         Object.const_get(obj_name).send(:remove_method, name)
       end
 
       # Creates an attribute block in the class
+      #
+      # @param obj_name [String] name of an object
+      # @param name [String] name of the method
+      # @param data_type [String] data type of the attribute
+      # @param variable_type [String] variable type of the attribute
+      # @return [void]
       def create_attr(obj_name, name, data_type, variable_type)
         create_method(obj_name, "#{name}=".to_sym) do |val|
           instance_variable_set('@' + name, val)
@@ -85,6 +115,11 @@ module Yarpler
       end
 
       # Creates a method to determine the variable type per attribute
+      #
+      # # @param obj_name [String] name of an object
+      # @param name [String] name of the method
+      # @param variable_type [String] variable type of the attribute
+      # @return [void]
       def set_variable_type(obj_name, name, variable_type)
         create_method(obj_name, "#{name}_variabletype".to_sym) do
           variable_type
@@ -92,6 +127,11 @@ module Yarpler
       end
 
       # Creates a method to determine the data type
+      #
+      # @param obj_name [String] name of an object
+      # @param name [String] name of the method
+      # @param data_type [String] data type of the attribute
+      # @return [void]
       def set_data_type(obj_name, name, data_type)
         case data_type.to_s
           when 'INTEGER'
