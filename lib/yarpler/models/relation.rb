@@ -8,10 +8,14 @@ module Yarpler
       attr_accessor :type
 
       # Initializes the model object
+      #
+      # @return [void]
       def initialize
       end
 
       # Clones the object
+      #
+      # @return [Yarpler::Models::Relation]
       def clone
         new = Relation.new
         new.from = @from.clone

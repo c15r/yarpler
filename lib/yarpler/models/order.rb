@@ -7,6 +7,8 @@ module Yarpler
       attr_accessor :type
 
       # Initializes the model object
+      #
+      # @return [void]
       def initialize
       end
     end

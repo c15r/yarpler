@@ -8,10 +8,14 @@ module Yarpler
       attr_accessor :attribute
 
       # Initializes the model object
+      #
+      # @return [void]
       def initialize
       end
 
       # Clones the object
+      #
+      # @return [Yarpler::Models::Index]
       def clone
         new = Index.new
         new.variable = @variable.clone

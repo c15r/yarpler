@@ -10,11 +10,15 @@ module Yarpler
       attr_accessor :right
 
       # Initializes the model object
+      #
+      # @return [void]
       def initialize
       end
 
       # Checks the validity of the object and if all required
       # fields are initialized
+      #
+      # @return [Boolean]
       def valid?
         valid = !@operator.nil?
         if @operator == 'NOT'
@@ -26,6 +30,8 @@ module Yarpler
       end
 
       # Clones the object
+      #
+      # @return [Yarpler::Models::Expression]
       def clone
         new = Expression.new
         new.operator = @operator.clone

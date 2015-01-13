@@ -11,10 +11,14 @@ module Yarpler
       attr_accessor :order
 
       # Initializes the model object
+      #
+      # @return [void]
       def initialize
       end
 
       # Clones the object
+      #
+      # @return [Yarpler::Models::Forall]
       def clone
         new = Forall.new
         new.range = @range.clone
