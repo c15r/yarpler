@@ -2,6 +2,9 @@
 class DienstplanPrinter < Yarpler::Extensions::Process
 
   # Processes a specific Dienstplan model to a pretty layout
+  #
+  # @param problem [Yarpler::Models::Problem] interpreted yarpl problem
+  # @return [Yarpler::Models::Problem] processed yarpl problem
   def process(problem)
     problem.get_objects_of_class('Mitarbeiter').each do |m|
       puts "\n" + m.instance_name

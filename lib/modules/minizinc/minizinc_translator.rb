@@ -3,7 +3,6 @@ require_relative 'minizinc_helper'
 require_relative 'minizinc_helper'
 require_relative 'output_parser'
 
-##
 # Translator implementation to convert the solution to Minizinc
 class MinizincTranslator < Yarpler::Extensions::Translator
 
@@ -56,17 +55,25 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   TAB = "\t"
 
   # Return array index for MiniZinc problems
+  #
+  # @return [void]
   def array_index
     @array_index = @array_index.next
     @array_index
   end
 
   # Does nothing
+  #
+  # @param problem [Yarpler::Models::Problem] yarpler problem
+  # @return [Yarpler::Models::Problem] processed problem
   def before_translate(problem)
     problem
   end
 
   # Runs MiniZinc solver and the output parser
+  #
+  # @param problem [Yarpler::Models::Problem] yarpler problem
+  # @return [Yarpler::Models::Problem] processed problem
   def after_translate(problem)
     minizinc_runner = MinizincRunner.new
     minizinc_runner.run(@output)
@@ -76,6 +83,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   end
 
   # Translates the problem object to MiniZinc code
+  #
+  # @param problem [Yarpler::Models::Problem] yarpler problem
+  # @return [String] generated minizinc code
   def translate(problem)
     # Initialize
     @array_index = 0
@@ -93,6 +103,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   end
 
   # Translates just the problem part
+  #
+  # @param problem [Yarpler::Models::Problem] yarpler problem
+  # @return [String] generated minizinc code
   def translate_solution(problem)
     code = ''
     attribute_translator = MinizincAttributeTranslator.new
@@ -111,8 +124,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     code
   end
 
-  ##
   # Translates attributes from the solution to Minizinc variables or constants
+  #
+  # @attr_reader attribute [String] attribute output
   class MinizincAttributeTranslator
     attr_reader :attribute_output
 
@@ -122,6 +136,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates the attribute
+    #
+    # @param objects [Hash<String, Yarpler::Models::Resource] hash map of all objects
+    # @return [String] generated minizinc code
     def translate(objects)
       result = ''
       objects.each do |key, var|
@@ -132,6 +149,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Converts the list of attributes to a string list
+    #
+    # @param name [String] attribute name
+    # @param resource [Yarpler::Models::Resource] yarpl object
+    # @return [String] generated minizinc code
     def convert_attributes(name, resource)
       code = ''
       resource.list_of_attributes.each do |a|
@@ -142,6 +163,11 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
     # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity
     # Translates an attribute depending on the type
+    #
+    # @param a [Yarpler::Models::Field] attribute
+    # @param name [String] attribute name
+    # @param resource [Yarpler::Models::Resource] yarpl object
+    # @return [String] generated minizinc code
     def translate_attribute(a, name, resource)
       case resource.get_variabletype(a)
         when 'CONSTANT'
@@ -161,6 +187,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     # rubocop:enable Metrics/MethodLength, Metrics/CyclomaticComplexity
 
     # Translates a variable hasmany relation
+    #
+    # @param a [Yarpler::Models::Field] attribute
+    # @param resource [Yarpler::Models::Resource] yarpl object
+    # @return [String] generated minizinc code
     def translate_variable_hasmany(a, resource)
       r = resource.get_value(a)
       relation = MinizincRelationTranslator.new
@@ -170,6 +200,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates a constant relation
+    #
+    # @param a [Yarpler::Models::Field] attribute
+    # @param resource [Yarpler::Models::Resource] yarpl object
+    # @return [String] generated minizinc code
     def translate_constant_relation(a, resource)
       r = resource.get_value(a)
       relation = MinizincRelationTranslator.new
@@ -177,6 +211,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates a variable hasone relation
+    #
+    # @param a [Yarpler::Models::Field] attribute
+    # @param resource [Yarpler::Models::Resource] yarpl object
+    # @return [String] generated minizinc code
     def translate_variable_hasone(a, resource)
       r = resource.get_value(a)
       relation = MinizincRelationTranslator.new
@@ -186,6 +224,11 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates a single variable
+    #
+    # @param a [Yarpler::Models::Field] attribute
+    # @param name [String] attribute name
+    # @param resource [Yarpler::Models::Resource] yarpl object
+    # @return [String] generated minizinc code
     def translate_variable(a, name, resource)
       code = format(T_VARIABLE, resource.load(a), name + '_' + a)
       @attribute_output << format(T_OUTPUT, name + '_' + a, name + '_' + a)
@@ -193,6 +236,11 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates a constant
+    #
+    # @param a [Yarpler::Models::Field] attribute
+    # @param name [String] attribute name
+    # @param resource [Yarpler::Models::Resource] yarpl object
+    # @return [String] generated minizinc code
     def translate_constant(a, name, resource)
       value = resource.load(a)
       unless value.nil?
@@ -204,17 +252,23 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
   end
 
-  ##
   # Translates relations to Minizinc variables
+  #
+  # @attr_accessor output [String] generated minizinc code
   class MinizincRelationTranslator
     attr_accessor :output
 
     # Initializes a translation
+    #
+    # @return [void]
     def initialize
       @output = ''
     end
 
     # Translates a constant
+    #
+    # @param relation [Yarpler::Models::Relation] yarpl relation object
+    # @return [String] generated minizinc code
     def translate_const(relation)
       # @TODO is this always correct?
       code = ''
@@ -228,6 +282,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates a variable set
+    #
+    # @param relation [Yarpler::Models::Relation] yarpl relation object
+    # @return [String] generated minizinc code
     def translate_var_set(relation)
       code = ''
       var_name = MinizincFieldTranslator.new.resolve_variable_from_field(relation.from)
@@ -237,6 +294,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates a variable
+    #
+    # @param relation [Yarpler::Models::Relation] yarpl relation object
+    # @return [String] generated minizinc code
     def translate_var(relation)
       code = ''
       var_name = MinizincFieldTranslator.new.resolve_variable_from_field(relation.from)
@@ -252,11 +312,19 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates a constant range
+    #
+    # @param relation [Yarpler::Models::Relation] yarpl relation object
+    # @param var_name [String] variable name
+    # @return [String] generated minizinc code
     def translate_constant_range(relation, var_name)
       format(T_VARIABLE, array_to_constant_range(relation.to), var_name)
     end
 
     # Translates a set range
+    #
+    # @param relation [Yarpler::Models::Relation] yarpl relation object
+    # @param var_name [String] variable name
+    # @return [String] generated minizinc code
     def translate_set_range(relation, var_name)
       set_name = 'SET_' + var_name
       code = format(T_SET, set_name, array_to_set_range(relation.to))
@@ -265,7 +333,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
     private
 
-    ## Checks if the range is constant (0,1,2) or not (0,1,3)
+    # Checks if the range is constant (0,1,2) or not (0,1,3)
+    #
+    # @param array [Array] array to check
+    # @return [Boolean] true if the array contains a constant range, false otherwise
     def constant_range?(array)
       values = initialize_values(array)
       last_value = nil
@@ -275,6 +346,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
     # rubocop:disable Metrics/MethodLength
     # Checks if the range is continuous
+    #
+    # @param last_value [Object] last value of the array
+    # @param values [Array] array to check
+    # @return [Boolean] true if the array continuous a constant range, false otherwise
     def check_range(last_value, values)
       answer = true
       values.each do |value|
@@ -294,6 +369,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     # rubocop:enable Metrics/MethodLength
 
     # initializes the values of an array
+    #
+    # @param array [Array] array to initialize
+    # @return [Array] initialized array
     def initialize_values(array)
       values = []
       array.each do |o|
@@ -304,6 +382,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Converts an array to a set range
+    #
+    # @param array [Array] array to to set
+    # @return [Array] processed array
     def array_to_set_range(array)
       range = ''
       is_first = true
@@ -316,6 +397,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Converts an array to a constant range
+    #
+    # @param array [Array] array to to set
+    # @return [String] constant range
     def array_to_constant_range(array)
       min = FIXNUM_MAX
       max = FIXNUM_MIN
@@ -332,10 +416,15 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   class MinizincOperatorTranslator
 
     # Initializes the Translator
+    #
+    # @return [void]
     def initialize
     end
 
     # Translates the operators
+    #
+    # @param operator [String] operator to translate
+    # @return [String] generated minizinc code
     def translate(operator)
       case operator
         when 'and'
@@ -353,10 +442,15 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   class MinizincSolveTranslator
 
     # Initializes the Translator
+    #
+    # @return [void]
     def initialize
     end
 
     # Translates the solve part of a problem
+    #
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate(problem)
       code = 'solve '
       code << translate_solve_expression(problem)
@@ -365,6 +459,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates the solve part inner
+    #
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate_solve_expression(problem)
       case problem.solve.statement
         when 'SATISFY'
@@ -383,10 +480,15 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   class MinizincConstraintTranslator
 
     # Initializes a translator
+    #
+    # @return [void]
     def initialize
     end
 
     # Translates a constraint block
+    #
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate(problem)
       code = ''
       problem.constraints.each do |constraint|
@@ -407,15 +509,27 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   class MinizincExpressionTranslator
 
     # Initializes a translator
+    #
+    # @return [void]
     def initialize
     end
 
     # Outer translate for a expression
+    #
+    # @param expression [Yarpler::Models::Expression] yarpl expression
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @param context [Object] current expression context
+    # @return [String] generated minizinc code
     def translate(expression, problem, context=nil)
       translate_expression(expression, problem, context)
     end
 
     # Recursive expression translation
+    #
+    # @param expression [Yarpler::Models::Expression] yarpl expression
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @param context [Object] current expression context
+    # @return [String] generated minizinc code
     def translate_expression(expression, problem, context)
       code = ''
       code << resolve_expression(expression.left, problem, context) + SPACE
@@ -430,6 +544,11 @@ class MinizincTranslator < Yarpler::Extensions::Translator
 
     # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     # Resolves a single expression
+    #
+    # @param expression [Yarpler::Models::Expression] yarpl expression
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @param context [Object] current expression context
+    # @return [String] generated minizinc code
     def resolve_expression(expression, problem, context)
       if expression.is_a? Yarpler::Models::Field
         MinizincFieldTranslator.new.resolve_variable_from_field(expression, context)
@@ -455,6 +574,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   class MinizincAbsoluteTranslator
 
     # Translates an absolute
+    #
+    # @param expression [Yarpler::Models::Expression] yarpl expression
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [void]
     def translate(expression, problem)
       code = 'abs('
       translate_expression(code, expression, problem)
@@ -463,6 +586,11 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates an expression
+    #
+    # @param code [String] minizinc code
+    # @param expression [Yarpler::Models::Expression] yarpl expression
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate_expression(code, expression, problem)
       if expression.is_a? Yarpler::Models::Field
         code << MinizincFieldTranslator.new.resolve_variable_from_field(expression)
@@ -481,6 +609,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   class MinizincNotTranslator
 
     # Translates an inversion of an expression
+    #
+    # @param expression [Yarpler::Models::Expression] yarpl expression
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate(expression, problem)
       code = 'not('
       translate_expression(code, expression, problem)
@@ -489,6 +621,11 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates a single not expression
+    #
+    # @param code [String] minizinc code
+    # @param expression [Yarpler::Models::Expression] yarpl expression
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate_expression(code, expression, problem)
       if expression.is_a? Yarpler::Models::Field
         code << MinizincFieldTranslator.new.resolve_variable_from_field(expression)
@@ -507,6 +644,9 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   class MinizincLiteralTranslator
 
     # Translates a literal
+    #
+    # @param literal [Yarpler::Models::Literal] yarpl literal
+    # @return [String] generated minizinc code
     def translate(literal)
       code = literal.value
       code
@@ -518,11 +658,18 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   class MinizincFieldTranslator
 
     # Resolves a variable to the id of the object
+    #
+    # @param field [Yarpler::Models::Field] yarpl field
+    # @return [String] generated minizinc code
     def resolve_variable_from_instance(field)
       field.variable + '_id'
     end
 
     # Resolves a variable from a field
+    #
+    # @param field [Yarpler::Models::Field] yarpl field
+    # @param context [Yarpler::Models::Context] current context
+    # @return [String] generated minizinc code
     def resolve_variable_from_field(field, context=nil)
       if context
         context.get(field.variable.to_s) + '_' + field.attribute.to_s
@@ -537,10 +684,16 @@ class MinizincTranslator < Yarpler::Extensions::Translator
   class MinizincFunctionTranslator
 
     # Initialize the translator
+    #
+    # @return [void]
     def initialize
     end
 
     # Translates the functions
+    #
+    # @param function [Yarpler::Models::Function] yarpl function
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate(function, problem)
       if function.is_a? Yarpler::Models::CountFunction
         translate_count_function(function, problem)
@@ -554,11 +707,18 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates to a cardinality function
+    #
+    # @param function [Yarpler::Models::Function] yarpl function
+    # @return [String] generated minizinc code
     def translate_cardinality(function)
       'card(' + MinizincFieldTranslator.new.resolve_variable_from_field(function.element) + ')'
     end
 
     # Translates to a sum value function
+    #
+    # @param function [Yarpler::Models::Function] yarpl function
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate_sum_value_function(function, problem)
       index = MinizincHelper.instance.array_id
       first = true
@@ -575,6 +735,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Loads the objects to sum up
+    #
+    # @param function [Yarpler::Models::Function] yarpl function
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [Array<Yarpler::Models::Resource>] function objects
     def load_sum_objects(function, problem)
       if function.elements.is_a?(Yarpler::Models::Relation)
         objects = function.elements.to
@@ -589,6 +753,12 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates the body of a sum value function
+    #
+    # @param first [Boolean] first item
+    # @param function [Yarpler::Models::Function] yarpl function
+    # @param o [Yarpler::Models::Resource] yarpl object
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate_sum_value_body(first, function, o, problem)
       code = ''
       code << ',' unless first
@@ -601,6 +771,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Method to select the right operator for the sum
+    #
+    # @param function [Yarpler::Models::Function] yarpl function
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def load_sum_operator(function, problem)
       operator = 'in'
       case problem.objects[function.set.variable].get_variabletype(function.set.attribute)
@@ -613,6 +787,10 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates a count function
+    #
+    # @param function [Yarpler::Models::Function] yarpl function
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate_count_function(function, problem)
       index = MinizincHelper.instance.array_id
       first = true
@@ -629,6 +807,12 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates the body of the cound function
+    #
+    # @param attribute [Yarpler::Models::Field] yarpl field
+    # @param first [Boolean] first item
+    # @param obj [Yarpler::Models::Resource] yarpl resource
+    # @param variable_to_check [String] variable name to check
+    # @return [String] generated minizinc code
     def translate_count_body(attribute, first, obj, variable_to_check)
       operator = '=='
       if obj.get_variabletype(attribute) == 'VARIABLE_HASMANY'
@@ -642,11 +826,19 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Resolves the variable from an object and attribute name
+    #
+    # @param obj [Yarpler::Models::Resource] yarpl resource
+    # @param attribute [String] attribute name of an object
+    # @return [String] generated minizinc code
     def resolve_variable_from_object_and_attribute_name(obj, attribute)
       obj.instance_name + '_' + attribute
     end
 
     # Translates a countall function
+    #
+    # @param countall [Yarpler::Models::Countall] yarpl countall function
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate_countall_function(countall, problem)
       index = MinizincHelper.instance.array_id
       first = true
@@ -663,6 +855,12 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
 
     # Translates the body of a countall
+    #
+    # @param first [Boolean] indicates if its the first item
+    # @param countall [Yarpler::Models::Countall] yarpl countall function
+    # @param item [Yarpler::Models::Expression] yarpl expression
+    # @param problem [Yarpler::Models::Problem] yarpl problem
+    # @return [String] generated minizinc code
     def translate_countall_body(first, countall, item, problem)
       code = ''
       code << ',' unless first
@@ -673,8 +871,11 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     end
   end
 
-  ##
   # Context of block structure for Minizinc
+  #
+  # @attr_accessor variable [Object]
+  # @attr_accessor object [Object]
+  # @attr_accessor variables [Hash<String, String>] has map of all variables in the context
   class MinizincContext
     attr_accessor :variable
     attr_accessor :object
@@ -682,16 +883,25 @@ class MinizincTranslator < Yarpler::Extensions::Translator
     attr_accessor :variables
 
     # Initializes the context
+    #
+    # @return [void]
     def initialize()
       @variables = {}
     end
 
     # Adds a variable
+    #
+    # @param variable [String] variable name
+    # @param replacement [String] value to replace the variable
+    # @return [void]
     def add(variable, replacement)
       @variables[variable] = replacement
     end
 
     # Gets a variable
+    #
+    # @param variable [String] variable name to get
+    # @return [String] variable value or name
     def get(variable)
       if @variables[variable]
         @variables[variable]

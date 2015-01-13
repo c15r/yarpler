@@ -5,6 +5,9 @@ module Yarpler
       attr_accessor :field
 
       # Initializes the interpreter
+      #
+      # @param item [ANTLR3::AST::CommonTree] ANTLR tree node
+      # @return [void]
       def initialize(item)
         if item.size == 1
           @field = InstanceInterpreter.new(item).instance
@@ -14,6 +17,9 @@ module Yarpler
       end
 
       # Loads the provided field
+      #
+      # @param item [ANTLR3::AST::CommonTree] ANTLR tree node
+      # @return [Yarpler::Models:Field] interpreted field
       def process_field(item)
         @field = Yarpler::Models::Field.new
         @field.variable = item[0].to_s

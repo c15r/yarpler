@@ -18,6 +18,10 @@ module Yarpler
       attr_reader :expression
 
       # Initializes the interpreter
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR tree node
+      # @param objects [Hash<String, Object>] hash map of all yarpl objects
+      # @return [void]
       def initialize(tree, objects=nil)
         @expression = Yarpler::Models::Expression.new
         @objects = objects
@@ -27,6 +31,9 @@ module Yarpler
       private
 
       # Processes an expression
+      #
+      # @param expression [ANTLR3::AST::CommonTree] expression parsed by antlr
+      # @return [void]
       def process_expression(expression)
         # fix unlimited stack of expression
         if expression[0].to_s == 'EXPRESSION' && expression.size == 1
@@ -41,18 +48,27 @@ module Yarpler
       end
 
       # Process an expression with not
+      #
+      # @param expression [ANTLR3::AST::CommonTree] not operator expression parsed by antlr
+      # @return [void]
       def process_not_operator_expression(expression)
         @expression.left = process_expression_item(expression[0])
         @expression.operator = 'NOT'
       end
 
       # Processes an operatorless expression
+      #
+      # @param expression [ANTLR3::AST::CommonTree] no operator expression parsed by antlr
+      # @return [void]
       def process_no_operator_expression(expression)
         @expression.left = process_expression_item(expression[0])
         @expression.operator = 'LITERAL'
       end
 
       # Processes a default expression
+      #
+      # @param expression [ANTLR3::AST::CommonTree] normal expression parsed by antlr
+      # @return [void]
       def process_normal_expression(expression)
         # Guard Clasue
         return false unless Yarpler::Models::Operator.operator?(expression[1].to_s)
@@ -70,6 +86,9 @@ module Yarpler
 
       # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
       # Processes the expression item
+      #
+      # @param item [ANTLR3::AST::CommonTree] expression item parsed by antlr
+      # @return [Object] interpreted object from Yarpler::Models
       def process_expression_item(item)
         case item.to_s
           when 'FIELD_ACCESSOR'

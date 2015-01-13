@@ -2,10 +2,16 @@ module Yarpler
   module Interpreters
     # FunctionInterpreter is responsible for interpreting YARPL functions
     # like count(), sum()
+    #
+    # @attr_reader function [Yarpler::Models::Function] interpreted function
     class FunctionInterpreter
       attr_reader :function
 
       # Initializes the interpreter
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR tree node
+      # @param objects [Hash<String, Object>] hash map of all yarpl objects
+      # @return [void]
       def initialize(tree, objects=nil)
         @function = ''
         @objects = objects
@@ -15,6 +21,9 @@ module Yarpler
       private
 
       # Processes a function
+      #
+      # @param function [ANTLR3::AST::CommonTree] function expression parsed by antlr
+      # @return [void]
       def process_function(function)
         case function[0].to_s
           when 'COUNT_IN'
@@ -27,6 +36,9 @@ module Yarpler
       end
 
       # Processes the count function
+      #
+      # @param function [ANTLR3::AST::CommonTree] function expression parsed by antlr
+      # @return [Yarpler::Models::Function] interpreted function
       def process_count_function(function)
         if function.size == 2
           process_count_function_element(function)
@@ -36,6 +48,9 @@ module Yarpler
       end
 
       # Processes the card function
+      #
+      # @param function [ANTLR3::AST::CommonTree] function expression parsed by antlr
+      # @return [Yarpler::Models::CountFunction] interpreted function
       def process_card_function(function)
         count = Yarpler::Models::Cardinality.new
         count.element = Yarpler::Interpreters::FieldAccessorInterpreter.new(function[0][1]).field
@@ -43,6 +58,9 @@ module Yarpler
       end
 
       # Processes an element of the count function
+      #
+      # @param function [ANTLR3::AST::CommonTree] function expression parsed by antlr
+      # @return [Yarpler::Models::Function] interpreted function
       def process_count_function_element(function)
         count = Yarpler::Models::CountFunction.new
 
@@ -64,6 +82,9 @@ module Yarpler
       end
 
       # Processes the sum value function
+      #
+      # @param function [ANTLR3::AST::CommonTree] function expression parsed by antlr
+      # @return [Yarpler::Models::Function] interpreted function
       def process_sum_value_function(function)
         sum = Yarpler::Models::SumValueFunction.new
         sum.set = FieldAccessorInterpreter.new(function[0][1]).field
@@ -74,6 +95,9 @@ module Yarpler
       end
 
       # Processes the countall function
+      #
+      # @param function [ANTLR3::AST::CommonTree] function expression parsed by antlr
+      # @return [Yarpler::Models::Function] interpreted function
       def process_countall_function(function)
         interpreter = CountallInterpreter.new(function, @objects)
         interpreter.countAll

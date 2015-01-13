@@ -3,6 +3,10 @@ require_relative 'yarpler_output/YarplerOutputParser'
 
 # MiniZinc Output Parser
 # Reads the return value of the minizinc solver and updates the YARPL data structure
+#
+# @attr_reader tree [ANTLR3::AST::CommonTree] ANTLR Tree of output parsing
+# @attr_reader problem [Yarpler::Models::Problem] interpreted yarpl problem
+#
 # rubocop:disable Metrics/MethodLength
 class OutputParser
 
@@ -13,6 +17,10 @@ class OutputParser
   attr_reader :problem
 
   # Initializes the parser
+  #
+  # @param output [ANTLR3::AST::CommonTree] ANTLR Tree of output parsing
+  # @param problem [Yarpler::Models::Problem] interpreted yarpl problem
+  # @return [void]
   def initialize(output, problem)
     @output = output
     parse
@@ -23,6 +31,10 @@ class OutputParser
   private
 
   # Fills the output back into the problem object
+  #
+  # @param tree [ANTLR3::AST::CommonTree] ANTLR tree of the output
+  # @param problem [Yarpler::Models::Problem] interpreted yarpl problem
+  # @return [void]
   def fill_output(tree, problem)
     tree.each do |t|
       if t.to_s == 'OUTPUT'
@@ -38,6 +50,11 @@ class OutputParser
   end
 
   # Gets a list of all variables
+  #
+  # @param var [String] variable name to derive the instance name
+  # @param values [Hash<String, String>] fields
+  # @param problem [Yarpler::Models::Problem] interpreted yarpl problem
+  # @return [void]
   def read_variable_list(var, values, problem)
     instance_name = var.slice(0..(var.index('_') - 1))
     field_name = var[var.index('_') + 1..var.length]
@@ -63,6 +80,9 @@ class OutputParser
   end
 
   # Restructures the continuous ranges into an array of all values
+  #
+  # @param values [Array<String>] range to rewrite
+  # @return [Array<String>] array of all values
   def rewrite_range(values)
     if values.size == 3 and values[1].to_s == '..'
       new_values = Array.new
@@ -75,6 +95,11 @@ class OutputParser
   end
 
   # Read a single variable
+  #
+  # @param var [String] variable name
+  # @param val [Object] value
+  # @param problem [Yarpler::Models::Problem] interpreted yarpl problem
+  # @return [void]
   def read_variable(var, val, problem)
     instance_name = var.slice(0..(var.index('_') - 1))
     field_name = var[var.index('_') + 1..var.length]
@@ -97,6 +122,8 @@ class OutputParser
   end
 
   # Parse the problem output
+  #
+  # @return [void]
   def parse
     out = StringIO.new
     err = StringIO.new

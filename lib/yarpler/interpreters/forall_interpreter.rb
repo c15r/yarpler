@@ -2,6 +2,10 @@ module Yarpler
   module Interpreters
     # ForallInterpreter processes a YARPL Allquantor statement
     #
+    # @attr_reader forall [Yarpler::Models::Forall] interpreted forall expression
+    # @attr_reader constraints [Array<Yarpler::Models::Constraint>] interpreted constraint objects
+    # @attr_reader where [Yarpler::Models::Expression] interpreted where expression
+    #
     # == YARPL Example
     #
     #   forall(...) { ... }
@@ -12,6 +16,11 @@ module Yarpler
       attr_reader :where
 
       # Initializes the interpreter
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR tree node
+      # @param objects [Hash<String, Object>] hash map of all yarpl objects
+      # @param parent [Object] parent
+      # @return [void]
       def initialize(tree, objects, parent = nil)
         @objects = objects
         @forall = Yarpler::Models::Forall.new
@@ -25,6 +34,9 @@ module Yarpler
       private
 
       # Processes the forall loop
+      #
+      # @param expression [ANTLR3::AST::CommonTree] forall expression parsed by antlr
+      # @return [void]
       def process_forall(expression)
         process_filters(expression)
         @forall.where = @where
@@ -38,6 +50,9 @@ module Yarpler
       end
 
       # Processes the filters
+      #
+      # @param expression [ANTLR3::AST::CommonTree] filter expression parsed by antlr
+      # @return [void]
       def process_filters(expression)
         return if expression.size <= 2
 
@@ -53,6 +68,9 @@ module Yarpler
       end
 
       # Processes the order by desc
+      #
+      # @param e [ANTLR3::AST::CommonTree] expression parsed by antlr
+      # @return [Yarpler::Models::Expression] interpreted expression
       def process_order_desc(e)
         @order = Yarpler::Models::Order.new
         @order.field = FieldAccessorInterpreter.new(e[0]).field
@@ -60,6 +78,9 @@ module Yarpler
       end
 
       # Processes the order by asc
+      #
+      # @param e [ANTLR3::AST::CommonTree] expression parsed by antlr
+      # @return [Yarpler::Models::Expression] interpreted expression
       def process_order_asc(e)
         @order = Yarpler::Models::Order.new
         @order.field = FieldAccessorInterpreter.new(e[0]).field
@@ -67,6 +88,9 @@ module Yarpler
       end
 
       # Processes the forall selector
+      #
+      # @param expression [ANTLR3::AST::CommonTree] expression parsed by antlr
+      # @return [Yarpler::Models::Expression] interpreted expression
       def forall_selector(expression)
         case expression.to_s
           when 'FROM'
@@ -77,6 +101,9 @@ module Yarpler
       end
 
       # Builds the range
+      #
+      # @param expression [ANTLR3::AST::CommonTree] expression parsed by antlr
+      # @return [Array<Object>] forall range
       def forall_range_builder(expression)
         range = []
         case expression.to_s
@@ -93,6 +120,9 @@ module Yarpler
       end
 
       # Checks if a class exists
+      #
+      # @param class_name [String] class name to check
+      # @return [Boolean] true if the class exists, false otherwise
       def class_exists?(class_name)
         klass = Object.const_get(class_name)
         return klass.is_a?(Class)
@@ -101,6 +131,9 @@ module Yarpler
       end
 
       # Gets all object of a class by string
+      #
+      # @param class_name [String] class name to check
+      # @return [Array<Object>] objects of the specified class
       def get_objects_of_class(class_name)
         var_array = []
         @objects.each do |_k, v|

@@ -5,6 +5,9 @@ class ExpressionPrinter < Yarpler::Extensions::Process
   attr_reader :id
 
   # Process the whole problem
+  #
+  # @param problem [Yarpler::Models::Problem] interpreted yarpl problem
+  # @return [Yarpler::Models::Problem] processed yarpl problem
   def process(problem)
     @id = 0
     problem.constraints.each do |c|
@@ -15,6 +18,9 @@ class ExpressionPrinter < Yarpler::Extensions::Process
   end
 
   # Print a single expression in yuml syntax
+  #
+  # @param expression [Object] yarpl expression to print
+  # @return [String] output to print
   def print_expression(expression)
     string = ''
     if expression.is_a? Yarpler::Models::Forall

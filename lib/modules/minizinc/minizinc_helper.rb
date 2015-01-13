@@ -11,6 +11,8 @@ class MinizincHelper
 
   # Returs the next array index id and increases
   # the index
+  #
+  # @return [Integer] next array id
   def array_id
     @array_id = @array_id.next
     @array_id

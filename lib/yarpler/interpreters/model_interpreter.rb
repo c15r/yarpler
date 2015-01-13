@@ -10,11 +10,17 @@ module Yarpler
     class ModelInterpreter
 
       # Initializes the interpreter
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR tree node
+      # @return [void]
       def initialize(tree)
         tree_converter(tree)
       end
 
       # Converts the tree
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR tree node
+      # @return [void]
       def tree_converter(tree)
         tree.each do |thing|
           case thing.to_s

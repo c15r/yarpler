@@ -66,8 +66,8 @@ module Yarpler
       # Takes value declaration apart if they are a continuous range
       #
       # @param type [String] type of an attribute
-      # @param value [Ojbect] value of an attribute
-      # @return value [Object] processed value
+      # @param value [Object] value of an attribute
+      # @return [Object] processed value
       def prepare_value(type, value)
         if type == 'VARIABLE' &&  !value.include?('..')
           value = value.to_s + '..' + value.to_s
