@@ -19,7 +19,7 @@ module Yarpler
 
       # Parses a single expression
       #
-      # @param exprewssion [ANTLR3::AST::CommonTree] constraint expression parsed by antlr
+      # @param expression [ANTLR3::AST::CommonTree] constraint expression parsed by antlr
       # @return [Yarpler::Models::Constraint] interpreted constraint object
       def parse_expression(expression)
         constraint = nil

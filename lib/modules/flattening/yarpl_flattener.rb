@@ -13,7 +13,7 @@ class YarplFlattener < Yarpler::Extensions::Process
 
   # Processes a problem declaration to flatten all allquantor and countall statements
   #
-  # @params problem [Yarpler::Models::Problem] Problem description
+  # @param problem [Yarpler::Models::Problem] Problem description
   # @return [void]
   def process(problem)
     @problem = problem
@@ -38,8 +38,8 @@ class YarplFlattener < Yarpler::Extensions::Process
 
   # Expands a countAll construct by checking internal forall loops
   #
-  # @params expression [Yarpler::Models::Expression] Single expression to expand
-  # @params problem [Yarpler::Models::Problem] Problem description
+  # @param expression [Yarpler::Models::Expression] Single expression to expand
+  # @param problem [Yarpler::Models::Problem] Problem description
   # @return [void]
   def expand_count_all(expression,problem)
     if expression.is_a? Yarpler::Models::Countall
@@ -311,8 +311,8 @@ class YarplFlattener < Yarpler::Extensions::Process
 
   # Checks if the expression is a field or an instance
   #
-  # @params expression [Yarpler::Models::Expression] Expression object
-  # @params placeholder_variable [String] Variable with placeholder
+  # @param expression [Yarpler::Models::Expression] Expression object
+  # @param placeholder_variable [String] Variable with placeholder
   # @return [Boolean]
   def field_or_instance?(expression, placeholder_variable)
     is_field = (expression.is_a? Yarpler::Models::Field)
@@ -324,7 +324,7 @@ class YarplFlattener < Yarpler::Extensions::Process
 
   # Checks if the expression is a count function
   #
-  # @params expression [String] Expression to check
+  # @param expression [String] Expression to check
   # @return [Boolean]
   def count_function?(expression)
     expression.is_a? Yarpler::Models::CountFunction
@@ -332,7 +332,7 @@ class YarplFlattener < Yarpler::Extensions::Process
 
   # Checks if the provided string is a class
   #
-  # @params class_name [String] Class name to search
+  # @param class_name [String] Class name to search
   # @return [Boolean]
   def class_exists?(class_name)
     klass = Object.const_get(class_name)
