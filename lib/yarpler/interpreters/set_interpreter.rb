@@ -10,6 +10,10 @@ module Yarpler
       attr_accessor :set
 
       # Initializes the interpreter
+      #
+      # @param item [ANTLR3::AST::CommonTree] ANTLR tree
+      # @param objects [Array<Resource>] Objetcs of the set default nil
+      # @return [void]
       def initialize(item, objects=nil)
         @set = []
         if objects.nil?
@@ -22,6 +26,9 @@ module Yarpler
       private
 
       # Processes a set of integers
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR tree
+      # @return [void]
       def process_integer_set(tree)
         # @TODO Error handling
         tree.each do |thing|
@@ -31,6 +38,10 @@ module Yarpler
       end
 
       # Processes a set of objects
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR tree
+      # @param objects [Array<Resource>] Objetcs of the set default nil
+      # @return [void]
       def process_set(tree, objects)
         # @TODO Error handling
         tree.each do |thing|
