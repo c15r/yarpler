@@ -6,17 +6,23 @@ module Yarpler
       attr_accessor :variable
 
       # Initializes the model object
+      #
+      # @return [void]
       def initialize
         @variable = ''
       end
 
       # Checks the validity of the object and if all required
       # fields are initialized
+      #
+      # @return [Boolean]
       def valid?
         !@variable.nil?
       end
 
       # Clones the object
+      #
+      # @return [Yarpler::Models::Instance]
       def clone
         new = Instance.new
         new.variable = @variable

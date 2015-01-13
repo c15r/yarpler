@@ -10,16 +10,22 @@ module Yarpler
       attr_accessor :inner
 
       # Initializes the model object
+      #
+      # @return [void]
       def initialize
       end
 
       # Checks the validity of the object and if all required
       # fields are initialized
+      #
+      # @return [Boolean]
       def valid?
         !(@element.nil? || @range.nil?)
       end
 
       # Clones the object
+      #
+      # @return [Yarpler::Models::CountFunction]
       def clone
         new = CountFunction.new
         new.element = @element.clone

@@ -8,6 +8,8 @@ module Yarpler
       attr_accessor :output
 
       # Initializes the model object
+      #
+      # @return [void]
       def initialize
         @ast = ''
         @model = ''

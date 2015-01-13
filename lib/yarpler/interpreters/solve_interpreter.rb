@@ -13,6 +13,10 @@ module Yarpler
       attr_accessor :constraints
 
       # Initializes the interpreter
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR Tree
+      # @param objects [Array<Resource>] List of all objects of the problem description
+      # @return [void]
       def initialize(tree, objects)
         @constraints = []
         @objects = objects
@@ -21,6 +25,9 @@ module Yarpler
       end
 
       # Converts a tree
+      #
+      # @param tree [ANTLR3::AST::CommonTree] ANTLR Tree
+      # @return [void]
       def tree_converter(tree)
         tree.each do |item|
           interpret_statement(item)
@@ -30,6 +37,9 @@ module Yarpler
       private
 
       # Interprets a statement
+      #
+      # @param statement [ANTLR3::AST::CommonTree] Solve statement in ANTLR Tree
+      # @return [void]
       def interpret_statement(statement)
         case statement.to_s
           when 'CONSTRAINT_DECLARATION'
@@ -44,23 +54,35 @@ module Yarpler
       end
 
       # Interprets a constraint
+      #
+      # @param constraint [ANTLR3::AST::CommonTree] Solve statement in ANTLR Tree
+      # @return [void]
       def interpret_constraint(constraint)
         constraint_interpreter = ConstraintInterpreter.new(constraint, @objects)
         @constraints.push(constraint_interpreter.constraint)
       end
 
       # Interprets a satisfy
+      #
+      # @param statement [ANTLR3::AST::CommonTree] Solve statement in ANTLR Tree
+      # @return [void]
       def interpret_satisfy(statement)
         @solve.statement = statement.to_s
       end
 
       # Interprets a minimize
+      #
+      # @param statement [ANTLR3::AST::CommonTree] Solve statement in ANTLR Tree
+      # @return [void]
       def interpret_minimize(statement)
         @solve.statement = statement.to_s
         @solve.expression = ExpressionInterpreter.new(statement[0]).expression
       end
 
       # Interprets a maximize
+      #
+      # @param statement [ANTLR3::AST::CommonTree] Solve statement in ANTLR Tree
+      # @return [void]
       def interpret_maximize(statement)
         @solve.statement = statement.to_s
         @solve.expression = ExpressionInterpreter.new(statement[0]).expression

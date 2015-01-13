@@ -7,10 +7,12 @@ module Yarpler
       attr_accessor :expression
 
       # Initializes the model object
+      # @return [void]
       def initialize
       end
 
       # Clones the object
+      # @return [Yarpler::Models::SolveInstruction]
       def clone
         new = SolveInstruction.new
         new.statement = @statement.clone
